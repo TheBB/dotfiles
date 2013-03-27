@@ -1,1 +1,1 @@
-set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
+set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10

@@ -19,7 +19,6 @@ set t_Co=256
 colorscheme badwolf
 
 " Powerline
-
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
 
 " Tabs
@@ -30,13 +29,8 @@ set expandtab
 
 " Folding
 set foldmethod=indent
-nnoremap <space> za
+nnoremap <Space> za
 set foldcolumn=0
-
-" Shortcuts
-inoremap jk <Esc>
-map <cr> o<Esc>k
-map <C-J> O<Esc>j
 
 " Fix that damn timeout
 set timeoutlen=300
@@ -78,14 +72,6 @@ set lazyredraw
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set statusline=\ %F\ %m%r%h%w\ [%{&ff}]\ %y\ [%p%%]\ [%l/%L,%v]
-
-" Leader shortcuts
-let mapleader="\\"
-nnoremap <leader><space> :noh<cr>
-map <leader>= :Tabularize/=<cr>
-map <leader>: :Tabularize/:<cr>
-map <leader>, :Tabularize/,\zs<cr>
 
 " Searching
 set ignorecase
@@ -112,9 +98,27 @@ if has("gui_running")
     set guioptions+=a
 endif
 
-nnoremap <C-S-n> :NERDTreeToggle<cr>
+" Shortcuts
+inoremap jk <Esc>
+inoremap <Esc> <Nop>
+nnoremap <CR> o<Esc>k
+nnoremap <BS> O<Esc>j
+
+nnoremap <C-S-n> :NERDTreeToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Leader shortcuts
+let mapleader=","
+nnoremap <leader><Space> :noh<CR>
+nnoremap <leader>= :Tabularize/=<CR>
+nnoremap <leader>: :Tabularize/:<CR>
+nnoremap <leader>, :Tabularize/,\zs<CR>
+
+nnoremap <leader>ev :sp $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+onoremap ih :<C-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>

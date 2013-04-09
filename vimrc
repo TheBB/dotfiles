@@ -60,6 +60,9 @@ set history=200
 " Expansion of the current working directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Some other mappings
+inoremap <C-u> <Esc>viwUea
+
 " Various uncategorized settings
 set encoding=utf-8
 set scrolloff=3
@@ -101,6 +104,7 @@ set colorcolumn=110
 " Show EOL and TAB
 set list
 set listchars=tab:▸\ ,eol:¬
+
 
 if has("gui_running")
     set guioptions-=r

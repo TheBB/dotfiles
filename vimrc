@@ -54,6 +54,9 @@ set history=200
 " Expansion of the current working directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Some other mappings
+inoremap <C-u> <Esc>viwUea
+
 " Various uncategorized settings
 set encoding=utf-8
 set scrolloff=3
@@ -88,6 +91,7 @@ set colorcolumn=81
 set list
 set listchars=tab:▸\ ,eol:¬
 
+
 if has("gui_running")
     set guioptions-=r
     set guioptions-=L
@@ -118,3 +122,63 @@ nnoremap <leader>ev :sp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 onoremap ih :<C-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
+
+" Unicodia!
+
+let g:ucabb = 0
+nnoremap <leader>u :call UCAbbrevs()<CR>
+let g:uclist = [
+             \  ['->', '→']
+             \, ['<-', '←']
+             \, ['/^', '↑']
+             \, ['/v', '↓']
+             \, ['=>', '⇒']
+             \, ['<=', '⇐']
+             \, ['//^', '⇑']
+             \, ['//v', '⇓']
+             \, ['/->', '↦']
+             \, ['<-/', '↤']
+             \, ['<<', '«']
+             \, ['>>', '»']
+             \, ['minus', '−']
+             \, ['--', '–']
+             \, ['---', '—']
+             \, ['~~', '≈']
+             \, ['/=', '≠']
+             \, ['==', '≡']
+             \, ['leq', '≤']
+             \, ['geq', '≥']
+             \, ['+-', '±']
+             \, ['subset', '⊂']
+             \, ['supset', '⊃']
+             \, ['subseteq', '⊆']
+             \, ['supseteq', '⊇']
+             \, ['wedge', '∧']
+             \, ['vee', '∨']
+             \, ['cap', '∩']
+             \, ['cup', '∪']
+             \, ['infty', '∞']
+             \, ['inn', '∈']
+             \, ['ninn', '∉']
+             \, ['nabla', '∇']
+             \, ['cdot', '⋅']
+             \, ['times', '×']
+             \, ['fa', '∀']
+             \, ['ex', '∃']
+             \ ]
+
+function UCAbbrevs()
+    if (g:ucabb == 0)
+        for pair in g:uclist
+            execute "iabbrev " . pair[0] . " " . pair[1]
+        endfor
+        let g:ucabb = 1
+        echom "Unicodia ON"
+    else
+        for pair in g:uclist
+            execute "iunabbrev " . pair[0]
+        endfor
+        let g:ucabb = 0
+        echom "Unicodia OFF"
+    endif
+endfunction

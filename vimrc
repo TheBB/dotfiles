@@ -7,7 +7,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-"Bundle 'davidhalter/jedi-vim'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'

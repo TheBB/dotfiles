@@ -80,9 +80,9 @@ set hlsearch
 
 " Wrapping
 set wrap
-set textwidth=110
+set textwidth=80
 set formatoptions=tnq
-set colorcolumn=110
+set colorcolumn=81
 
 " Show EOL and TAB
 set list

@@ -11,10 +11,13 @@ Bundle 'godlygeek/tabular'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/powerline'
+Bundle 'altercation/vim-colors-solarized'
 filetype plugin indent on
 
 " Colours
+let g:solarized_termcolors = 256
 set t_Co=256
+set background=dark
 colorscheme badwolf
 
 " Powerline

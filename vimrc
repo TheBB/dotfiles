@@ -7,11 +7,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-"Bundle 'davidhalter/jedi-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/powerline'
+Bundle 'altercation/vim-colors-solarized'
 filetype plugin indent on
 
 " Colours
@@ -83,9 +83,9 @@ set hlsearch
 
 " Wrapping
 set wrap
-set textwidth=80
+set textwidth=110
 set formatoptions=tnq
-set colorcolumn=80
+set colorcolumn=110
 
 " Show EOL and TAB
 set list

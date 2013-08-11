@@ -364,6 +364,8 @@ call HL('ShowMarksHLm', 'tardis', 'blackgravel')
 
 " }}}
 " Filetype-specific {{{
+"
+call HL('Conceal', 'fg', 'bg')
 
 " Clojure {{{
 
@@ -501,4 +503,3 @@ call HL('VimBracket', 'dress', '', 'none')
 " }}}
 
 " }}}
-

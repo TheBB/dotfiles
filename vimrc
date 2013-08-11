@@ -1,6 +1,6 @@
 set nocompatible
 
-" VUNDLE SETTINGS
+" {{{ Vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -12,54 +12,63 @@ Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/powerline'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Twinside/vim-haskellConceal'
+Bundle 'ehamberg/vim-cute-python'
 filetype plugin indent on
+" }}}
 
-" Colours
+" {{{ Colours
 let g:solarized_termcolors = 256
 set t_Co=256
 set background=dark
-colorscheme badwolf
+colorscheme bigbug
+" }}}
 
-" Powerline
+" {{{ Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
+" }}}
 
-" Tabs
+" {{{ Tabs
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+" }}}
 
-" Folding
-set foldmethod=indent
+" {{{ Folding
+set foldmethod=marker
 nnoremap <Space> za
 set foldcolumn=0
+" }}}
 
-" Fix that damn timeout
+" {{{ Timeout
 set timeoutlen=300
+" }}}
 
-" Line numbering
+" {{{ Line numbering
 set number
 set relativenumber
+" }}}
 
-" Pasting
+" {{{ Pasting
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+" }}}
 
-" Command completion
+" {{{ Command completion
 set wildmenu
 set wildmode=full
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 set history=200
+" }}}
 
-" Expansion of the current working directory
-cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" {{{ Expansion of the current working directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" }}}
 
-" Some other mappings
-inoremap <C-u> <Esc>viwUea
-
-" Various uncategorized settings
+" {{{ Various uncategorized settings
 set encoding=utf-8
 set scrolloff=3
 set autoindent
@@ -74,35 +83,42 @@ set lazyredraw
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set cole=2
+" }}}
 
-" Searching
+" {{{ Searching
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 set hlsearch
+" }}}
 
-" Wrapping
+" {{{ Wrapping
 set wrap
 set textwidth=110
 set formatoptions=tnq
 set colorcolumn=110
+" }}}
 
-" Show EOL and TAB
+" {{{ Non-textual characters
 set list
 set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬,trail:·
+" }}}
 
-
+" {{{ No scrollbars in gvim
 if has("gui_running")
     set guioptions-=r
     set guioptions-=L
     set guioptions+=a
 endif
+" }}}
 
-" Shortcuts
+" {{{ Shortcuts
 inoremap jk <Esc>
-inoremap <Esc> <Nop>
+vnoremap jk <Esc>
 nnoremap <CR> o<Esc>k
 nnoremap <BS> O<Esc>j
 
@@ -112,8 +128,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" }}}
 
-" Leader shortcuts
+" {{{ Leader shortcuts
 let mapleader=","
 nnoremap <leader><Space> :noh<CR>
 nnoremap <leader>= :Tabularize/=<CR>
@@ -122,65 +139,4 @@ nnoremap <leader>, :Tabularize/,\zs<CR>
 
 nnoremap <leader>ev :sp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-onoremap ih :<C-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
-
-" Unicodia!
-
-let g:ucabb = 0
-nnoremap <leader>u :call UCAbbrevs()<CR>
-let g:uclist = [
-             \  ['->', '→']
-             \, ['<-', '←']
-             \, ['/^', '↑']
-             \, ['/v', '↓']
-             \, ['=>', '⇒']
-             \, ['<=', '⇐']
-             \, ['//^', '⇑']
-             \, ['//v', '⇓']
-             \, ['/->', '↦']
-             \, ['<-/', '↤']
-             \, ['<<', '«']
-             \, ['>>', '»']
-             \, ['minus', '−']
-             \, ['--', '–']
-             \, ['---', '—']
-             \, ['~~', '≈']
-             \, ['/=', '≠']
-             \, ['==', '≡']
-             \, ['leq', '≤']
-             \, ['geq', '≥']
-             \, ['+-', '±']
-             \, ['subset', '⊂']
-             \, ['supset', '⊃']
-             \, ['subseteq', '⊆']
-             \, ['supseteq', '⊇']
-             \, ['wedge', '∧']
-             \, ['vee', '∨']
-             \, ['cap', '∩']
-             \, ['cup', '∪']
-             \, ['infty', '∞']
-             \, ['inn', '∈']
-             \, ['ninn', '∉']
-             \, ['nabla', '∇']
-             \, ['cdot', '⋅']
-             \, ['times', '×']
-             \, ['fa', '∀']
-             \, ['ex', '∃']
-             \ ]
-
-function UCAbbrevs()
-    if (g:ucabb == 0)
-        for pair in g:uclist
-            execute "iabbrev " . pair[0] . " " . pair[1]
-        endfor
-        let g:ucabb = 1
-        echom "Unicodia ON"
-    else
-        for pair in g:uclist
-            execute "iunabbrev " . pair[0]
-        endfor
-        let g:ucabb = 0
-        echom "Unicodia OFF"
-    endif
-endfunction
+" }}}

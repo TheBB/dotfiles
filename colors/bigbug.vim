@@ -144,7 +144,7 @@ call HL('CursorLine',   '', 'm4', 'none')
 call HL('CursorColumn', '', 'm4')
 call HL('ColorColumn',  '', 'm4')
 
-call HL('MatchParen', 'a1', 'm4', 'bold')
+call HL('MatchParen', 'dalespale', 'm4', 'bold')
 
 call HL('NonText',    'm5', 'bg')
 call HL('SpecialKey', 'm5', 'bg')

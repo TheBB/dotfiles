@@ -18,6 +18,7 @@ filetype plugin indent on
 " }}}
 
 " {{{ Colours
+syntax on
 let g:solarized_termcolors = 256
 set t_Co=256
 set background=dark
@@ -72,7 +73,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 set encoding=utf-8
 set scrolloff=3
 set autoindent
-set smartindent
 set showmode
 set showcmd
 set hidden

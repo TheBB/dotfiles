@@ -145,4 +145,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " {{{ Comma-separated list manipulation
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>:noh<CR>
 nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:noh<CR>
+nnoremap <silent> g<CR> xi<CR><Esc>l
 " }}}
+
+let g:tex_conceal='adgm'

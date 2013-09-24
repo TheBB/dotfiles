@@ -131,10 +131,10 @@ nnoremap <C-l> <C-w>l
 " }}}
 
 " {{{ Leader shortcuts
-let mapleader=","
+" let mapleader=","
 nnoremap <leader><Space> :noh<CR>
 nnoremap <leader>= :Tabularize/=<CR>
-nnoremap <leader>: :Tabularize/:<CR>
+nnoremap <leader>: :Tabularize/:\zs<CR>
 nnoremap <leader>, :Tabularize/,\zs<CR>
 
 nnoremap <leader>ev :sp $MYVIMRC<CR>

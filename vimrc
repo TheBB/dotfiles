@@ -14,6 +14,7 @@ Bundle 'Lokaltog/powerline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'ehamberg/vim-cute-python'
+Bundle 'rking/ag.vim'
 filetype plugin indent on
 " }}}
 

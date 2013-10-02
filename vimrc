@@ -11,10 +11,12 @@ Bundle 'godlygeek/tabular'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/powerline'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'ehamberg/vim-cute-python'
 Bundle 'rking/ag.vim'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'vim-scripts/argtextobj.vim'
+Bundle 'bkad/CamelCaseMotion'
 filetype plugin indent on
 " }}}
 
@@ -22,7 +24,7 @@ filetype plugin indent on
 syntax on
 let g:solarized_termcolors = 256
 set t_Co=256
-set background=dark
+"set background=dark
 colorscheme tpbigbug
 " }}}
 

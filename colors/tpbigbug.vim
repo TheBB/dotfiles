@@ -1,5 +1,5 @@
 " {{{ Preamble
-set background=dark
+"set background=dark
 
 if exists("syntax_on")
     syntax reset
@@ -127,7 +127,7 @@ function! HL(group, fg, ...)
 endfunction
 " }}}
 
-let s:gutter = 'blackgravel'
+" let s:gutter = 'blackgravel'
 
 " Vanilla Vim {{{
 " General/UI {{{
@@ -150,7 +150,7 @@ call HL('Visual',    '',  'm6')
 call HL('VisualNOS', '',  'm6')
 
 call HL('Search',    'm1', '', 'bold')
-call HL('IncSearch', 'm1', '', 'bold')
+call HL('IncSearch', 'dalespale', '', 'bold')
 
 call HL('Underlined', 'fg', '', 'underline')
 
@@ -161,7 +161,7 @@ call HL('Directory', 'dirtyblonde', '', 'bold')
 
 call HL('Title', 'lime')
 
-call HL('ErrorMsg',   'taffy',       '',   'bold')
+call HL('ErrorMsg',   'taffy',       'm1',   'bold')
 call HL('MoreMsg',    'dalespale',   '',   'bold')
 call HL('ModeMsg',    'dirtyblonde', '',   'bold')
 call HL('Question',   'dirtyblonde', '',   'bold')
@@ -236,9 +236,9 @@ call HL('Typedef', 'taffy', '', 'bold')
 call HL('Exception', 'lime', '', 'bold')
 
 " Misc
-call HL('Error',  'snow',   'taffy', 'bold')
-call HL('Debug',  'snow',   '',      'bold')
-call HL('Ignore', 'gravel', '',      '')
+call HL('Error',  'snow',   '', 'bold')
+call HL('Debug',  'snow',   '', 'bold')
+call HL('Ignore', 'gravel', '', '')
 " }}}
 " Completion Menu {{{
 call HL('Pmenu', 'plain', 'deepergravel')

@@ -1,0 +1,30 @@
+[global_config]
+  title_transmit_bg_color = "#404040"
+  tab_position = hidden
+  inactive_color_offset = 0.97
+  title_inactive_bg_color = "#afafaf"
+[keybindings]
+  go_up = <Primary><Shift>k
+  switch_to_tab_10 = <Primary><Shift>at
+  go_down = <Primary><Shift>j
+  switch_to_tab_2 = <Primary><Shift>numbersign
+  go_right = <Primary><Shift>l
+  switch_to_tab_1 = <Primary><Shift>exclam
+  go_left = <Primary><Shift>h
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    background_image = None
+    background_darkness = 0.75
+    use_system_font = False
+    foreground_color = "#ffffff"
+    font = Source Code Pro for Powerline Medium 10
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]

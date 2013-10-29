@@ -15,6 +15,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'ehamberg/vim-cute-python'
 Bundle 'rking/ag.vim'
+Bundle 'pbrisbin/html-template-syntax'
 filetype plugin indent on
 " }}}
 

@@ -11,11 +11,13 @@ Bundle 'godlygeek/tabular'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/powerline'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'ehamberg/vim-cute-python'
 Bundle 'rking/ag.vim'
 Bundle 'pbrisbin/html-template-syntax'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'vim-scripts/argtextobj.vim'
+Bundle 'bkad/CamelCaseMotion'
 filetype plugin indent on
 " }}}
 

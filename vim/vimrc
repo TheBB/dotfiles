@@ -13,6 +13,7 @@ Bundle 'rking/ag.vim'
 
 " Motion
 Bundle 'goldfeld/vim-seek'
+Bundle 'Lokaltog/vim-easymotion'
 
 " Text manipulation
 Bundle 'scrooloose/nerdcommenter'

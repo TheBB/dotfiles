@@ -14,10 +14,11 @@
 [profiles]
   [[default]]
     scrollbar_position = hidden
-    background_image = None
-    background_darkness = 0.75
     use_system_font = False
+    background_darkness = 0.75
+    background_image = None
     foreground_color = "#ffffff"
+    show_titlebar = False
     font = Source Code Pro for Powerline Medium 10
 [layouts]
   [[default]]

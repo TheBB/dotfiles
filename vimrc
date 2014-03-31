@@ -17,6 +17,8 @@ Bundle 'rking/ag.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'bkad/CamelCaseMotion'
+Bundle 'MaxSt/FlatColor'
+Bundle 'wting/rust.vim'
 filetype plugin indent on
 " }}}
 
@@ -26,6 +28,7 @@ let g:solarized_termcolors = 256
 set t_Co=256
 set background=dark
 colorscheme bigbug
+" hi CursorLine cterm=NONE term=NONE
 " }}}
 
 " {{{ Powerline
@@ -40,9 +43,12 @@ set expandtab
 " }}}
 
 " {{{ Folding
-set foldmethod=marker
-nnoremap <Space> za
+set foldmethod=indent
 set foldcolumn=0
+
+augroup folds
+    autocmd FileType cpp set foldmarker={,}
+augroup END
 " }}}
 
 " {{{ Timeout
@@ -55,8 +61,7 @@ set relativenumber
 " }}}
 
 " {{{ Pasting
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap <leader>p :set invpaste paste?<CR>
 set showmode
 " }}}
 

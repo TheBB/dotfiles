@@ -52,3 +52,11 @@ ZSH_THEME_GIT_PROMPT_DIRTY="  %{$fg[red]%}✘%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
 
 alias tmux="tmux -2"
+alias matlab="/usr/local/MATLAB/R2012b/bin/matlab -nodesktop -nosplash"
+alias oscid="/home/efonn/sources/Scid-4.5.2/scid /home/efonn/chess/scid.si4"
+
+for dir in \
+    ~/.cabal/bin
+; do
+    if [[ -d $dir ]]; then path+=$dir; fi
+done

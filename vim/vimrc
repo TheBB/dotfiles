@@ -4,22 +4,34 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+" Vundle runtime path manager
 Bundle 'gmarik/vundle'
+
+" Filesystem
 Bundle 'scrooloose/nerdtree'
+Bundle 'rking/ag.vim'
+
+" Motion
+Bundle 'goldfeld/vim-seek'
+
+" Text manipulation
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
-Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/powerline'
-Bundle 'Twinside/vim-haskellConceal'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'rking/ag.vim'
-Bundle 'pbrisbin/html-template-syntax'
+
+" Text objects
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'bkad/CamelCaseMotion'
-Bundle 'MaxSt/FlatColor'
+
+" Language-specific plugins
 Bundle 'wting/rust.vim'
+Bundle 'Twinside/vim-haskellConceal'
+Bundle 'ehamberg/vim-cute-python'
+Bundle 'pbrisbin/html-template-syntax'
+
+" Other
+Bundle 'Lokaltog/powerline'
 filetype plugin indent on
 " }}}
 
@@ -131,7 +143,7 @@ vnoremap jk <Esc>
 nnoremap <CR> o<Esc>k
 nnoremap <BS> O<Esc>j
 
-nnoremap <C-S-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

@@ -1,4 +1,4 @@
-vimconf
-=======
+dotfiles
+========
 
-Vim configuration
+My portable config.

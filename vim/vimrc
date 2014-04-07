@@ -47,8 +47,8 @@ set nocompatible
 
 " Buffers instead of tabs
     nnoremap <leader>T :enew<CR>
-    nnoremap gt :bnext<CR>
-    nnoremap gT :bprevious<CR>
+    nnoremap ]b :bnext<CR>
+    nnoremap [b :bprevious<CR>
     nnoremap <leader>bQ :bp <BAR> bd #<CR>
     nnoremap <leader>bl :ls<CR>
 

@@ -10,6 +10,7 @@ set nocompatible
     " Filesystem
     Bundle 'scrooloose/nerdtree'
     Bundle 'rking/ag.vim'
+    Bundle 'kien/ctrlp.vim'
 
     " Motion
     Bundle 'goldfeld/vim-seek'
@@ -56,6 +57,11 @@ set nocompatible
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
+
+
+" CtrlP
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
 
 
 " Tabs

@@ -7,6 +7,9 @@ set nocompatible
     " Vundle runtime path manager
     Bundle 'gmarik/vundle'
 
+    " Colours
+    Bundle 'sjl/badwolf'
+
     " Filesystem
     Bundle 'scrooloose/nerdtree'
     Bundle 'rking/ag.vim'
@@ -33,16 +36,19 @@ set nocompatible
     Bundle 'pbrisbin/html-template-syntax'
 
     " Other
+    Bundle 'tpope/vim-fugitive'
     Bundle 'bling/vim-airline'
     filetype plugin indent on
 
 
 " Colours
     syntax on
-    let g:solarized_termcolors = 256
     set t_Co=256
     set background=dark
-    colorscheme bigbug
+    let g:badwolf_darkgutter = 1
+    let g:badwolf_html_link_underline = 0
+    let g:badwolf_css_props_highlight = 1
+    colorscheme badwolf
 
 
 " Buffers instead of tabs

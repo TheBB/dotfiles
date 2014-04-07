@@ -1,172 +1,167 @@
 set nocompatible
 
-" {{{ Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" Vundle runtime path manager
-Bundle 'gmarik/vundle'
+" Vundle
+    filetype off
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    " Vundle runtime path manager
+    Bundle 'gmarik/vundle'
 
-" Filesystem
-Bundle 'scrooloose/nerdtree'
-Bundle 'rking/ag.vim'
+    " Filesystem
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'rking/ag.vim'
 
-" Motion
-Bundle 'goldfeld/vim-seek'
-Bundle 'Lokaltog/vim-easymotion'
+    " Motion
+    Bundle 'goldfeld/vim-seek'
+    Bundle 'Lokaltog/vim-easymotion'
 
-" Text manipulation
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
+    " Text manipulation
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'godlygeek/tabular'
+    Bundle 'tpope/vim-surround'
 
-" Text objects
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'vim-scripts/argtextobj.vim'
-Bundle 'bkad/CamelCaseMotion'
+    " Text objects
+    Bundle 'michaeljsmith/vim-indent-object'
+    Bundle 'vim-scripts/argtextobj.vim'
+    Bundle 'bkad/CamelCaseMotion'
 
-" Language-specific plugins
-Bundle 'wting/rust.vim'
-Bundle 'Twinside/vim-haskellConceal'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'pbrisbin/html-template-syntax'
+    " Language-specific plugins
+    Bundle 'wting/rust.vim'
+    Bundle 'Twinside/vim-haskellConceal'
+    Bundle 'ehamberg/vim-cute-python'
+    Bundle 'pbrisbin/html-template-syntax'
 
-" Other
-Bundle 'Lokaltog/powerline'
-filetype plugin indent on
-" }}}
+    " Other
+    Bundle 'bling/vim-airline'
+    filetype plugin indent on
 
-" {{{ Colours
-syntax on
-let g:solarized_termcolors = 256
-set t_Co=256
-set background=dark
-colorscheme bigbug
-" hi CursorLine cterm=NONE term=NONE
-" }}}
 
-" {{{ Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
-" }}}
+" Colours
+    syntax on
+    let g:solarized_termcolors = 256
+    set t_Co=256
+    set background=dark
+    colorscheme bigbug
 
-" {{{ Tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-" }}}
 
-" {{{ Folding
-set foldmethod=indent
-set foldcolumn=0
+" Buffers instead of tabs
+    nnoremap <leader>T :enew<CR>
+    nnoremap gt :bnext<CR>
+    nnoremap gT :bprevious<CR>
+    nnoremap <leader>bQ :bp <BAR> bd #<CR>
+    nnoremap <leader>bl :ls<CR>
 
-augroup folds
-    autocmd FileType cpp set foldmarker={,}
-augroup END
-" }}}
 
-" {{{ Timeout
-set timeoutlen=300
-" }}}
+" Airline
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
 
-" {{{ Line numbering
-set number
-set relativenumber
-" }}}
 
-" {{{ Pasting
-nnoremap <leader>p :set invpaste paste?<CR>
-set showmode
-" }}}
+" Tabs
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
 
-" {{{ Command completion
-set wildmenu
-set wildmode=full
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-set history=200
-" }}}
 
-" {{{ Expansion of the current working directory
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-" }}}
+" Folding
+    set foldmethod=indent
+    set foldcolumn=0
+    set foldnestmax=7
 
-" {{{ Various uncategorized settings
-set encoding=utf-8
-set scrolloff=3
-set autoindent
-set showmode
-set showcmd
-set hidden
-set novisualbell
-set cursorline
-set ttyfast
-set lazyredraw
-set ruler
-set backspace=indent,eol,start
-set laststatus=2
-set cole=2
-" }}}
 
-" {{{ Searching
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-set hlsearch
-" }}}
+" Pasting
+    nnoremap <leader>p :set invpaste paste?<CR>
+    set showmode
 
-" {{{ Wrapping
-set wrap
-set textwidth=110
-set formatoptions=tnq
-set colorcolumn=110
-" }}}
 
-" {{{ Non-textual characters
-set list
-set listchars=tab:▸\ ,eol:¬
-" set listchars=tab:▸\ ,eol:¬,trail:·
-" }}}
+" Command completion
+    set wildmenu
+    set wildmode=list:full
+    cnoremap <C-p> <Up>
+    cnoremap <C-n> <Down>
+    set history=200
 
-" {{{ No scrollbars in gvim
-if has("gui_running")
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions+=a
-endif
-" }}}
 
-" {{{ Shortcuts
-inoremap jk <Esc>
-vnoremap jk <Esc>
-nnoremap <CR> o<Esc>k
-nnoremap <BS> O<Esc>j
+" Searching
+    set ignorecase
+    set smartcase
+    set gdefault
+    set incsearch
+    set showmatch
+    set hlsearch
 
-nnoremap <C-n> :NERDTreeToggle<CR>
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-" }}}
+" Wrapping
+    set wrap
+    set textwidth=110
+    set formatoptions=tnq
+    set colorcolumn=110
 
-" {{{ Leader shortcuts
-" let mapleader=","
-nnoremap <leader><Space> :noh<CR>
-nnoremap <leader>= :Tabularize/=<CR>
-nnoremap <leader>: :Tabularize/:\zs<CR>
-nnoremap <leader>, :Tabularize/,\zs<CR>
 
-nnoremap <leader>ev :sp $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-" }}}
+" Non-textual characters
+    set list
+    set listchars=tab:▸\ ,eol:¬
 
-" {{{ Comma-separated list manipulation
-nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>:noh<CR>
-nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:noh<CR>
-nnoremap <silent> g<CR> xi<CR><Esc>l
-" }}}
 
-let g:tex_conceal='adgm'
+" No scrollbars in gvim
+    if has("gui_running")
+        set guioptions-=rL
+        set guioptions+=a
+    endif
+
+
+" Shortcuts
+    " Edit and source this file
+    nnoremap <leader>ev :edit $MYVIMRC<CR>
+    nnoremap <leader>sv :source $MYVIMRC<CR>
+
+    " jk to enter normal mode
+    inoremap jk <Esc>
+    vnoremap jk <Esc>
+
+    " Enter and backspace to add empty lines
+    nnoremap <CR> o<Esc>k
+    nnoremap <BS> O<Esc>j
+
+    " Easier navigation of windows
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+
+    " Turn off search highlighting
+    nnoremap <leader><Space> :noh<CR>
+
+    " NERDTree
+    nnoremap <C-n> :NERDTreeToggle<CR>
+
+    " Tabularize
+    nnoremap <leader>= :Tabularize/=<CR>
+    nnoremap <leader>: :Tabularize/:\zs<CR>
+    nnoremap <leader>, :Tabularize/,\zs<CR>
+
+
+" Various uncategorized settings
+    set encoding=utf-8
+    set scrolloff=3
+    set autoindent
+    set showmode
+    set showcmd
+    set hidden
+    set novisualbell
+    set cursorline
+    set ttyfast
+    set lazyredraw
+    set ruler
+    set backspace=indent,eol,start
+    set laststatus=2
+    set cole=2
+    set timeoutlen=300
+    set number
+    set relativenumber
+
+
+" TEX: Don't conceal sub- and superscripts
+    let g:tex_conceal='adgm'

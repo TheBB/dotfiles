@@ -8,7 +8,7 @@ set nocompatible
     Bundle 'gmarik/vundle'
 
     " Colours
-    Bundle 'sjl/badwolf'
+    Bundle 'TheBB/badwolf'
 
     " Filesystem
     Bundle 'scrooloose/nerdtree'
@@ -153,6 +153,11 @@ set nocompatible
     nnoremap <leader>= :Tabularize/=<CR>
     nnoremap <leader>: :Tabularize/:\zs<CR>
     nnoremap <leader>, :Tabularize/,\zs<CR>
+
+    " Syntax group under cursor
+    nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+                \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+                \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
 " Various uncategorized settings

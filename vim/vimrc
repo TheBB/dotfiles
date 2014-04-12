@@ -31,7 +31,7 @@ set nocompatible
 
     " Language-specific plugins
     Bundle 'wting/rust.vim'
-    Bundle 'Twinside/vim-haskellConceal'
+    Bundle 'TheBB/vim-haskellConceal'
     Bundle 'ehamberg/vim-cute-python'
     Bundle 'pbrisbin/html-template-syntax'
 

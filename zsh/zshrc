@@ -54,6 +54,10 @@ ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
 alias tmux="tmux -2"
 alias matlab="/usr/local/MATLAB/R2012b/bin/matlab -nodesktop -nosplash"
 alias oscid="/home/efonn/sources/Scid-4.5.2/scid /home/efonn/chess/scid.si4"
+alias ocabal="/home/efonn/.cabal/bin/cabal"
+alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias ghci-sandbox="ghci -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias runhaskell-sandbox="runhaskell -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
 
 for dir in \
     ~/.cabal/bin

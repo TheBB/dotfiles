@@ -50,6 +50,9 @@ set nocompatible
     let g:badwolf_css_props_highlight = 1
     colorscheme badwolf
 
+    set t_ZH=[3m
+    set t_ZR=[23m
+
 
 " Buffers instead of tabs
     nnoremap <leader>T :enew<CR>

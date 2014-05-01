@@ -51,7 +51,8 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="  %{$fg[red]%}✘%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
 
-alias tmux="tmux -2"
+alias tmux="env TERM=xterm-it tmux -2"
+alias byobu="env TERM=xterm-it byobu"
 alias matlab="/usr/local/MATLAB/R2012b/bin/matlab -nodesktop -nosplash"
 alias oscid="/home/efonn/sources/Scid-4.5.2/scid /home/efonn/chess/scid.si4"
 alias ocabal="/home/efonn/.cabal/bin/cabal"
@@ -64,5 +65,3 @@ for dir in \
 ; do
     if [[ -d $dir ]]; then path+=$dir; fi
 done
-
-# if [[ $TERM -eq xterm ]]; then TERM=xterm-it; fi

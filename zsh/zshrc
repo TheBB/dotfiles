@@ -64,3 +64,5 @@ for dir in \
 ; do
     if [[ -d $dir ]]; then path+=$dir; fi
 done
+
+if [[ $TERM -eq xterm ]]; then TERM=xterm-it; fi

@@ -74,6 +74,12 @@ set nocompatible
 
 
 " Tabs
+    function! Tabs(t)
+        execute 'set tabstop=' . a:t
+        execute 'set shiftwidth=' . a:t
+        execute 'set softtabstop=' . a:t
+    endfunction
+    command! -nargs=1 Tabs :call Tabs(<args>)
     set tabstop=4
     set shiftwidth=4
     set softtabstop=4
@@ -184,3 +190,9 @@ set nocompatible
 
 " TEX: Don't conceal sub- and superscripts
     let g:tex_conceal='adgm'
+
+
+" Turn off italics if disabled in shell
+if $VIM_ITALICS == 0
+    BWToggleItalics
+endif

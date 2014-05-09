@@ -64,4 +64,4 @@ for dir in \
     if [[ -d $dir ]]; then path+=$dir; fi
 done
 
-source .localzshrc
+source /home/eivindf/.localzshrc

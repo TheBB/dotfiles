@@ -9,3 +9,7 @@
 	editor = vim
 [merge]
 	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

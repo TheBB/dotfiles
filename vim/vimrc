@@ -75,12 +75,12 @@ set nocompatible
 
 " Tabs
     function! Tabs(t)
-        execute 'set tabstop=' . a:t
+        " execute 'set tabstop=' . a:t
         execute 'set shiftwidth=' . a:t
         execute 'set softtabstop=' . a:t
     endfunction
     command! -nargs=1 Tabs :call Tabs(<args>)
-    set tabstop=4
+    set tabstop=8
     set shiftwidth=4
     set softtabstop=4
     set expandtab
@@ -193,6 +193,6 @@ set nocompatible
 
 
 " Turn off italics if disabled in shell
-if $VIM_ITALICS == 0
+if $VIM_ITALICS == 0 && !has("gui_running")
     BWToggleItalics
 endif

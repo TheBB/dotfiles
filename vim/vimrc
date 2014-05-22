@@ -1,5 +1,24 @@
 set nocompatible
 
+
+" CtrlP
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+
+
+" Airline
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#whitespace#enabled = 0
+
+
+" Ultisnips
+    let g:UltiSnipsExpandTrigger="<C-a>"
+    let g:UltiSnipsJumpForwardTrigger="<C-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+
 " NeoBundle
     filetype off
 
@@ -42,15 +61,24 @@ set nocompatible
     NeoBundle 'pbrisbin/html-template-syntax', { 'lazy': 1, 'autoload': { 
                 \ 'filetypes': ['hamlet', 'cassius', 'julius', 'lucius'] } }
 
+    " Snippets
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
+
     " Other
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'bling/vim-airline'
+    NeoBundle 'Valloric/YouCompleteMe'
 
     call neobundle#end()
 
     filetype plugin indent on
 
     NeoBundleCheck
+
+
+" Completion
+    set completeopt-=preview
 
 
 " Custom filetypes
@@ -81,18 +109,6 @@ set nocompatible
     nnoremap [b :bprevious<CR>
     nnoremap <leader>bQ :bp <BAR> bd #<CR>
     nnoremap <leader>bl :ls<CR>
-
-
-" Airline
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    let g:airline#extensions#whitespace#enabled = 0
-
-
-" CtrlP
-    let g:ctrlp_map = '<c-p>'
-    let g:ctrlp_cmd = 'CtrlP'
 
 
 " Tabs
@@ -168,10 +184,11 @@ set nocompatible
     nnoremap <BS> O<Esc>j
 
     " Easier navigation of windows
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
+    " Disabled for now due to conflict with UltiSnips
+    "nnoremap <C-h> <C-w>h
+    "nnoremap <C-j> <C-w>j
+    "nnoremap <C-k> <C-w>k
+    "nnoremap <C-l> <C-w>l
 
     " Turn off search highlighting
     nnoremap <leader><Space> :noh<CR>

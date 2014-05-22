@@ -36,10 +36,11 @@ set nocompatible
     NeoBundle 'bkad/CamelCaseMotion'
 
     " Language-specific plugins
-    NeoBundle 'wting/rust.vim'
-    NeoBundle 'TheBB/vim-haskellConceal'
-    NeoBundle 'ehamberg/vim-cute-python'
-    NeoBundle 'pbrisbin/html-template-syntax'
+    NeoBundle 'wting/rust.vim', { 'lazy': 1, 'autoload': { 'filetypes': ['rust'] } }
+    NeoBundle 'TheBB/vim-haskellConceal', { 'lazy': 1, 'autoload': { 'filetypes': ['haskell'] } }
+    NeoBundle 'ehamberg/vim-cute-python', { 'lazy': 1, 'autoload': { 'filetypes': ['python'] } }
+    NeoBundle 'pbrisbin/html-template-syntax', { 'lazy': 1, 'autoload': { 
+                \ 'filetypes': ['hamlet', 'cassius', 'julius', 'lucius'] } }
 
     " Other
     NeoBundle 'tpope/vim-fugitive'
@@ -50,6 +51,15 @@ set nocompatible
     filetype plugin indent on
 
     NeoBundleCheck
+
+
+" Custom filetypes
+    augroup custom_filetypes
+        au! BufRead,BufNewFile *.hamlet setfiletype hamlet
+        au! BufRead,BufNewFile *.cassius setfiletype cassius
+        au! BufRead,BufNewFile *.julius setfiletype julius
+        au! BufRead,BufNewFile *.lucius setfiletype lucius
+    augroup END
 
 
 " Colours

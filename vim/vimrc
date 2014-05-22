@@ -1,45 +1,94 @@
 set nocompatible
 
-" Vundle
+
+" CtrlP
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+
+
+" Airline
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#whitespace#enabled = 0
+
+
+" Ultisnips
+    let g:UltiSnipsExpandTrigger="<C-a>"
+    let g:UltiSnipsJumpForwardTrigger="<C-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+
+" NeoBundle
     filetype off
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    " Vundle runtime path manager
-    Bundle 'gmarik/vundle'
+
+    if has('vim_starting')
+        set rtp+=~/.vim/bundle/neobundle.vim/
+    endif
+
+    call neobundle#begin(expand('~/.vim/bundle'))
+    " call vundle#rc()
+
+    " NeoBundle runtime path manager
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
     " Colours
-    Bundle 'TheBB/badwolf'
+    NeoBundle 'TheBB/badwolf'
 
     " Filesystem
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'rking/ag.vim'
-    Bundle 'kien/ctrlp.vim'
+    NeoBundle 'scrooloose/nerdtree'
+    NeoBundle 'rking/ag.vim'
+    NeoBundle 'kien/ctrlp.vim'
 
     " Motion
-    Bundle 'goldfeld/vim-seek'
-    Bundle 'Lokaltog/vim-easymotion'
+    NeoBundle 'goldfeld/vim-seek'
+    NeoBundle 'Lokaltog/vim-easymotion'
 
     " Text manipulation
-    Bundle 'tpope/vim-repeat'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'godlygeek/tabular'
-    Bundle 'tpope/vim-surround'
+    NeoBundle 'tpope/vim-repeat'
+    NeoBundle 'scrooloose/nerdcommenter'
+    NeoBundle 'godlygeek/tabular'
+    NeoBundle 'tpope/vim-surround'
 
     " Text objects
-    Bundle 'michaeljsmith/vim-indent-object'
-    Bundle 'vim-scripts/argtextobj.vim'
-    Bundle 'bkad/CamelCaseMotion'
+    NeoBundle 'michaeljsmith/vim-indent-object'
+    NeoBundle 'vim-scripts/argtextobj.vim'
+    NeoBundle 'bkad/CamelCaseMotion'
 
     " Language-specific plugins
-    Bundle 'wting/rust.vim'
-    Bundle 'TheBB/vim-haskellConceal'
-    Bundle 'ehamberg/vim-cute-python'
-    Bundle 'pbrisbin/html-template-syntax'
+    NeoBundle 'wting/rust.vim', { 'lazy': 1, 'autoload': { 'filetypes': ['rust'] } }
+    NeoBundle 'TheBB/vim-haskellConceal', { 'lazy': 1, 'autoload': { 'filetypes': ['haskell'] } }
+    NeoBundle 'ehamberg/vim-cute-python', { 'lazy': 1, 'autoload': { 'filetypes': ['python'] } }
+    NeoBundle 'pbrisbin/html-template-syntax', { 'lazy': 1, 'autoload': { 
+                \ 'filetypes': ['hamlet', 'cassius', 'julius', 'lucius'] } }
+
+    " Snippets
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
 
     " Other
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'bling/vim-airline'
+    NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'bling/vim-airline'
+    NeoBundle 'Valloric/YouCompleteMe'
+
+    call neobundle#end()
+
     filetype plugin indent on
+
+    NeoBundleCheck
+
+
+" Completion
+    set completeopt-=preview
+
+
+" Custom filetypes
+    augroup custom_filetypes
+        au! BufRead,BufNewFile *.hamlet setfiletype hamlet
+        au! BufRead,BufNewFile *.cassius setfiletype cassius
+        au! BufRead,BufNewFile *.julius setfiletype julius
+        au! BufRead,BufNewFile *.lucius setfiletype lucius
+    augroup END
 
 
 " Colours
@@ -63,19 +112,14 @@ set nocompatible
     nnoremap <leader>bl :ls<CR>
 
 
-" Airline
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#fnamemod = ':t'
-
-
-" CtrlP
-    let g:ctrlp_map = '<c-p>'
-    let g:ctrlp_cmd = 'CtrlP'
-
-
 " Tabs
-    set tabstop=4
+    function! Tabs(t)
+        " execute 'set tabstop=' . a:t
+        execute 'set shiftwidth=' . a:t
+        execute 'set softtabstop=' . a:t
+    endfunction
+    command! -nargs=1 Tabs :call Tabs(<args>)
+    set tabstop=8
     set shiftwidth=4
     set softtabstop=4
     set expandtab
@@ -89,7 +133,6 @@ set nocompatible
 
 " Pasting
     nnoremap <leader>p :set invpaste paste?<CR>
-    set showmode
 
 
 " Command completion
@@ -143,10 +186,11 @@ set nocompatible
     nnoremap <BS> O<Esc>j
 
     " Easier navigation of windows
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
+    " Disabled for now due to conflict with UltiSnips
+    "nnoremap <C-h> <C-w>h
+    "nnoremap <C-j> <C-w>j
+    "nnoremap <C-k> <C-w>k
+    "nnoremap <C-l> <C-w>l
     nnoremap <Left> <C-w>h
     nnoremap <Down> <C-w>j
     nnoremap <Up> <C-w>k
@@ -191,3 +235,9 @@ set nocompatible
 
 " TEX: Don't conceal sub- and superscripts
     let g:tex_conceal='adgm'
+
+
+" Turn off italics if disabled in shell
+if $VIM_ITALICS == 0 && !has("gui_running")
+    BWToggleItalics
+endif

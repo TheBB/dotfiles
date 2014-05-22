@@ -1,1 +1,5 @@
 set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L

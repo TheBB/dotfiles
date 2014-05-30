@@ -56,8 +56,8 @@ set nocompatible
 
     " Language-specific plugins
     NeoBundle 'wting/rust.vim', { 'lazy': 1, 'autoload': { 'filetypes': ['rust'] } }
-    NeoBundle 'TheBB/vim-haskellConceal', { 'lazy': 1, 'autoload': { 'filetypes': ['haskell'] } }
-    NeoBundle 'ehamberg/vim-cute-python', { 'lazy': 1, 'autoload': { 'filetypes': ['python'] } }
+    "NeoBundle 'TheBB/vim-haskellConceal', { 'lazy': 1, 'autoload': { 'filetypes': ['haskell'] } }
+    "NeoBundle 'ehamberg/vim-cute-python', { 'lazy': 1, 'autoload': { 'filetypes': ['python'] } }
     NeoBundle 'pbrisbin/html-template-syntax', { 'lazy': 1, 'autoload': { 
                 \ 'filetypes': ['hamlet', 'cassius', 'julius', 'lucius'] } }
 
@@ -79,6 +79,7 @@ set nocompatible
 
 " Completion
     set completeopt-=preview
+    let g:ycm_confirm_extra_conf = 0
 
 
 " Custom filetypes

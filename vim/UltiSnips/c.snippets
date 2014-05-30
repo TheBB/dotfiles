@@ -1,0 +1,29 @@
+priority -48
+
+snippet wh "while loop"
+while(${1:/* condition */})
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet do "do...while loop (do)"
+do
+{
+	${VISUAL}${0}
+} while(${1:/* condition */});
+endsnippet
+
+snippet el "else .. (else)"
+else
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet eli "else if .. (eli)"
+else if (${1:/* condition */})
+{
+	${VISUAL}${0}
+}
+endsnippet

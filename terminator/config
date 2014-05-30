@@ -20,6 +20,7 @@
     foreground_color = "#ffffff"
     show_titlebar = False
     font = Source Code Pro for Powerline Medium 10
+    background_color = "#0c0c0c"
 [layouts]
   [[default]]
     [[[child1]]]

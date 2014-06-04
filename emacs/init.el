@@ -42,6 +42,9 @@
 (require 'smooth-scrolling)
 (setq smooth-scroll-margin 3)
 
+(require 'powerline)
+(powerline-default-theme)
+
 ; Color scheme
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -60,6 +63,20 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
+
+; Backups
+
+(setq backup-directory-alist '(("." . "~/.emacs-saves"))
+      backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+; Menu and toolbar
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ; Varia
 

@@ -102,7 +102,7 @@
      )
 
 
-    (font-lock-add-keywords 'python-mode `(("\\<\\(import\\||from\\|except\\|finally\\|try\\|from\\|\\)\\>" 1 '(:foreground ,bwc-lime ) t)))
+    ;(font-lock-add-keywords 'python-mode `(("\\<\\(import\\||from\\|except\\|finally\\|try\\|from\\|\\)\\>" 1 '(:foreground ,bwc-lime ) t)))
   )
 
 (provide-theme 'badwolf)

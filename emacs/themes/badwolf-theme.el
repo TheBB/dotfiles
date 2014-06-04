@@ -54,8 +54,8 @@
    `(mode-line-inactive ((t (:box (:line-width -1 :style released-button) :foreground ,bwc-snow :background ,bwc-deepgravel))))
 
 
-   `(font-lock-comment-face ((t (:foreground ,bwc-lightgravel))))
-   `(font-lock-comment-delimiter-face ((t (:foreground ,bwc-lightgravel))))
+   `(font-lock-comment-face ((t (:foreground ,bwc-lightgravel :italic t))))
+   `(font-lock-comment-delimiter-face ((t (:foreground ,bwc-lightgravel :italic t))))
    `(font-lock-doc-face ((t (:foreground ,bwc-snow))))
    `(font-lock-string-face ((t (:foreground ,bwc-dirtyblonde))))
    `(font-lock-function-name-face ((t (:foreground ,bwc-orange))))

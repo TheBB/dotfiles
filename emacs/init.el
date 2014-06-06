@@ -38,11 +38,16 @@
                                                 (save-excursion
                                                   (move-end-of-line 0)
                                                   (open-line n))))
+(define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
+                                                (insert " ")))
+
 (evil-leader/set-key
   "b" 'ido-switch-buffer
   "f" 'ido-find-file
   "e" 'eval-last-sexp
   "x" 'execute-extended-command
+  "m" (lambda () (interactive)
+        (message "Mode: %s" major-mode))
   (kbd "RET") (lambda () (interactive)
                 (open-line 1)
                 (move-beginning-of-line 2)
@@ -60,7 +65,22 @@
 (require 'powerline)
 (powerline-default-theme)
 
+(require 'number-font-lock-mode)
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
+
+(require 'ido-ubiquitous)
+
+(require 'web-mode)
+(add-hook 'web-mode-hook (lambda ()
+                           (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ; Color themes
 
@@ -69,6 +89,11 @@
 (provide 'init-themes)
 (load-theme 'badwolf t)
 (global-hl-line-mode t)
+
+; Enable folding in various modes
+
+(add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 ; IDO mode
 
@@ -80,6 +105,9 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
 
 ; Backups
 

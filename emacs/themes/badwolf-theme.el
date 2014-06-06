@@ -47,12 +47,13 @@
    `(font-lock-function-name-face ((t (:foreground ,bwc-orange))))
    `(font-lock-variable-name-face ((t (:foreground ,bwc-dress))))
    `(font-lock-builtin-face ((t (:foreground ,bwc-taffy :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground ,bwc-lime :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground ,bwc-taffy :weight bold))))
    `(font-lock-type-face ((t (:foreground ,bwc-dress))))
    `(font-lock-constant-face ((t (:foreground ,bwc-toffee :weight bold))))
    `(font-lock-warning-face ((t (:foreground ,bwc-dress :weight bold))))
    `(show-paren-match ((t (:background ,bwc-tardis :weight bold))))
    `(show-paren-mismatch ((t (:background ,bwc-taffy :weight bold))))
+
    `(rainbow-delimiters-depth-1-face ((t (:foreground ,bwc-lightgravel))))
    `(rainbow-delimiters-depth-2-face ((t (:foreground ,bwc-orange))))
    `(rainbow-delimiters-depth-3-face ((t (:foreground ,bwc-saltwatertaffy))))
@@ -64,7 +65,13 @@
    `(rainbow-delimiters-depth-9-face ((t (:foreground ,bwc-dress))))
    `(rainbow-delimiters-depth-10-face ((t (:foreground ,bwc-coffee))))
    `(rainbow-delimiters-depth-11-face ((t (:foreground ,bwc-dirtyblonde))))
-   `(rainbow-delimiters-unmatched-face ((t (:foreground "red")))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground "red"))))
+
+   `(web-mode-doctype-face ((t (:foreground ,bwc-lime :weight bold))))
+   `(web-mode-html-tag-face ((t (:foreground ,bwc-coffee :weight bold))))
+   `(web-mode-html-tag-bracket-face ((t (:foreground ,bwc-coffee :weight bold))))
+   `(web-mode-html-attr-name-face ((t (:foreground ,bwc-toffee))))
+   )
 
   (custom-set-faces
    `(ein:cell-input-area ((t (:background ,bwc-blackestgravel :inherit nil))))

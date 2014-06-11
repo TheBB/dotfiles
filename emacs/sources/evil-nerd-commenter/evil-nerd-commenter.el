@@ -434,7 +434,7 @@ or 'C-u 3 M-x evilnc-quick-comment-or-uncomment-to-the-line' to comment to the l
           (if (> (line-end-position) e)
               (setq e (line-end-position)))
           (kill-region b (+ 1 e)) ; +1 because we need remove the CR
-          ))))
+          )))
 
 ;;;###autoload
 (defun vilnc-default-hotkeys ()

@@ -192,7 +192,7 @@ set nocompatible
     " Enter and backspace to add empty lines
     nnoremap <CR> o<Esc>k
     nnoremap <BS> O<Esc>j
-    nnoremap <Space> i<Space><Esc>
+    nnoremap <Space> i<Space><Esc>l
 
     " Easier navigation of windows
     " Disabled for now due to conflict with UltiSnips

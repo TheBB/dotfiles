@@ -30,11 +30,31 @@
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(define-key evil-normal-state-map (kbd "RET") (lambda (n) (interactive "p")
+                                                (save-excursion
+                                                  (move-end-of-line 1)
+                                                  (open-line n))))
+(define-key evil-normal-state-map [backspace] (lambda (n) (interactive "p")
+                                                (save-excursion
+                                                  (move-end-of-line 0)
+                                                  (open-line n))))
+(define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
+                                                (insert " ")))
+
 (evil-leader/set-key
   "b" 'ido-switch-buffer
   "f" 'ido-find-file
   "e" 'eval-last-sexp
-  "x" 'execute-extended-command)
+  "x" 'execute-extended-command
+  "m" (lambda () (interactive)
+        (message "Mode: %s" major-mode))
+  (kbd "RET") (lambda () (interactive)
+                (open-line 1)
+                (move-beginning-of-line 2)
+                (evil-insert 1))
+  (kbd "\d") (lambda () (interactive)
+               (open-line 1)
+               (evil-insert 1)))
 
 (require 'linum-relative)
 (setq linum-relative-current-symbol "")
@@ -45,6 +65,23 @@
 (require 'powerline)
 (powerline-default-theme)
 
+(require 'number-font-lock-mode)
+(add-hook 'prog-mode-hook 'number-font-lock-mode)
+
+(require 'ido-ubiquitous)
+
+(require 'web-mode)
+(add-hook 'web-mode-hook (lambda ()
+                           (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 ; Color themes
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -52,6 +89,11 @@
 (provide 'init-themes)
 (load-theme 'badwolf t)
 (global-hl-line-mode t)
+
+; Enable folding in various modes
+
+(add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 ; IDO mode
 
@@ -63,6 +105,9 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
 
 ; Backups
 
@@ -87,15 +132,3 @@
       inhibit-startup-echo-area-message t)
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("b3c78df7ed7608509ab08c4fe6c897036926bfb61c0c796a3be1c8e9fb2fb19f" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

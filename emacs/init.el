@@ -1,14 +1,19 @@
-; Packages
+                                        ; Packages
 
 (require 'package)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+(add-to-list 'load-path "~/.emacs.d/sources/misc/")
+
 (package-initialize)
 
 (require 'key-chord)
 (key-chord-mode 1)
+
+(require 'auto-indent-mode)
+(auto-indent-global-mode)
 
 (require 'evil-leader)
 (global-evil-leader-mode)
@@ -39,6 +44,15 @@
                                                   (open-line n))))
 (define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
                                                 (dotimes (c n nil) (insert " "))))
+(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+(define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+(define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+(define-key evil-normal-state-map "L" 'evil-forward-arg)
+(define-key evil-normal-state-map "H" 'evil-backward-arg)
+(define-key evil-motion-state-map "L" 'evil-forward-arg)
+(define-key evil-motion-state-map "H" 'evil-backward-arg)
+(define-key evil-normal-state-map "K" 'evil-jump-out-args)
 
 (evil-leader/set-key
   "b" 'ido-switch-buffer
@@ -53,7 +67,31 @@
                 (evil-insert 1))
   (kbd "\d") (lambda () (interactive)
                (open-line 1)
-               (evil-insert 1)))
+               (evil-insert 1))
+  "ci" 'evilnc-comment-or-uncomment-lines
+  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+  "cc" 'evilnc-copy-and-comment-lines
+  "cp" 'evilnc-comment-or-uncomment-paragraphs
+  "cr" 'comment-or-uncomment-region
+  "cv" 'evilnc-toggle-invert-comment-line-by-line)
+
+(add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
+(require 'evil-nerd-commenter)
+
+(require 'surround)
+(global-surround-mode t)
+
+(require 'evil-numbers)
+
+(require 'evil-args)
+
+(add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
+(setq py-install-directory "~/.emacs.d/sources/python-mode/")
+(require 'python-mode)
+(when (featurep 'python) (unload-feature 'python t))
+(add-hook 'python-mode-hook (lambda ()
+                              (define-key evil-motion-state-local-map "/" 'evil-search-forward)
+                              (define-key evil-motion-state-local-map "?" 'evil-search-backward)))
 
 (require 'linum-relative)
 (setq linum-relative-current-symbol "")
@@ -104,9 +142,11 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 4)
-(setq web-mode-code-indent-offset 4)
+(add-hook 'python-mode-hook '(lambda () 
+                               (setq python-indent 4)))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 ; Backups
 

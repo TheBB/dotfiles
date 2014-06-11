@@ -1,4 +1,4 @@
-; Packages
+                                        ; Packages
 
 (require 'package)
 
@@ -10,6 +10,13 @@
 
 (require 'key-chord)
 (key-chord-mode 1)
+
+(require 'auto-indent-mode)
+(auto-indent-global-mode)
+
+(add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
+(setq py-install-directory "~/.emacs.d/sources/python-mode/")
+(require 'python-mode)
 
 (require 'evil-leader)
 (global-evil-leader-mode)
@@ -105,9 +112,11 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 4)
-(setq web-mode-code-indent-offset 4)
+(add-hook 'python-mode-hook '(lambda () 
+                               (setq python-indent 4)))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 ; Backups
 

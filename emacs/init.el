@@ -2,9 +2,8 @@
 
 (require 'package)
 
-(add-to-list
- 'package-archives
- '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
 
@@ -39,7 +38,7 @@
                                                   (move-end-of-line 0)
                                                   (open-line n))))
 (define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
-                                                (insert " ")))
+                                                (dotimes (c n nil) (insert " "))))
 
 (evil-leader/set-key
   "b" 'ido-switch-buffer
@@ -127,6 +126,7 @@
 ; Varia
 
 (global-linum-mode t)
+(visual-line-mode)
 
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)

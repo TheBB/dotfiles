@@ -23,7 +23,11 @@
       (bwc-dress "#ff9eb8")
       (bwc-toffee "#b88853")
       (bwc-coffee "#c7915b")
-      (bwc-darkroast "#88633f"))
+      (bwc-darkroast "#88633f")
+      (bwc-term-blue "#6298c8")
+      (bwc-term-green "#82d92f")
+      (bwc-term-yellow "#f3e14c")
+      (bwc-term-red "#e5261f"))
   (custom-theme-set-faces
    'badwolf
    `(default ((t (:inherit nil :foreground ,bwc-plain :background ,bwc-blackestgravel))))
@@ -71,6 +75,11 @@
    `(web-mode-html-tag-face ((t (:foreground ,bwc-coffee :weight bold))))
    `(web-mode-html-tag-bracket-face ((t (:foreground ,bwc-coffee :weight bold))))
    `(web-mode-html-attr-name-face ((t (:foreground ,bwc-toffee))))
+
+   `(term-color-blue ((t (:foreground ,bwc-term-blue))))
+   `(term-color-green ((t (:foreground ,bwc-term-green))))
+   `(term-color-yellow ((t (:foreground ,bwc-term-yellow))))
+   `(term-color-red ((t (:foreground ,bwc-term-red))))
    )
 
   (custom-set-faces

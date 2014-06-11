@@ -94,6 +94,7 @@ set nocompatible
         au! BufRead,BufNewFile *.cassius setfiletype cassius
         au! BufRead,BufNewFile *.julius setfiletype julius
         au! BufRead,BufNewFile *.lucius setfiletype lucius
+        au! BufRead,BufNewFile *.djhtml setfiletype htmldjango
     augroup END
 
 
@@ -191,6 +192,7 @@ set nocompatible
     " Enter and backspace to add empty lines
     nnoremap <CR> o<Esc>k
     nnoremap <BS> O<Esc>j
+    nnoremap <Space> i<Space><Esc>
 
     " Easier navigation of windows
     " Disabled for now due to conflict with UltiSnips

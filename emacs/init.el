@@ -1,4 +1,4 @@
-                                        ; Packages
+; Packages
 
 (require 'package)
 
@@ -84,6 +84,9 @@
 (require 'evil-numbers)
 
 (require 'evil-args)
+
+(require 'evil-matchit)
+(global-evil-matchit-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
 (setq py-install-directory "~/.emacs.d/sources/python-mode/")

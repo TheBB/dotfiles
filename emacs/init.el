@@ -15,6 +15,8 @@
 (require 'auto-indent-mode)
 (auto-indent-global-mode)
 
+(require 'coffee-mode)
+
 (require 'evil-leader)
 (global-evil-leader-mode)
 

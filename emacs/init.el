@@ -85,13 +85,14 @@
 
 (require 'evil-args)
 
-(add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
-(setq py-install-directory "~/.emacs.d/sources/python-mode/")
-(require 'python-mode)
-(when (featurep 'python) (unload-feature 'python t))
-(add-hook 'python-mode-hook (lambda ()
-                              (define-key evil-motion-state-local-map "/" 'evil-search-forward)
-                              (define-key evil-motion-state-local-map "?" 'evil-search-backward)))
+;; (add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
+;; (setq py-install-directory "~/.emacs.d/sources/python-mode/")
+;; (require 'python-mode)
+;; (when (featurep 'python) (unload-feature 'python t))
+;; (setq py-hide-show-minor-mode-p t)
+;; (add-hook 'python-mode-hook (lambda ()
+;;                               (define-key evil-motion-state-local-map "/" 'evil-search-forward)
+;;                               (define-key evil-motion-state-local-map "?" 'evil-search-backward)))
 
 (require 'linum-relative)
 (setq linum-relative-current-symbol "")
@@ -119,6 +120,19 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+; Folding for python
+
+(add-hook 'python-mode-hook '(lambda ()
+                               (setq hs-special-modes-alist
+                                     (assq-delete-all 'python-mode hs-special-modes-alist))
+                               (add-to-list 'hs-special-modes-alist
+                                            '(python-mode
+                                              "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
+                                              nil
+                                              "#"
+                                              #[(arg) "\300 \207" [python-nav-end-of-block] 1]
+                                              nil))))
+
 ; Color themes
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -142,7 +156,7 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
-(add-hook 'python-mode-hook '(lambda () 
+(add-hook 'python-mode-hook '(lambda ()
                                (setq python-indent 4)))
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)

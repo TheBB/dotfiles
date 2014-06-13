@@ -1,4 +1,4 @@
-                                        ; Packages
+; Packages
 
 (require 'package)
 
@@ -14,6 +14,7 @@
 
 (require 'auto-indent-mode)
 (auto-indent-global-mode)
+(add-to-list 'auto-indent-disabled-modes-list 'python-mode)
 
 (require 'evil-leader)
 (global-evil-leader-mode)

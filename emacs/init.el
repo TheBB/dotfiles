@@ -113,8 +113,11 @@
 (global-evil-matchit-mode t)
 (setq linum-relative-current-symbol "")
 (setq smooth-scroll-margin 3)
-(powerline-default-theme)
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
+
+;; Powerline theme
+;; =================================================================================
+(powerline-center-evil-theme)
 
 ;; Python mode
 ;; =================================================================================

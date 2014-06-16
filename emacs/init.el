@@ -4,7 +4,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'load-path "~/.emacs.d/sources/misc/")
 (add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
 
@@ -75,11 +76,11 @@
 ;; Argument text objects
 (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
 (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
-(define-key evil-normal-state-map "L" 'evil-forward-arg)
-(define-key evil-normal-state-map "H" 'evil-backward-arg)
-(define-key evil-motion-state-map "L" 'evil-forward-arg)
-(define-key evil-motion-state-map "H" 'evil-backward-arg)
-(define-key evil-normal-state-map "K" 'evil-jump-out-args)
+(define-key evil-normal-state-map "gl" 'evil-forward-arg)
+(define-key evil-normal-state-map "gh" 'evil-backward-arg)
+(define-key evil-motion-state-map "gl" 'evil-forward-arg)
+(define-key evil-motion-state-map "gh" 'evil-backward-arg)
+(define-key evil-normal-state-map "gk" 'evil-jump-out-args)
 
 ;; Set the leader to comma, and use backslash for search
 (define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)

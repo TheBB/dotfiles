@@ -18,6 +18,7 @@
       (bwc-taffy "#ff2c4b")
       (bwc-saltwatertaffy "#8cffba")
       (bwc-tardis "#0a9dff")
+      (bwc-darktardis "#005fff")
       (bwc-orange "#ffa724")
       (bwc-lime "#aeee00")
       (bwc-dress "#ff9eb8")
@@ -80,6 +81,17 @@
    `(term-color-green ((t (:foreground ,bwc-term-green))))
    `(term-color-yellow ((t (:foreground ,bwc-term-yellow))))
    `(term-color-red ((t (:foreground ,bwc-term-red))))
+
+   `(powerline-normal-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-lime :weight bold))))
+   `(powerline-insert-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-tardis :weight bold))))
+   `(powerline-replace-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-dress :weight bold))))
+   `(powerline-visual-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-orange :weight bold))))
+   `(powerline-normal-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-deepgravel))))
+   `(powerline-insert-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-darktardis))))
+   `(powerline-visual-2 ((t (:foreground ,bwc-blackgravel :background ,bwc-dalespale))))
+   `(powerline-normal-3 ((t (:foreground ,bwc-saltwatertaffy :background ,bwc-darkgravel))))
+   `(powerline-insert-3 ((t (:foreground ,bwc-tardis :background ,bwc-darkgravel))))
+   `(powerline-visual-3 ((t (:foreground ,bwc-blackgravel :background ,bwc-toffee))))
    )
 
   (custom-set-faces

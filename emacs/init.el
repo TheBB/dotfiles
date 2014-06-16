@@ -117,7 +117,61 @@
 
 ;; Powerline theme
 ;; =================================================================================
-(powerline-center-evil-theme)
+(defun powerline-bb-evil-theme ()
+  "My powerline theme."
+  (interactive)
+  (setq-default mode-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (powerline-selected-window-active))
+                          (mode-line (if active 'mode-line 'mode-line-inactive))
+                          (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face2 (if active 'powerline-active2 'powerline-inactive2))
+                          (separator-left (intern (format "powerline-%s-%s"
+                                                          powerline-default-separator
+                                                          (car powerline-default-separator-dir))))
+                          (separator-right (intern (format "powerline-%s-%s"
+                                                           powerline-default-separator
+                                                           (cdr powerline-default-separator-dir))))
+                          (state-map `((normal   . ("NORMAL "
+                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                                       (insert   . ("INSERT "
+                                                    powerline-insert-1 powerline-insert-2 powerline-insert-3))
+                                       (replace  . ("REPLCE "
+                                                    powerline-replace-1 powerline-insert-2 powerline-insert-3))
+                                       (operator . ("OPRTOR "
+                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                                       (visual   . ("VISUAL "
+                                                    powerline-visual-1 powerline-visual-2 powerline-visual-3))
+                                       (motion   . ("MOTION "
+                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                                       (emacs    . ("EMACS  "
+                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))))
+                          (gf (lambda (idx)
+                                (if active (funcall sg idx) 'powerline-normal-3)))
+                          (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
+                          (lhs (list (powerline-raw
+                                      (if active (funcall sg 0) "------ ")
+                                      (funcall gf 1) 'l)
+                                     (funcall separator-left (funcall gf 1) (funcall gf 2))
+                                     (powerline-vc (funcall gf 2))
+                                     (powerline-raw " " (funcall gf 2))
+                                     (funcall separator-left (funcall gf 2) (funcall gf 3))
+                                     (powerline-buffer-id (funcall gf 3) 'l)))
+                          (rhs (list (powerline-minor-modes (funcall gf 3) 'r)
+                                     (funcall separator-right (funcall gf 3) (funcall gf 2))
+                                     (powerline-raw " " (funcall gf 2))
+                                     (powerline-major-mode (funcall gf 2) 'r)
+                                     (powerline-raw (concat
+                                                     "["
+                                                     (symbol-name buffer-file-coding-system)
+                                                     "]") (funcall gf 2) 'r)
+                                     (funcall separator-right (funcall gf 2) (funcall gf 1))
+                                     (powerline-raw " %6p%4l:%3c" (funcall gf 1) 'r))))
+                     (concat (powerline-render lhs)
+                             (powerline-fill (funcall sg 3) (powerline-width rhs))
+                             (powerline-render rhs)))))))
+(powerline-bb-evil-theme)
 
 ;; Python mode
 ;; =================================================================================

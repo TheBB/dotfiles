@@ -51,7 +51,7 @@
    `(font-lock-function-name-face ((t (:foreground ,bwc-orange))))
    `(font-lock-variable-name-face ((t (:foreground ,bwc-dress))))
    `(font-lock-builtin-face ((t (:foreground ,bwc-taffy))))
-   `(font-lock-keyword-face ((t (:foreground ,bwc-taffy :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground ,bwc-lime :weight bold))))
    `(font-lock-type-face ((t (:foreground ,bwc-dress))))
    `(font-lock-constant-face ((t (:foreground ,bwc-toffee :weight bold))))
    `(font-lock-warning-face ((t (:foreground ,bwc-dress :weight bold))))

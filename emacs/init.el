@@ -24,6 +24,7 @@
 (require 'evil-numbers)
 (require 'evil-args)
 (require 'evil-matchit)
+(require 'evil-little-word)
 (require 'linum-relative)
 (require 'smooth-scrolling)
 (require 'powerline)
@@ -77,10 +78,10 @@
 ;; Argument text objects
 (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
 (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
-(define-key evil-normal-state-map "gl" 'evil-forward-arg)
-(define-key evil-normal-state-map "gh" 'evil-backward-arg)
-(define-key evil-motion-state-map "gl" 'evil-forward-arg)
-(define-key evil-motion-state-map "gh" 'evil-backward-arg)
+(define-key evil-normal-state-map "gs" 'evil-forward-arg)
+(define-key evil-normal-state-map "ga" 'evil-backward-arg)
+(define-key evil-motion-state-map "gs" 'evil-forward-arg)
+(define-key evil-motion-state-map "ga" 'evil-backward-arg)
 (define-key evil-normal-state-map "gk" 'evil-jump-out-args)
 
 ;; Set the leader to comma, and use backslash for search

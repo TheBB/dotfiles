@@ -30,6 +30,7 @@
 (require 'number-font-lock-mode)
 (require 'ido-ubiquitous)
 (require 'web-mode)
+(require 'yasnippet)
 
 ;; evil, evil-leader and mics keybindings
 ;; =================================================================================
@@ -115,6 +116,14 @@
 (setq linum-relative-current-symbol "")
 (setq smooth-scroll-margin 3)
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
+
+;; Yasnippets
+;; =================================================================================
+
+(add-to-list 'yas/root-directory
+             "~/.emacs.d/sources/yasnippet-snippets/")
+(yas-global-mode 1)
+
 
 ;; Powerline theme
 ;; =================================================================================

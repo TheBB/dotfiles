@@ -124,7 +124,6 @@
              "~/.emacs.d/sources/yasnippet-snippets/")
 (yas-global-mode 1)
 
-
 ;; Powerline theme
 ;; =================================================================================
 (defun powerline-bb-evil-theme ()

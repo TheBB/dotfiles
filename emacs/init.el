@@ -25,6 +25,7 @@
 (require 'evil-args)
 (require 'evil-matchit)
 (require 'evil-little-word)
+(require 'evil-org)
 (require 'linum-relative)
 (require 'smooth-scrolling)
 (require 'powerline)
@@ -32,6 +33,7 @@
 (require 'ido-ubiquitous)
 (require 'web-mode)
 (require 'yasnippet)
+(require 'ag)
 
 ;; evil, evil-leader and mics keybindings
 ;; =================================================================================
@@ -88,6 +90,8 @@
 (define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)
 (evil-leader/set-leader ",")
 (evil-leader/set-key
+  "i" (lambda () (interactive) (find-file user-init-file))
+  "o" (lambda () (interactive) (find-file "~/my.org"))
   "b" 'ido-switch-buffer
   "f" 'ido-find-file
   "e" 'eval-last-sexp
@@ -118,6 +122,19 @@
 (setq smooth-scroll-margin 3)
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
 
+;; Ag bindings
+;; =================================================================================
+
+(setq ag-highlight-search t)
+(evil-ex-define-cmd "ag" 'ag)
+(evil-ex-define-cmd "agp[roject]" 'ag-project)
+
+;; Org mode
+;; =================================================================================
+;; (add-hook 'org-mode-hook (lambda ()
+;;                            ;; Make evil use the custom org-mode folding function
+;;                            (define-key evil-normal-state-local-map "za" 'org-cycle)))
+
 ;; Yasnippets
 ;; =================================================================================
 
@@ -143,20 +160,21 @@
                           (separator-right (intern (format "powerline-%s-%s"
                                                            powerline-default-separator
                                                            (cdr powerline-default-separator-dir))))
-                          (state-map `((normal   . ("NORMAL "
-                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
-                                       (insert   . ("INSERT "
-                                                    powerline-insert-1 powerline-insert-2 powerline-insert-3))
-                                       (replace  . ("REPLCE "
-                                                    powerline-replace-1 powerline-insert-2 powerline-insert-3))
-                                       (operator . ("OPRTOR "
-                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
-                                       (visual   . ("VISUAL "
-                                                    powerline-visual-1 powerline-visual-2 powerline-visual-3))
-                                       (motion   . ("MOTION "
-                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))
-                                       (emacs    . ("EMACS  "
-                                                    powerline-normal-1 powerline-normal-2 powerline-normal-3))))
+                          (state-map
+                           `((normal   . ("NORMAL "
+                                          powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                             (insert   . ("INSERT "
+                                          powerline-insert-1 powerline-insert-2 powerline-insert-3))
+                             (replace  . ("REPLCE "
+                                          powerline-replace-1 powerline-insert-2 powerline-insert-3))
+                             (operator . ("OPRTOR "
+                                          powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                             (visual   . ("VISUAL "
+                                          powerline-visual-1 powerline-visual-2 powerline-visual-3))
+                             (motion   . ("MOTION "
+                                          powerline-normal-1 powerline-normal-2 powerline-normal-3))
+                             (emacs    . ("EMACS  "
+                                          powerline-normal-1 powerline-normal-2 powerline-normal-3))))
                           (gf (lambda (idx)
                                 (if active (funcall sg idx) 'powerline-normal-3)))
                           (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
@@ -167,7 +185,8 @@
                                      (powerline-vc (funcall gf 2))
                                      (powerline-raw " " (funcall gf 2))
                                      (funcall separator-left (funcall gf 2) (funcall gf 3))
-                                     (powerline-buffer-id (funcall gf 3) 'l)))
+                                     (powerline-buffer-id (funcall gf 3) 'l)
+                                     (powerline-raw "%*" (funcall gf 3) 'l)))
                           (rhs (list (powerline-minor-modes (funcall gf 3) 'r)
                                      (funcall separator-right (funcall gf 3) (funcall gf 2))
                                      (powerline-raw " " (funcall gf 2))

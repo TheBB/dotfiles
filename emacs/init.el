@@ -32,6 +32,7 @@
 (require 'number-font-lock-mode)
 (require 'ido-ubiquitous)
 (require 'web-mode)
+(require 'haskell-mode)
 (require 'yasnippet)
 (require 'ag)
 
@@ -272,6 +273,11 @@
 
 (add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+
+;; Haskell mode
+;; =================================================================================
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 ;; Color themes
 ;; =================================================================================

@@ -17,6 +17,7 @@
 (require 'key-chord)
 (require 'auto-indent-mode)
 (require 'coffee-mode)
+(require 'haskell-mode)
 (require 'evil-leader)
 (require 'evil)
 (require 'evil-nerd-commenter)
@@ -141,6 +142,9 @@
 (add-to-list 'yas/root-directory
              "~/.emacs.d/sources/yasnippet-snippets/")
 (yas-global-mode 1)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "C-a") 'yas-expand)
 
 ;; Powerline theme
 ;; =================================================================================
@@ -272,6 +276,13 @@
 
 (add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+
+;; Haskell mode
+;; =================================================================================
+
+(add-hook 'haskell-mode-hook (lambda ()
+                               (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;; Color themes
 ;; =================================================================================

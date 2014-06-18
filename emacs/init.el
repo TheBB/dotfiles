@@ -1,4 +1,5 @@
 ;; MELPA and manual source path
+
 ;; =================================================================================
 
 (require 'package)
@@ -63,17 +64,37 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
 ;; Add or remove empty lines and whitespace in normal mode
-(define-key evil-normal-state-map (kbd "RET") (lambda (n) (interactive "p")
-                                                (save-excursion
-                                                  (move-end-of-line 1)
-                                                  (open-line n))))
-(define-key evil-normal-state-map [backspace] (lambda (n) (interactive "p")
-                                                (save-excursion
-                                                  (move-end-of-line 0)
-                                                  (open-line n))))
+(defun vi-open-line-above ()
+  "Insert a newline above the current line and put point at beginning."
+  (interactive)
+  (save-excursion
+    (unless (bolp)
+      (beginning-of-line))
+    (newline)
+    (forward-line -1)
+    (indent-according-to-mode))
+  (next-line))
+
+(defun vi-open-line-below ()
+  "Insert a newline below the current line and put point at beginning."
+  (interactive)
+  (save-excursion
+    (unless (eolp)
+      (end-of-line))
+    (newline-and-indent)))
+
+(defun haskell-vi-open-line-below ()
+  "Ignores stupid haskell-mode indentation"
+  (interactive)
+  (save-excursion
+    (unless (eolp)
+      (end-of-line))
+    (newline)))
+
+(define-key evil-normal-state-map (kbd "RET") 'vi-open-line-below)
+(define-key evil-normal-state-map [backspace] 'vi-open-line-above)
 (define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
                                                 (dotimes (c n nil) (insert " "))))
-
 ;; Use C-a and C-x to manipulate numbers, as in vim
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
@@ -281,7 +302,8 @@
 ;; =================================================================================
 
 (add-hook 'haskell-mode-hook (lambda ()
-                               (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)))
+                               (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
+                               (define-key evil-normal-state-local-map (kbd "RET") 'haskell-vi-open-line-below)))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;; Color themes
@@ -326,4 +348,4 @@
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;; (define-key global-map (kbd "RET") 'newline-and-indent)

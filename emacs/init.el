@@ -288,7 +288,10 @@
                                (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
                                (setq evil-shift-width 2)))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(setq haskell-indentation-cycle-warn nil)
 (add-to-list 'auto-indent-disabled-modes-list 'haskell-mode)
+
+(setq haskell-operator-face 'font-lock-builtin-face)
 
 ;; Org mode
 ;; =================================================================================

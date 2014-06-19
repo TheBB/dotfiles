@@ -294,7 +294,10 @@
 ;; =================================================================================
 
 (add-hook 'org-mode-hook (lambda ()
+                           (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
                            (linum-mode -1)))
+(setq org-log-done 'time)
+(add-to-list 'org-agenda-files "~/my.org")
 
 ;; Color themes
 ;; =================================================================================

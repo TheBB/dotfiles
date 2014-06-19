@@ -22,6 +22,7 @@
 (require 'evil)
 (require 'evil-nerd-commenter)
 (require 'surround)
+(require 'evil-org)
 (require 'evil-numbers)
 (require 'evil-args)
 (require 'evil-matchit)

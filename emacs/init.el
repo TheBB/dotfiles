@@ -1,5 +1,4 @@
 ;; MELPA and manual source path
-
 ;; =================================================================================
 
 (require 'package)
@@ -27,7 +26,6 @@
 (require 'evil-args)
 (require 'evil-matchit)
 (require 'evil-little-word)
-(require 'evil-org)
 (require 'linum-relative)
 (require 'smooth-scrolling)
 (require 'powerline)
@@ -65,35 +63,24 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
 ;; Add or remove empty lines and whitespace in normal mode
-(defun vi-open-line-above ()
+(defun open-line-above ()
   "Insert a newline above the current line and put point at beginning."
   (interactive)
   (save-excursion
-    (unless (bolp)
-      (beginning-of-line))
-    (newline)
-    (forward-line -1)
-    (indent-according-to-mode))
-  (next-line))
+    (evil-open-above 1)
+    (evil-normal-state))
+  (if (eq 0 (current-column))
+    (next-line)))
 
-(defun vi-open-line-below ()
+(defun open-line-below ()
   "Insert a newline below the current line and put point at beginning."
   (interactive)
   (save-excursion
-    (unless (eolp)
-      (end-of-line))
-    (newline-and-indent)))
+    (evil-open-below 1)
+    (evil-normal-state)))
 
-(defun haskell-vi-open-line-below ()
-  "Ignores stupid haskell-mode indentation"
-  (interactive)
-  (save-excursion
-    (unless (eolp)
-      (end-of-line))
-    (newline)))
-
-(define-key evil-normal-state-map (kbd "RET") 'vi-open-line-below)
-(define-key evil-normal-state-map [backspace] 'vi-open-line-above)
+(define-key evil-normal-state-map (kbd "RET") 'open-line-below)
+(define-key evil-normal-state-map [backspace] 'open-line-above)
 (define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
                                                 (dotimes (c n nil) (insert " "))))
 ;; Use C-a and C-x to manipulate numbers, as in vim
@@ -151,12 +138,6 @@
 (setq ag-highlight-search t)
 (evil-ex-define-cmd "ag" 'ag)
 (evil-ex-define-cmd "agp[roject]" 'ag-project)
-
-;; Org mode
-;; =================================================================================
-;; (add-hook 'org-mode-hook (lambda ()
-;;                            ;; Make evil use the custom org-mode folding function
-;;                            (define-key evil-normal-state-local-map "za" 'org-cycle)))
 
 ;; Yasnippets
 ;; =================================================================================
@@ -304,8 +285,15 @@
 
 (add-hook 'haskell-mode-hook (lambda ()
                                (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
-                               (define-key evil-normal-state-local-map (kbd "RET") 'haskell-vi-open-line-below)))
+                               (setq evil-shift-width 2)))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-to-list 'auto-indent-disabled-modes-list 'haskell-mode)
+
+;; Org mode
+;; =================================================================================
+
+(add-hook 'org-mode-hook (lambda ()
+                           (linum-mode -1)))
 
 ;; Color themes
 ;; =================================================================================
@@ -348,5 +336,3 @@
 (visual-line-mode)
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
-
-;; (define-key global-map (kbd "RET") 'newline-and-indent)

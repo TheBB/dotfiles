@@ -15,9 +15,13 @@
 ;; =================================================================================
 
 (require 'key-chord)
+
 (require 'auto-indent-mode)
 (require 'coffee-mode)
 (require 'haskell-mode)
+(require 'markdown-mode)
+(require 'web-mode)
+
 (require 'evil-leader)
 (require 'evil)
 (require 'evil-nerd-commenter)
@@ -27,13 +31,12 @@
 (require 'evil-args)
 (require 'evil-matchit)
 (require 'evil-little-word)
+
 (require 'linum-relative)
 (require 'smooth-scrolling)
 (require 'powerline)
 (require 'number-font-lock-mode)
 (require 'ido-ubiquitous)
-(require 'web-mode)
-(require 'haskell-mode)
 (require 'yasnippet)
 (require 'ag)
 
@@ -342,4 +345,5 @@
 (global-linum-mode t)
 (visual-line-mode)
 (setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
+      inhibit-startup-echo-area-message t
+      initial-scratch-message nil)

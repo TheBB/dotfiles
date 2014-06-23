@@ -3,3 +3,4 @@ bundle
 *~
 
 emacs/auto-save-list
+*.elc

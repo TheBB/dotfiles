@@ -1,15 +1,17 @@
-;; MELPA and manual source path
+;; Package organization
 ;; =================================================================================
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'load-path "~/.emacs.d/sources/misc/")
-(add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
+
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
+
+(add-to-list 'load-path "~/.emacs.d/sources/misc/")
+(add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
 
 ;; Require all the packages
 ;; =================================================================================

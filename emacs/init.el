@@ -42,6 +42,12 @@
 (require 'yasnippet)
 (require 'ag)
 
+;; Smex
+;; =================================================================================
+
+(autoload 'smex "smex")
+(global-set-key (kbd "M-x") 'smex)
+
 ;; evil, evil-leader and mics keybindings
 ;; =================================================================================
 
@@ -111,7 +117,7 @@
   "b" 'ido-switch-buffer
   "f" 'ido-find-file
   "e" 'eval-last-sexp
-  "x" 'execute-extended-command
+  "x" 'smex
   "m" (lambda () (interactive)
         (message "Mode: %s" major-mode))
   (kbd "RET") (lambda () (interactive)
@@ -157,6 +163,7 @@
 
 ;; Powerline theme
 ;; =================================================================================
+
 (defun powerline-bb-evil-theme ()
   "My powerline theme."
   (interactive)

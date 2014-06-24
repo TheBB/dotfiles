@@ -350,6 +350,7 @@
 ;; Varia
 ;; =================================================================================
 
+(set-language-environment "UTF-8")
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
 (visual-line-mode)

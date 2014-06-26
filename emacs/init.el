@@ -48,6 +48,12 @@
 (autoload 'smex "smex")
 (global-set-key (kbd "M-x") 'smex)
 
+;; Ace jump
+;; =================================================================================
+
+(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
+(autoload 'ace-jump-pop-mark "ace-jump-mode" "Ace jump back" t)
+
 ;; evil, evil-leader and mics keybindings
 ;; =================================================================================
 
@@ -91,10 +97,17 @@
     (evil-open-below 1)
     (evil-normal-state)))
 
+;; Some whitespace functions
 (define-key evil-normal-state-map (kbd "RET") 'open-line-below)
 (define-key evil-normal-state-map [backspace] 'open-line-above)
-(define-key evil-normal-state-map (kbd "SPC") (lambda (n) (interactive "p")
-                                                (dotimes (c n nil) (insert " "))))
+(define-key evil-normal-state-map (kbd "g SPC") (lambda (n) (interactive "p")
+                                                  (dotimes (c n nil) (insert " "))))
+
+;; Ace jump
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
+(define-key evil-normal-state-map (kbd "C-M-SPC") 'ace-jump-line-mode)
+
 ;; Use C-a and C-x to manipulate numbers, as in vim
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-s") 'evil-numbers/dec-at-pt)

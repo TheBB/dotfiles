@@ -97,7 +97,7 @@
                                                 (dotimes (c n nil) (insert " "))))
 ;; Use C-a and C-x to manipulate numbers, as in vim
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
-(define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+(define-key evil-normal-state-map (kbd "C-s") 'evil-numbers/dec-at-pt)
 
 ;; Argument text objects
 (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)

@@ -81,23 +81,18 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
 ;; Add or remove empty lines and whitespace in normal mode
-(defun open-line-above ()
-  "Insert a newline above the current line and put point at beginning."
-  (interactive)
+(defun open-line-above (n)
+  (interactive "p")
   (save-excursion
-    (evil-open-above 1)
-    (evil-normal-state))
-  (if (eq 0 (current-column))
-    (next-line)))
+    (move-end-of-line 0)
+    (open-line n)))
 
-(defun open-line-below ()
-  "Insert a newline below the current line and put point at beginning."
-  (interactive)
+(defun open-line-below (n)
+  (interactive "p")
   (save-excursion
-    (evil-open-below 1)
-    (evil-normal-state)))
+    (move-end-of-line 1)
+    (open-line n)))
 
-;; Some whitespace functions
 (define-key evil-normal-state-map (kbd "RET") 'open-line-below)
 (define-key evil-normal-state-map [backspace] 'open-line-above)
 (define-key evil-normal-state-map (kbd "g SPC") (lambda (n) (interactive "p")

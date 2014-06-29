@@ -1,17 +1,18 @@
 ;; Package organization
 ;; =================================================================================
 
+;; (require 'package)
 (require 'package)
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")))
+        ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/sources/misc/")
 (add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
+(add-to-list 'load-path "~/.emacs.d/sources/company-mode/")
 
 ;; Require all the packages
 ;; =================================================================================
@@ -41,6 +42,8 @@
 (require 'ido-ubiquitous)
 (require 'yasnippet)
 (require 'ag)
+
+;(require 'company)
 
 ;; Smex
 ;; =================================================================================

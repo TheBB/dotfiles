@@ -97,7 +97,7 @@
    `(powerline-visual-3 ((t (:foreground ,bwc-blackgravel :background ,bwc-toffee))))
 
    `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-mediumgravel))))
-   `(whitespace-newline ((t (:background ,bwc-blackestgravel :foreground ,bwc-mediumgravel))))
+   `(whitespace-newline ((t (:foreground ,bwc-mediumgravel))))
    )
 
   (custom-set-faces

@@ -95,6 +95,9 @@
    `(powerline-normal-3 ((t (:foreground ,bwc-saltwatertaffy :background ,bwc-darkgravel))))
    `(powerline-insert-3 ((t (:foreground ,bwc-tardis :background ,bwc-darkgravel))))
    `(powerline-visual-3 ((t (:foreground ,bwc-blackgravel :background ,bwc-toffee))))
+
+   `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-mediumgravel))))
+   `(whitespace-newline ((t (:background ,bwc-blackestgravel :foreground ,bwc-mediumgravel))))
    )
 
   (custom-set-faces

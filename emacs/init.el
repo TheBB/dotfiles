@@ -338,6 +338,21 @@
 (ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
+;; Whitespace mode
+;; =================================================================================
+
+(setq whitespace-style
+      '(face
+        trailing
+        tabs
+        tab-mark
+        newline
+        newline-mark))
+(setq whitespace-display-mappings
+      '((newline-mark 10 [172 10])
+        (tab-mark 9 [9655 9])))
+(global-whitespace-mode)
+
 ;; Backups
 ;; =================================================================================
 

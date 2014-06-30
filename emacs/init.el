@@ -1,17 +1,18 @@
 ;; Package organization
 ;; =================================================================================
 
+;; (require 'package)
 (require 'package)
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")))
+        ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/sources/misc/")
 (add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
+(add-to-list 'load-path "~/.emacs.d/sources/company-mode/")
 
 ;; Require all the packages
 ;; =================================================================================
@@ -41,6 +42,8 @@
 (require 'ido-ubiquitous)
 (require 'yasnippet)
 (require 'ag)
+
+;(require 'company)
 
 ;; Smex
 ;; =================================================================================
@@ -81,21 +84,23 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
 ;; Add or remove empty lines and whitespace in normal mode
-(defun open-line-above ()
-  "Insert a newline above the current line and put point at beginning."
-  (interactive)
+(defun open-line-above (n)
+  (interactive "p")
   (save-excursion
-    (evil-open-above 1)
-    (evil-normal-state))
-  (if (eq 0 (current-column))
-    (next-line)))
+    (move-end-of-line 0)
+    (open-line n)))
 
-(defun open-line-below ()
-  "Insert a newline below the current line and put point at beginning."
-  (interactive)
+(defun open-line-below (n)
+  (interactive "p")
   (save-excursion
-    (evil-open-below 1)
-    (evil-normal-state)))
+    (move-end-of-line 1)
+    (open-line n)))
+
+;; Some whitespace functions
+(define-key evil-normal-state-map (kbd "RET") 'open-line-below)
+(define-key evil-normal-state-map [backspace] 'open-line-above)
+(define-key evil-normal-state-map (kbd "g SPC") (lambda (n) (interactive "p")
+                                                  (dotimes (c n nil) (insert " "))))
 
 ;; We don't need C-u
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
@@ -109,12 +114,6 @@
 (define-key evil-normal-state-map (kbd "<M-down>") 'evil-window-move-very-bottom)
 (define-key evil-normal-state-map (kbd "<M-left>") 'evil-window-move-far-left)
 (define-key evil-normal-state-map (kbd "<M-right>") 'evil-window-move-far-right)
-
-;; Some whitespace functions
-(define-key evil-normal-state-map (kbd "RET") 'open-line-below)
-(define-key evil-normal-state-map [backspace] 'open-line-above)
-(define-key evil-normal-state-map (kbd "g SPC") (lambda (n) (interactive "p")
-                                                  (dotimes (c n nil) (insert " "))))
 
 ;; Ace jump
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
@@ -355,6 +354,21 @@
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-enable-flex-matching t)
+
+;; Whitespace mode
+;; =================================================================================
+
+(setq whitespace-style
+      '(face
+        trailing
+        tabs
+        tab-mark
+        newline
+        newline-mark))
+(setq whitespace-display-mappings
+      '((newline-mark 10 [172 10])
+        (tab-mark 9 [9655 9])))
+(global-whitespace-mode)
 
 ;; Backups
 ;; =================================================================================

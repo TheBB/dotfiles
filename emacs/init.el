@@ -97,6 +97,19 @@
     (evil-open-below 1)
     (evil-normal-state)))
 
+;; We don't need C-u
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+
+;; Windows
+(define-key evil-normal-state-map (kbd "<up>") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "<down>") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "<left>") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "<right>") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "<M-up>") 'evil-window-move-very-top)
+(define-key evil-normal-state-map (kbd "<M-down>") 'evil-window-move-very-bottom)
+(define-key evil-normal-state-map (kbd "<M-left>") 'evil-window-move-far-left)
+(define-key evil-normal-state-map (kbd "<M-right>") 'evil-window-move-far-right)
+
 ;; Some whitespace functions
 (define-key evil-normal-state-map (kbd "RET") 'open-line-below)
 (define-key evil-normal-state-map [backspace] 'open-line-above)
@@ -106,7 +119,7 @@
 ;; Ace jump
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
-(define-key evil-normal-state-map (kbd "C-M-SPC") 'ace-jump-line-mode)
+(define-key evil-normal-state-map (kbd "M-SPC") 'ace-jump-line-mode)
 
 ;; Use C-a and C-x to manipulate numbers, as in vim
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)

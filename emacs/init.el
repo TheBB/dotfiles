@@ -295,6 +295,7 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 
 ;; Other settings
 (setq web-mode-markup-indent-offset 2)
@@ -339,6 +340,13 @@
 (setq org-log-done 'time)
 (add-to-list 'org-agenda-files "~/my.org")
 
+;; CMake mode
+;; =================================================================================
+
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+(autoload 'cmake-mode "cmake-mode")
+
 ;; Color themes
 ;; =================================================================================
 
@@ -360,7 +368,6 @@
 
 (setq whitespace-style
       '(face
-        trailing
         tabs
         tab-mark
         newline

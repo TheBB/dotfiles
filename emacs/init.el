@@ -1,7 +1,6 @@
 ;; Package organization
 ;; =================================================================================
 
-;; (require 'package)
 (require 'package)
 
 (setq package-archives
@@ -106,14 +105,14 @@
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 
 ;; Windows
-(define-key evil-normal-state-map (kbd "<up>") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "<down>") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "<left>") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "<right>") 'evil-window-right)
-(define-key evil-normal-state-map (kbd "<M-up>") 'evil-window-move-very-top)
-(define-key evil-normal-state-map (kbd "<M-down>") 'evil-window-move-very-bottom)
-(define-key evil-normal-state-map (kbd "<M-left>") 'evil-window-move-far-left)
-(define-key evil-normal-state-map (kbd "<M-right>") 'evil-window-move-far-right)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-M-k") 'evil-window-move-very-top)
+(define-key evil-normal-state-map (kbd "C-M-j") 'evil-window-move-very-bottom)
+(define-key evil-normal-state-map (kbd "C-M-h") 'evil-window-move-far-left)
+(define-key evil-normal-state-map (kbd "C-M-l") 'evil-window-move-far-right)
 
 ;; Ace jump
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
@@ -239,7 +238,7 @@
                                      (funcall separator-right (funcall gf 2) (funcall gf 1))
                                      (powerline-raw " %7p%4l:%3c" (funcall gf 1) 'r))))
                      (concat (powerline-render lhs)
-                             (powerline-fill (funcall sg 3) (powerline-width rhs))
+                             (powerline-fill (funcall gf 3) (powerline-width rhs))
                              (powerline-render rhs)))))))
 (powerline-bb-evil-theme)
 
@@ -263,15 +262,6 @@
              (setq python-indent 4)))
 
 (add-to-list 'auto-indent-disabled-modes-list 'python-mode)
-
-;; (add-to-list 'load-path "~/.emacs.d/sources/python-mode/")
-;; (setq py-install-directory "~/.emacs.d/sources/python-mode/")
-;; (require 'python-mode)
-;; (when (featurep 'python) (unload-feature 'python t))
-;; (setq py-hide-show-minor-mode-p t)
-;; (add-hook 'python-mode-hook (lambda ()
-;;                               (define-key evil-motion-state-local-map "/" 'evil-search-forward)
-;;                               (define-key evil-motion-state-local-map "?" 'evil-search-backward)))
 
 ;; Web mode
 ;; =================================================================================

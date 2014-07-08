@@ -69,7 +69,7 @@
   "L" 'org-end-of-line
   ";t" 'org-show-todo-tree
   "o" '(lambda () (interactive) (evil-org-eol-call 'always-insert-item))
-  "O" '(lambda () (interactive) (evil-org-eol-call 'org-insert-heading))
+  "O" '(lambda () (interactive) (evil-org-eol-call 'org-insert-heading-after-current))
   "$" 'org-end-of-line
   "^" 'org-beginning-of-line
   "<" 'org-metaleft

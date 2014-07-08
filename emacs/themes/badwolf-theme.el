@@ -98,6 +98,8 @@
 
    `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-deepgravel))))
    `(whitespace-newline ((t (:foreground ,bwc-deepgravel))))
+
+   `(linum-relative-current-face ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
    )
 
   (custom-set-faces

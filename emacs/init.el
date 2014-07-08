@@ -396,6 +396,7 @@
 
 (set-language-environment "UTF-8")
 (setq-default indent-tabs-mode nil)
+(setq linum-relative-current-symbol "->")
 (global-linum-mode t)
 (visual-line-mode)
 (setq inhibit-startup-message t

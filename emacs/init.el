@@ -236,12 +236,8 @@
                                      (funcall separator-right (funcall gf 3) (funcall gf 2))
                                      (powerline-raw " " (funcall gf 2))
                                      (powerline-major-mode (funcall gf 2) 'r)
-                                     (powerline-raw (concat
-                                                     "["
-                                                     (symbol-name buffer-file-coding-system)
-                                                     "]") (funcall gf 2) 'r)
                                      (funcall separator-right (funcall gf 2) (funcall gf 1))
-                                     (powerline-raw " %6p%4l:%3c" (funcall gf 1) 'r))))
+                                     (powerline-raw " %7p%4l:%3c" (funcall gf 1) 'r))))
                      (concat (powerline-render lhs)
                              (powerline-fill (funcall sg 3) (powerline-width rhs))
                              (powerline-render rhs)))))))

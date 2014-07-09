@@ -151,6 +151,7 @@
   (kbd "\d") (lambda () (interactive)
                (open-line 1)
                (evil-insert 1))
+  "s" 'just-one-space
   "ci" 'evilnc-comment-or-uncomment-lines
   "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
   "cc" 'evilnc-copy-and-comment-lines
@@ -384,6 +385,8 @@
 ;; Varia
 ;; =================================================================================
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq vc-follow-symlinks nil)
 (set-language-environment "UTF-8")
 (setq-default indent-tabs-mode nil)
 (setq linum-relative-current-symbol "->")

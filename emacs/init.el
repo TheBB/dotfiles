@@ -185,8 +185,7 @@
 (yas-global-mode 1)
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-a") 'yas-expand)
-(key-chord-define yas-minor-mode-map "'`" 'yas-expand)
+(key-chord-define evil-insert-state-map "\"|" 'yas-expand)
 
 ;; Powerline theme
 ;; =================================================================================

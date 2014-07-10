@@ -186,6 +186,7 @@
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "C-a") 'yas-expand)
+(key-chord-define yas-minor-mode-map "'`" 'yas-expand)
 
 ;; Powerline theme
 ;; =================================================================================

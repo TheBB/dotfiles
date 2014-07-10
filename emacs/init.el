@@ -248,21 +248,20 @@
 ;; Python mode
 ;; =================================================================================
 
-(add-hook 'python-mode-hook
-          '(lambda ()
-             ;; Delete the built-in python folding function
-             (setq hs-special-modes-alist
-                   (assq-delete-all 'python-mode hs-special-modes-alist))
-             ;; Replace it with a better one
-             (add-to-list 'hs-special-modes-alist
-                          '(python-mode
-                            "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
-                            nil
-                            "#"
-                            #[(arg) "\300 \207" [python-nav-end-of-block] 1]
-                            nil))
-             ;; Other settings
-             (setq python-indent 4)))
+(add-hook
+ 'python-mode-hook
+ '(lambda ()
+    ;; Delete the built-in python folding function
+    (setq hs-special-modes-alist
+          (assq-delete-all 'python-mode hs-special-modes-alist))
+    ;; Replace it with a better one
+    (add-to-list
+     'hs-special-modes-alist
+     '(python-mode
+       "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
+       nil "#" #[(arg) "\300 \207" [python-nav-end-of-block] 1] nil))
+    ;; Other settings
+    (setq python-indent 4)))
 
 (add-to-list 'auto-indent-disabled-modes-list 'python-mode)
 

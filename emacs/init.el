@@ -271,7 +271,8 @@
                            ;; Make evil use the custom web-mode folding function
                            (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)
                            ;; Other settings
-                           (setq evil-shift-width 2)))
+                           (setq evil-shift-width 2)
+                           (setq-local rainbow-delimiters-highlight-braces-p nil)))
 
 ;; Load web-mode on these files
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))

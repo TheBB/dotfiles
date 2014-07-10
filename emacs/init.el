@@ -34,6 +34,7 @@
 (require 'evil-matchit)
 (require 'evil-little-word)
 
+(require 'rainbow-delimiters)
 (require 'linum-relative)
 (require 'smooth-scrolling)
 (require 'powerline)
@@ -364,6 +365,11 @@
       '((newline-mark 10 [172 10])
         (tab-mark 9 [9655 9])))
 (global-whitespace-mode)
+
+;; Rainbow delimiters
+;; =================================================================================
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; Backups
 ;; =================================================================================

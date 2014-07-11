@@ -160,11 +160,12 @@
   "cr" 'comment-or-uncomment-region
   "cv" 'evilnc-toggle-invert-comment-line-by-line)
 
-(defun org-push ()
-  (interactive)
-  (shell-command
-   "cd $HOME/repos/org && git commit -am \".\" && git push"))
+(defun org-push () (interactive)
+  (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push"))
+(defun org-pull () (interactive)
+  (shell-command "cd $HOME/repos/org && git pull"))
 (evil-ex-define-cmd "orgpush" 'org-push)
+(evil-ex-define-cmd "orgpull" 'org-push)
 
 ;; Turn on various things
 ;; =================================================================================

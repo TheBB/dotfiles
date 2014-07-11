@@ -292,6 +292,12 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
+;; C++ mode
+;; =================================================================================
+
+(add-hook 'c++-mode (lambda ()
+                      (setq (evil-shift-width 2))))
+
 ;; C mode
 ;; =================================================================================
 
@@ -324,9 +330,15 @@
 ;; Org mode
 ;; =================================================================================
 
+(defun org-push ()
+  (interactive)
+  (shell-command
+   "cd $HOME/repos/org && git commit -am \".\" && git push"))
+
 (add-hook 'org-mode-hook (lambda ()
                            (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
-                           (linum-mode -1)))
+                           (linum-mode -1)
+                           (evil-ex-define-cmd "comp" 'org-push)))
 (setq org-log-done 'time)
 (add-to-list 'org-agenda-files "~/my.org")
 
@@ -402,3 +414,4 @@
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t
       initial-scratch-message nil)
+(setq warning-suppress-types '((undo discard-info)))

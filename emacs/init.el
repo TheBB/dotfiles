@@ -220,7 +220,7 @@
                              (motion   . ("MOTION "
                                           powerline-normal-1 powerline-normal-2 powerline-normal-3))
                              (emacs    . ("EMACS  "
-                                          powerline-normal-1 powerline-normal-2 powerline-normal-3))))
+                                          powerline-emacs-1 powerline-normal-2 powerline-normal-3))))
                           (gf (lambda (idx)
                                 (if active (funcall sg idx) 'powerline-normal-3)))
                           (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))

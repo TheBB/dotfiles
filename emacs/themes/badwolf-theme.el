@@ -89,6 +89,7 @@
    `(powerline-insert-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-tardis :weight bold))))
    `(powerline-replace-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-dress :weight bold))))
    `(powerline-visual-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-orange :weight bold))))
+   `(powerline-emacs-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-brightgravel :weight bold))))
    `(powerline-normal-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-deepgravel))))
    `(powerline-insert-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-darktardis))))
    `(powerline-visual-2 ((t (:foreground ,bwc-blackgravel :background ,bwc-dalespale))))

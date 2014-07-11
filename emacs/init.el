@@ -160,6 +160,12 @@
   "cr" 'comment-or-uncomment-region
   "cv" 'evilnc-toggle-invert-comment-line-by-line)
 
+(defun org-push ()
+  (interactive)
+  (shell-command
+   "cd $HOME/repos/org && git commit -am \".\" && git push"))
+(evil-ex-define-cmd "orgpush" 'org-push)
+
 ;; Turn on various things
 ;; =================================================================================
 
@@ -330,10 +336,6 @@
 ;; Org mode
 ;; =================================================================================
 
-(defun org-push ()
-  (interactive)
-  (shell-command
-   "cd $HOME/repos/org && git commit -am \".\" && git push"))
 
 (add-hook 'org-mode-hook (lambda ()
                            (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)

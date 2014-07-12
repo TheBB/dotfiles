@@ -275,12 +275,13 @@
 ;; Web mode
 ;; =================================================================================
 
-(add-hook 'web-mode-hook (lambda ()
-                           ;; Make evil use the custom web-mode folding function
-                           (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)
-                           ;; Other settings
-                           (setq evil-shift-width 2)
-                           (setq-local rainbow-delimiters-highlight-braces-p nil)))
+(add-hook 'web-mode-hook
+          (lambda ()
+            ;; Make evil use the custom web-mode folding function
+            (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)
+            ;; Other settings
+            (setq evil-shift-width 2)
+            (setq-local rainbow-delimiters-highlight-braces-p nil)))
 
 ;; Load web-mode on these files
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -299,16 +300,27 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
-;; C++ mode
+;; C++ and C mode
 ;; =================================================================================
 
-(add-hook 'c++-mode (lambda ()
-                      (setq (evil-shift-width 2))))
+(c-add-style "bb-style"
+             '((indent-tabs-mode . nil)
+               (c-basic-offset . 4)))
 
-;; C mode
-;; =================================================================================
+(c-add-style "sintef-style"
+             '((indent-tabs-mode . nil)
+               (c-basic-offset . 2)))
 
-(setq-default c-basic-offset 4)
+(defun bb-style () (interactive) (c-set-style "bb-style"))
+(defun sintef-style () (interactive) (c-set-style "sintef-style"))
+(evil-ex-define-cmd "bbstyle" 'bb-style)
+(evil-ex-define-cmd "sintefstyle" 'sintef-style)
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (c-set-style "bb-style")))
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Coffee mode
 ;; =================================================================================
@@ -325,9 +337,10 @@
 ;; Haskell mode
 ;; =================================================================================
 
-(add-hook 'haskell-mode-hook (lambda ()
-                               (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
-                               (setq evil-shift-width 2)))
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
+            (setq evil-shift-width 2)))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (setq haskell-indentation-cycle-warn nil)
 (add-to-list 'auto-indent-disabled-modes-list 'haskell-mode)
@@ -338,10 +351,11 @@
 ;; =================================================================================
 
 
-(add-hook 'org-mode-hook (lambda ()
-                           (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
-                           (linum-mode -1)
-                           (evil-ex-define-cmd "comp" 'org-push)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
+            (linum-mode -1)
+            (evil-ex-define-cmd "comp" 'org-push)))
 (setq org-log-done 'time)
 (add-to-list 'org-agenda-files "~/my.org")
 

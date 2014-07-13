@@ -167,6 +167,8 @@
 (evil-ex-define-cmd "orgpush" 'org-push)
 (evil-ex-define-cmd "orgpull" 'org-push)
 
+(evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
+
 ;; Turn on various things
 ;; =================================================================================
 
@@ -305,7 +307,9 @@
 
 (c-add-style "bb-style"
              '((indent-tabs-mode . nil)
-               (c-basic-offset . 4)))
+               (c-basic-offset . 4)
+               (substatement-open . 0)
+               (inline-open . 0))
 
 (c-add-style "sintef-style"
              '((indent-tabs-mode . nil)
@@ -316,9 +320,12 @@
 (evil-ex-define-cmd "bbstyle" 'bb-style)
 (evil-ex-define-cmd "sintefstyle" 'sintef-style)
 
-(add-hook 'c++-mode-hook
+(add-hook 'c-mode-common-hook
           (lambda ()
-            (c-set-style "bb-style")))
+            (c-set-style "bb-style")
+            (setq c-macro-names-with-semicolon
+                  '("Q_OBJECT" "Q_PROPERTY" "Q_DECLARE" "Q_ENUMS" "Q_INTERFACES"))
+            (c-make-macro-with-semi-re)))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 

@@ -165,7 +165,7 @@
 (defun org-pull () (interactive)
   (shell-command "cd $HOME/repos/org && git pull"))
 (evil-ex-define-cmd "orgpush" 'org-push)
-(evil-ex-define-cmd "orgpull" 'org-push)
+(evil-ex-define-cmd "orgpull" 'org-pull)
 
 (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
 
@@ -308,8 +308,9 @@
 (c-add-style "bb-style"
              '((indent-tabs-mode . nil)
                (c-basic-offset . 4)
-               (substatement-open . 0)
-               (inline-open . 0)))
+               (c-offsets-alist
+                (substatement-open . 0)
+                (inline-open . 0))))
 
 (c-add-style "sintef-style"
              '((indent-tabs-mode . nil)

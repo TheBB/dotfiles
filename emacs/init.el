@@ -309,7 +309,7 @@
              '((indent-tabs-mode . nil)
                (c-basic-offset . 4)
                (substatement-open . 0)
-               (inline-open . 0))
+               (inline-open . 0)))
 
 (c-add-style "sintef-style"
              '((indent-tabs-mode . nil)

@@ -1,3 +1,4 @@
+#
 # Path to your oh-my-zsh configuration.
 ZSH=/usr/share/oh-my-zsh/
 
@@ -73,3 +74,4 @@ for dir in \
 done
 
 source $HOME/.localzshrc
+source $HOME/repos/dotfiles/zsh/mancolor.sh

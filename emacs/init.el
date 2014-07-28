@@ -318,7 +318,7 @@
                (c-offsets-alist
                 (substatement-open . 0)
                 (inline-open . 0)
-                (statement-cont . c-lineup-math))))
+                (statement-cont . c-lineup-assignments))))
 
 (c-add-style "sintef-style"
              '((indent-tabs-mode . nil)

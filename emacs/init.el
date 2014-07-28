@@ -39,17 +39,23 @@
 (require 'smooth-scrolling)
 (require 'powerline)
 (require 'number-font-lock-mode)
+(require 'ag)
+
+(require 'helm-config)
 (require 'ido-ubiquitous)
 (require 'yasnippet)
-(require 'ag)
 
 ;(require 'company)
 
-;; Smex
+;; Helm
 ;; =================================================================================
 
-(autoload 'smex "smex")
-(global-set-key (kbd "M-x") 'smex)
+(helm-mode 1)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z")  'helm-select-action)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; Ace jump
 ;; =================================================================================
@@ -139,10 +145,11 @@
 (evil-leader/set-key
   "i" (lambda () (interactive) (find-file user-init-file))
   "o" (lambda () (interactive) (find-file "~/my.org"))
-  "b" 'ido-switch-buffer
-  "f" 'ido-find-file
   "e" 'eval-last-sexp
-  "x" 'smex
+  "x" 'helm-M-x
+  "p" 'helm-show-kill-ring
+  "b" 'helm-mini
+  "f" 'helm-find-files
   "m" (lambda () (interactive)
         (message "Mode: %s" major-mode))
   (kbd "RET") (lambda () (interactive)

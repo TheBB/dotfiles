@@ -337,7 +337,6 @@
             (c-make-macro-with-semi-re)))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-;; (add-to-list 'auto-indent-disabled-modes-list 'c++-mode)
 
 ;; Coffee mode
 ;; =================================================================================

@@ -303,6 +303,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xinp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.qrc\\'" . web-mode))
 
 ;; Other settings
 (setq web-mode-markup-indent-offset 2)

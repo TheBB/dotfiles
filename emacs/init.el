@@ -194,7 +194,7 @@
     (use-package evil-numbers
       :ensure evil-numbers
       :init
-      (progn 
+      (progn
         (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
         (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)))
 
@@ -232,13 +232,13 @@
       (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
     (define-key evil-normal-state-map (kbd "g SPC")
       (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
-    
+
     (global-set-key (kbd "RET") 'newline-and-indent)
     (define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)
 
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)
-    
+
     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
     (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
     (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
@@ -247,7 +247,8 @@
     (define-key evil-normal-state-map (kbd "C-M-j") 'evil-window-move-very-bottom)
     (define-key evil-normal-state-map (kbd "C-M-h") 'evil-window-move-far-left)
     (define-key evil-normal-state-map (kbd "C-M-l") 'evil-window-move-far-right)
-    
+
+    (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd
      "orgpush" (lambda () (interactive)
                  (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push")))
@@ -366,7 +367,7 @@
   :ensure parent-mode
   :load-path "sources/number-font-lock-mode"
   :init (add-hook 'prog-mode-hook 'number-font-lock-mode))
-  
+
 
 ;; YASnippet
 ;; =================================================================================
@@ -547,5 +548,3 @@
 
 ;; ;; evil, evil-leader and mics keybindings
 ;; ;; =================================================================================
-
-;; (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)

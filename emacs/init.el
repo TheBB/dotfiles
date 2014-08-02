@@ -1,212 +1,93 @@
-;; Package organization
+;; Package initialization
 ;; =================================================================================
 
 (require 'package)
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")))
+        ("melpa" . "http://melpa.milkbox.net/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/sources/misc/")
-(add-to-list 'load-path "~/.emacs.d/sources/evil-nerd-commenter/")
-(add-to-list 'load-path "~/.emacs.d/sources/company-mode/")
+(require 'use-package)
 
-;; Require all the packages
+;; Backups
 ;; =================================================================================
 
-(require 'key-chord)
+(setq backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+(setq-default make-backup-files nil)
 
-(require 'auto-indent-mode)
-(require 'coffee-mode)
-(require 'haskell-mode)
-(require 'markdown-mode)
-(require 'web-mode)
 
-(require 'evil-leader)
-(require 'evil)
-(require 'evil-nerd-commenter)
-(require 'surround)
-(require 'evil-org)
-(require 'evil-numbers)
-(require 'evil-args)
-(require 'evil-matchit)
-(require 'evil-little-word)
-
-(require 'rainbow-delimiters)
-(require 'linum-relative)
-(require 'smooth-scrolling)
-(require 'powerline)
-(require 'number-font-lock-mode)
-(require 'ag)
-
-(require 'helm-config)
-(require 'ido-ubiquitous)
-(require 'yasnippet)
-
-;(require 'company)
-
-;; Helm
+;; User interface
 ;; =================================================================================
 
-(helm-mode 1)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z")  'helm-select-action)
+(set-cursor-color "#0a9dff")
+(load-theme 'badwolf t)
+(global-hl-line-mode t)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
+(setq ring-bell-function 'ignore
+      inhibit-startup-screen t
+      inhibit-startup-echo-area-message t
+      initial-scratch-message nil)
 
-;; Ace jump
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq linum-format "%4d ")
+(add-hook 'prog-mode-hook 'linum-mode)
+
+(visual-line-mode)
+
+;; Whitespace and indentation
 ;; =================================================================================
 
-(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
-(autoload 'ace-jump-pop-mark "ace-jump-mode" "Ace jump back" t)
+(setq require-final-newline t)
+(setq-default indent-tabs-mode nil)
 
-;; evil, evil-leader and mics keybindings
+
+;; Varia
 ;; =================================================================================
 
-(key-chord-mode 1)
+(setq vc-follow-symlinks nil
+      warning-suppress-tyles '((undo discard-info)))
 
-(global-evil-leader-mode)
-(evil-mode t)
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
 
-;; Exit insert mode by pressing jk
-(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
-;; Use esc to get away from everything, like in vim
-(defun minibuffer-keyboard-quit ()
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-
-;; Add or remove empty lines and whitespace in normal mode
-(defun open-line-above (n)
-  (interactive "p")
-  (save-excursion
-    (move-end-of-line 0)
-    (open-line n)))
-
-(defun open-line-below (n)
-  (interactive "p")
-  (save-excursion
-    (move-end-of-line 1)
-    (open-line n)))
-
-;; Some whitespace functions
-(define-key evil-normal-state-map (kbd "RET") 'open-line-below)
-(define-key evil-normal-state-map [backspace] 'open-line-above)
-(define-key evil-normal-state-map (kbd "g SPC") (lambda (n) (interactive "p")
-                                                  (dotimes (c n nil) (insert " "))))
-
-;; We don't need C-u
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-
-;; Windows
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-(define-key evil-normal-state-map (kbd "C-M-k") 'evil-window-move-very-top)
-(define-key evil-normal-state-map (kbd "C-M-j") 'evil-window-move-very-bottom)
-(define-key evil-normal-state-map (kbd "C-M-h") 'evil-window-move-far-left)
-(define-key evil-normal-state-map (kbd "C-M-l") 'evil-window-move-far-right)
-
-;; Ace jump
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
-(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
-(define-key evil-normal-state-map (kbd "M-SPC") 'ace-jump-line-mode)
-
-;; Use C-a and C-x to manipulate numbers, as in vim
-(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
-(define-key evil-normal-state-map (kbd "C-s") 'evil-numbers/dec-at-pt)
-
-;; Argument text objects
-(define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
-(define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
-(define-key evil-normal-state-map "gs" 'evil-forward-arg)
-(define-key evil-normal-state-map "ga" 'evil-backward-arg)
-(define-key evil-motion-state-map "gs" 'evil-forward-arg)
-(define-key evil-motion-state-map "ga" 'evil-backward-arg)
-(define-key evil-normal-state-map "gk" 'evil-jump-out-args)
-
-;; Set the leader to comma, and use backslash for search
-(define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)
-(evil-leader/set-leader ",")
-(evil-leader/set-key
-  "i" (lambda () (interactive) (find-file user-init-file))
-  "o" (lambda () (interactive) (find-file "~/my.org"))
-  "e" 'eval-last-sexp
-  "x" 'helm-M-x
-  "p" 'helm-show-kill-ring
-  "b" 'helm-mini
-  "f" 'helm-find-files
-  "m" (lambda () (interactive)
-        (message "Mode: %s" major-mode))
-  (kbd "RET") (lambda () (interactive)
-                (open-line 1)
-                (move-beginning-of-line 2)
-                (evil-insert 1))
-  (kbd "\d") (lambda () (interactive)
-               (open-line 1)
-               (evil-insert 1))
-  "s" 'just-one-space
-  "ci" 'evilnc-comment-or-uncomment-lines
-  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-  "cc" 'evilnc-copy-and-comment-lines
-  "cp" 'evilnc-comment-or-uncomment-paragraphs
-  "cr" 'comment-or-uncomment-region
-  "cv" 'evilnc-toggle-invert-comment-line-by-line)
-
-(defun org-push () (interactive)
-  (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push"))
-(defun org-pull () (interactive)
-  (shell-command "cd $HOME/repos/org && git pull"))
-(evil-ex-define-cmd "orgpush" 'org-push)
-(evil-ex-define-cmd "orgpull" 'org-pull)
-
-(evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
-
-;; Turn on various things
+;; Whitespace mode
 ;; =================================================================================
 
-(auto-indent-global-mode)
-(global-surround-mode t)
-(global-evil-matchit-mode t)
-(setq linum-relative-current-symbol "")
-(setq smooth-scroll-margin 3)
-(add-hook 'prog-mode-hook 'number-font-lock-mode)
+(setq whitespace-style
+      '(face
+        tabs
+        tab-mark
+        newline
+        newline-mark))
+(setq whitespace-display-mappings
+      '((newline-mark 10 [172 10])
+        (tab-mark 9 [9655 9])))
+(global-whitespace-mode)
 
-;; Ag bindings
+
+;; Powerline
 ;; =================================================================================
 
-(setq ag-highlight-search t)
-(evil-ex-define-cmd "ag" 'ag)
-(evil-ex-define-cmd "agp[roject]" 'ag-project)
-
-;; Yasnippets
-;; =================================================================================
-
-(add-to-list 'yas/root-directory
-             "~/.emacs.d/sources/yasnippet-snippets/")
-(yas-global-mode 1)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(key-chord-define evil-insert-state-map "\"|" 'yas-expand)
-
-;; Powerline theme
-;; =================================================================================
-
-(defun powerline-bb-evil-theme ()
+(defun bb/powerline-evil-theme ()
   "My powerline theme."
   (interactive)
   (setq-default
@@ -259,56 +140,308 @@
         (concat (powerline-render lhs)
                 (powerline-fill (funcall gf 3) (powerline-width rhs))
                 (powerline-render rhs)))))))
-(powerline-bb-evil-theme)
 
-;; Python mode
+(use-package powerline
+  :ensure powerline
+  :init
+  (bb/powerline-evil-theme))
+
+
+;; Evil
 ;; =================================================================================
 
-(add-hook
- 'python-mode-hook
- '(lambda ()
-    ;; Delete the built-in python folding function
+(use-package evil
+  :ensure evil
+  :pre-load
+  (setq evil-want-C-u-scroll t
+        evil-want-C-w-in-emacs-state t)
+  :init
+  (progn
+    (use-package evil-leader
+      :ensure evil-leader
+      :init
+      (progn
+        (evil-leader/set-leader ",")
+        (global-evil-leader-mode t)
+        (evil-leader/set-key
+          "gi" (lambda () (interactive) (find-file user-init-file))
+          "gt" (lambda () (interactive)
+                 (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
+          "go" (lambda () (interactive) (find-file "~/my.org"))
+          "ss" 'just-one-space
+          "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
+
+    (use-package evil-nerd-commenter
+      :ensure evil-nerd-commenter
+      :init
+      (progn
+        (evil-leader/set-key
+          "ci" 'evilnc-comment-or-uncomment-lines
+          "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+          "cc" 'evilnc-copy-and-comment-lines
+          "cp" 'evilnc-comment-or-uncomment-paragraphs
+          "cr" 'comment-or-uncomment-region
+          "cv" 'evilnc-toggle-invert-comment-line-by-line)))
+
+    (use-package key-chord
+      :ensure key-chord
+      :init
+      (progn
+        (key-chord-mode t)
+        (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+        (key-chord-define evil-visual-state-map "jk" 'evil-normal-state)))
+
+    (use-package evil-numbers
+      :ensure evil-numbers
+      :init
+      (progn 
+        (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
+        (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)))
+
+    (use-package evil-args
+      :ensure evil-args
+      :init
+      (progn
+        (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+        (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+        (define-key evil-normal-state-map "gs" 'evil-forward-arg)
+        (define-key evil-normal-state-map "ga" 'evil-backward-arg)
+        (define-key evil-motion-state-map "gs" 'evil-forward-arg)
+        (define-key evil-motion-state-map "ga" 'evil-backward-arg)
+        (define-key evil-normal-state-map "gk" 'evil-jump-out-args)))
+
+    (use-package surround
+      :load-path "sources/misc"
+      :commands global-surround-mode
+      :idle (global-surround-mode t))
+
+    (use-package evil-matchit
+      :ensure evil-matchit
+      :commands global-evil-matchit-mode
+      :idle (global-evil-matchit-mode t))
+
+    (use-package evil-little-word
+      :load-path "sources/misc"))
+
+  :config
+  (progn
+    (evil-mode t)
+    (define-key evil-normal-state-map [backspace]
+      (lambda (n) (interactive "p") (save-excursion (move-end-of-line 0) (open-line n))))
+    (define-key evil-normal-state-map (kbd "RET")
+      (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
+    (define-key evil-normal-state-map (kbd "g SPC")
+      (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
+    
+    (global-set-key (kbd "RET") 'newline-and-indent)
+    (define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)
+
+    (define-key evil-normal-state-map [escape] 'keyboard-quit)
+    (define-key evil-visual-state-map [escape] 'keyboard-quit)
+    
+    (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+    (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+    (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+    (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+    (define-key evil-normal-state-map (kbd "C-M-k") 'evil-window-move-very-top)
+    (define-key evil-normal-state-map (kbd "C-M-j") 'evil-window-move-very-bottom)
+    (define-key evil-normal-state-map (kbd "C-M-h") 'evil-window-move-far-left)
+    (define-key evil-normal-state-map (kbd "C-M-l") 'evil-window-move-far-right)
+    
+    (evil-ex-define-cmd
+     "orgpush" (lambda () (interactive)
+                 (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push")))
+    (evil-ex-define-cmd
+     "orgpull" (lambda () (interactive)
+                 (shell-command "cd $HOME/repos/org && git pull")))))
+
+
+;; Use esc to get away from everything, like in vim
+(defun bb/minibuffer-keyboard-quit ()
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key minibuffer-local-map [escape] 'bb/minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'bb/minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'bb/minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'bb/minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'bb/minibuffer-keyboard-quit)
+
+
+;; Helm
+;; =================================================================================
+
+(use-package helm
+  :ensure helm
+  :init
+  (evil-leader/set-key
+    "x" 'helm-M-x
+    "b" 'helm-mini
+    "f" 'helm-find-files
+    "p" 'helm-show-kill-ring)
+  :config
+  (progn
+    (use-package helm-config)
+    (use-package helm-ag
+      :ensure helm-ag
+      :init
+      (evil-leader/set-key
+        "ag" 'helm-ag
+        "af" 'helm-ag-this-file
+        "ad" 'helm-do-ag))
+    (define-key helm-map (kbd "C-j") 'helm-next-line)
+    (define-key helm-map (kbd "C-k") 'helm-previous-line)
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z") 'helm-select-action)))
+
+
+;; Popwin
+;; =================================================================================
+
+(use-package popwin
+  :ensure popwin
+  :init (popwin-mode t)
+  :config
+  (progn
+    (push '("*helm*" :height 20) popwin:special-display-config)
+    (push '("^\\*helm ?[^\\*]+\\*$" :regexp t :height 20) popwin:special-display-config)))
+
+
+;; Diminish
+;; =================================================================================
+
+(use-package diminish
+  :ensure diminish
+  :init
+  (progn
+    (diminish 'undo-tree-mode)
+    (diminish 'abbrev-mode)
+    (diminish 'global-whitespace-mode)))
+
+
+;; Rainbow delimiters
+;; =================================================================================
+
+(use-package rainbow-delimiters
+  :ensure rainbow-delimiters
+  :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+
+;; Smooth scrolling
+;; =================================================================================
+
+(use-package smooth-scrolling
+  :ensure smooth-scrolling
+  :init (setq smooth-scroll-margin 3))
+
+
+;; Smooth scrolling
+;; =================================================================================
+
+(use-package linum-relative
+  :disabled t
+  :ensure linum-relative
+  :init (setq linum-relative-current-symbol "->"))
+
+
+;; Ace jump
+;; =================================================================================
+
+(use-package ace-jump-mode
+  :ensure ace-jump-mode
+  :init
+  (progn
+    (evil-leader/set-key
+      "." 'ace-jump-word-mode
+      "," 'ace-jump-char-mode
+      "<SPC>" 'ace-jump-line-mode)))
+
+
+;; Number font lock
+;; =================================================================================
+
+(use-package number-font-lock-mode
+  :ensure parent-mode
+  :load-path "sources/number-font-lock-mode"
+  :init (add-hook 'prog-mode-hook 'number-font-lock-mode))
+  
+
+;; YASnippet
+;; =================================================================================
+
+(use-package yasnippet
+  :ensure yasnippet
+  :init
+  (progn
+    (yas-global-mode t)
+    (setq yas-verbosity 1
+          yas-snippet-dir (expand-file-name "snippets" user-emacs-directory)))
+  :config
+  (progn
+    (define-key yas-minor-mode-map (kbd "<tab>") nil)
+    (key-chord-define evil-insert-state-map "\"|" 'yas-expand)
+    (diminish 'yas-minor-mode)))
+
+
+;; Python
+;; =================================================================================
+
+(defun bb/py-end-of-block (arg)
+  "Move to end of current block."
+  (interactive "^")
+  (py-beginning-of-block-or-clause)
+  (let ((block-indentation (current-indentation)))
+    (message "%d" block-indentation)
+    (while (and (forward-line 1)
+                (not (eobp))
+                (or (> (current-indentation) block-indentation)
+                    (empty-line-p))))
+    (while (and (forward-line -1)
+                (empty-line-p)))
+    (py-end-of-statement)
+    (point-marker)))
+
+(use-package python-mode
+  :ensure python-mode
+  :mode "\\.py\\'"
+  :pre-load (setq py-install-directorty (expand-file-name "sources/python-mode/" user-emacs-directory))
+  :config
+  (progn
     (setq hs-special-modes-alist
           (assq-delete-all 'python-mode hs-special-modes-alist))
-    ;; Replace it with a better one
-    (add-to-list
-     'hs-special-modes-alist
-     '(python-mode
-       "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
-       nil "#" #[(arg) "\300 \207" [python-nav-end-of-block] 1] nil))
-    ;; Other settings
-    (setq python-indent 4)))
+    (add-hook 'python-mode-hook 'linum-mode)
+    ;; (add-to-list
+    ;;  'hs-special-modes-alist
+    ;;  '(python-mode
+    ;;    "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
+    ;;    nil "#" bb/py-end-of-block nil))
+    ))
 
-(add-to-list 'auto-indent-disabled-modes-list 'python-mode)
 
 ;; Web mode
 ;; =================================================================================
 
-(add-hook 'web-mode-hook
-          (lambda ()
-            ;; Make evil use the custom web-mode folding function
-            (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)
-            ;; Other settings
-            (setq evil-shift-width 2)
-            (setq-local rainbow-delimiters-highlight-braces-p nil)))
+(use-package web-mode
+  :ensure web-mode
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.djhtml\\'" . web-mode)
+         ("\\.css\\'" . web-mode)
+         ("\\.xml\\'" . web-mode)
+         ("\\.xinp\\'" . web-mode)
+         ("\\.qrc\\'" . web-mode))
+  :config
+  (progn
+    (add-hook 'web-mode-hook
+              (lambda ()
+                (define-key evil-normal-state-local-map "za" 'web-mode-fold-or-unfold)
+                (setq evil-shift-width 2)
+                (setq-local rainbow-delimiters-highlight-braces-p nil)))
+    (setq web-mode-markup-indent-offset 2
+          web-mode-css-indent-offset 2
+          web-mode-code-indent-offset 2)))
 
-;; Load web-mode on these files
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.xinp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.qrc\\'" . web-mode))
-
-;; Other settings
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
 
 ;; C++ and C mode
 ;; =================================================================================
@@ -327,8 +460,10 @@
 
 (defun bb-style () (interactive) (c-set-style "bb-style"))
 (defun sintef-style () (interactive) (c-set-style "sintef-style"))
-(evil-ex-define-cmd "bbstyle" 'bb-style)
-(evil-ex-define-cmd "sintefstyle" 'sintef-style)
+(evil-ex-define-cmd
+ "bbstyle" (lambda () (interactive) (c-set-style "bb-style")))
+(evil-ex-define-cmd
+ "sintefstyle" (lambda () (interactive) (c-set-style "sintef-style")))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -339,11 +474,15 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; Coffee mode
+
+;; C++ and C mode
 ;; =================================================================================
 
-(setq coffee-tab-width 4)
-(add-to-list 'auto-indent-disabled-modes-list 'coffee-mode)
+(use-package coffee-mode
+  :ensure coffee-mode
+  :mode "\\.coffee\\'"
+  :init (setq coffee-tab-width 4))
+
 
 ;; Lisp mode
 ;; =================================================================================
@@ -351,101 +490,62 @@
 (add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
+
 ;; Haskell mode
 ;; =================================================================================
 
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (evil-ex-define-cmd "comp" 'haskell-process-cabal-build)
-            (setq evil-shift-width 2)))
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(setq haskell-indentation-cycle-warn nil)
-(add-to-list 'auto-indent-disabled-modes-list 'haskell-mode)
+(use-package haskell-mode
+  :ensure haskell-mode
+  :mode (("\\.hs" . haskell-mode)
+         ("\\.lhs" . haskell-mode))
+  :config
+  (progn
+    (evil-leader/set-key-for-mode 'haskell-mode "p" 'haskell-process-cabal-build)
+    (setq haskell-indentation-cycle-warn nil)
+    (setq haskell-operator-face 'font-lock-builtin-face)
+    (add-hook 'haskell-mode-hook
+              (lambda ()
+                (setq evil-shift-width 2)
+                (turn-on-haskell-indentation)))))
 
-(setq haskell-operator-face 'font-lock-builtin-face)
 
-;; Org mode
+;; Org
 ;; =================================================================================
 
+(use-package org
+  :config
+  (progn
+    (use-package evil-org
+      :load-path "sources/misc")
+    (use-package auto-indent-mode
+      :ensure auto-indent-mode)
+    (add-hook 'org-mode-hook
+              (lambda () (interactive)
+                (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
+                (auto-indent-mode)))
+    (setq org-log-done 'time)
+    (add-to-list 'org-agenda-files "~/my.org")))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
-            (linum-mode -1)
-            (evil-ex-define-cmd "comp" 'org-push)))
-(setq org-log-done 'time)
-(add-to-list 'org-agenda-files "~/my.org")
 
-;; CMake mode
+;; Markdown
 ;; =================================================================================
 
-(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
-(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
-(autoload 'cmake-mode "cmake-mode")
+(use-package markdown-mode
+  :ensure markdown-mode
+  :mode "\\.md\\'")
 
-;; Color themes
+
+;; CMake
 ;; =================================================================================
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(set-cursor-color "#0a9dff")
-(provide 'init-themes)
-(load-theme 'badwolf t)
-(global-hl-line-mode t)
+(use-package cmake-mode
+  :ensure cmake-mode
+  :mode (("CMakeLists\\.txt\\'" . cmake-mode)
+         ("\\.cmake\\'" . cmake-mode)))
 
-;; IDO mode
-;; =================================================================================
 
-(ido-mode t)
-(ido-everywhere t)
-(setq ido-enable-flex-matching t)
 
-;; Whitespace mode
-;; =================================================================================
+;; ;; evil, evil-leader and mics keybindings
+;; ;; =================================================================================
 
-(setq whitespace-style
-      '(face
-        tabs
-        tab-mark
-        newline
-        newline-mark))
-(setq whitespace-display-mappings
-      '((newline-mark 10 [172 10])
-        (tab-mark 9 [9655 9])))
-(global-whitespace-mode)
-
-;; Rainbow delimiters
-;; =================================================================================
-
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; Backups
-;; =================================================================================
-
-(setq backup-directory-alist '(("." . "~/.emacs-saves"))
-      backup-by-copying t
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-
-;; GUI elements
-;; =================================================================================
-
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Varia
-;; =================================================================================
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq vc-follow-symlinks nil)
-(set-language-environment "UTF-8")
-(setq-default indent-tabs-mode nil)
-(setq linum-relative-current-symbol "->")
-(global-linum-mode t)
-(visual-line-mode)
-(setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t
-      initial-scratch-message nil)
-(setq warning-suppress-types '((undo discard-info)))
+;; (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)

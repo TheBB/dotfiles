@@ -111,6 +111,19 @@
    `(ac-candidate-face ((t (:background ,bwc-lightgravel))))
    `(ac-selection-face ((t (:foreground ,bwc-coal :background ,bwc-orange))))
    `(flymake-errline ((t (:background nil :underline ,bwc-taffy ))))
-   `(flymake-warnline ((t (:background nil :underline ,bwc-dress ))))))
+   `(flymake-warnline ((t (:background nil :underline ,bwc-dress ))))
+
+   `(helm-selection ((t (:inherit nil :background ,bwc-deepgravel :underline nil))))
+   `(helm-source-header ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel :family "Source Code Pro" :height 1.2))))
+   `(helm-M-x-key ((t (:inherit nil :foreground ,bwc-orange :underline nil))))
+   `(helm-candidate-number ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-darkgravel :weight bold))))
+   `(helm-buffer-saved-out ((t (:inherit nil :foreground ,bwc-taffy :background ,bwc-blackestgravel :weight bold))))
+   `(helm-ff-directory ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
+   `(helm-ff-file ((t (:inherit nil :foreground ,bwc-snow :background ,bwc-blackestgravel))))
+   `(helm-match ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-blackestgravel :weight bold))))
+   `(helm-grep-lineno ((t (:inherit nil :foreground ,bwc-mediumgravel :background ,bwc-blackestgravel))))
+   `(helm-moccur-buffer ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel :underline nil))))
+   ))
+
 
 (provide-theme 'badwolf)

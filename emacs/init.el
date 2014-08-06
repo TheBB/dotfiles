@@ -306,8 +306,10 @@
   :init (popwin-mode t)
   :config
   (progn
+    (define-key evil-normal-state-map (kbd "C-`") 'popwin:close-popup-window)
     (push '("*helm*" :height 20) popwin:special-display-config)
-    (push '("^\\*helm ?[^\\*]+\\*$" :regexp t :height 20) popwin:special-display-config)))
+    (push '("^\\*helm ?[^\\*]+\\*$" :regexp t :height 20) popwin:special-display-config)
+    (push '("*compilation*" :height 10 :noselect t) popwin:special-display-config)))
 
 
 ;; Diminish
@@ -386,39 +388,18 @@
     (diminish 'yas-minor-mode)))
 
 
-;; Python
+;; Python mode
 ;; =================================================================================
 
-(defun bb/py-end-of-block (arg)
-  "Move to end of current block."
-  (interactive "^")
-  (py-beginning-of-block-or-clause)
-  (let ((block-indentation (current-indentation)))
-    (message "%d" block-indentation)
-    (while (and (forward-line 1)
-                (not (eobp))
-                (or (> (current-indentation) block-indentation)
-                    (empty-line-p))))
-    (while (and (forward-line -1)
-                (empty-line-p)))
-    (py-end-of-statement)
-    (point-marker)))
+(setq hs-special-modes-alist
+      (assq-delete-all 'python-mode hs-special-modes-alist))
+(add-to-list
+ 'hs-special-modes-alist
+ '(python-mode
+   "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
+   nil "#" #[(arg) "\300 \207" [python-nav-end-of-block] 1] nil))
 
-(use-package python-mode
-  :ensure python-mode
-  :mode "\\.py\\'"
-  :pre-load (setq py-install-directorty (expand-file-name "sources/python-mode/" user-emacs-directory))
-  :config
-  (progn
-    (setq hs-special-modes-alist
-          (assq-delete-all 'python-mode hs-special-modes-alist))
-    (add-hook 'python-mode-hook 'linum-mode)
-    ;; (add-to-list
-    ;;  'hs-special-modes-alist
-    ;;  '(python-mode
-    ;;    "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
-    ;;    nil "#" bb/py-end-of-block nil))
-    ))
+(setq python-indent 4)
 
 
 ;; Web mode
@@ -542,7 +523,9 @@
 (use-package cmake-mode
   :ensure cmake-mode
   :mode (("CMakeLists\\.txt\\'" . cmake-mode)
-         ("\\.cmake\\'" . cmake-mode)))
+         ("\\.cmake\\'" . cmake-mode))
+  :config
+  (add-hook 'cmake-mode 'linum-mode))
 
 
 

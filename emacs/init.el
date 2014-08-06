@@ -13,6 +13,7 @@
 
 (require 'use-package)
 
+
 ;; Backups
 ;; =================================================================================
 
@@ -293,10 +294,27 @@
         "ag" 'helm-ag
         "af" 'helm-ag-this-file
         "ad" 'helm-do-ag))
-    (define-key helm-map (kbd "C-j") 'helm-next-line)
-    (define-key helm-map (kbd "C-k") 'helm-previous-line)
+    (define-key helm-map (kbd "M-j") 'helm-next-line)
+    (define-key helm-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-    (define-key helm-map (kbd "C-z") 'helm-select-action)))
+    (define-key helm-map (kbd "M-z") 'helm-select-action)))
+
+
+;; Company
+;; =================================================================================
+
+(use-package company
+  :commands company-mode
+  :ensure company
+  :init (add-hook 'prog-mode-hook 'company-mode)
+  :config
+  (progn
+    (add-to-list 'completion-styles 'substring)
+    (define-key company-active-map [escape] 'company-abort)
+    (define-key company-active-map (kbd "M-f") 'company-filter-candidates)
+    (define-key company-active-map (kbd "M-j") 'company-select-next)
+    (define-key company-active-map (kbd "M-k") 'company-select-previous)))
+
 
 
 ;; Popwin

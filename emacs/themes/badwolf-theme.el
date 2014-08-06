@@ -101,6 +101,16 @@
    `(whitespace-newline ((t (:foreground ,bwc-deepgravel))))
    
    `(linum-relative-current-face ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
+
+   `(company-tooltip ((t (:background ,bwc-darkgravel :foreground ,bwc-brightgravel))))
+   `(company-tooltip-common ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
+   `(company-tooltip-selection ((t (:background ,bwc-deepgravel :foreground ,bwc-brightgravel))))
+   `(company-tooltip-common-selection ((t (:background ,bwc-deepgravel :foreground ,bwc-taffy :weight bold))))
+   `(company-scrollbar-bg ((t (:background ,bwc-deepgravel :foreground ,bwc-snow))))
+   `(company-scrollbar-fg ((t (:background ,bwc-lightgravel :foreground ,bwc-snow))))
+   `(company-preview ((t (:background ,bwc-darkgravel :foreground ,bwc-term-blue :weight bold))))
+   `(company-preview-common ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
+   `(company-preview-search ((t (:background ,bwc-darkgravel :foreground ,bwc-dalespale :weight bold))))
    )
   
   (custom-set-faces

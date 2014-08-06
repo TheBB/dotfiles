@@ -61,6 +61,7 @@
 
 (setq vc-follow-symlinks nil
       warning-suppress-tyles '((undo discard-info)))
+(setq-default fill-column 100)
 
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8-unix)
@@ -505,7 +506,6 @@
               (lambda () (interactive)
                 (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
                 (auto-indent-mode)))
-    (setq org-log-done 'time)
     (add-to-list 'org-agenda-files "~/my.org")))
 
 
@@ -526,8 +526,3 @@
          ("\\.cmake\\'" . cmake-mode))
   :config
   (add-hook 'cmake-mode 'linum-mode))
-
-
-
-;; ;; evil, evil-leader and mics keybindings
-;; ;; =================================================================================

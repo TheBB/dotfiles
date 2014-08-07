@@ -326,6 +326,7 @@
   :config
   (progn
     (define-key evil-normal-state-map (kbd "C-`") 'popwin:close-popup-window)
+    (setq popwin:close-popup-window-timer-interval 0.5) ;; Workaround for Emacs 24.3 issue
     (push '("*helm*" :height 20) popwin:special-display-config)
     (push '("^\\*helm ?[^\\*]+\\*$" :regexp t :height 20) popwin:special-display-config)
     (push '("*compilation*" :height 10 :noselect t) popwin:special-display-config)))

@@ -49,6 +49,7 @@
 
 (visual-line-mode)
 
+
 ;; Whitespace and indentation
 ;; =================================================================================
 
@@ -119,7 +120,7 @@
                 (motion   . ("MOTION "
                              powerline-normal-1 powerline-normal-2 powerline-normal-3))
                 (emacs    . ("EMACS  "
-                             powerline-normal-1 powerline-normal-2 powerline-normal-3))))
+                             powerline-emacs-1 powerline-normal-2 powerline-normal-3))))
              (gf (lambda (idx)
                    (if active (funcall sg idx) 'powerline-normal-3)))
              (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
@@ -343,7 +344,6 @@
     (define-key company-active-map (kbd "M-f") 'company-filter-candidates)
     (define-key company-active-map (kbd "M-j") 'company-select-next)
     (define-key company-active-map (kbd "M-k") 'company-select-previous)))
-
 
 
 ;; Popwin

@@ -61,7 +61,7 @@
 ;; =================================================================================
 
 (setq vc-follow-symlinks nil
-      warning-suppress-tyles '((undo discard-info)))
+      warning-suppress-styles '((undo discard-info)))
 (setq-default fill-column 100)
 
 (set-language-environment "UTF-8")
@@ -389,7 +389,7 @@
   :init (setq smooth-scroll-margin 3))
 
 
-;; Smooth scrolling
+;; Line numbers
 ;; =================================================================================
 
 (use-package linum-relative
@@ -433,8 +433,7 @@
   :config
   (progn
     (define-key yas-minor-mode-map (kbd "<tab>") nil)
-    (key-chord-define evil-insert-state-map "\"|" 'yas-expand)
-    (diminish 'yas-minor-mode)))
+    (key-chord-define evil-insert-state-map "\"|" 'yas-expand)))
 
 
 ;; Python mode

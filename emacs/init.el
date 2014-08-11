@@ -151,6 +151,18 @@
 ;; Evil
 ;; =================================================================================
 
+;; Fix window keys
+(defun bb/fix-window (map)
+  (define-key map (kbd "C-k") 'evil-window-up)
+  (define-key map (kbd "C-j") 'evil-window-down)
+  (define-key map (kbd "C-h") 'evil-window-left)
+  (define-key map (kbd "C-l") 'evil-window-right)
+  (define-key map (kbd "C-M-k") 'evil-window-move-very-top)
+  (define-key map (kbd "C-M-j") 'evil-window-move-very-bottom)
+  (define-key map (kbd "C-M-h") 'evil-window-move-far-left)
+  (define-key map (kbd "C-M-l") 'evil-window-move-far-right))
+
+
 (use-package evil
   :ensure evil
   :pre-load
@@ -160,15 +172,16 @@
   (progn
     (use-package evil-leader
       :ensure evil-leader
+      :pre-load (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode"))
       :init
       (progn
         (evil-leader/set-leader ",")
         (global-evil-leader-mode t)
         (evil-leader/set-key
-          "gi" (lambda () (interactive) (find-file user-init-file))
-          "gt" (lambda () (interactive)
+          "hi" (lambda () (interactive) (find-file user-init-file))
+          "ht" (lambda () (interactive)
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
-          "go" (lambda () (interactive) (find-file "~/my.org"))
+          "ho" (lambda () (interactive) (find-file "~/my.org"))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
 
@@ -240,14 +253,7 @@
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)
 
-    (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-    (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-    (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-    (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-    (define-key evil-normal-state-map (kbd "C-M-k") 'evil-window-move-very-top)
-    (define-key evil-normal-state-map (kbd "C-M-j") 'evil-window-move-very-bottom)
-    (define-key evil-normal-state-map (kbd "C-M-h") 'evil-window-move-far-left)
-    (define-key evil-normal-state-map (kbd "C-M-l") 'evil-window-move-far-right)
+    (bb/fix-window evil-normal-state-map)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd
@@ -297,6 +303,30 @@
     (define-key helm-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "M-z") 'helm-select-action)))
+
+
+;; Magit
+;; =================================================================================
+
+(use-package magit
+  :ensure magit
+  :commands (magit-status magit-diff magit-log magit-blame-mode)
+  :init
+  (evil-leader/set-key
+    "gs" 'magit-status
+    "gb" 'magit-blame-mode
+    "gl" 'magit-log
+    "gd" 'magit-diff)
+  :config
+  (progn
+    (evil-make-overriding-map magit-mode-map 'emacs)
+    (bb/fix-window magit-mode-map)
+    (evil-define-key 'emacs magit-mode-map [escape] 'keyboard-quit)
+    (evil-define-key 'emacs magit-mode-map "j" 'magit-goto-next-section)
+    (evil-define-key 'emacs magit-mode-map "k" 'magit-goto-previous-section)
+    (evil-define-key 'emacs magit-mode-map "K" 'magit-discard-item)
+    (evil-define-key 'emacs magit-mode-map "\\" 'magit-git-command)
+    (evil-define-key 'emacs magit-mode-map ":" 'evil-ex)))
 
 
 ;; Company

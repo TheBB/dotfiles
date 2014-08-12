@@ -124,11 +124,15 @@
              (gf (lambda (idx)
                    (if active (funcall sg idx) 'powerline-normal-3)))
              (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
+             (branch (format " %s" (if (fboundp 'magit-get-current-branch)
+                                       (or (magit-get-current-branch) "-")
+                                     "-")))
              (lhs (list (powerline-raw
                          (if active (funcall sg 0) "------ ")
                          (funcall gf 1) 'l)
                         (funcall separator-left (funcall gf 1) (funcall gf 2))
                         (powerline-vc (funcall gf 2))
+                        ;; (powerline-raw branch (funcall gf 2))
                         (powerline-raw " " (funcall gf 2))
                         (funcall separator-left (funcall gf 2) (funcall gf 3))
                         (powerline-buffer-id (funcall gf 3) 'l)
@@ -328,6 +332,8 @@
     (evil-define-key 'emacs magit-mode-map "K" 'magit-discard-item)
     (evil-define-key 'emacs magit-mode-map "\\" 'magit-git-command)
     (evil-define-key 'emacs magit-mode-map ":" 'evil-ex)))
+
+(setq vc-handled-backends nil)
 
 
 ;; Company

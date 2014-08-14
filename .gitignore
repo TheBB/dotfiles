@@ -4,3 +4,5 @@ bundle
 
 emacs/auto-save-list
 *.elc
+/emacs/projectile.cache
+/emacs/projectile-bookmarks.eld

@@ -277,6 +277,12 @@
 (define-key minibuffer-local-isearch-map [escape] 'bb/minibuffer-keyboard-quit)
 
 
+;; Ag
+;; =================================================================================
+
+(use-package ag
+  :ensure ag)
+
 ;; Helm
 ;; =================================================================================
 
@@ -285,8 +291,8 @@
   :init
   (evil-leader/set-key
     "x" 'helm-M-x
-    "b" 'helm-mini
-    "f" 'helm-find-files
+    "fb" 'helm-mini
+    "ff" 'helm-find-files
     "p" 'helm-show-kill-ring)
   :config
   (progn
@@ -328,6 +334,24 @@
     (evil-define-key 'emacs magit-mode-map ":" 'evil-ex)))
 
 (setq vc-handled-backends nil)
+
+
+;; Projectile
+;; =================================================================================
+
+(use-package projectile
+  :ensure projectile
+  :config
+  (progn
+    (evil-leader/set-key
+      "ap" 'projectile-ag)
+    (projectile-global-mode)))
+
+(use-package helm-projectile
+  :ensure helm-projectile
+  :init
+  (evil-leader/set-key
+    "fp" 'helm-projectile))
 
 
 ;; Company

@@ -295,7 +295,7 @@
   :init
   (evil-leader/set-key
     "x" 'helm-M-x
-    "fb" 'helm-mini
+    "b" 'helm-mini
     "ff" 'helm-find-files
     "p" 'helm-show-kill-ring)
   :config

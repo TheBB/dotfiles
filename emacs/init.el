@@ -283,6 +283,7 @@
 (use-package ag
   :ensure ag)
 
+
 ;; Helm
 ;; =================================================================================
 
@@ -394,7 +395,9 @@
   (progn
     (diminish 'undo-tree-mode)
     (diminish 'abbrev-mode)
-    (diminish 'global-whitespace-mode)))
+    (diminish 'global-whitespace-mode)
+    (diminish 'projectile-mode "proj")
+    (eval-after-load "hideshow" '(diminish 'hs-minor-mode))))
 
 
 ;; Rainbow delimiters

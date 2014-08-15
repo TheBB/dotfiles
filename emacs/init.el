@@ -147,7 +147,7 @@
   (bb/powerline-evil-theme))
 
 
-;; Evil
+;; Evil and friends
 ;; =================================================================================
 
 ;; Fix window keys
@@ -535,7 +535,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 
-;; C++ and C mode
+;; Coffee mode
 ;; =================================================================================
 
 (use-package coffee-mode

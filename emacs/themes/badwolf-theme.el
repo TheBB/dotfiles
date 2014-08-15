@@ -111,6 +111,16 @@
    `(company-preview ((t (:background ,bwc-darkgravel :foreground ,bwc-term-blue :weight bold))))
    `(company-preview-common ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
    `(company-preview-search ((t (:background ,bwc-darkgravel :foreground ,bwc-dalespale :weight bold))))
+
+   `(magit-branch ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-blue :weight bold))))
+   `(magit-log-sha1 ((t (:background ,bwc-blackestgravel :foreground ,bwc-taffy))))
+   `(magit-section-title ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
+   `(magit-diff-add ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-green))))
+   `(magit-diff-del ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-red))))
+   `(magit-diff-none ((t (:background ,bwc-blackestgravel :foreground ,bwc-lightgravel))))
+   `(magit-item-highlight ((t (:background ,bwc-blackestgravel :foreground ,bwc-snow :weight bold))))
+   `(magit-diff-file-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
+   `(magit-diff-hunk-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
    )
 
   (custom-set-faces

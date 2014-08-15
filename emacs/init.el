@@ -254,6 +254,9 @@
 
     (bb/fix-window evil-normal-state-map)
 
+    (define-key evil-normal-state-map "]b" 'evil-next-buffer)
+    (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
+
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd
      "orgpush" (lambda () (interactive)

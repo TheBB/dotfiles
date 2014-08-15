@@ -603,3 +603,9 @@
          ("\\.cmake\\'" . cmake-mode))
   :config
   (add-hook 'cmake-mode 'linum-mode))
+
+
+;; Compilation mode
+;; =================================================================================
+
+(bb/fix-window compilation-mode-map)

@@ -308,10 +308,27 @@
         "ag" 'helm-ag
         "af" 'helm-ag-this-file
         "ad" 'helm-do-ag))
+    (setq helm-buffers-fuzzy-matching t)
     (define-key helm-map (kbd "M-j") 'helm-next-line)
     (define-key helm-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "M-z") 'helm-select-action)))
+
+
+;; IDO
+;; =================================================================================
+
+(use-package ido-ubiquitous
+  :ensure ido-ubiquitous)
+
+(use-package flx-ido
+  :ensure flx-ido)
+
+(ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 
 ;; Magit
@@ -355,7 +372,8 @@
   :ensure helm-projectile
   :init
   (evil-leader/set-key
-    "fp" 'helm-projectile))
+    "fp" 'helm-projectile
+    "fr" 'projectile-find-file))
 
 
 ;; Company

@@ -1,0 +1,6 @@
+[submodule "emacs/sources/grizzl"]
+	path = emacs/sources/grizzl
+	url = git@github.com:d11wtq/grizzl
+[submodule "emacs/sources/unimacs"]
+	path = emacs/sources/unimacs
+	url = git@github.com:TheBB/unimacs

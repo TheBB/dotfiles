@@ -295,7 +295,7 @@
   :init
   (evil-leader/set-key
     "x" 'helm-M-x
-    "b" 'helm-mini
+    ;; "b" 'helm-mini
     "ff" 'helm-find-files
     "p" 'helm-show-kill-ring)
   :config
@@ -627,3 +627,17 @@
 ;; =================================================================================
 
 (bb/fix-window compilation-mode-map)
+
+
+;; Unimacs
+;; =================================================================================
+
+(use-package grizzl
+  :load-path "sources/grizzl")
+
+(use-package unimacs
+  :load-path "sources/unimacs"
+  :init
+  (progn
+    (evil-leader/set-key
+      "b" 'unimacs/buffers)))

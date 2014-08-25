@@ -640,4 +640,5 @@
   :init
   (progn
     (evil-leader/set-key
-      "b" 'unimacs/buffers)))
+      "b" (lambda () (interactive)
+            (unimacs/view 'buffers "Switch buffer" 'switch-to-buffer)))))

@@ -294,7 +294,7 @@
   :ensure helm
   :init
   (evil-leader/set-key
-    "x" 'helm-M-x
+    ;; "x" 'helm-M-x
     ;; "b" 'helm-mini
     "ff" 'helm-find-files
     "p" 'helm-show-kill-ring)
@@ -641,4 +641,9 @@
   (progn
     (evil-leader/set-key
       "b" (lambda () (interactive)
-            (unimacs/view 'buffers "Switch buffer" 'switch-to-buffer)))))
+            (unimacs/view 'buffers "Switch buffer" 'switch-to-buffer))
+      "x" (lambda () (interactive)
+            (unimacs/view 'extended "Extended command"
+                          (lambda (cmd)
+                            (execute-extended-command current-prefix-arg cmd))))
+      )))

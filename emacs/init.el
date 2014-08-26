@@ -640,10 +640,5 @@
   :init
   (progn
     (evil-leader/set-key
-      "b" (lambda () (interactive)
-            (unimacs/view 'buffers "Switch buffer" 'switch-to-buffer))
-      "x" (lambda () (interactive)
-            (unimacs/view 'extended "Extended command"
-                          (lambda (cmd)
-                            (execute-extended-command current-prefix-arg cmd))))
-      )))
+      "b" 'unimacs/cmd-switch-buffer
+      "x" 'unimacs/cmd-extended-command)))

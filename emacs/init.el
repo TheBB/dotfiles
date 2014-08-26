@@ -635,10 +635,15 @@
 (use-package grizzl
   :load-path "sources/grizzl")
 
+(use-package f
+  :ensure f)
+
 (use-package unimacs
   :load-path "sources/unimacs"
   :init
   (progn
     (evil-leader/set-key
       "b" 'unimacs/cmd-switch-buffer
-      "x" 'unimacs/cmd-extended-command)))
+      "x" 'unimacs/cmd-extended-command
+      "f" 'unimacs/cmd-find-file
+      )))

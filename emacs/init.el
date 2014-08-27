@@ -177,10 +177,10 @@
         (evil-leader/set-leader ",")
         (global-evil-leader-mode t)
         (evil-leader/set-key
-          "hi" (lambda () (interactive) (find-file user-init-file))
-          "ht" (lambda () (interactive)
+          "ii" (lambda () (interactive) (find-file user-init-file))
+          "it" (lambda () (interactive)
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
-          "ho" (lambda () (interactive) (find-file "~/my.org"))
+          "io" (lambda () (interactive) (find-file "~/my.org"))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
 
@@ -220,8 +220,7 @@
         (define-key evil-normal-state-map "gs" 'evil-forward-arg)
         (define-key evil-normal-state-map "ga" 'evil-backward-arg)
         (define-key evil-motion-state-map "gs" 'evil-forward-arg)
-        (define-key evil-motion-state-map "ga" 'evil-backward-arg)
-        (define-key evil-normal-state-map "gk" 'evil-jump-out-args)))
+        (define-key evil-motion-state-map "ga" 'evil-backward-arg)))
 
     (use-package surround
       :load-path "sources/misc"
@@ -293,11 +292,7 @@
 (use-package helm
   :ensure helm
   :init
-  (evil-leader/set-key
-    ;; "x" 'helm-M-x
-    ;; "b" 'helm-mini
-    "ff" 'helm-find-files
-    "p" 'helm-show-kill-ring)
+  (evil-leader/set-key "p" 'helm-show-kill-ring)
   :config
   (progn
     (use-package helm-config)
@@ -645,5 +640,6 @@
     (evil-leader/set-key
       "b" 'unimacs/cmd-switch-buffer
       "x" 'unimacs/cmd-extended-command
-      "f" 'unimacs/cmd-find-file
-      )))
+      "fd" 'unimacs/cmd-find-file
+      "hf" 'unimacs/cmd-describe-function
+      "hv" 'unimacs/cmd-describe-variable)))

@@ -292,7 +292,11 @@
 (use-package helm
   :ensure helm
   :init
-  (evil-leader/set-key "p" 'helm-show-kill-ring)
+  (evil-leader/set-key
+    "x" 'helm-M-x
+    "b" 'helm-mini
+    "fd" 'helm-find-files
+    "p" 'helm-show-kill-ring)
   :config
   (progn
     (use-package helm-config)
@@ -638,8 +642,8 @@
   :init
   (progn
     (evil-leader/set-key
-      "b" 'unimacs/cmd-switch-buffer
-      "x" 'unimacs/cmd-extended-command
-      "fd" 'unimacs/cmd-find-file
+      ;; "b" 'unimacs/cmd-switch-buffer
+      ;; "x" 'unimacs/cmd-extended-command
+      ;; "fd" 'unimacs/cmd-find-file
       "hf" 'unimacs/cmd-describe-function
       "hv" 'unimacs/cmd-describe-variable)))

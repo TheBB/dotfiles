@@ -177,10 +177,10 @@
         (evil-leader/set-leader ",")
         (global-evil-leader-mode t)
         (evil-leader/set-key
-          "ii" (lambda () (interactive) (find-file user-init-file))
-          "it" (lambda () (interactive)
+          "hi" (lambda () (interactive) (find-file user-init-file))
+          "ht" (lambda () (interactive)
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
-          "io" (lambda () (interactive) (find-file "~/my.org"))
+          "ho" (lambda () (interactive) (find-file "~/my.org"))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
 
@@ -631,19 +631,20 @@
 ;; Unimacs
 ;; =================================================================================
 
-(use-package grizzl
-  :load-path "sources/grizzl")
+;; (use-package grizzl
+;;   :load-path "sources/grizzl")
 
-(use-package f
-  :ensure f)
+;; (use-package f
+;;   :ensure f)
 
-(use-package unimacs
-  :load-path "sources/unimacs"
-  :init
-  (progn
-    (evil-leader/set-key
-      ;; "b" 'unimacs/cmd-switch-buffer
-      ;; "x" 'unimacs/cmd-extended-command
-      ;; "fd" 'unimacs/cmd-find-file
-      "hf" 'unimacs/cmd-describe-function
-      "hv" 'unimacs/cmd-describe-variable)))
+;; (use-package unimacs
+;;   :load-path "sources/unimacs"
+;;   :init
+;;   (progn
+;;     (evil-leader/set-key
+;;       "b" 'unimacs/cmd-switch-buffer
+;;       "x" 'unimacs/cmd-extended-command
+;;       "fd" 'unimacs/cmd-find-file
+;;       "hf" 'unimacs/cmd-describe-function
+;;       "hv" 'unimacs/cmd-describe-variable
+;;       )))

@@ -1,1 +1,2 @@
 set editor="emacsclient -c <file>"
+command redditside :js content.wrappedJSObject.$('div.side').fadeOut();

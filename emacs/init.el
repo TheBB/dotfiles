@@ -257,6 +257,7 @@
     (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
+    (evil-ex-define-cmd "h" 'help)
     (evil-ex-define-cmd
      "orgpush" (lambda () (interactive)
                  (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push")))
@@ -388,6 +389,7 @@
 
 (use-package company
   :commands company-mode
+  :disabled t
   :ensure company
   :init (add-hook 'prog-mode-hook 'company-mode)
   :config

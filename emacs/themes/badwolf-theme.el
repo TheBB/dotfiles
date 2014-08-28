@@ -139,6 +139,7 @@
    `(helm-candidate-number ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-darkgravel :weight bold))))
    `(helm-buffer-saved-out ((t (:inherit nil :foreground ,bwc-taffy :background ,bwc-blackestgravel :weight bold))))
    `(helm-ff-directory ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
+   `(helm-buffer-directory ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
    `(helm-ff-file ((t (:inherit nil :foreground ,bwc-snow :background ,bwc-blackestgravel))))
    `(helm-match ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-blackestgravel :weight bold))))
    `(helm-grep-lineno ((t (:inherit nil :foreground ,bwc-mediumgravel :background ,bwc-blackestgravel))))

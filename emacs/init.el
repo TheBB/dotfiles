@@ -180,7 +180,6 @@
           "hi" (lambda () (interactive) (find-file user-init-file))
           "ht" (lambda () (interactive)
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
-          "ho" (lambda () (interactive) (find-file "~/my.org"))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
 
@@ -614,7 +613,7 @@
 
 
 ;; Org
-;; =================================================================================
+;; =================================================================================" 
 
 (use-package org
   :config
@@ -623,11 +622,16 @@
       :load-path "sources/misc")
     (use-package auto-indent-mode
       :ensure auto-indent-mode)
+    (evil-leader/set-key
+      "og" (lambda () (interactive) (magit-status "~/org"))
+      "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
+      "om" (lambda () (interactive) (find-file "~/org/my.org")))
+    (add-to-list 'org-agenda-files "~/sintef.org")
+    (add-to-list 'org-agenda-files "~/my.org")
     (add-hook 'org-mode-hook
               (lambda () (interactive)
                 (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
-                (auto-indent-mode)))
-    (add-to-list 'org-agenda-files "~/my.org")))
+                (auto-indent-mode)))))
 
 
 ;; Markdown

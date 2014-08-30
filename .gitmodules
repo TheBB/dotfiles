@@ -4,3 +4,6 @@
 [submodule "emacs/sources/unimacs"]
 	path = emacs/sources/unimacs
 	url = git@github.com:TheBB/unimacs
+[submodule "emacs/sources/evil-indent-textobject"]
+	path = emacs/sources/evil-indent-textobject
+	url = git@github.com:TheBB/evil-indent-textobject

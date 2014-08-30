@@ -235,7 +235,10 @@
       :idle (global-evil-matchit-mode t))
 
     (use-package evil-little-word
-      :load-path "sources/misc"))
+      :load-path "sources/misc")
+
+    (use-package evil-indent-textobject
+      :load-path "sources/evil-indent-textobject"))
 
   :config
   (progn
@@ -401,6 +404,17 @@
     (define-key company-active-map (kbd "M-f") 'company-filter-candidates)
     (define-key company-active-map (kbd "M-j") 'company-select-next)
     (define-key company-active-map (kbd "M-k") 'company-select-previous)))
+
+
+;; Expand region
+;; =================================================================================
+
+(use-package expand-region
+  :ensure expand-region
+  :config
+  (progn
+    (define-key evil-normal-state-map (kbd "C-=") 'er/expand-region)
+    (define-key evil-visual-state-map (kbd "C-=") 'er/expand-region)))
 
 
 ;; Popwin

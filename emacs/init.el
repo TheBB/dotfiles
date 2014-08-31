@@ -615,23 +615,87 @@
 ;; Org
 ;; =================================================================================" 
 
+(defun bb/org-eol-call (fun)
+  "Go to end of line and call provided function"
+  (end-of-line)
+  (funcall fun)
+  (evil-append nil))
+
 (use-package org
   :config
   (progn
-    (use-package evil-org
-      :load-path "sources/misc")
-    (use-package auto-indent-mode
-      :ensure auto-indent-mode)
+    (evil-define-key 'normal org-mode-map
+      "gJ" 'outline-next-visible-heading
+      "gK" 'outline-previous-visible-heading
+      "gj" 'org-forward-heading-same-level
+      "gk" 'org-backward-heading-same-level
+      "gh" 'outline-up-heading
+
+      "gi" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading))
+      "go" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading-after-current))
+      "gt" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current)
+             (org-todo))
+
+      "gs" 'org-sort
+      "g/" 'org-sparse-tree
+      (kbd "g SPC") 'org-remove-occur-highlights
+      (kbd "M-n") 'next-error
+      (kbd "M-p") 'previous-error
+
+      "-" 'org-ctrl-c-minus
+      "gc" 'org-ctrl-c-ctrl-c
+      "g*" 'org-ctrl-c-star
+      "gf" 'org-footnote-action
+
+      "t" 'org-todo
+      "H" 'org-beginning-of-line
+      "L" 'org-end-of-line
+      ";t" 'org-show-todo-tree
+      "$" 'org-end-of-line
+      "^" 'org-beginning-of-line
+      "<" 'evil-shift-left
+      ">" 'evil-shift-right
+      ";a" 'org-agenda
+      (kbd "TAB") 'org-cycle)
+
+    (mapc (lambda (state)
+            (evil-define-key state org-mode-map
+              (kbd "M-l") 'org-metaright
+              (kbd "M-h") 'org-metaleft
+              (kbd "M-k") 'org-metaup
+              (kbd "M-j") 'org-metadown
+              (kbd "M-L") 'org-shiftmetaright
+              (kbd "M-H") 'org-shiftmetaleft
+              (kbd "M-K") 'org-shiftmetaup
+              (kbd "M-J") 'org-shiftmetadown
+              (kbd "M-o") '(lambda () (interactive)
+                             (bb/org-eol-call
+                              '(lambda()
+                                 (org-insert-heading)
+                                 (org-metaright))))
+              (kbd "M-t") '(lambda () (interactive)
+                             (bb/org-eol-call
+                              '(lambda()
+                                 (org-insert-todo-heading nil)
+                                 (org-metaright))))
+              ))
+          '(normal insert))
+
     (evil-leader/set-key
       "og" (lambda () (interactive) (magit-status "~/org"))
       "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
       "om" (lambda () (interactive) (find-file "~/org/my.org")))
-    (add-to-list 'org-agenda-files "~/sintef.org")
-    (add-to-list 'org-agenda-files "~/my.org")
+    (evil-leader/set-key-for-mode 'org-mode
+      "oh" 'helm-org-headlines)
+    (add-to-list 'org-agenda-files "~/org/sintef.org")
+    (add-to-list 'org-agenda-files "~/org/my.org")
     (add-hook 'org-mode-hook
               (lambda () (interactive)
-                (define-key evil-normal-state-local-map "gc" 'org-ctrl-c-ctrl-c)
-                (auto-indent-mode)))))
+                (org-indent-mode)
+                (visual-line-mode)
+                (evil-leader/set-key
+                  "oh" 'helm-org-headlines)))))
 
 
 ;; Markdown

@@ -218,10 +218,10 @@
       (progn
         (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
         (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
-        (define-key evil-normal-state-map "gl" 'evil-forward-arg)
-        (define-key evil-normal-state-map "gh" 'evil-backward-arg)
-        (define-key evil-motion-state-map "gl" 'evil-forward-arg)
-        (define-key evil-motion-state-map "gh" 'evil-backward-arg)))
+        (define-key evil-normal-state-map "gs" 'evil-forward-arg)
+        (define-key evil-normal-state-map "ga" 'evil-backward-arg)
+        (define-key evil-motion-state-map "gs" 'evil-forward-arg)
+        (define-key evil-motion-state-map "ga" 'evil-backward-arg)))
 
     (use-package surround
       :load-path "sources/misc"

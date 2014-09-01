@@ -629,6 +629,10 @@
 
       "gi" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading))
       "go" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading-after-current))
+      (kbd "g M-o") (lambda () (interactive)
+                      (bb/org-eol-call 'org-insert-heading-after-current)
+                      (org-metaright))
+
       "gt" (lambda () (interactive)
              (bb/org-eol-call 'org-insert-heading-after-current)
              (org-todo))

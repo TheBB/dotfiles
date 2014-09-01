@@ -5,6 +5,7 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
+
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
@@ -638,6 +639,16 @@
       (kbd "M-n") 'next-error
       (kbd "M-p") 'previous-error
 
+      "g-" 'org-table-insert-hline
+      "g." 'org-time-stamp
+      "g!" 'org-time-stamp-inactive
+
+      "gxi" 'org-clock-in
+      "gxo" 'org-clock-out
+      "gxx" 'org-clock-in-last
+      "gxd" 'org-clock-display
+      "gxr" 'org-clock-report
+
       "-" 'org-ctrl-c-minus
       "gc" 'org-ctrl-c-ctrl-c
       "g*" 'org-ctrl-c-star
@@ -646,13 +657,9 @@
       "gl" 'org-insert-link
 
       "t" 'org-todo
-      "H" 'org-beginning-of-line
-      "L" 'org-end-of-line
       ;; ";t" 'org-show-todo-tree
       "$" 'org-end-of-line
       "^" 'org-beginning-of-line
-      "<" 'evil-shift-left
-      ">" 'evil-shift-right
       ;; ";a" 'org-agenda
       (kbd "TAB") 'org-cycle)
 
@@ -688,6 +695,11 @@
     (add-to-list 'org-agenda-files "~/org/sintef.org")
     (add-to-list 'org-agenda-files "~/org/my.org")
     (setq org-log-done 'time)
+    (setq org-clock-into-drawer t)
+
+    (evil-set-initial-state 'org-agenda-mode 'normal)
+    (global-set-key (kbd "C-c a") 'org-agenda)
+
     (add-hook 'org-mode-hook
               (lambda () (interactive)
                 (org-indent-mode)
@@ -741,3 +753,15 @@
 ;;       "hf" 'unimacs/cmd-describe-function
 ;;       "hv" 'unimacs/cmd-describe-variable
 ;;       )))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/org/sandbox.org" "~/org/my.org" "~/org/sintef.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

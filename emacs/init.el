@@ -261,13 +261,7 @@
     (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
-    (evil-ex-define-cmd "h" 'help)
-    (evil-ex-define-cmd
-     "orgpush" (lambda () (interactive)
-                 (shell-command "cd $HOME/repos/org && git commit -am \".\" && git push")))
-    (evil-ex-define-cmd
-     "orgpull" (lambda () (interactive)
-                 (shell-command "cd $HOME/repos/org && git pull")))))
+    (evil-ex-define-cmd "h" 'help)))
 
 
 ;; Use esc to get away from everything, like in vim
@@ -630,6 +624,7 @@
       "gj" 'org-forward-heading-same-level
       "gk" 'org-backward-heading-same-level
       "gh" 'outline-up-heading
+      "gp" 'org-set-property
 
       "gi" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading))
       "go" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading-after-current))
@@ -646,17 +641,19 @@
       "-" 'org-ctrl-c-minus
       "gc" 'org-ctrl-c-ctrl-c
       "g*" 'org-ctrl-c-star
+      (kbd "g RET") 'org-ctrl-c-ret
       "gf" 'org-footnote-action
+      "gl" 'org-insert-link
 
       "t" 'org-todo
       "H" 'org-beginning-of-line
       "L" 'org-end-of-line
-      ";t" 'org-show-todo-tree
+      ;; ";t" 'org-show-todo-tree
       "$" 'org-end-of-line
       "^" 'org-beginning-of-line
       "<" 'evil-shift-left
       ">" 'evil-shift-right
-      ";a" 'org-agenda
+      ;; ";a" 'org-agenda
       (kbd "TAB") 'org-cycle)
 
     (mapc (lambda (state)
@@ -678,18 +675,19 @@
                              (bb/org-eol-call
                               '(lambda()
                                  (org-insert-todo-heading nil)
-                                 (org-metaright))))
-              ))
+                                 (org-metaright))))))
           '(normal insert))
 
     (evil-leader/set-key
       "og" (lambda () (interactive) (magit-status "~/org"))
+      "ot" (lambda () (interactive) (find-file "~/org/sandbox.org"))
       "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
       "om" (lambda () (interactive) (find-file "~/org/my.org")))
     (evil-leader/set-key-for-mode 'org-mode
       "oh" 'helm-org-headlines)
     (add-to-list 'org-agenda-files "~/org/sintef.org")
     (add-to-list 'org-agenda-files "~/org/my.org")
+    (setq org-log-done 'time)
     (add-hook 'org-mode-hook
               (lambda () (interactive)
                 (org-indent-mode)

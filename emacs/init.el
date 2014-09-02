@@ -713,16 +713,20 @@
       "oh" 'helm-org-headlines)
     (evil-leader/set-key
       "og" (lambda () (interactive) (magit-status "~/org"))
+      "oc" (lambda () (interactive) (find-file "~/org/capture.org"))
       "ot" (lambda () (interactive) (find-file "~/org/sandbox.org"))
       "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
       "om" (lambda () (interactive) (find-file "~/org/my.org")))
+    (add-to-list 'org-agenda-files "~/org/capture.org")
     (add-to-list 'org-agenda-files "~/org/sintef.org")
     (add-to-list 'org-agenda-files "~/org/my.org")
+    (setq org-default-notes-file "~/org/capture.org")
 
     (setq org-log-done 'time)
     (setq org-clock-into-drawer t)
 
     (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
 
     (add-hook 'org-mode-hook
               (lambda () (interactive)

@@ -1,7 +1,7 @@
 bundle
 .ssh-agent
 *~
-
+/emacs/bookmarks
 emacs/auto-save-list
 *.elc
 /emacs/projectile.cache

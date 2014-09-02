@@ -121,6 +121,11 @@
    `(magit-item-highlight ((t (:background ,bwc-blackestgravel :foreground ,bwc-snow :weight bold))))
    `(magit-diff-file-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
    `(magit-diff-hunk-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
+
+   `(org-date ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
+   `(org-level-3 ((t (:background ,bwc-blackestgravel :foreground ,bwc-lime))))
+   `(org-level-4 ((t (:background ,bwc-blackestgravel :foreground ,bwc-coffee))))
+   `(org-level-6 ((t (:background ,bwc-blackestgravel :foreground ,bwc-tardis))))
    )
 
   (custom-set-faces

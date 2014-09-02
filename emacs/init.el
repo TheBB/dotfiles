@@ -616,56 +616,76 @@
   (funcall fun)
   (evil-append nil))
 
+(defun bb/org-insert-item ()
+  (interactive)
+  (if (not (org-in-item-p))
+      (bb/org-eol-call (lambda () (insert "\n- ")))
+    (bb/org-eol-call 'org-insert-item)))
+
 (use-package org
   :config
   (progn
     (evil-define-key 'normal org-mode-map
+      ;; Movement
       "gJ" 'outline-next-visible-heading
       "gK" 'outline-previous-visible-heading
       "gj" 'org-forward-heading-same-level
       "gk" 'org-backward-heading-same-level
       "gh" 'outline-up-heading
-      "gp" 'org-set-property
+      (kbd "M-n") 'next-error
+      (kbd "M-p") 'previous-error
+      "$" 'org-end-of-line
+      "^" 'org-beginning-of-line
 
-      "gi" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading))
-      "go" (lambda () (interactive) (bb/org-eol-call 'org-insert-heading-after-current))
-      (kbd "g M-o") (lambda () (interactive)
-                      (bb/org-eol-call 'org-insert-heading-after-current)
-                      (org-metaright))
-
+      ;; Insertion of headings and items
+      "go" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current))
+      "gO" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current)
+             (org-metaright))
       "gt" (lambda () (interactive)
              (bb/org-eol-call 'org-insert-heading-after-current)
              (org-todo))
+      "gT" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current)
+             (org-metaright)
+             (org-todo))
+      "gi" 'bb/org-insert-item
+      "gI" (lambda () (interactive)
+             (bb/org-insert-item)
+             (org-metaright))
 
-      "gs" 'org-sort
-      "g/" 'org-sparse-tree
-      (kbd "g SPC") 'org-remove-occur-highlights
-      (kbd "M-n") 'next-error
-      (kbd "M-p") 'previous-error
+      ;; Common keys
+      "-" 'org-ctrl-c-minus
+      "gc" 'org-ctrl-c-ctrl-c
+      "g*" 'org-ctrl-c-star
+      (kbd "g RET") 'org-ctrl-c-ret
 
+      ;; Insertions and setters
       "g-" 'org-table-insert-hline
+      "gp" 'org-set-property
       "g." 'org-time-stamp
       "g!" 'org-time-stamp-inactive
+      "gf" 'org-footnote-action
+      "gl" 'org-insert-link
+      "t" 'org-todo
 
+      ;; Clocking
       "gxi" 'org-clock-in
       "gxo" 'org-clock-out
       "gxx" 'org-clock-in-last
       "gxd" 'org-clock-display
       "gxr" 'org-clock-report
 
-      "-" 'org-ctrl-c-minus
-      "gc" 'org-ctrl-c-ctrl-c
-      "g*" 'org-ctrl-c-star
-      (kbd "g RET") 'org-ctrl-c-ret
-      "gf" 'org-footnote-action
-      "gl" 'org-insert-link
+      ;; Other
+      "gs" 'org-sort
+      "g/" 'org-sparse-tree
+      (kbd "g SPC") 'org-remove-occur-highlights
+      (kbd "TAB") 'org-cycle
 
-      "t" 'org-todo
       ;; ";t" 'org-show-todo-tree
-      "$" 'org-end-of-line
-      "^" 'org-beginning-of-line
       ;; ";a" 'org-agenda
-      (kbd "TAB") 'org-cycle)
+      )
 
     (mapc (lambda (state)
             (evil-define-key state org-mode-map

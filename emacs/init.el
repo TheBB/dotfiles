@@ -638,22 +638,22 @@
       "^" 'org-beginning-of-line
 
       ;; Insertion of headings and items
-      "go" (lambda () (interactive)
-             (bb/org-eol-call 'org-insert-heading-after-current))
       "gO" (lambda () (interactive)
              (bb/org-eol-call 'org-insert-heading-after-current)
              (org-metaright))
-      "gt" (lambda () (interactive)
-             (bb/org-eol-call 'org-insert-heading-after-current)
-             (org-todo))
+      "go" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current))
       "gT" (lambda () (interactive)
              (bb/org-eol-call 'org-insert-heading-after-current)
              (org-metaright)
              (org-todo))
-      "gi" 'bb/org-insert-item
+      "gt" (lambda () (interactive)
+             (bb/org-eol-call 'org-insert-heading-after-current)
+             (org-todo))
       "gI" (lambda () (interactive)
              (bb/org-insert-item)
              (org-metaright))
+      "gi" 'bb/org-insert-item
 
       ;; Common keys
       "-" 'org-ctrl-c-minus

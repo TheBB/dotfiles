@@ -709,19 +709,19 @@
                                  (org-metaright))))))
           '(normal insert))
 
+    (evil-leader/set-key-for-mode 'org-mode
+      "oh" 'helm-org-headlines)
     (evil-leader/set-key
       "og" (lambda () (interactive) (magit-status "~/org"))
       "ot" (lambda () (interactive) (find-file "~/org/sandbox.org"))
       "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
       "om" (lambda () (interactive) (find-file "~/org/my.org")))
-    (evil-leader/set-key-for-mode 'org-mode
-      "oh" 'helm-org-headlines)
     (add-to-list 'org-agenda-files "~/org/sintef.org")
     (add-to-list 'org-agenda-files "~/org/my.org")
+
     (setq org-log-done 'time)
     (setq org-clock-into-drawer t)
 
-    (evil-set-initial-state 'org-agenda-mode 'normal)
     (global-set-key (kbd "C-c a") 'org-agenda)
 
     (add-hook 'org-mode-hook
@@ -729,7 +729,14 @@
                 (org-indent-mode)
                 (visual-line-mode)
                 (evil-leader/set-key
-                  "oh" 'helm-org-headlines)))))
+                  "oh" 'helm-org-headlines)))
+
+    (defvar bb/org-agenda-fixed nil)
+    (add-hook 'org-agenda-mode-hook
+              (lambda () (interactive)
+                (unless bb/org-agenda-fixed
+                  (bb/fix-window org-agenda-mode-map)
+                  (setq bb/org-agenda-fixed t))))))
 
 
 ;; Markdown

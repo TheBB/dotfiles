@@ -43,8 +43,12 @@
    `(linum ((t (:foreground ,bwc-mediumgravel))))
    `(isearch ((t (:foreground ,bwc-coal :background ,bwc-dalespale :weight bold))))
    `(lazy-highlight ((t (:foreground ,bwc-coal :background, bwc-dalespale :weight bold))))
-   `(mode-line ((t (:box (:line-width -1 :style released-button) :foreground ,bwc-brightgravel :background ,bwc-darkgravel))))
-   `(mode-line-inactive ((t (:box (:line-width -1 :style released-button) :foreground ,bwc-snow :background ,bwc-deepgravel))))
+   `(mode-line
+     ((t (:box (:line-width -1 :style released-button)
+               :foreground ,bwc-brightgravel :background ,bwc-darkgravel))))
+   `(mode-line-inactive
+     ((t (:box (:line-width -1 :style released-button)
+               :foreground ,bwc-snow :background ,bwc-deepgravel))))
 
    `(font-lock-comment-face ((t (:foreground ,bwc-lightgravel :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,bwc-lightgravel :slant italic))))
@@ -89,7 +93,8 @@
    `(powerline-insert-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-tardis :weight bold))))
    `(powerline-replace-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-dress :weight bold))))
    `(powerline-visual-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-orange :weight bold))))
-   `(powerline-emacs-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-brightgravel :weight bold))))
+   `(powerline-emacs-1
+     ((t (:foreground ,bwc-blackgravel :background ,bwc-brightgravel :weight bold))))
    `(powerline-normal-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-deepgravel))))
    `(powerline-insert-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-darktardis))))
    `(powerline-visual-2 ((t (:foreground ,bwc-blackgravel :background ,bwc-dalespale))))
@@ -100,21 +105,26 @@
    `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-deepgravel))))
    `(whitespace-newline ((t (:foreground ,bwc-deepgravel))))
 
-   `(linum-relative-current-face ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
+   `(linum-relative-current-face
+     ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
 
    `(company-tooltip ((t (:background ,bwc-darkgravel :foreground ,bwc-brightgravel))))
    `(company-tooltip-common ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
    `(company-tooltip-selection ((t (:background ,bwc-deepgravel :foreground ,bwc-brightgravel))))
-   `(company-tooltip-common-selection ((t (:background ,bwc-deepgravel :foreground ,bwc-taffy :weight bold))))
+   `(company-tooltip-common-selection
+     ((t (:background ,bwc-deepgravel :foreground ,bwc-taffy :weight bold))))
    `(company-scrollbar-bg ((t (:background ,bwc-deepgravel :foreground ,bwc-snow))))
    `(company-scrollbar-fg ((t (:background ,bwc-lightgravel :foreground ,bwc-snow))))
    `(company-preview ((t (:background ,bwc-darkgravel :foreground ,bwc-term-blue :weight bold))))
-   `(company-preview-common ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
-   `(company-preview-search ((t (:background ,bwc-darkgravel :foreground ,bwc-dalespale :weight bold))))
+   `(company-preview-common
+     ((t (:background ,bwc-darkgravel :foreground ,bwc-taffy :weight bold))))
+   `(company-preview-search
+     ((t (:background ,bwc-darkgravel :foreground ,bwc-dalespale :weight bold))))
 
    `(magit-branch ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-blue :weight bold))))
    `(magit-log-sha1 ((t (:background ,bwc-blackestgravel :foreground ,bwc-taffy))))
-   `(magit-section-title ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
+   `(magit-section-title
+     ((t (:background ,bwc-blackestgravel :foreground ,bwc-dalespale :weight bold))))
    `(magit-diff-add ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-green))))
    `(magit-diff-del ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-red))))
    `(magit-diff-none ((t (:background ,bwc-blackestgravel :foreground ,bwc-lightgravel))))
@@ -122,11 +132,10 @@
    `(magit-diff-file-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
    `(magit-diff-hunk-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
 
-   `(org-date ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
-   `(org-level-3 ((t (:background ,bwc-blackestgravel :foreground ,bwc-lime))))
+   `(org-date ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy :underline nil))))
+   `(org-level-3 ((t (:background ,bwc-blackestgravel :foreground ,bwc-lime :weight normal))))
    `(org-level-4 ((t (:background ,bwc-blackestgravel :foreground ,bwc-coffee))))
-   `(org-level-6 ((t (:background ,bwc-blackestgravel :foreground ,bwc-tardis))))
-   )
+   `(org-level-6 ((t (:background ,bwc-blackestgravel :foreground ,bwc-tardis :weight normal)))))
 
   (custom-set-faces
    `(ein:cell-input-area ((t (:background ,bwc-blackestgravel :inherit nil))))
@@ -139,17 +148,25 @@
    `(flymake-warnline ((t (:background nil :underline ,bwc-dress ))))
 
    `(helm-selection ((t (:inherit nil :background ,bwc-deepgravel :underline nil))))
-   `(helm-source-header ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel :family "Source Code Pro" :height 1.2))))
+   `(helm-source-header
+     ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel
+                   :family "Source Code Pro" :height 1.2))))
    `(helm-M-x-key ((t (:inherit nil :foreground ,bwc-orange :underline nil))))
-   `(helm-candidate-number ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-darkgravel :weight bold))))
-   `(helm-buffer-saved-out ((t (:inherit nil :foreground ,bwc-taffy :background ,bwc-blackestgravel :weight bold))))
-   `(helm-ff-directory ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
-   `(helm-buffer-directory ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
+   `(helm-candidate-number
+     ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-darkgravel :weight bold))))
+   `(helm-buffer-saved-out
+     ((t (:inherit nil :foreground ,bwc-taffy :background ,bwc-blackestgravel :weight bold))))
+   `(helm-ff-directory
+     ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
+   `(helm-buffer-directory
+     ((t (:inherit nil :foreground ,bwc-term-blue :background ,bwc-blackestgravel :weight bold))))
    `(helm-ff-file ((t (:inherit nil :foreground ,bwc-snow :background ,bwc-blackestgravel))))
-   `(helm-match ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-blackestgravel :weight bold))))
-   `(helm-grep-lineno ((t (:inherit nil :foreground ,bwc-mediumgravel :background ,bwc-blackestgravel))))
-   `(helm-moccur-buffer ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel :underline nil))))
-   ))
+   `(helm-match
+     ((t (:inherit nil :foreground ,bwc-dalespale :background ,bwc-blackestgravel :weight bold))))
+   `(elm-grep-lineno
+     ((t (:inherit nil :foreground ,bwc-mediumgravel :background ,bwc-blackestgravel))))
+   `(helm-moccur-buffer
+     ((t (:inherit nil :foreground ,bwc-saltwatertaffy :background ,bwc-blackestgravel :underline nil))))))
 
 
 (provide-theme 'badwolf)

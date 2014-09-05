@@ -5,7 +5,6 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
@@ -238,7 +237,10 @@
       :load-path "sources/misc")
 
     (use-package evil-indent-textobject
-      :load-path "sources/evil-indent-textobject"))
+      :load-path "sources/evil-indent-textobject")
+
+    (use-package evil-paragraph-textobject
+      :load-path "sources/evil-paragraph-textobject"))
 
   :config
   (progn

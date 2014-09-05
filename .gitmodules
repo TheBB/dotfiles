@@ -7,3 +7,6 @@
 [submodule "emacs/sources/evil-indent-textobject"]
 	path = emacs/sources/evil-indent-textobject
 	url = git@github.com:TheBB/evil-indent-textobject
+[submodule "emacs/sources/evil-paragraph-textobject"]
+	path = emacs/sources/evil-paragraph-textobject
+	url = git@github.com:TheBB/evil-paragraph-textobject

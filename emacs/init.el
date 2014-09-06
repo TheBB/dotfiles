@@ -390,9 +390,7 @@
 
 (use-package company
   :commands company-mode
-  :disabled t
   :ensure company
-  :init (add-hook 'prog-mode-hook 'company-mode)
   :config
   (progn
     (add-to-list 'completion-styles 'substring)
@@ -519,6 +517,13 @@
 
 (setq python-indent 4)
 
+(use-package pymacs
+  :disabled t
+  :commands (pymacs-apply pymacs-call pymacs-eval pymacs-exec pymacs-load pymacs-autoload)
+  :load-path "sources/Pymacs"
+  :config
+  (add-hook 'python-mode-hook 'company-mode))
+
 
 ;; Web mode
 ;; =================================================================================
@@ -588,7 +593,9 @@
 ;; =================================================================================
 
 (add-hook 'lisp-interaction-mode-hook 'hs-minor-mode)
+(add-hook 'lisp-interaction-mode-hook 'company-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 
 ;; Haskell mode

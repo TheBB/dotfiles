@@ -774,6 +774,15 @@
   (add-hook 'cmake-mode 'linum-mode))
 
 
+;; YAML mode
+;; =================================================================================
+
+(use-package yaml-mode
+  :ensure yaml-mode
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode)))
+
+
 ;; Compilation mode
 ;; =================================================================================
 

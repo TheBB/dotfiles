@@ -70,6 +70,9 @@
 (set-keyboard-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+
 
 ;; Whitespace mode
 ;; =================================================================================

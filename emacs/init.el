@@ -721,11 +721,6 @@
                                  (org-metaright))))))
           '(normal insert))
 
-    (define-key org-agenda-mode-map "j" 'org-agenda-next-line)
-    (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
-    (define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
-    (define-key org-agenda-mode-map "p" 'org-agenda-capture)
-
     (evil-leader/set-key-for-mode 'org-mode
       "oh" 'helm-org-headlines)
     (evil-leader/set-key
@@ -756,6 +751,10 @@
     (add-hook 'org-agenda-mode-hook
               (lambda () (interactive)
                 (unless bb/org-agenda-fixed
+                  (define-key org-agenda-mode-map "j" 'org-agenda-next-line)
+                  (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
+                  (define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
+                  (define-key org-agenda-mode-map "p" 'org-agenda-capture)
                   (bb/fix-window org-agenda-mode-map)
                   (setq bb/org-agenda-fixed t))))))
 

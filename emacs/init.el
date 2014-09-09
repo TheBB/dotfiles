@@ -174,7 +174,7 @@
   (progn
     (use-package evil-leader
       :ensure evil-leader
-      :pre-load (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode"))
+      :pre-load (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "org-agenda-mode"))
       :init
       (progn
         (evil-leader/set-leader ",")
@@ -755,6 +755,7 @@
         (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
         (define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
         (define-key org-agenda-mode-map "p" 'org-agenda-capture)
+        (define-key org-agenda-mode-map ":" 'evil-ex)
         (bb/fix-window org-agenda-mode-map)))))
 
 

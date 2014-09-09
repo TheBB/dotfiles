@@ -450,6 +450,15 @@
     (eval-after-load "hideshow" '(diminish 'hs-minor-mode))))
 
 
+;; Recentf
+;; =================================================================================
+
+(use-package recentf
+  :ensure recentf
+  :init
+  (setq recentf-max-saved-items 100))
+
+
 ;; Rainbow delimiters
 ;; =================================================================================
 

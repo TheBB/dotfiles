@@ -528,13 +528,6 @@
 
 (add-hook 'python-mode-hook 'company-mode)
 
-;; (use-package pymacs
-;;   :disabled t
-;;   :commands (pymacs-apply pymacs-call pymacs-eval pymacs-exec pymacs-load pymacs-autoload)
-;;   :load-path "sources/Pymacs"
-;;   :config
-;;   (add-hook 'python-mode-hook 'company-mode))
-
 
 ;; Web mode
 ;; =================================================================================
@@ -771,6 +764,14 @@
 (use-package markdown-mode
   :ensure markdown-mode
   :mode "\\.md\\'")
+
+
+;; PO mode
+;; =================================================================================
+
+(use-package po-mode
+  :load-path "sources/misc"
+  :mode "\\.po\\'")
 
 
 ;; CMake

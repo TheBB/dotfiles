@@ -751,6 +751,7 @@
     (use-package org-agenda
       :config
       (progn
+        (setq org-agenda-window-setup 'current-window)
         (define-key org-agenda-mode-map "j" 'org-agenda-next-line)
         (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
         (define-key org-agenda-mode-map "n" 'org-agenda-goto-date)

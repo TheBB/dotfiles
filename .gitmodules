@@ -10,3 +10,6 @@
 [submodule "emacs/sources/evil-paragraph-textobject"]
 	path = emacs/sources/evil-paragraph-textobject
 	url = git@github.com:TheBB/evil-paragraph-textobject
+[submodule "emacs/sources/evil"]
+	path = emacs/sources/evil
+	url = git://gitorious.org/evil/evil.git

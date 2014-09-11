@@ -166,7 +166,7 @@
 
 
 (use-package evil
-  :ensure evil
+  :load-path "sources/evil"
   :pre-load
   (setq evil-want-C-u-scroll t
         evil-want-C-w-in-emacs-state t)
@@ -240,10 +240,7 @@
       :load-path "sources/misc")
 
     (use-package evil-indent-textobject
-      :load-path "sources/evil-indent-textobject")
-
-    (use-package evil-paragraph-textobject
-      :load-path "sources/evil-paragraph-textobject"))
+      :load-path "sources/evil-indent-textobject"))
 
   :config
   (progn

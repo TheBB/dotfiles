@@ -298,7 +298,8 @@
     "x" 'helm-M-x
     "b" 'helm-mini
     "fd" 'helm-find-files
-    "p" 'helm-show-kill-ring)
+    "p" 'helm-show-kill-ring
+    "hs" 'helm-semantic-or-imenu)
   :config
   (progn
     (use-package helm-config)

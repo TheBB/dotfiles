@@ -226,10 +226,11 @@
         (define-key evil-motion-state-map "gs" 'evil-forward-arg)
         (define-key evil-motion-state-map "ga" 'evil-backward-arg)))
 
-    (use-package surround
-      :load-path "sources/misc"
-      :commands global-surround-mode
-      :idle (global-surround-mode t))
+    (use-package evil-surround
+      :ensure evil-surround
+      :commands global-evil-surround-mode
+      :init
+      (global-evil-surround-mode t))
 
     (use-package evil-matchit
       :ensure evil-matchit

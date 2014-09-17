@@ -268,6 +268,7 @@
     (evil-ex-define-cmd "h" 'help)))
 
 
+
 ;; Use esc to get away from everything, like in vim
 (defun bb/minibuffer-keyboard-quit ()
   (interactive)
@@ -427,7 +428,7 @@
   :init (popwin-mode t)
   :config
   (progn
-    (define-key evil-normal-state-map (kbd "C-`") 'popwin:close-popup-window)
+    (global-set-key (kbd "C-`") 'popwin:close-popup-window)
     (setq popwin:close-popup-window-timer-interval 0.5) ;; Workaround for Emacs 24.3 issue
     (push '("*helm*" :height 20) popwin:special-display-config)
     (push '("^\\*helm ?[^\\*]+\\*$" :regexp t :height 20) popwin:special-display-config)

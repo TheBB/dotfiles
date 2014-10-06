@@ -629,6 +629,7 @@
     (evil-leader/set-key-for-mode 'haskell-mode "p" 'haskell-process-cabal-build)
     (setq haskell-indentation-cycle-warn nil)
     (setq haskell-operator-face 'font-lock-builtin-face)
+    (setq haskell-indentation-starter-offset 2)
     (add-hook 'haskell-mode-hook
               (lambda ()
                 (setq evil-shift-width 2)

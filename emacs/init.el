@@ -522,6 +522,25 @@
     (key-chord-define evil-insert-state-map "\"|" 'yas-expand)))
 
 
+;; LaTeX
+;; =================================================================================
+
+(use-package latex
+  :ensure auctex
+  :init
+  (progn
+    (setq font-latex-fontify-script nil)
+    (add-to-list 'LaTeX-verbatim-environments "minted")
+    (setq evil-shift-width 2)
+    (setq font-latex-match-textual-keywords
+          '(("doList" "")
+            ("abstract" "{")
+            ("overview" "{"))
+    (setq font-latex-match-warning-keywords
+          '(("maketitle" "")))
+    ))
+
+
 ;; Python mode
 ;; =================================================================================
 

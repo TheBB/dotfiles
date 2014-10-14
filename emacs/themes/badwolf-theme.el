@@ -132,6 +132,8 @@
    `(magit-diff-file-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
    `(magit-diff-hunk-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
 
+   `(font-latex-verbatim-face ((t (:inherit nil :foreground "burlywood"))))
+
    `(org-date ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy :underline nil))))
    `(org-level-3 ((t (:background ,bwc-blackestgravel :foreground ,bwc-lime :weight normal))))
    `(org-level-4 ((t (:background ,bwc-blackestgravel :foreground ,bwc-coffee))))

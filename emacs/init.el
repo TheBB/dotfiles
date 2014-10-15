@@ -532,12 +532,21 @@
     (setq font-latex-fontify-script nil)
     (add-to-list 'LaTeX-verbatim-environments "minted")
     (setq evil-shift-width 2)
+    (setq font-latex-match-function-keywords
+          '(("usetikzlibrary" "{")
+            ("coordinate" "[")
+            ("draw" "[")
+            ("includegraphics" "[{")
+            ("node" "")))
     (setq font-latex-match-textual-keywords
-          '(("doList" "")
-            ("abstract" "{")
-            ("overview" "{"))
+          '(("abstract" "{")
+            ("overview" "{")
+            ("doList" "{")
+            ("challengeList" "{")))
     (setq font-latex-match-warning-keywords
           '(("maketitle" "")))
+    (setq font-latex-match-reference-keywords
+          '(("autoref" "{")))
     ))
 
 

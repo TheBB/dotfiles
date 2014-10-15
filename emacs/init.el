@@ -533,7 +533,6 @@
     (add-to-list 'LaTeX-verbatim-environments "minted")
     (setq evil-shift-width 2)
     (setq font-latex-match-function-keywords
-<<<<<<< HEAD
           '(("usetikzlibrary" "{")
             ("coordinate" "[")
             ("draw" "[")

@@ -534,18 +534,30 @@
     (setq evil-shift-width 2)
     (setq font-latex-match-function-keywords
           '(("definecolor" "{{{")
-            ("usetikzlibrary" "{")))
-    (setq font-latex-match-reference-keywords
-          '(("autoref" "{")))
-    (setq font-latex-match-textual-keywords
-          '(("abstract" "{")
-            ("overview" "{")
+            ("usetikzlibrary" "{")
             ("includegraphics" "[{")
+            ("titlegraphic" "{")
+            ("usecolortheme" "{")
+            ("usetheme" "{")))
+    (setq font-latex-match-reference-keywords
+          '(("autoref" "{")
+            ("inst" "{")))
+    (setq font-latex-match-textual-keywords
+          '(("author" "[{")
+            ("abstract" "{")
+            ("overview" "{")
+            ("institute" "[{")
+            ("date" "[{")
+            ("title" "[{")
+            ("url" "{")
+            ("and" "")
             ("overview" "{")
             ("doList" "{")
             ("challengeList" "{")))
     (setq font-latex-match-warning-keywords
-          '(("maketitle" "")))
+          '(("maketitle" "")
+            ("titlepage" "")
+            ("frametitle" "{")))
     ))
 
 

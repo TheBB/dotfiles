@@ -557,8 +557,9 @@
     (setq font-latex-match-warning-keywords
           '(("maketitle" "")
             ("titlepage" "")
-            ("frametitle" "{")))
-    ))
+            ("frametitle" "{")
+            ("doList" "{")
+            ("challengeList" "{")))))
 
 
 ;; Python mode

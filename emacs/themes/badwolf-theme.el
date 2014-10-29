@@ -53,7 +53,7 @@
    `(font-lock-comment-face ((t (:foreground ,bwc-lightgravel :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,bwc-lightgravel :slant italic))))
    `(font-lock-doc-face ((t (:foreground ,bwc-dirtyblonde))))
-   `(font-lock-string-face ((t (:foreground ,bwc-dirtyblonde))))
+   `(font-lock-string-face ((t (:foreground ,bwc-dirtyblonde :slant italic))))
    `(font-lock-function-name-face ((t (:foreground ,bwc-orange))))
    `(font-lock-variable-name-face ((t (:foreground ,bwc-dress))))
    `(font-lock-builtin-face ((t (:foreground ,bwc-taffy))))

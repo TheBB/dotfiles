@@ -36,6 +36,7 @@
 (set-cursor-color "#0a9dff")
 (load-theme 'badwolf t)
 (global-hl-line-mode t)
+(make-variable-buffer-local 'global-hl-line-mode)
 
 (setq ring-bell-function 'ignore
       inhibit-startup-screen t
@@ -522,6 +523,20 @@
     (key-chord-define evil-insert-state-map "\"|" 'yas-expand)))
 
 
+;; Term
+;; =================================================================================
+
+(use-package term
+  :init
+  (progn
+    (bb/fix-window term-raw-map)
+    (add-hook 'term-mode-hook
+              (lambda ()
+                (evil-normal-state)
+                (evil-emacs-state)
+                (setq global-hl-line-mode nil)))))
+
+
 ;; LaTeX
 ;; =================================================================================
 
@@ -576,6 +591,7 @@
 (setq python-indent 4)
 
 (add-hook 'python-mode-hook 'company-mode)
+
 
 ;; Scala mode
 ;; =================================================================================

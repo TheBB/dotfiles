@@ -537,6 +537,17 @@
                 (setq global-hl-line-mode nil)))))
 
 
+;; Eshell
+;; =================================================================================
+
+(use-package eshell
+  :init
+  (progn
+    (add-hook 'eshell-mode-hook
+              (lambda ()
+                (setq global-hl-line-mode nil)))))
+
+
 ;; LaTeX
 ;; =================================================================================
 

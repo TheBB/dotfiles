@@ -349,7 +349,6 @@
 
 (use-package magit
   :ensure magit
-  :commands (magit-status magit-diff magit-log magit-blame-mode)
   :init
   (evil-leader/set-key
     "gs" 'magit-status
@@ -447,7 +446,8 @@
     (diminish 'undo-tree-mode)
     (diminish 'abbrev-mode)
     (diminish 'global-whitespace-mode)
-    (diminish 'projectile-mode "proj")
+    (diminish 'magit-auto-revert-mode)
+    (diminish 'projectile-mode)
     (eval-after-load "hideshow" '(diminish 'hs-minor-mode))))
 
 

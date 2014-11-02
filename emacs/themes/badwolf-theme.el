@@ -29,6 +29,41 @@
       (bwc-term-green "#82d92f")
       (bwc-term-yellow "#f3e14c")
       (bwc-term-red "#e5261f"))
+
+  (defface powerline-normal-1
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-lime :weight bold)))
+    "Powerline normal 1")
+  (defface powerline-normal-2
+    `((t (:foreground ,bwc-dirtyblonde :background ,bwc-deepgravel)))
+    "Powerline normal 2")
+  (defface powerline-normal-3
+    `((t (:foreground ,bwc-saltwatertaffy :background ,bwc-darkgravel)))
+    "Powerline normal 3")
+  (defface powerline-insert-1
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-tardis :weight bold)))
+    "Powerline insert 1")
+  (defface powerline-replace-1
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-dress :weight bold)))
+    "Powerline replace 1")
+  (defface powerline-visual-1
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-orange :weight bold)))
+    "Powerline visual 1")
+  (defface powerline-emacs-1
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-brightgravel :weight bold)))
+    "Powerline emacs 1")
+  (defface powerline-insert-2
+    `((t (:foreground ,bwc-dirtyblonde :background ,bwc-darktardis)))
+    "Powerline insert 2")
+  (defface powerline-visual-2
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-dalespale)))
+    "Powerline visual 2")
+  (defface powerline-insert-3
+    `((t (:foreground ,bwc-tardis :background ,bwc-darkgravel)))
+    "Powerline insert 3")
+  (defface powerline-visual-3
+    `((t (:foreground ,bwc-blackgravel :background ,bwc-toffee)))
+    "Powerline visual 3")
+
   (custom-theme-set-faces
    'badwolf
    `(default ((t (:inherit nil :foreground ,bwc-plain :background ,bwc-blackestgravel))))
@@ -88,19 +123,6 @@
    `(term-color-green ((t (:foreground ,bwc-term-green))))
    `(term-color-yellow ((t (:foreground ,bwc-term-yellow))))
    `(term-color-red ((t (:foreground ,bwc-term-red))))
-
-   `(powerline-normal-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-lime :weight bold))))
-   `(powerline-insert-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-tardis :weight bold))))
-   `(powerline-replace-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-dress :weight bold))))
-   `(powerline-visual-1 ((t (:foreground ,bwc-blackgravel :background ,bwc-orange :weight bold))))
-   `(powerline-emacs-1
-     ((t (:foreground ,bwc-blackgravel :background ,bwc-brightgravel :weight bold))))
-   `(powerline-normal-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-deepgravel))))
-   `(powerline-insert-2 ((t (:foreground ,bwc-dirtyblonde :background ,bwc-darktardis))))
-   `(powerline-visual-2 ((t (:foreground ,bwc-blackgravel :background ,bwc-dalespale))))
-   `(powerline-normal-3 ((t (:foreground ,bwc-saltwatertaffy :background ,bwc-darkgravel))))
-   `(powerline-insert-3 ((t (:foreground ,bwc-tardis :background ,bwc-darkgravel))))
-   `(powerline-visual-3 ((t (:foreground ,bwc-blackgravel :background ,bwc-toffee))))
 
    `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-deepgravel))))
    `(whitespace-newline ((t (:foreground ,bwc-deepgravel))))

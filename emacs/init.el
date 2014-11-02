@@ -584,8 +584,7 @@
           '(("maketitle" "")
             ("titlepage" "")
             ("frametitle" "{")
-            ("doList" "{")
-            ("challengeList" "{")))))
+            ("doList" "{")))))
 
 
 ;; Python mode

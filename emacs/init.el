@@ -519,7 +519,7 @@
   :config
   (progn
     (define-key yas-minor-mode-map (kbd "<tab>") nil)
-    (key-chord-define evil-insert-state-map "\"|" 'yas-expand)))
+    (key-chord-define evil-insert-state-map "}|" 'yas-expand)))
 
 
 ;; Term

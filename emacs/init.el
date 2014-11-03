@@ -11,6 +11,7 @@
 (package-initialize)
 
 (require 'use-package)
+(require 'cl)
 
 
 ;; Backups
@@ -156,6 +157,9 @@
 
 ;; Fix window keys
 (defun bb/fix-window (map)
+  (define-key map (kbd "]f") 'other-frame)
+  (define-key map (kbd "[f") 'other-frame)
+  (define-key map (kbd "C-j") 'evil-window-down)
   (define-key map (kbd "C-k") 'evil-window-up)
   (define-key map (kbd "C-j") 'evil-window-down)
   (define-key map (kbd "C-h") 'evil-window-left)
@@ -264,6 +268,8 @@
 
     (define-key evil-normal-state-map "]b" 'evil-next-buffer)
     (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
+    (define-key evil-normal-state-map "[f" 'other-frame)
+    (define-key evil-normal-state-map "]f" 'other-frame)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd "h" 'help)))
@@ -377,7 +383,8 @@
   :config
   (progn
     (evil-leader/set-key
-      "ap" 'projectile-ag)
+      "ap" 'projectile-ag
+      "fo" 'helm-projectile-find-other-file)
     (projectile-global-mode)))
 
 (use-package helm-projectile
@@ -385,7 +392,7 @@
   :init
   (evil-leader/set-key
     "fp" 'helm-projectile
-    "fr" 'projectile-find-file))
+    "fr" 'helm-projectile-find-file))
 
 
 ;; Company

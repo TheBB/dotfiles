@@ -157,6 +157,7 @@
 
 ;; Fix window keys
 (defun bb/fix-window (map)
+  (define-key map (kbd "<f5>") 'other-frame)
   (define-key map (kbd "C-j") 'evil-window-down)
   (define-key map (kbd "C-k") 'evil-window-up)
   (define-key map (kbd "C-j") 'evil-window-down)

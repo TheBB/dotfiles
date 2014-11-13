@@ -157,8 +157,6 @@
 
 ;; Fix window keys
 (defun bb/fix-window (map)
-  (define-key map (kbd "]f") 'other-frame)
-  (define-key map (kbd "[f") 'other-frame)
   (define-key map (kbd "C-j") 'evil-window-down)
   (define-key map (kbd "C-k") 'evil-window-up)
   (define-key map (kbd "C-j") 'evil-window-down)
@@ -607,6 +605,7 @@
 (setq python-indent 4)
 
 (add-hook 'python-mode-hook 'company-mode)
+(add-hook 'python-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 
 ;; Scala mode

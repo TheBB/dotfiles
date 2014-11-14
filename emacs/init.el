@@ -82,9 +82,7 @@
 (setq whitespace-style
       '(face
         tabs
-        tab-mark
-        newline
-        newline-mark))
+        tab-mark))
 (setq whitespace-display-mappings
       '((newline-mark 10 [172 10])
         (tab-mark 9 [9655 9])))

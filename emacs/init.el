@@ -130,6 +130,9 @@
                    (if active (funcall sg idx) 'powerline-normal-3)))
              (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
              (lhs (list (powerline-raw
+                         (window-numbering-get-number-string)
+                         (funcall gf 1) 'l)
+                        (powerline-raw
                          (if active (funcall sg 0) "------ ")
                          (funcall gf 1) 'l)
                         (funcall separator-left (funcall gf 1) (funcall gf 2))
@@ -181,14 +184,15 @@
       :pre-load (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "org-agenda-mode"))
       :init
       (progn
-        (evil-leader/set-leader ",")
+        (evil-leader/set-leader "<SPC>")
         (global-evil-leader-mode t)
         (evil-leader/set-key
           "hi" (lambda () (interactive) (find-file user-init-file))
           "ht" (lambda () (interactive)
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
           "ss" 'just-one-space
-          "m" (lambda () (interactive) (message "Mode: %s" major-mode)))))
+          "m" (lambda () (interactive) (message "Mode: %s" major-mode))
+          "u" 'universal-argument)))
 
     (use-package evil-nerd-commenter
       :ensure evil-nerd-commenter
@@ -197,9 +201,7 @@
         (evil-leader/set-key
           "ci" 'evilnc-comment-or-uncomment-lines
           "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-          "cc" (lambda (&optional num)
-                 (interactive "p")
-                 (evilnc-copy-and-comment-lines num))
+          "cc" 'evilnc-copy-and-comment-lines
           "cp" 'evilnc-comment-or-uncomment-paragraphs
           "cr" 'comment-or-uncomment-region
           "cv" 'evilnc-toggle-invert-comment-line-by-line)))
@@ -258,7 +260,6 @@
       (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
 
     (global-set-key (kbd "RET") 'newline-and-indent)
-    (define-key evil-motion-state-map "\\" 'evil-repeat-find-char-reverse)
 
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -488,6 +489,25 @@
   :disabled t
   :ensure linum-relative
   :init (setq linum-relative-current-symbol "->"))
+
+
+;; Window numbering
+;; =================================================================================
+
+(use-package window-numbering
+  :ensure window-numbering
+  :config
+  (window-numbering-mode t)
+  (window-numbering-clear-mode-line))
+
+(use-package ace-jump-mode
+  :ensure ace-jump-mode
+  :init
+  (progn
+    (evil-leader/set-key
+      "." 'ace-jump-word-mode
+      "," 'ace-jump-char-mode
+      "<SPC>" 'ace-jump-line-mode)))
 
 
 ;; Ace jump

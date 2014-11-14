@@ -158,7 +158,6 @@
 
 ;; Fix window keys
 (defun bb/fix-window (map)
-  (define-key map (kbd "<f5>") 'other-frame)
   (define-key map (kbd "C-j") 'evil-window-down)
   (define-key map (kbd "C-k") 'evil-window-up)
   (define-key map (kbd "C-j") 'evil-window-down)
@@ -194,6 +193,8 @@
 
     (use-package evil-nerd-commenter
       :ensure evil-nerd-commenter
+      :pre-load
+      (setq-default evilnc-hotkey-comment-operator "gc")
       :init
       (progn
         (evil-leader/set-key
@@ -258,6 +259,7 @@
       (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
 
     (global-set-key (kbd "RET") 'newline-and-indent)
+    (global-set-key (kbd "<f5>") 'other-frame)
 
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)

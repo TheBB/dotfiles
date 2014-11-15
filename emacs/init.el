@@ -128,7 +128,8 @@
                    (if active (funcall sg idx) 'powerline-normal-3)))
              (sg (lambda (idx) (nth idx (cdr (assoc evil-state state-map)))))
              (lhs (list (powerline-raw
-                         (window-numbering-get-number-string)
+                         (if (fboundp 'window-numbering-get-number-string)
+                             (window-numbering-get-number-string) "?")
                          (funcall gf 1) 'l)
                         (powerline-raw
                          (if active (funcall sg 0) "------ ")
@@ -156,19 +157,6 @@
 ;; Evil and friends
 ;; =================================================================================
 
-;; Fix window keys
-(defun bb/fix-window (map)
-  (define-key map (kbd "C-j") 'evil-window-down)
-  (define-key map (kbd "C-k") 'evil-window-up)
-  (define-key map (kbd "C-j") 'evil-window-down)
-  (define-key map (kbd "C-h") 'evil-window-left)
-  (define-key map (kbd "C-l") 'evil-window-right)
-  (define-key map (kbd "C-M-k") 'evil-window-move-very-top)
-  (define-key map (kbd "C-M-j") 'evil-window-move-very-bottom)
-  (define-key map (kbd "C-M-h") 'evil-window-move-far-left)
-  (define-key map (kbd "C-M-l") 'evil-window-move-far-right))
-
-
 (use-package evil
   :load-path "sources/evil"
   :pre-load
@@ -181,7 +169,10 @@
       :pre-load (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "org-agenda-mode"))
       :init
       (progn
-        (evil-leader/set-leader "<SPC>")
+        (setq evil-leader/in-all-states t
+              evil-leader/leader "SPC"
+              evil-leader/non-normal-prefix "S-")
+
         (global-evil-leader-mode t)
         (evil-leader/set-key
           "hi" (lambda () (interactive) (find-file user-init-file))
@@ -189,6 +180,7 @@
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode))
+          "n" 'other-frame
           "u" 'universal-argument)))
 
     (use-package evil-nerd-commenter
@@ -259,17 +251,12 @@
       (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
 
     (global-set-key (kbd "RET") 'newline-and-indent)
-    (global-set-key (kbd "<f5>") 'other-frame)
 
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)
 
-    (bb/fix-window evil-normal-state-map)
-
     (define-key evil-normal-state-map "]b" 'evil-next-buffer)
     (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
-    (define-key evil-normal-state-map "[f" 'other-frame)
-    (define-key evil-normal-state-map "]f" 'other-frame)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd "h" 'help)))
@@ -307,8 +294,8 @@
     "x" 'helm-M-x
     "b" 'helm-mini
     "fd" 'helm-find-files
-    "p" 'helm-show-kill-ring
-    "hs" 'helm-semantic-or-imenu)
+    "v" 'helm-show-kill-ring
+    "fs" 'helm-semantic-or-imenu)
   :config
   (progn
     (use-package helm-config)
@@ -364,13 +351,17 @@
   :config
   (progn
     (evil-make-overriding-map magit-mode-map 'emacs)
-    (bb/fix-window magit-mode-map)
-    (evil-define-key 'emacs magit-mode-map [escape] 'keyboard-quit)
-    (evil-define-key 'emacs magit-mode-map "j" 'magit-goto-next-section)
-    (evil-define-key 'emacs magit-mode-map "k" 'magit-goto-previous-section)
-    (evil-define-key 'emacs magit-mode-map "K" 'magit-discard-item)
-    (evil-define-key 'emacs magit-mode-map "\\" 'magit-git-command)
-    (evil-define-key 'emacs magit-mode-map ":" 'evil-ex)))
+
+    (evil-define-key 'emacs magit-mode-map
+      [escape] 'keyboard-quit
+      "j" 'magit-goto-next-section
+      "k" 'magit-goto-previous-section
+      "h" 'magit-goto-parent-section
+      "gj" 'magit-goto-next-sibling-section
+      "gk" 'magit-goto-previous-sibling-section
+      "K" 'magit-discard-item
+      "\\" 'magit-git-command
+      ":" 'evil-ex)))
 
 (setq vc-handled-backends nil)
 
@@ -497,8 +488,20 @@
 (use-package window-numbering
   :ensure window-numbering
   :config
-  (window-numbering-mode t)
-  (window-numbering-clear-mode-line))
+  (progn
+    (window-numbering-mode t)
+    (window-numbering-clear-mode-line)
+    (evil-leader/set-key
+      "0" 'select-window-0
+      "1" 'select-window-1
+      "2" 'select-window-2
+      "3" 'select-window-3
+      "4" 'select-window-4
+      "5" 'select-window-5
+      "6" 'select-window-6
+      "7" 'select-window-7
+      "8" 'select-window-8
+      "9" 'select-window-9)))
 
 (use-package ace-jump-mode
   :ensure ace-jump-mode
@@ -554,7 +557,6 @@
 (use-package term
   :init
   (progn
-    (bb/fix-window term-raw-map)
     (add-hook 'term-mode-hook
               (lambda ()
                 (evil-normal-state)
@@ -722,7 +724,6 @@
          ("\\.lhs" . haskell-mode))
   :config
   (progn
-    (evil-leader/set-key-for-mode 'haskell-mode "p" 'haskell-process-cabal-build)
     (setq haskell-indentation-cycle-warn nil)
     (setq haskell-operator-face 'font-lock-builtin-face)
     (setq haskell-indentation-starter-offset 2)
@@ -837,11 +838,11 @@
     (evil-leader/set-key-for-mode 'org-mode
       "oh" 'helm-org-headlines)
     (evil-leader/set-key
-      "og" (lambda () (interactive) (magit-status "~/org"))
-      "oc" (lambda () (interactive) (find-file "~/org/capture.org"))
-      "ot" (lambda () (interactive) (find-file "~/org/sandbox.org"))
-      "os" (lambda () (interactive) (find-file "~/org/sintef.org"))
-      "om" (lambda () (interactive) (find-file "~/org/my.org")))
+      "hg" (lambda () (interactive) (magit-status "~/org"))
+      "hc" (lambda () (interactive) (find-file "~/org/capture.org"))
+      "hb" (lambda () (interactive) (find-file "~/org/sandbox.org"))
+      "hs" (lambda () (interactive) (find-file "~/org/sintef.org"))
+      "hm" (lambda () (interactive) (find-file "~/org/my.org")))
     (add-to-list 'org-agenda-files "~/org/capture.org")
     (add-to-list 'org-agenda-files "~/org/sintef.org")
     (add-to-list 'org-agenda-files "~/org/my.org")
@@ -858,7 +859,7 @@
                 (org-indent-mode)
                 (visual-line-mode)
                 (evil-leader/set-key
-                  "oh" 'helm-org-headlines)))
+                  "fh" 'helm-org-headlines)))
 
     (use-package org-agenda
       :config
@@ -868,8 +869,7 @@
         (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
         (define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
         (define-key org-agenda-mode-map "p" 'org-agenda-capture)
-        (define-key org-agenda-mode-map ":" 'evil-ex)
-        (bb/fix-window org-agenda-mode-map)))))
+        (define-key org-agenda-mode-map ":" 'evil-ex)))))
 
 
 ;; Markdown
@@ -906,31 +906,3 @@
   :ensure yaml-mode
   :mode (("\\.yml\\'" . yaml-mode)
          ("\\.yaml\\'" . yaml-mode)))
-
-
-;; Compilation mode
-;; =================================================================================
-
-(bb/fix-window compilation-mode-map)
-
-
-;; Unimacs
-;; =================================================================================
-
-;; (use-package grizzl
-;;   :load-path "sources/grizzl")
-
-;; (use-package f
-;;   :ensure f)
-
-;; (use-package unimacs
-;;   :load-path "sources/unimacs"
-;;   :init
-;;   (progn
-;;     (evil-leader/set-key
-;;       "b" 'unimacs/cmd-switch-buffer
-;;       "x" 'unimacs/cmd-extended-command
-;;       "fd" 'unimacs/cmd-find-file
-;;       "hf" 'unimacs/cmd-describe-function
-;;       "hv" 'unimacs/cmd-describe-variable
-;;       )))

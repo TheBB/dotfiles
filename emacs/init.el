@@ -234,6 +234,9 @@
       :commands global-evil-matchit-mode
       :idle (global-evil-matchit-mode t))
 
+    (use-package evil-visualstar
+      :ensure evil-visualstar)
+
     (use-package evil-little-word
       :load-path "sources/misc")
 
@@ -257,6 +260,8 @@
 
     (define-key evil-normal-state-map "]b" 'evil-next-buffer)
     (define-key evil-normal-state-map "[b" 'evil-prev-buffer)
+    (define-key evil-normal-state-map "j" 'evil-next-visual-line)
+    (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
 
     (evil-ex-define-cmd "dtw" 'delete-trailing-whitespace)
     (evil-ex-define-cmd "h" 'help)))

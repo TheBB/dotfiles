@@ -180,7 +180,7 @@
                  (find-file (expand-file-name "themes/badwolf-theme.el" user-emacs-directory)))
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode))
-          "n" 'other-frame
+          "`" 'other-frame
           "u" 'universal-argument)))
 
     (use-package evil-nerd-commenter

@@ -632,7 +632,7 @@
 
 (setq python-indent 4)
 
-(add-hook 'python-mode-hook 'company-mode)
+;; (add-hook 'python-mode-hook 'company-mode)
 (add-hook 'python-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 

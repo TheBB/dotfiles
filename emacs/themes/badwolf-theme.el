@@ -150,7 +150,7 @@
    `(magit-diff-add ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-green))))
    `(magit-diff-del ((t (:background ,bwc-blackestgravel :foreground ,bwc-term-red))))
    `(magit-diff-none ((t (:background ,bwc-blackestgravel :foreground ,bwc-lightgravel))))
-   `(magit-item-highlight ((t (:background ,bwc-blackestgravel :foreground ,bwc-snow :weight bold))))
+   `(magit-item-highlight ((t (:background ,bwc-blackestgravel :foreground ,bwc-snow))))
    `(magit-diff-file-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
    `(magit-diff-hunk-header ((t (:background ,bwc-blackestgravel :foreground ,bwc-saltwatertaffy))))
 

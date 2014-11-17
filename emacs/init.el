@@ -171,7 +171,7 @@
       (progn
         (setq evil-leader/in-all-states t
               evil-leader/leader "SPC"
-              evil-leader/non-normal-prefix "S-")
+              evil-leader/non-normal-prefix "C-")
 
         (global-evil-leader-mode t)
         (evil-leader/set-key
@@ -250,7 +250,7 @@
       (lambda (n) (interactive "p") (save-excursion (move-end-of-line 0) (open-line n))))
     (define-key evil-normal-state-map (kbd "RET")
       (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
-    (define-key evil-normal-state-map (kbd "SPC")
+    (define-key evil-normal-state-map (kbd "gr")
       (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
 
     (global-set-key (kbd "RET") 'newline-and-indent)

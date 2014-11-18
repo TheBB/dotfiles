@@ -50,9 +50,13 @@ source $ZSH/oh-my-zsh.sh
 # ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-local user_host='%{$terminfo[bold]%(#~$fg[red]~$fg[green])%}%n@%m%{$reset_color%}'
-local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
+local user_host='%{%(#~$fg_bold[red]~$fg_bold[green])%}%n@%m%{$reset_color%}'
+local current_dir='%{$fg_bold[blue]%} %~%{$reset_color%}'
 local rvm_ruby=''
+
+function virtualenv_info { [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') ' } 
+local venv_py='%{$fg_bold[cyan]%}$(virtualenv_info)%{$reset_color%}'
+
 if which rvm-prompt &> /dev/null; then
   rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
 else
@@ -62,7 +66,7 @@ else
 fi
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${venv_py} ${git_branch}
 ╰─%B$%b "
 RPS1="${return_code}"
 
@@ -70,6 +74,8 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]$terminfo[bold]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="  %{$fg[red]%}✘%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
+
+function activate() { VIRTUAL_ENV_DISABLE_PROMPT='1' source $1/bin/activate }
 
 alias sume="sudo -E su -m"
 alias sudo="sudo -E"

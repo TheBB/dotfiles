@@ -54,7 +54,7 @@ local user_host='%{%(#~$fg_bold[red]~$fg_bold[green])%}%n@%m%{$reset_color%}'
 local current_dir='%{$fg_bold[blue]%} %~%{$reset_color%}'
 local rvm_ruby=''
 
-function virtualenv_info { [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') ' } 
+function virtualenv_info { [ $VIRTUAL_ENV ] && echo '‹'`basename $VIRTUAL_ENV`'› ' } 
 local venv_py='%{$fg_bold[cyan]%}$(virtualenv_info)%{$reset_color%}'
 
 if which rvm-prompt &> /dev/null; then

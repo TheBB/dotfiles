@@ -5,7 +5,8 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")))
+        ("melpa" . "http://melpa.milkbox.net/packages/")
+        ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
 (package-initialize)
@@ -622,6 +623,23 @@
 ;; Python mode
 ;; =================================================================================
 
+(use-package elpy
+  :ensure elpy
+  :config
+  (progn
+    (setq python-indent 4
+          elpy-rpc-backend "jedi")
+    (elpy-enable)
+
+    ;; Customize flymake
+    ;; If flymake is installed separately at any time, these should be moved
+    (custom-set-faces
+     '(flymake-errline ((t nil)))
+     '(flymake-warnline ((t nil))))
+    (setq flymake-error-bitmap '(left-arrow error)
+          flymake-warning-bitmap '(left-arrow error)
+          flymake-fringe-indicator-position 'right-fringe)))
+
 (setq hs-special-modes-alist
       (assq-delete-all 'python-mode hs-special-modes-alist))
 (add-to-list
@@ -630,9 +648,6 @@
    "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
    nil "#" #[(arg) "\300 \207" [python-nav-end-of-block] 1] nil))
 
-(setq python-indent 4)
-
-;; (add-hook 'python-mode-hook 'company-mode)
 (add-hook 'python-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 
@@ -911,3 +926,17 @@
   :ensure yaml-mode
   :mode (("\\.yml\\'" . yaml-mode)
          ("\\.yaml\\'" . yaml-mode)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-errline ((t nil)))
+
+ '(flymake-warnline ((t nil))))

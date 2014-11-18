@@ -99,6 +99,9 @@
    `(show-paren-match ((t (:background ,bwc-tardis :weight bold))))
    `(show-paren-mismatch ((t (:background ,bwc-taffy :weight bold))))
 
+   `(flymake-errline ((t nil)))
+   `(flymake-warnline ((t nil)))
+
    `(haskell-interactive-face-compile-error ((t (:foreground ,bwc-taffy :weight bold))))
 
    `(rainbow-delimiters-depth-1-face ((t (:foreground ,bwc-snow))))

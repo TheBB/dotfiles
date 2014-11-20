@@ -404,13 +404,7 @@
     (define-key company-active-map [escape] 'company-abort)
     (define-key company-active-map (kbd "M-f") 'company-filter-candidates)
     (define-key company-active-map (kbd "M-j") 'company-select-next)
-    (define-key company-active-map (kbd "M-k") 'company-select-previous)
-    (use-package company-anaconda
-      :ensure company-anaconda
-      :config
-      (progn
-        (setq company-backends (delete 'company-ropemacs company-backends))
-        (add-to-list 'company-backends 'company-anaconda)))))
+    (define-key company-active-map (kbd "M-k") 'company-select-previous)))
 
 
 ;; Expand region

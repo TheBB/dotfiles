@@ -152,7 +152,9 @@
 (use-package powerline
   :ensure powerline
   :init
-  (bb/powerline-evil-theme))
+  (progn
+    (setq powerline-default-separator 'slant)
+    (bb/powerline-evil-theme)))
 
 
 ;; Evil and friends

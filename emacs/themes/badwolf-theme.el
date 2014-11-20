@@ -28,7 +28,8 @@
       (bwc-term-blue "#6298c8")
       (bwc-term-green "#82d92f")
       (bwc-term-yellow "#f3e14c")
-      (bwc-term-red "#e5261f"))
+      (bwc-term-red "#e5261f")
+      (bwc-term-cyan "#2ccccf"))
 
   (defface powerline-normal-1
     `((t (:foreground ,bwc-blackgravel :background ,bwc-lime :weight bold)))
@@ -63,6 +64,22 @@
   (defface powerline-visual-3
     `((t (:foreground ,bwc-blackgravel :background ,bwc-toffee)))
     "Powerline visual 3")
+
+  (defface prompt-user
+    `((t (:foreground ,bwc-term-green :weight bold)))
+    "EShell prompt normal user")
+  (defface prompt-root
+    `((t (:foreground ,bwc-term-red :weight bold)))
+    "EShell prompt root")
+  (defface prompt-pwd
+    `((t (:foreground ,bwc-term-blue :weight bold)))
+    "EShell prompt present working directory")
+  (defface prompt-branch
+    `((t (:foreground ,bwc-term-yellow :weight bold)))
+    "EShell prompt current git branch")
+  (defface prompt-venv
+    `((t (:foreground ,bwc-term-cyan :weight bold)))
+    "EShell prompt current venv")
 
   (custom-theme-set-faces
    'badwolf
@@ -126,6 +143,8 @@
    `(term-color-green ((t (:foreground ,bwc-term-green))))
    `(term-color-yellow ((t (:foreground ,bwc-term-yellow))))
    `(term-color-red ((t (:foreground ,bwc-term-red))))
+
+   `(eshell-color-missing ((t (:foreground ,bwc-term-red))))
 
    `(whitespace-tab ((t (:background ,bwc-blackestgravel :foreground ,bwc-deepgravel))))
    `(whitespace-newline ((t (:foreground ,bwc-deepgravel))))

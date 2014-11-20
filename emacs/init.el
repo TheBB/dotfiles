@@ -567,12 +567,65 @@
 ;; Eshell
 ;; =================================================================================
 
+(defun bb/git-branch (pwd)
+  "Returns current git branch as a string, or the empty string if
+PWD is not in a git repo (or the git command is not found)."
+  (interactive)
+  (when (and (eshell-search-path "git")
+             (locate-dominating-file pwd ".git"))
+    (let ((git-output (shell-command-to-string
+                       (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
+      (when (> (length git-output) 0)
+        (substring git-output 0 -1)))))
+
+(defun bb/git-status (pwd)
+  "Returns the dirty status of the git repo at PWD."
+  (interactive)
+  (when (and (eshell-search-path "git")
+             (locate-dominating-file pwd ".git"))
+    (let ((git-output (shell-command-to-string
+                       (concat "cd " pwd " && git status --porcelain"))))
+      (> (length git-output) 0))))
+
+(defun bb/eshell-prompt ()
+  "Custom EShell prompt."
+  (let* ((user (getenv "USER"))
+         (pwd (abbreviate-file-name (eshell/pwd)))
+         (userface (if (string= user "root") 'prompt-root 'prompt-user))
+         (branch (bb/git-branch (eshell/pwd)))
+         (dirty (when branch (if (bb/git-status (eshell/pwd))
+                               (propertize "✘" 'face 'prompt-root)
+                             (propertize "✔" 'face 'prompt-user))))
+         (venv (when venv-current-name (concat "‹" venv-current-name "›")))
+         )
+    (concat (propertize "╭─" 'face 'default)
+            (propertize (concat user "@" system-name) 'face userface)
+            "  "
+            (propertize pwd 'face 'prompt-pwd)
+            (propertize (if branch (concat "   " branch) "") 'face 'prompt-branch)
+            (if branch (concat "  " dirty) "")
+            (propertize (if venv (concat "  " venv) "") 'face 'prompt-venv)
+            (propertize "\n╰─$ " 'face 'default))))
+
+
 (use-package eshell
   :init
   (progn
     (add-hook 'eshell-mode-hook
               (lambda ()
-                (setq global-hl-line-mode nil)))))
+                (setq global-hl-line-mode nil)))
+    (setq eshell-prompt-function 'bb/eshell-prompt
+          eshell-prompt-regexp (concat "^╰─" (regexp-quote "$"))
+          eshell-highlight-prompt nil)))
+
+
+;; Virtualenvs
+;; =================================================================================
+
+(use-package virtualenvwrapper
+  :ensure virtualenvwrapper
+  :config
+  (venv-initialize-eshell))
 
 
 ;; LaTeX

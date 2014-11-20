@@ -75,7 +75,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="  %{$fg[red]%}✘%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
 
-function activate() { VIRTUAL_ENV_DISABLE_PROMPT='1' source $1/bin/activate }
+function workon() { VIRTUAL_ENV_DISABLE_PROMPT='1' source $1/bin/activate }
 
 alias sume="sudo -E su -m"
 alias sudo="sudo -E"

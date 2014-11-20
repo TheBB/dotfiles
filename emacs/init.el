@@ -642,7 +642,8 @@
    "^\\s-*\\(?:def\\|class\\|if\\|else\\|elif\\|try\\|except\\|finally\\|for\\|while\\|with\\)\\>"
    nil "#" #[(arg) "\300 \207" [python-nav-end-of-block] 1] nil))
 
-(add-hook 'python-mode-hook (lambda () (electric-indent-local-mode -1)))
+(add-hook 'python-mode-hook (lambda ()
+                              (electric-indent-local-mode -1)))
 
 
 ;; Scala mode

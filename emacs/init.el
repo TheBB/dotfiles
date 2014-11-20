@@ -920,17 +920,10 @@
   :ensure yaml-mode
   :mode (("\\.yml\\'" . yaml-mode)
          ("\\.yaml\\'" . yaml-mode)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(flymake-errline ((t nil)))
 
- '(flymake-warnline ((t nil))))
+
+;; Source local setup, if it exists
+;; =================================================================================
+
+(when (file-exists-p "~/local.el")
+  (load-file "~/local.el"))

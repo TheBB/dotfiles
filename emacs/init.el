@@ -596,8 +596,7 @@ PWD is not in a git repo (or the git command is not found)."
          (dirty (when branch (if (bb/git-status (eshell/pwd))
                                (propertize "✘" 'face 'prompt-root)
                              (propertize "✔" 'face 'prompt-user))))
-         (venv (when venv-current-name (concat "‹" venv-current-name "›")))
-         )
+         (venv (when venv-current-name (concat "‹" venv-current-name "›"))))
     (concat (propertize "╭─" 'face 'default)
             (propertize (concat user "@" system-name) 'face userface)
             "  "
@@ -820,6 +819,7 @@ PWD is not in a git repo (or the git command is not found)."
   :config
   (progn
     (evil-define-key 'normal org-mode-map
+
       ;; Movement
       "gJ" 'outline-next-visible-heading
       "gK" 'outline-previous-visible-heading
@@ -875,11 +875,10 @@ PWD is not in a git repo (or the git command is not found)."
       "gs" 'org-sort
       "g/" 'org-sparse-tree
       (kbd "g SPC") 'org-remove-occur-highlights
-      (kbd "TAB") 'org-cycle
+      (kbd "TAB") 'org-cycle)
 
       ;; ";t" 'org-show-todo-tree
       ;; ";a" 'org-agenda
-      )
 
     (mapc (lambda (state)
             (evil-define-key state org-mode-map

@@ -13,3 +13,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[github]
+	user = TheBB

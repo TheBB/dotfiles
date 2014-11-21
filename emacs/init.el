@@ -802,10 +802,24 @@ PWD is not in a git repo (or the git command is not found)."
                 (turn-on-haskell-indentation)))))
 
 
-;; Org
+;; ESS
+;; =================================================================================" 
+
+(use-package ess-site
+  :load-path "sources/ess/lisp"
+  :config
+  (progn
+    (add-hook 'ess-mode-hook 'linum-mode)
+    (add-hook 'inferior-ess-mode-hook
+              (lambda ()
+                (setq global-hl-line-mode nil)))))
+
+
+;; Julia
 ;; =================================================================================" 
 
 (use-package julia-mode
+  :disabled t
   :ensure julia-mode)
 
 

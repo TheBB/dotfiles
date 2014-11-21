@@ -805,6 +805,13 @@ PWD is not in a git repo (or the git command is not found)."
 ;; Org
 ;; =================================================================================" 
 
+(use-package julia-mode
+  :ensure julia-mode)
+
+
+;; Org
+;; =================================================================================" 
+
 (defun bb/org-eol-call (fun)
   "Go to end of line and call provided function"
   (end-of-line)

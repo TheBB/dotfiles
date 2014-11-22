@@ -818,18 +818,16 @@ PWD is not in a git repo (or the git command is not found)."
   :load-path "sources/ess/lisp"
   :config
   (progn
+    (load (expand-file-name (concat (file-name-directory load-file-name)
+                                    "sources/julia/julia.el")))
+    (define-key ess-mode-map (kbd "TAB")
+      (lambda (arg) (interactive "*i")
+        (if (julia-latexsub)
+            (indent-for-tab-command arg))))
     (add-hook 'ess-mode-hook 'linum-mode)
     (add-hook 'inferior-ess-mode-hook
               (lambda ()
                 (setq global-hl-line-mode nil)))))
-
-
-;; Julia
-;; =================================================================================" 
-
-(use-package julia-mode
-  :disabled t
-  :ensure julia-mode)
 
 
 ;; Org

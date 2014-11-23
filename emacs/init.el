@@ -838,6 +838,66 @@ PWD is not in a git repo (or the git command is not found)."
   :ensure julia-mode)
 
 
+;; Julia REPL mode
+;; =================================================================================
+
+(defvar julia-repl-path "/home/efonn/repos/julia/usr/bin/julia"
+  "Path to the Julia executable.")
+
+(defvar julia-repl-arguments '()
+  "Command line arguments to pass to Julia.")
+
+(defvar julia-repl-mode-map
+  (let ((map (nconc (make-sparse-keymap) comint-mode-map)))
+    ;; (define-key map "\t" (lambda () (interactive) (quoted-insert "\t")))
+    (define-key map "\t" (lambda () (interactive)
+                           (message "hi there")
+                           (insert "\t")
+                           (message "calling comint-send-input")
+                           (comint-send-input t)
+                           (message "called comint-send-input")
+                           ))
+    map)
+  "Basic mode map for Julia REPL.")
+
+(defvar julia-repl-regexp "julia>"
+  "Prompt for Julia REPL.")
+
+(defun run-julia-repl ()
+  "Run an inferior instance of Julia inside Emacs."
+  (interactive)
+  (let* ((julia-program julia-repl-path)
+         (buffer (comint-check-proc "Julia")))
+    (pop-to-buffer-same-window
+     (if (or buffer (not (derived-mode-p 'julia-repl-mode))
+             (comint-check-proc (current-buffer)))
+         (get-buffer-create (or buffer "*Julia*"))
+       (current-buffer)))
+    (unless buffer
+      (apply 'make-comint-in-buffer "Julia" buffer
+             julia-program julia-repl-arguments)
+      (julia-repl-mode))))
+
+(defun julia-repl--initialize ()
+  "Helper function to initialize Julia REPL."
+  (setq comint-process-echoes t)
+  (setq comint-use-prompt-regexp t))
+
+(define-derived-mode julia-repl-mode comint-mode "Julia REPL"
+  "Major mode for Julia REPL.
+
+\\<julia-repl-mode-map>"
+  nil "Julia REPL"
+
+  (setq comint-prompt-regexp julia-repl-regexp)
+  (setq comint-prompt-read-only t)
+  (set (make-local-variable 'paragraph-separate) "\\'")
+  (set (make-local-variable 'paragraph-start) julia-repl-regexp))
+
+(add-hook 'julia-repl-mode-hook 'julia-repl--initialize)
+(add-hook 'julia-repl-mode-hook (lambda () (setq global-hl-line-mode nil)))
+
+
 ;; Org
 ;; =================================================================================
 

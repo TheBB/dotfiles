@@ -7,6 +7,3 @@
 [submodule "emacs/sources/evil"]
 	path = emacs/sources/evil
 	url = git://gitorious.org/evil/evil.git
-[submodule "emacs/sources/ess"]
-	path = emacs/sources/ess
-	url = https://github.com/emacs-ess/ESS.git

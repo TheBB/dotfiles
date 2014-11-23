@@ -812,10 +812,11 @@ PWD is not in a git repo (or the git command is not found)."
 
 
 ;; ESS
-;; =================================================================================" 
+;; =================================================================================
 
 (use-package ess-site
   :load-path "sources/ess/lisp"
+  :disabled t
   :config
   (progn
     (load (expand-file-name (concat (file-name-directory load-file-name)
@@ -830,8 +831,15 @@ PWD is not in a git repo (or the git command is not found)."
                 (setq global-hl-line-mode nil)))))
 
 
+;; Julia
+;; =================================================================================
+
+(use-package julia-mode
+  :ensure julia-mode)
+
+
 ;; Org
-;; =================================================================================" 
+;; =================================================================================
 
 (defun bb/org-eol-call (fun)
   "Go to end of line and call provided function"

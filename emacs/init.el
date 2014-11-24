@@ -296,7 +296,7 @@
 ;; =================================================================================
 
 (use-package helm
-  :ensure helm
+  :load-path "sources/helm"
   :init
   (evil-leader/set-key
     "x" 'helm-M-x

@@ -962,9 +962,7 @@ PWD is not in a git repo (or the git command is not found)."
     (add-hook 'org-mode-hook
               (lambda () (interactive)
                 (org-indent-mode)
-                (visual-line-mode)
-                (evil-leader/set-key
-                  "fh" 'helm-org-headlines)))
+                (visual-line-mode)))
 
     (use-package org-agenda
       :config

@@ -559,6 +559,7 @@
 (use-package term
   :init
   (progn
+    (setq term-buffer-maximum-size 0)
     (add-hook 'term-mode-hook
               (lambda ()
                 (evil-normal-state)

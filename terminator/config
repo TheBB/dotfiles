@@ -21,6 +21,7 @@
     show_titlebar = False
     font = Source Code Pro for Powerline Medium 10
     background_color = "#0c0c0c"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]

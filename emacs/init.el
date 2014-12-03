@@ -184,6 +184,7 @@
           "ss" 'just-one-space
           "m" (lambda () (interactive) (message "Mode: %s" major-mode))
           "`" 'other-frame
+          "<tab>" 'select-frame-by-name
           "u" 'universal-argument)))
 
     (use-package evil-nerd-commenter
@@ -957,8 +958,9 @@ PWD is not in a git repo (or the git command is not found)."
     (setq org-log-done 'time)
     (setq org-clock-into-drawer t)
 
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
+    (evil-leader/set-key
+      "oa" 'org-agenda
+      "oc" 'org-capture)
 
     (add-hook 'org-mode-hook
               (lambda () (interactive)

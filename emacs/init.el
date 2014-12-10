@@ -76,6 +76,8 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 
+(setq auto-revert-interval 1)
+
 
 ;; Whitespace mode
 ;; =================================================================================
@@ -185,7 +187,8 @@
           "m" (lambda () (interactive) (message "Mode: %s" major-mode))
           "`" 'other-frame
           "<tab>" 'select-frame-by-name
-          "u" 'universal-argument)))
+          "u" 'universal-argument
+          "=" 'shell-command)))
 
     (use-package evil-nerd-commenter
       :ensure evil-nerd-commenter

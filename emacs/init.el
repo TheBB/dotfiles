@@ -753,7 +753,9 @@ PWD is not in a git repo (or the git command is not found)."
                (c-offsets-alist
                 (substatement-open . 0)
                 (inline-open . 0)
-                (statement-cont . c-lineup-assignments))))
+                (statement-cont . c-lineup-assignments)
+                (inextern-lang . 0)
+                (innamespace . 0))))
 
 (c-add-style "sintef-style"
              '((indent-tabs-mode . nil)
@@ -761,7 +763,9 @@ PWD is not in a git repo (or the git command is not found)."
                (c-offsets-alist
                 (substatement-open . 0)
                 (inline-open . 0)
-                (statement-cont . c-lineup-assignments))))
+                (statement-cont . c-lineup-assignments)
+                (inextern-lang . 0)
+                (innamespace . 0))))
 
 (defun bb-style () (interactive) (c-set-style "bb-style"))
 (defun sintef-style () (interactive) (c-set-style "sintef-style"))

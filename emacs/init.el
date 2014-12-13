@@ -650,6 +650,7 @@ PWD is not in a git repo (or the git command is not found)."
   :ensure auctex
   :init
   (progn
+    (add-hook 'latex-mode-hook 'linum-mode)
     (setq font-latex-fontify-script nil)
     (add-to-list 'LaTeX-verbatim-environments "minted")
     (setq evil-shift-width 2)
@@ -678,6 +679,7 @@ PWD is not in a git repo (or the git command is not found)."
     (setq font-latex-match-warning-keywords
           '(("maketitle" "")
             ("titlepage" "")
+            ("tableofcontents")
             ("frametitle" "{")
             ("doList" "{")))))
 

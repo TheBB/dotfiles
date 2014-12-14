@@ -771,10 +771,6 @@ PWD is not in a git repo (or the git command is not found)."
 
 (defun bb-style () (interactive) (c-set-style "bb-style"))
 (defun sintef-style () (interactive) (c-set-style "sintef-style"))
-(evil-ex-define-cmd
- "bbstyle" (lambda () (interactive) (c-set-style "bb-style")))
-(evil-ex-define-cmd
- "sintefstyle" (lambda () (interactive) (c-set-style "sintef-style")))
 
 (add-hook 'c-mode-common-hook
           (lambda ()

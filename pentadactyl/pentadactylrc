@@ -1,4 +1,5 @@
 set editor="emacsclient -c <file>"
 command redditside :js content.wrappedJSObject.$('div.side').fadeOut();
 noremap <C-g> <Esc>
+noremap gr gT
 cmap -builtin <C-g> <Esc>

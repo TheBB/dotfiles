@@ -43,6 +43,8 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+export PATH=$HOME/bin:$PATH
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -77,6 +79,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
 
 function workon() { VIRTUAL_ENV_DISABLE_PROMPT='1' source $1/bin/activate }
 
+alias pacman="pacman --color auto"
 alias sume="sudo -E su -m"
 alias sudo="sudo -E"
 alias gst="git status"

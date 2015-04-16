@@ -43,8 +43,7 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
-export PATH=$HOME/bin:$PATH
-
+export PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -88,7 +87,6 @@ alias gps="git push"
 alias gpl="git pull"
 alias gad="git add"
 alias gdf="git diff"
-alias matlab="/usr/local/MATLAB/R2012b/bin/matlab -nodesktop -nosplash"
 alias oscid="/home/efonn/sources/Scid-4.5.2/scid /home/efonn/chess/scid.si4"
 alias ocabal="/home/efonn/.cabal/bin/cabal"
 alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"

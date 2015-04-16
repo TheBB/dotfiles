@@ -300,7 +300,7 @@
 ;; =================================================================================
 
 (use-package helm
-  :load-path "sources/helm"
+  ;; :load-path "sources/helm"
   :init
   (evil-leader/set-key
     "x" 'helm-M-x
@@ -693,6 +693,7 @@ PWD is not in a git repo (or the git command is not found)."
   (progn
     (setq python-indent 4
           elpy-rpc-backend "jedi")
+    (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
     (elpy-enable)
 
     ;; Customize flymake

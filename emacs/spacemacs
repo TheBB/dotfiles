@@ -181,7 +181,6 @@ layers configuration."
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
   (define-key evil-normal-state-map (kbd "SPC o s")
     (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
-  (fringe-mode 0)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

@@ -179,9 +179,9 @@ layers configuration."
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 0) (open-line n))))
   (define-key evil-normal-state-map (kbd "RET")
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
-  (define-key evil-normal-state-map (kbd "SPC o s")
+  (define-key evil-normal-state-map (kbd "g r")
     (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

@@ -30,7 +30,10 @@
 
      smex
 
-     themes-megapack)
+     themes-megapack
+
+     evil-little-word
+     )
 
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -67,7 +70,7 @@ before layers configuration."
 
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-lists '(recents projects bookmarks)
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
@@ -169,6 +172,9 @@ before layers configuration."
    )
 
   ;; User initialization goes here
+  (setq
+   vc-follow-symlinks t
+   )
   )
 
 (defun dotspacemacs/config ()
@@ -179,9 +185,19 @@ layers configuration."
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 0) (open-line n))))
   (define-key evil-normal-state-map (kbd "RET")
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
-  (define-key evil-normal-state-map (kbd "SPC o s")
+  (define-key evil-normal-state-map (kbd "g r")
     (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
-)
+  (let ((bwc-taffy "#ff2c4b")
+        (bwc-dress "#ff9eb8"))
+    (custom-set-faces
+     `(font-lock-builtin-face ((t (:foreground ,bwc-dress))))
+     `(font-lock-keyword-face ((t (:weight bold))))
+     `(font-lock-comment-face ((t (:slant italic))))
+     `(font-lock-string-face ((t (:slant italic))))
+     `(font-lock-doc-face ((t (:slant italic))))
+     `(font-lock-warning-face ((t (:underline nil))))
+     ))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

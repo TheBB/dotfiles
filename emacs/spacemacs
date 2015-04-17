@@ -195,6 +195,7 @@ layers configuration."
      `(font-lock-comment-face ((t (:slant italic))))
      `(font-lock-string-face ((t (:slant italic))))
      `(font-lock-doc-face ((t (:slant italic))))
+     `(font-lock-warning-face ((t (:underline nil))))
      ))
   )
 

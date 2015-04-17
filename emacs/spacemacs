@@ -169,6 +169,9 @@ before layers configuration."
    )
 
   ;; User initialization goes here
+  (setq
+   vc-follow-symlinks t
+   )
   )
 
 (defun dotspacemacs/config ()

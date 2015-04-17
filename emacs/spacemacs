@@ -184,6 +184,15 @@ layers configuration."
     (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
   (define-key evil-normal-state-map (kbd "g r")
     (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
+  (let ((bwc-taffy "#ff2c4b")
+        (bwc-dress "#ff9eb8"))
+    (custom-set-faces
+     `(font-lock-builtin-face ((t (:foreground ,bwc-dress))))
+     `(font-lock-keyword-face ((t (:weight bold))))
+     `(font-lock-comment-face ((t (:slant italic))))
+     `(font-lock-string-face ((t (:slant italic))))
+     `(font-lock-doc-face ((t (:slant italic))))
+     ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

@@ -186,7 +186,8 @@ before layers configuration."
    require-final-newline t
    indent-tabs-mode nil
    whitespace-style '(face tabs tab-mark)
-   whitespace-display-mappings '((newline-mark 10 [172 10]) (tab-mark 9 [9655 9]))
+   whitespace-display-mappings '((newline-mark 10 [172 10])
+                                 (tab-mark 9 [9655 9]))
    )
   )
 
@@ -199,11 +200,14 @@ layers configuration."
 
   ;; Useful shortcuts
   (define-key evil-normal-state-map [backspace]
-    (lambda (n) (interactive "p") (save-excursion (move-end-of-line 0) (open-line n))))
+    (lambda (n) (interactive "p")
+      (save-excursion (move-end-of-line 0) (open-line n))))
   (define-key evil-normal-state-map (kbd "RET")
-    (lambda (n) (interactive "p") (save-excursion (move-end-of-line 1) (open-line n))))
+    (lambda (n) (interactive "p")
+      (save-excursion (move-end-of-line 1) (open-line n))))
   (define-key evil-normal-state-map (kbd "g r")
-    (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
+    (lambda (n) (interactive "p")
+      (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)
 
@@ -219,7 +223,8 @@ layers configuration."
      `(font-lock-string-face ((t (:slant italic))))
      `(font-lock-doc-face ((t (:slant italic))))
      `(font-lock-warning-face ((t (:underline nil))))
-     `(evil-search-highlight-persist-highlight-face ((t (:background ,bwc-purple :foreground ,bwc-black))))
+     `(evil-search-highlight-persist-highlight-face
+       ((t (:background ,bwc-purple :foreground ,bwc-black))))
      ))
 
   ;; C/C++ styles
@@ -250,7 +255,11 @@ layers configuration."
             (lambda ()
               (c-set-style "bb-style")
               (setq c-macro-names-with-semicolon
-                    '("Q_OBJECT" "Q_PROPERTY" "Q_DECLARE" "Q_ENUMS" "Q_INTERFACES"))
+                    '("Q_OBJECT"
+                      "Q_PROPERTY"
+                      "Q_DECLARE"
+                      "Q_ENUMS"
+                      "Q_INTERFACES"))
               (c-make-macro-with-semi-re)))
   )
 

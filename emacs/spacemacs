@@ -208,7 +208,9 @@ layers configuration."
   (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)
 
   ;; Fix up monokai a bit
-  (let ((bwc-taffy "#ff2c4b")
+  (let ((bwc-purple "#fc5fef")
+        (bwc-black "#000000")
+        (bwc-taffy "#ff2c4b")
         (bwc-dress "#ff9eb8"))
     (custom-set-faces
      `(font-lock-builtin-face ((t (:foreground ,bwc-dress))))
@@ -217,6 +219,7 @@ layers configuration."
      `(font-lock-string-face ((t (:slant italic))))
      `(font-lock-doc-face ((t (:slant italic))))
      `(font-lock-warning-face ((t (:underline nil))))
+     `(evil-search-highlight-persist-highlight-face ((t (:background ,bwc-purple :foreground ,bwc-black))))
      ))
 
   ;; C/C++ styles

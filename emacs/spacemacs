@@ -180,7 +180,7 @@ before layers configuration."
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
-   vc-follow-symlinks nil
+   vc-follow-symlinks t
    warning-suppress-styles '((undo discard-info))
    ring-bell-function 'ignore
    require-final-newline t

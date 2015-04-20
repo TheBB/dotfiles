@@ -15,6 +15,7 @@
    dotspacemacs-configuration-layers
    '(auto-completion
 
+     auctex
      c-c++
      csharp
      haskell

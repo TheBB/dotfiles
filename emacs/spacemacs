@@ -210,6 +210,7 @@ layers configuration."
       (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)
+  (evil-leader/set-key "of" 'select-frame-by-name)
 
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")

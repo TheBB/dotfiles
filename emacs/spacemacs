@@ -217,6 +217,7 @@ layers configuration."
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")
         (bwc-black "#000000")
+        (bwc-lightgravel "#998f84")
         (bwc-taffy "#ff2c4b")
         (bwc-dress "#ff9eb8"))
     (custom-set-faces
@@ -228,6 +229,7 @@ layers configuration."
      `(font-lock-warning-face ((t (:underline nil))))
      `(evil-search-highlight-persist-highlight-face
        ((t (:background ,bwc-purple :foreground ,bwc-black))))
+     `(region ((t (:background ,bwc-lightgravel))))
      ))
 
   ;; C/C++ styles

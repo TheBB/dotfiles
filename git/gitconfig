@@ -15,3 +15,5 @@
 	prompt = false
 [github]
 	user = TheBB
+[alias]
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit

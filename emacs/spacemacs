@@ -219,6 +219,12 @@ layers configuration."
     "Fo" 'other-frame
     "os" 'just-one-space)
 
+  ;; Helm mode keys
+  (with-eval-after-load "helm-files"
+    (define-key helm-find-files-map (kbd "C-h") nil)
+    (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
+    (define-key helm-find-files-map (kbd "C-h") 'helm-find-files-up-one-level))
+
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")
         (bwc-black "#000000")

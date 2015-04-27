@@ -285,6 +285,9 @@ layers configuration."
 
   ;; IRC
   (setq rcirc-server-alist nil)
+  (setq rcirc-time-format "%H:%M ")
+  (add-hook 'rcirc-mode-hook
+            (lambda () (set (make-local-variable 'scroll-conservatively) 8192)))
   (defun bb-rcirc-generate-log-filename (process target)
     (if target
         (rcirc-generate-log-filename

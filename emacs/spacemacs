@@ -201,10 +201,10 @@ layers configuration."
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   ;; Useful shortcuts
-  (define-key evil-normal-state-map [backspace]
+  (define-key evil-normal-state-map (kbd "<S-backspace>")
     (lambda (n) (interactive "p")
       (save-excursion (move-end-of-line 0) (open-line n))))
-  (define-key evil-normal-state-map (kbd "<S-backspace>")
+  (define-key evil-normal-state-map [backspace]
     (lambda (n) (interactive "p")
       (save-excursion (move-end-of-line 1) (open-line n))))
   (define-key evil-normal-state-map (kbd "g r")

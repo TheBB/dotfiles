@@ -188,6 +188,8 @@ before layers configuration."
    whitespace-style '(face tabs tab-mark)
    whitespace-display-mappings '((newline-mark 10 [172 10])
                                  (tab-mark 9 [9655 9]))
+   matlab-auto-fill nil
+   matlab-fill-code nil
    )
   )
 

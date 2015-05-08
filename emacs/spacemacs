@@ -190,6 +190,8 @@ before layers configuration."
                                  (tab-mark 9 [9655 9]))
    matlab-auto-fill nil
    matlab-fill-code nil
+   matlab-functions-have-end t
+   matlab-indent-function-body t
    )
 
   (with-eval-after-load 'rcirc

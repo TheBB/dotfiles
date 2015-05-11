@@ -172,6 +172,7 @@ before layers configuration."
 
   ;; User initialization goes here
   (setq-default
+   sentence-end-double-space nil
    git-gutter-use-fringe t
    make-backup-files nil
    backup-directory-alist `((".*" . ,temporary-file-directory))
@@ -284,7 +285,8 @@ layers configuration."
               (c-make-macro-with-semi-re)))
 
   ;; IRC
-  (setq rcirc-server-alist nil)
+  (setq rcirc-server-alist nil
+        rcirc-time-format "%H:%M ")
   (add-hook 'rcirc-mode-hook
             (lambda ()
               (set (make-local-variable 'scroll-conservatively) 8192)

@@ -193,9 +193,6 @@ before layers configuration."
    matlab-functions-have-end t
    matlab-indent-function-body t
    )
-
-  (with-eval-after-load 'rcirc
-    (setq-default rcirc-time-format "%H:%M "))
   )
 
 (defun dotspacemacs/config ()
@@ -289,7 +286,9 @@ layers configuration."
   ;; IRC
   (setq rcirc-server-alist nil)
   (add-hook 'rcirc-mode-hook
-            (lambda () (set (make-local-variable 'scroll-conservatively) 8192)))
+            (lambda ()
+              (set (make-local-variable 'scroll-conservatively) 8192)
+              (setq rcirc-time-format "%H:%M ")))
   (defun bb-rcirc-generate-log-filename (process target)
     (if target
         (rcirc-generate-log-filename

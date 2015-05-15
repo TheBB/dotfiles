@@ -17,6 +17,7 @@
      auctex
      c-c++
      csharp
+     emacs-lisp
      haskell
      html
      javascript
@@ -31,7 +32,6 @@
      themes-megapack
 
      evil-little-word
-     matlab
      non-ascii
      )
 

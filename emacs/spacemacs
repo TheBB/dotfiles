@@ -204,8 +204,6 @@ before layers configuration."
 This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
-  (defalias 'yes-or-no-p 'y-or-n-p)
-
   ;; Useful shortcuts
   (define-key evil-normal-state-map (kbd "<S-backspace>")
     'spacemacs/insert-line-above-no-indent)

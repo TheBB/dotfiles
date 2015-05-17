@@ -8,8 +8,7 @@
   (setq-default
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
-;   dotspacemacs-configuration-layer-path '("~/.emacs.d/private/bb/")
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/repos/dotfiles/spacemacs/")
 
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
@@ -33,8 +32,8 @@
      rcirc
      themes-megapack
 
-     ;evil-little-word
-     ;non-ascii
+     evil-little-word
+     non-ascii
      )
 
    ;; A list of packages and/or extensions that will not be install and loaded.

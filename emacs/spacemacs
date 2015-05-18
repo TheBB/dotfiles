@@ -214,6 +214,7 @@ layers configuration."
       (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)
+  (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
   (evil-leader/set-key
     "FN" 'set-frame-name
     "Fn" 'select-frame-by-name

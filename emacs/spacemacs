@@ -8,7 +8,7 @@
   (setq-default
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.emacs.d/private/bb/")
+   dotspacemacs-configuration-layer-path '("~/repos/dotfiles/spacemacs/")
 
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
@@ -17,6 +17,7 @@
      auctex
      c-c++
      csharp
+     emacs-lisp
      haskell
      html
      javascript
@@ -25,13 +26,13 @@
      shell-scripts
      extra-langs
      org
+     games
      git
      smex
      rcirc
      themes-megapack
 
      evil-little-word
-     matlab
      non-ascii
      )
 
@@ -203,15 +204,11 @@ before layers configuration."
 This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
-  (defalias 'yes-or-no-p 'y-or-n-p)
-
   ;; Useful shortcuts
   (define-key evil-normal-state-map (kbd "<S-backspace>")
-    (lambda (n) (interactive "p")
-      (save-excursion (move-end-of-line 0) (open-line n))))
+    'spacemacs/insert-line-above-no-indent)
   (define-key evil-normal-state-map [backspace]
-    (lambda (n) (interactive "p")
-      (save-excursion (move-end-of-line 1) (open-line n))))
+    'spacemacs/insert-line-below-no-indent)
   (define-key evil-normal-state-map (kbd "g r")
     (lambda (n) (interactive "p")
       (dotimes (c n nil) (insert " "))))
@@ -222,7 +219,10 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "os" 'just-one-space)
+    "os" 'just-one-space
+    "fd" 'helm-find-files
+    "bv" 'helm-mini
+    "p[" 'helm-projectile-switch-project)
 
   ;; Helm mode keys
   (with-eval-after-load "helm-files"
@@ -292,7 +292,9 @@ layers configuration."
   (add-hook 'rcirc-mode-hook
             (lambda ()
               (set (make-local-variable 'scroll-conservatively) 8192)
-              (setq rcirc-time-format "%H:%M ")))
+              (setq rcirc-time-format "%H:%M "
+                    rcirc-colors (delete "blue3" rcirc-colors))
+              ))
   (defun bb-rcirc-generate-log-filename (process target)
     (if target
         (rcirc-generate-log-filename

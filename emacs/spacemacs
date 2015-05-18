@@ -289,8 +289,9 @@ layers configuration."
   (add-hook 'rcirc-mode-hook
             (lambda ()
               (set (make-local-variable 'scroll-conservatively) 8192)
-              (setq rcirc-time-format "%H:%M "
-                    rcirc-colors (delete "blue3" rcirc-colors))
+              (setq rcirc-time-format "%H:%M ")
+              (dolist (color '("blue3" "mediumblue"))
+                (setq rcirc-colors (delete color rcirc-colors)))
               ))
   (defun bb-rcirc-generate-log-filename (process target)
     (if target

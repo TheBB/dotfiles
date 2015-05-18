@@ -300,8 +300,7 @@ layers configuration."
   (add-hook 'rcirc-mode-hook
             (lambda ()
               (set (make-local-variable 'scroll-conservatively) 8192)
-              (setq rcirc-time-format "%H:%M "
-                    rcirc-color-is-deterministic t)
+              (setq rcirc-time-format "%H:%M ")
               (dolist (color '("blue3" "mediumblue" "darkblue"))
                 (setq rcirc-colors (delete color rcirc-colors)))
               ))

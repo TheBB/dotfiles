@@ -194,6 +194,7 @@ before layers configuration."
    matlab-fill-code nil
    matlab-functions-have-end t
    matlab-indent-function-body t
+   tab-width 8
    )
   )
 

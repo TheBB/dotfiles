@@ -1,0 +1,3 @@
+set gui=nonavigation
+map ge gT
+set defsearch=google

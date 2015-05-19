@@ -13,23 +13,24 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(auto-completion
-     auctex
+   '(auctex
+     auto-completion
      c-c++
      csharp
      emacs-lisp
+     eyebrowse
+     extra-langs
+     games
+     git
      haskell
      html
      javascript
      markdown
-     python
-     shell-scripts
-     extra-langs
      org
-     games
-     git
-     smex
+     python
      rcirc
+     shell-scripts
+     smex
      themes-megapack
 
      evil-little-word
@@ -225,6 +226,8 @@ layers configuration."
   (define-key evil-normal-state-map "+" 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map "_" 'evil-numbers/dec-at-pt)
   (define-key evil-normal-state-map "\\" 'evil-repeat-find-char-reverse)
+  (define-key evil-normal-state-map "gt" 'eyebrowse-next-window-config)
+  (define-key evil-normal-state-map "gT" 'eyebrowse-prev-window-config)
   (evil-leader/set-key
     "FN" 'set-frame-name
     "Fn" 'select-frame-by-name

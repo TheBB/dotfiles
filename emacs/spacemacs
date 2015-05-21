@@ -29,6 +29,7 @@
      org
      python
      rcirc
+     shell
      shell-scripts
      smex
      themes-megapack

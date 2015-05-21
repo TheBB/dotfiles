@@ -233,7 +233,8 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "os" 'just-one-space)
+    "os" 'just-one-space
+    "`" 'popwin:close-popup-window)
 
   ;; Helm mode keys
   (with-eval-after-load "helm-files"

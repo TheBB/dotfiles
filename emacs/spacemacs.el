@@ -1,7 +1,3 @@
-;; -*- mode: dotspacemacs -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
-
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
 
@@ -16,6 +12,7 @@
    '(auctex
      auto-completion
      c-c++
+     clojure
      csharp
      emacs-lisp
      eyebrowse
@@ -242,12 +239,11 @@ layers configuration."
 
   ;; Helm mode keys
   (with-eval-after-load "helm-files"
-    (define-key helm-find-files-map (kbd "C-h") nil)
-    (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
-    (define-key helm-find-files-map (kbd "C-h") 'helm-find-files-up-one-level)
-    (define-key helm-read-file-map (kbd "C-h") nil)
-    (define-key helm-read-file-map (kbd "C-l") 'helm-execute-persistent-action)
-    (define-key helm-read-file-map (kbd "C-h") 'helm-find-files-up-one-level))
+    (dolist (keymap (list helm-find-files-map helm-read-file-map))
+      (bb-def keymap
+              (kbd "C-h") nil
+              (kbd "C-l") 'helm-execute-persistent-action
+              (kbd "C-h") 'helm-find-files-up-one-level)))
 
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")

@@ -203,11 +203,13 @@ before layers configuration."
    whitespace-style '(face tabs tab-mark)
    whitespace-display-mappings '((newline-mark 10 [172 10])
                                  (tab-mark 9 [9655 9]))
+   tab-width 8
    matlab-auto-fill nil
    matlab-fill-code nil
    matlab-functions-have-end t
    matlab-indent-function-body t
-   tab-width 8
+   font-latex-fontify-script nil
+   TeX-newline-function 'reindent-then-newline-and-indent
    )
   )
 
@@ -304,6 +306,20 @@ layers configuration."
     (add-hook hook
               (lambda ()
                 (set (make-local-variable 'global-hl-line-mode) nil))))
+
+  ;; LaTeX
+  (add-hook 'latex-mode-hook
+            (lambda ()
+              (set (make-local-variable 'evil-shift-width) 2)))
+  (setq font-latex-match-slide-title-keywords
+        '(("frametitle" "{")
+          ("institute" "{"))
+        font-latex-match-function-keywords
+        '(("setbeamercovered" "{")
+          ("usetheme" "{")
+          ("reserveinserts" "{"))
+        font-latex-match-warning-keywords
+        '("titlepage"))
 
   ;; IRC
   (setq rcirc-server-alist nil

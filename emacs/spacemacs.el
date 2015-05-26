@@ -302,7 +302,8 @@ layers configuration."
   (dolist (hook '(eshell-mode-hook term-mode-hook rcirc-mode-hook))
     (add-hook hook
               (lambda ()
-                (set (make-local-variable 'global-hl-line-mode) nil))))
+                (set (make-local-variable 'global-hl-line-mode) nil)
+                )))
 
   ;; LaTeX
   (add-hook 'latex-mode-hook
@@ -314,7 +315,11 @@ layers configuration."
         font-latex-match-function-keywords
         '(("setbeamercovered" "{")
           ("usetheme" "{")
-          ("reserveinserts" "{"))
+          ("reserveinserts" "{")
+          ("address" "{"))
+        font-latex-match-textual-keywords
+        '(("hfill" "" nil 'noarg)
+          ("textwidth" "" nil 'noarg))
         font-latex-match-warning-keywords
         '("titlepage"))
 

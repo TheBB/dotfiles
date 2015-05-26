@@ -298,11 +298,12 @@ layers configuration."
                       "Q_INTERFACES"))
               (c-make-macro-with-semi-re)))
 
-  ;; Disable line highlighting in typical command-line modes
+  ;; Some fixes for comint-style buffers
   (dolist (hook '(eshell-mode-hook term-mode-hook rcirc-mode-hook))
     (add-hook hook
               (lambda ()
                 (set (make-local-variable 'global-hl-line-mode) nil)
+                (set (make-local-variable 'smooth-scroll-margin 0) nil)
                 )))
 
   ;; LaTeX

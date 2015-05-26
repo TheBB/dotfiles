@@ -1,4 +1,3 @@
 set gui=nonavigation
 set gui=nomenu
 map ge gT
-set defsearch=google

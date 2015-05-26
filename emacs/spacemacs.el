@@ -303,7 +303,7 @@ layers configuration."
     (add-hook hook
               (lambda ()
                 (set (make-local-variable 'global-hl-line-mode) nil)
-                (set (make-local-variable 'smooth-scroll-margin 0) nil)
+                (set (make-local-variable 'scroll-margin) 0)
                 )))
 
   ;; LaTeX

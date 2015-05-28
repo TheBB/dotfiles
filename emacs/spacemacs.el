@@ -29,6 +29,7 @@
      shell
      shell-scripts
      smex
+     syntax-checking
      themes-megapack
 
      evil-little-word

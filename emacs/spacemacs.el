@@ -312,20 +312,35 @@ layers configuration."
             (lambda ()
               (set (make-local-variable 'evil-shift-width) 2)))
   (setq font-latex-match-slide-title-keywords
-        '(("frametitle" "{")
-          ("institute" "{"))
+        '(("frametitle" "{"))
         font-latex-match-function-keywords
         '(("setbeamercovered" "{")
           ("usetheme" "{")
+          ("usecolortheme" "{")
+          ("usetikzlibrary" "{")
           ("reserveinserts" "{")
-          ("address" "{"))
+          ("address" "{")
+          ("definecolor" "{{{")
+          ("includegraphics" "[{")
+          ("titlegraphic" "{")
+          ("newacronym" "{{{"))
         font-latex-match-textual-keywords
         '(("hfill" "" nil 'noarg)
-          ("textwidth" "" nil 'noarg))
-        font-latex-match-warning-keywords
-        '("titlepage"))
+          ("textwidth" "" nil 'noarg)
+          ("titlepage" "" nil 'noarg)
+          ("and" "")
+          ("institute" "[{")
+          ("abstract" "{")
+          ("overview" "{")
+          ("doList" "{")
+          ("challengeList" "{"))
+        font-latex-match-reference-keywords
+        '(("autoref" "{")
+          ("inst" "{"))
+        )
 
   ;; IRC
+  (spacemacs|hide-lighter rcirc-omit-mode)
   (setq rcirc-server-alist nil
         rcirc-time-format "%H:%M ")
   (add-hook 'rcirc-mode-hook

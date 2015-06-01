@@ -264,6 +264,12 @@ layers configuration."
      `(evil-search-highlight-persist-highlight-face
        ((t (:background ,bwc-purple :foreground ,bwc-black))))
      `(region ((t (:background ,bwc-lightgravel))))
+     `(font-latex-slide-title-face ((t (:inherit font-lock-type-face :height 1.0))))
+     `(font-latex-sectioning-1-face ((t (:height 1.0))))
+     `(font-latex-sectioning-2-face ((t (:height 1.0))))
+     `(font-latex-sectioning-3-face ((t (:height 1.0))))
+     `(font-latex-sectioning-4-face ((t (:height 1.0))))
+     `(font-latex-sectioning-5-face ((t (:inherit default :height 1.0))))
      ))
 
   ;; C/C++ styles

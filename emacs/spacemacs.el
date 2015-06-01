@@ -209,6 +209,7 @@ before layers configuration."
    matlab-indent-function-body t
    font-latex-fontify-script nil
    TeX-newline-function 'reindent-then-newline-and-indent
+   shell-default-term-shell "/bin/zsh"
    )
   )
 

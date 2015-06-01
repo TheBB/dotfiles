@@ -278,6 +278,13 @@ layers configuration."
      `(org-level-6 ((t (:inherit default :height 1.0 :weight bold))))
      `(org-level-7 ((t (:inherit default :height 1.0 :weight bold))))
      `(org-level-8 ((t (:inherit default :height 1.0 :weight bold))))
+     `(markdown-header-face ((t (:weight bold))))
+     `(markdown-header-face-1 ((t (:height 1.0))))
+     `(markdown-header-face-2 ((t (:height 1.0))))
+     `(markdown-header-face-3 ((t (:height 1.0))))
+     `(markdown-header-face-4 ((t (:height 1.0))))
+     `(markdown-header-face-5 ((t (:height 1.0))))
+     `(markdown-header-face-6 ((t (:height 1.0))))
      ))
 
   ;; C/C++ styles

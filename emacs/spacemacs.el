@@ -270,6 +270,14 @@ layers configuration."
      `(font-latex-sectioning-3-face ((t (:height 1.0))))
      `(font-latex-sectioning-4-face ((t (:height 1.0))))
      `(font-latex-sectioning-5-face ((t (:inherit default :height 1.0))))
+     `(org-level-1 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-2 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-3 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-4 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-5 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-6 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-7 ((t (:inherit default :height 1.0 :weight bold))))
+     `(org-level-8 ((t (:inherit default :height 1.0 :weight bold))))
      ))
 
   ;; C/C++ styles

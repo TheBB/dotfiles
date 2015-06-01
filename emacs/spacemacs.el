@@ -62,18 +62,16 @@ before layers configuration."
    ;; is `emacs' then the `holy-mode' is enabled at startup.
    dotspacemacs-editing-style 'vim
 
-   ;; If non nil output loading progess in `*Messages*' buffer.
+   ;; If non nil output loading progress in `*Messages*' buffer.
    dotspacemacs-verbose-loading nil
 
    ;; Specify the startup banner. Default value is `official', it displays
+   ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
-   ;; directory. A string value must be a path to a .PNG file.
+   ;; directory. A string value must be a path to an image format supported
+   ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed.
-   ;; dotspacemacs-startup-banner 'official
    dotspacemacs-startup-banner 'official
-
-   ;; t if you always want to see the changelog at startup
-   dotspacemacs-always-show-changelog t
 
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
@@ -118,7 +116,11 @@ before layers configuration."
    ;; with `:' and Emacs commands are executed with `<leader> :'.
    dotspacemacs-command-key ":"
 
-   ;; If non nil the paste micro-state is enabled. While enabled pressing `p`
+   ;; If non nil then `ido' replaces `helm' for some commands. For now only
+   ;; `find-files' (SPC f f) is replaced.
+   dotspacemacs-use-ido nil
+
+   ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content.
    dotspacemacs-enable-paste-micro-state t
 
@@ -194,7 +196,6 @@ before layers configuration."
    kept-new-versions 6
    kept-old-versions 2
    vc-follow-symlinks t
-   warning-suppress-styles '((undo discard-info))
    ring-bell-function 'ignore
    require-final-newline t
    indent-tabs-mode nil
@@ -216,6 +217,8 @@ before layers configuration."
 This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
+  (push '(undo discard-info) warning-suppress-types)
+
   ;; Custom leader and evil normal state keybindings
   (defun bb-def (keymap &rest bindings)
     (while bindings
@@ -235,8 +238,7 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "os" 'just-one-space
-    "`" 'popwin:close-popup-window)
+    "os" 'just-one-space)
 
   ;; Helm mode keys
   (with-eval-after-load "helm-files"
@@ -340,7 +342,6 @@ layers configuration."
         )
 
   ;; IRC
-  (spacemacs|hide-lighter rcirc-omit-mode)
   (setq rcirc-server-alist nil
         rcirc-time-format "%H:%M ")
   (add-hook 'rcirc-mode-hook
@@ -360,5 +361,4 @@ layers configuration."
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))
-
   )

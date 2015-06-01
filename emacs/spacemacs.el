@@ -324,9 +324,10 @@ layers configuration."
                 )))
 
   ;; LaTeX
-  (add-hook 'latex-mode-hook
+  (add-hook 'LaTeX-mode-hook
             (lambda ()
-              (set (make-local-variable 'evil-shift-width) 2)))
+              (set (make-local-variable 'evil-shift-width) 2)
+              (auto-fill-mode)))
   (setq font-latex-match-slide-title-keywords
         '(("frametitle" "{"))
         font-latex-match-function-keywords
@@ -349,7 +350,8 @@ layers configuration."
           ("abstract" "{")
           ("overview" "{")
           ("doList" "{")
-          ("challengeList" "{"))
+          ("challengeList" "{")
+          ("ldots" ""))
         font-latex-match-reference-keywords
         '(("autoref" "{")
           ("inst" "{"))

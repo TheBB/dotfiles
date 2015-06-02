@@ -331,6 +331,13 @@ layers configuration."
                 (set (make-local-variable 'scroll-margin) 0)
                 )))
 
+  ;; Org
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (evil-leader/set-key-for-mode 'org-mode
+    "m*" 'org-ctrl-c-star
+    "m RET" 'org-ctrl-c-ret
+    "m-" 'org-ctrl-c-minus)
+
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
             (lambda ()

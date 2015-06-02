@@ -2,6 +2,7 @@
   "Configuration Layers declaration."
 
   (setq-default
+
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -58,6 +59,7 @@ before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
+
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
    dotspacemacs-editing-style 'vim
@@ -186,30 +188,49 @@ before layers configuration."
 
   ;; User initialization goes here
   (setq-default
+
+   ;; Miscellaneous
    sentence-end-double-space nil
-   git-gutter-use-fringe t
-   make-backup-files nil
+   vc-follow-symlinks t
+   ring-bell-function 'ignore
+   require-final-newline t
+   indent-tabs-mode nil
+   tab-width 8
+
+   ;; Backups
    backup-directory-alist `((".*" . ,temporary-file-directory))
    auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
    backup-by-copying t
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
-   vc-follow-symlinks t
-   ring-bell-function 'ignore
-   require-final-newline t
-   indent-tabs-mode nil
+   make-backup-files nil
+
+   ;; Git
+   git-gutter-use-fringe t
+
+   ;; Whitespace mode
    whitespace-style '(face tabs tab-mark)
    whitespace-display-mappings '((newline-mark 10 [172 10])
                                  (tab-mark 9 [9655 9]))
-   tab-width 8
+
+   ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil
    matlab-functions-have-end t
    matlab-indent-function-body t
+
+   ;; LaTeX
    font-latex-fontify-script nil
    TeX-newline-function 'reindent-then-newline-and-indent
    shell-default-term-shell "/bin/zsh"
+
+   ;; Org
+   org-footnote-auto-adjust t
+   org-footnote-auto-label 'confirm
+   org-M-RET-may-split-line '((headline . nil)
+                              (item . nil)
+                              (table . nil))
    )
   )
 

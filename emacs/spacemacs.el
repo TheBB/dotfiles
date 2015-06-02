@@ -65,7 +65,7 @@ before layers configuration."
    dotspacemacs-editing-style 'vim
 
    ;; If non nil output loading progress in `*Messages*' buffer.
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-verbose-loading t
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text

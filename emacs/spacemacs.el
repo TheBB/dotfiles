@@ -226,6 +226,10 @@ before layers configuration."
    shell-default-term-shell "/bin/zsh"
 
    ;; Org
+   org-tags-column -80
+   org-clock-into-drawer "LOGBOOK"
+   org-log-into-drawer "LOGBOOK"
+   org-startup-align-all-tables t
    org-footnote-auto-adjust t
    org-footnote-auto-label 'confirm
    org-M-RET-may-split-line '((headline . nil)

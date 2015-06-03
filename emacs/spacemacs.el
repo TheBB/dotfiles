@@ -357,6 +357,7 @@ layers configuration."
                 )))
 
   ;; Org
+  (remove-hook 'org-mode-hook 'git/load-git-gutter)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (evil-leader/set-key-for-mode 'org-mode
     "m*" 'org-ctrl-c-star

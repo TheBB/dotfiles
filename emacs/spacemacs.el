@@ -235,6 +235,13 @@ before layers configuration."
    org-M-RET-may-split-line '((headline . nil)
                               (item . nil)
                               (table . nil))
+   erc-autojoin-channels-alist
+   '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
+     ("freenode\\.net" "#emacs"))
+   erc-timestamp-format "%H:%M"
+   erc-prompt-for-nickserv-password nil
+   ehc-hide-list '("JOIN" "PART" "QUIT" "NICK")
+   erc-foolish-content '("\\[Github\\].* starred https")
    )
   )
 
@@ -400,14 +407,6 @@ layers configuration."
         )
 
   ;; IRC
-  (setq erc-autojoin-channels-alist
-        '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
-          ("freenode\\.net" "#emacs"))
-        erc-timestamp-format "%H:%M"
-        erc-prompt-for-nickserv-password nil
-        ehc-hide-list '("JOIN" "PART" "QUIT" "NICK")
-        erc-foolish-content '("\\[Github\\].* starred https"))
-
   (defun bb/erc-foolish-filter (msg)
     "Ignores messages matching `erc-foolish-content'."
     (when (erc-list-match erc-foolish-content msg)

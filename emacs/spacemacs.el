@@ -290,6 +290,7 @@ layers configuration."
      `(evil-search-highlight-persist-highlight-face
        ((t (:background ,bwc-purple :foreground ,bwc-black))))
      `(region ((t (:background ,bwc-lightgravel))))
+     `(erc-timestamp-face ((t (:inherit font-lock-comment-face :foreground nil))))
      `(font-latex-slide-title-face ((t (:inherit font-lock-type-face :height 1.0))))
      `(font-latex-sectioning-1-face ((t (:height 1.0))))
      `(font-latex-sectioning-2-face ((t (:height 1.0))))
@@ -400,10 +401,19 @@ layers configuration."
 
   ;; IRC
   (setq erc-autojoin-channels-alist
-        ;; for some reason "irc.gitter.im" doesn't work
-        '(("0.0" . ("#syl20bnr/spacemacs"))
-          ("freenode.net" . ("#emacs")))
-        erc-prompt-for-nickserv-password nil)
+        '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
+          ("freenode\\.net" "#emacs"))
+        erc-timestamp-format "%H:%M"
+        erc-prompt-for-nickserv-password nil
+        ehc-hide-list '("JOIN" "PART" "QUIT" "NICK")
+        erc-foolish-content '("\\[Github\\].* starred https"))
+
+  (defun bb/erc-foolish-filter (msg)
+    "Ignores messages matching `erc-foolish-content'."
+    (when (erc-list-match erc-foolish-content msg)
+      (setq erc-insert-this nil)))
+  (add-hook 'erc-insert-pre-hook 'bb/erc-foolish-filter)
+
   (defun bb/irc ()
     (interactive)
     (erc-tls :server "irc.gitter.im"
@@ -411,11 +421,10 @@ layers configuration."
              :nick "TheBB"
              :password bb/gitter-pwd
              :full-name bb/full-name)
-    ;; (erc :server "irc.freenode.net"
-    ;;          :port "6667"
-    ;;          :nick "TheBB"
-    ;;          :full-name bb/full-name)
-    )
+    (erc :server "irc.freenode.net"
+         :port "6667"
+         :nick "TheBB"
+         :full-name bb/full-name))
   (evil-leader/set-key
     "aii" 'bb/irc
     "aiq" 'erc-quit-server)

@@ -16,8 +16,9 @@
      clojure
      csharp
      emacs-lisp
-     eyebrowse
+     erc
      extra-langs
+     eyebrowse
      games
      git
      haskell
@@ -26,7 +27,6 @@
      markdown
      org
      python
-     rcirc
      shell
      shell-scripts
      smex
@@ -349,7 +349,7 @@ layers configuration."
               (c-make-macro-with-semi-re)))
 
   ;; Some fixes for comint-style buffers
-  (dolist (hook '(eshell-mode-hook term-mode-hook rcirc-mode-hook))
+  (dolist (hook '(eshell-mode-hook term-mode-hook erc-mode-hook))
     (add-hook hook
               (lambda ()
                 (set (make-local-variable 'global-hl-line-mode) nil)
@@ -392,28 +392,33 @@ layers configuration."
           ("overview" "{")
           ("doList" "{")
           ("challengeList" "{")
-          ("ldots" ""))
+          ("ldots" "" nil 'noarg))
         font-latex-match-reference-keywords
         '(("autoref" "{")
           ("inst" "{"))
         )
 
   ;; IRC
-  (setq rcirc-server-alist nil
-        rcirc-time-format "%H:%M ")
-  (add-hook 'rcirc-mode-hook
-            (lambda ()
-              (set (make-local-variable 'scroll-conservatively) 8192)
-              (setq rcirc-time-format "%H:%M ")
-              (dolist (color '("blue" "blue1" "blue2" "blue3" "blue4" "mediumblue" "darkblue"))
-                (setq rcirc-colors (delete color rcirc-colors)))
-              ))
-  (defun bb-rcirc-generate-log-filename (process target)
-    (if target
-        (rcirc-generate-log-filename
-         process (replace-regexp-in-string "/" "+" target))
-      (rcirc-generate-log-filename process nil)))
-  (setq rcirc-log-filename-function 'bb-rcirc-generate-log-filename)
+  (setq erc-autojoin-channels-alist
+        ;; for some reason "irc.gitter.im" doesn't work
+        '(("0.0" . ("#syl20bnr/spacemacs"))
+          ("freenode.net" . ("#emacs")))
+        erc-prompt-for-nickserv-password nil)
+  (defun bb/irc ()
+    (interactive)
+    (erc-tls :server "irc.gitter.im"
+             :port "6667"
+             :nick "TheBB"
+             :password bb/gitter-pwd
+             :full-name bb/full-name)
+    ;; (erc :server "irc.freenode.net"
+    ;;          :port "6667"
+    ;;          :nick "TheBB"
+    ;;          :full-name bb/full-name)
+    )
+  (evil-leader/set-key
+    "aii" 'bb/irc
+    "aiq" 'erc-quit-server)
 
   ;; Load local
   (when (file-exists-p "~/local.el")

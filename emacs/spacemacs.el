@@ -235,6 +235,8 @@ before layers configuration."
    org-M-RET-may-split-line '((headline . nil)
                               (item . nil)
                               (table . nil))
+
+   ;; IRC
    erc-autojoin-channels-alist
    '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
      ("freenode\\.net" "#emacs"))
@@ -412,6 +414,9 @@ layers configuration."
     (when (erc-list-match erc-foolish-content msg)
       (setq erc-insert-this nil)))
   (add-hook 'erc-insert-pre-hook 'bb/erc-foolish-filter)
+
+  (setq erc-modules (remove 'track erc-modules))
+  (erc-track-mode -1)
 
   (defun bb/irc ()
     (interactive)

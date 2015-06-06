@@ -10,8 +10,7 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(auctex
-     auto-completion
+   '(auto-completion
      c-c++
      clojure
      csharp
@@ -24,6 +23,7 @@
      haskell
      html
      javascript
+     latex
      markdown
      org
      python

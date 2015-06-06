@@ -33,8 +33,8 @@
      syntax-checking
      themes-megapack
 
+     encoding
      evil-little-word
-     non-ascii
      )
 
    ;; List of additional packages that will be installed wihout being

@@ -240,9 +240,9 @@ before layers configuration."
      ("freenode\\.net" "#emacs"))
    erc-timestamp-format "%H:%M"
    erc-prompt-for-nickserv-password nil
-   ehc-hide-list '("JOIN" "PART" "QUIT" "NICK")
-   erc-foolish-content '("\\[Github\\].* starred https")
-   )
+   erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
+   erc-foolish-content '("\\[Github\\].* starred https"
+                         "\\[Github\\].* forked"))
   )
 
 (defun dotspacemacs/config ()

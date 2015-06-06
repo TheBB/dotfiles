@@ -251,6 +251,7 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
   (push '(undo discard-info) warning-suppress-types)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
 
   ;; Custom leader and evil normal state keybindings
   (defun bb-def (keymap &rest bindings)
@@ -375,8 +376,7 @@ layers configuration."
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
             (lambda ()
-              (set (make-local-variable 'evil-shift-width) 2)
-              (auto-fill-mode)))
+              (set (make-local-variable 'evil-shift-width) 2)))
   (setq font-latex-match-slide-title-keywords
         '(("frametitle" "{"))
         font-latex-match-function-keywords

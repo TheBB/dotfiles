@@ -27,6 +27,7 @@
      markdown
      org
      python
+     semantic
      shell
      shell-scripts
      smex

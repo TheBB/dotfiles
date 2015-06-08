@@ -243,6 +243,7 @@ before layers configuration."
      ("freenode\\.net" "#emacs"))
    erc-timestamp-format "%H:%M"
    erc-prompt-for-nickserv-password nil
+   erc-image-inline-rescale 300
    erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
    erc-foolish-content '("\\[Github\\].* starred https"
                          "\\[Github\\].* forked"

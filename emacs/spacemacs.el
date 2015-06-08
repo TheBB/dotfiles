@@ -422,7 +422,9 @@ layers configuration."
       (setq erc-insert-this nil)))
   (add-hook 'erc-insert-pre-hook 'bb/erc-foolish-filter)
 
+  (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
   (setq erc-modules (remove 'track erc-modules))
+  (setq erc-modules (remove 'youtube erc-modules))
   (erc-track-mode -1)
 
   (defun bb/irc ()

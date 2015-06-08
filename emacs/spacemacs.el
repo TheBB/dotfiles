@@ -245,7 +245,8 @@ before layers configuration."
    erc-prompt-for-nickserv-password nil
    erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
    erc-foolish-content '("\\[Github\\].* starred https"
-                         "\\[Github\\].* forked"))
+                         "\\[Github\\].* forked"
+                         "\\[Github\\].* synchronize a Pull Request"))
   )
 
 (defun dotspacemacs/config ()

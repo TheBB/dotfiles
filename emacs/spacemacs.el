@@ -15,13 +15,16 @@
      clojure
      csharp
      emacs-lisp
+     emoji
      erc
      extra-langs
      eyebrowse
+     fasd
      games
      git
      haskell
      html
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      javascript
      latex
      markdown

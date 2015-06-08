@@ -103,3 +103,5 @@ done
 
 source $HOME/.localzshrc
 source $HOME/repos/dotfiles/zsh/mancolor.sh
+
+eval "$(fasd --init auto)"

@@ -282,7 +282,8 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "os" 'just-one-space)
+    "os" 'just-one-space
+    "ot" 'helm-etags-select)
 
   ;; Abbreviations
   (evil-leader/set-key

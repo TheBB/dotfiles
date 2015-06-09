@@ -248,9 +248,11 @@ before layers configuration."
    erc-prompt-for-nickserv-password nil
    erc-image-inline-rescale 300
    erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
-   erc-foolish-content '("\\[Github\\].* starred https"
+   erc-foolish-content '("\\[Github\\].* starred"
                          "\\[Github\\].* forked"
-                         "\\[Github\\].* synchronize a Pull Request"))
+                         "\\[Github\\].* synchronize a Pull Request"
+                         "\\[Github\\].* labeled an issue in"
+                         "\\[Github\\].* unlabeled an issue in"))
   )
 
 (defun dotspacemacs/config ()

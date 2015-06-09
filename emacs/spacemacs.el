@@ -300,7 +300,6 @@ layers configuration."
               (kbd "C-h") nil
               (kbd "C-l") 'helm-execute-persistent-action
               (kbd "C-h") 'helm-find-files-up-one-level)))
-  (evil-leader/set-key "fF" 'find-file-other-window)
 
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")

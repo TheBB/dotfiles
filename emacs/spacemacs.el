@@ -282,6 +282,17 @@ layers configuration."
     "Fo" 'other-frame
     "os" 'just-one-space)
 
+  ;; Abbreviations
+  (evil-leader/set-key
+    "xb" 'add-global-abbrev)
+  (spacemacs|add-toggle abbrev-mode
+                        :status abbrev-mode
+                        :on (abbrev-mode)
+                        :off (abbrev-mode -1)
+                        :documentation "Enable abbreviations"
+                        :evil-leader "tb")
+  (spacemacs|diminish abbrev-mode " ⓑ" " b")
+
   ;; Helm mode keys
   (with-eval-after-load "helm-files"
     (dolist (keymap (list helm-find-files-map helm-read-file-map))

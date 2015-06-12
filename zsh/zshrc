@@ -46,6 +46,7 @@ EDITOR="vim"
 plugins=(git)
 
 export PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
+export LD_PRELOAD=/usr/lib/nvidia/libGL.so
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...

@@ -267,7 +267,7 @@ layers configuration."
   (setq evil-insert-state-modes (remove 'erc-mode evil-insert-state-modes))
 
   ;; Custom leader and evil normal state keybindings
-  (defun bb-def (keymap &rest bindings)
+  (defun bb/define-key (keymap &rest bindings)
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
 
@@ -286,15 +286,16 @@ layers configuration."
   (add-hook 'post-self-insert-hook 'smartparens-maybe-reenable t)
 
   ;; Keybindings
-  (bb-def evil-normal-state-map
-          (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
-          (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
-          "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
-          "+" 'evil-numbers/inc-at-pt
-          "_" 'evil-numbers/dec-at-pt
-          "\\" 'evil-repeat-find-char-reverse
-          "gt" 'eyebrowse-next-window-config
-          "gT" 'eyebrowse-prev-window-config)
+  (bb/define-key
+   evil-normal-state-map
+   (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
+   (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
+   "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
+   "+" 'evil-numbers/inc-at-pt
+   "_" 'evil-numbers/dec-at-pt
+   "\\" 'evil-repeat-find-char-reverse
+   "gt" 'eyebrowse-next-window-config
+   "gT" 'eyebrowse-prev-window-config)
   (evil-leader/set-key
     "FN" 'set-frame-name
     "Fn" 'select-frame-by-name
@@ -317,10 +318,10 @@ layers configuration."
   ;; Helm mode keys
   (with-eval-after-load "helm-files"
     (dolist (keymap (list helm-find-files-map helm-read-file-map))
-      (bb-def keymap
-              (kbd "C-h") nil
-              (kbd "C-l") 'helm-execute-persistent-action
-              (kbd "C-h") 'helm-find-files-up-one-level)))
+      (bb/define-key keymap
+                     (kbd "C-h") nil
+                     (kbd "C-l") 'helm-execute-persistent-action
+                     (kbd "C-h") 'helm-find-files-up-one-level)))
 
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")

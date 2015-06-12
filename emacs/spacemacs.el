@@ -263,6 +263,9 @@ layers configuration."
   (push '(undo discard-info) warning-suppress-types)
   (add-hook 'text-mode-hook 'auto-fill-mode)
 
+  ;; Default evil state
+  (setq evil-insert-state-modes (remove 'erc-mode evil-insert-state-modes))
+
   ;; Custom leader and evil normal state keybindings
   (defun bb-def (keymap &rest bindings)
     (while bindings

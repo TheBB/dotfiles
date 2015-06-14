@@ -37,6 +37,7 @@
      syntax-checking
      themes-megapack
 
+     ;; elpy
      encoding
      evil-little-word
      )

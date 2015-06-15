@@ -303,7 +303,8 @@ layers configuration."
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
     "os" 'just-one-space
-    "ot" 'helm-etags-select)
+    "ot" 'helm-etags-select
+    "os" 'flycheck-select-checker)
 
   ;; Abbreviations
   (evil-leader/set-key
@@ -447,6 +448,34 @@ layers configuration."
         '(("autoref" "{")
           ("inst" "{"))
         )
+
+  ;; Python
+  (with-eval-after-load 'flycheck
+    (defun bb/filter (errors)
+      (let ((errors (flycheck-sanitize-errors errors)))
+        (mapc #'flycheck-flake8-fix-error-level errors)
+        errors))
+    (flycheck-define-checker python-flake8-py2
+      "A Python syntax and style checker using Flake8.
+Requires Flake8 2.0 or newer. See URL
+`https://pypi.python.org/pypi/flake8'."
+      :command ("flake8-python2"
+                (config-file "--config" flycheck-flake8rc)
+                (option "--max-complexity" flycheck-flake8-maximum-complexity nil
+                        flycheck-option-int)
+                (option "--max-line-length" flycheck-flake8-maximum-line-length nil
+                        flycheck-option-int)
+                source)
+      :error-filter bb/filter
+      :error-patterns
+      ((warning line-start
+                (file-name) ":" line ":" (optional column ":") " "
+                (id (one-or-more (any alpha)) (one-or-more digit)) " "
+                (message (one-or-more not-newline))
+                line-end))
+      :modes python-mode)
+    (push 'python-flake8-py2 flycheck-checkers))
+   (add-hook 'python-mode-hook (lambda () (setq flycheck-checker 'python-flake8)))
 
   ;; IRC
   (defun bb/erc-foolish-filter (msg)

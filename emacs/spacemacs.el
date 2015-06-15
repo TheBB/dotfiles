@@ -164,7 +164,7 @@ before layers configuration."
    dotspacemacs-inactive-transparency 90
 
    ;; If non nil unicode symbols are displayed in the mode line.
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
 
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the

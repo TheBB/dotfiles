@@ -504,6 +504,10 @@ Requires Flake8 2.0 or newer. See URL
     "aii" 'bb/irc
     "aiq" 'erc-quit-server)
 
+  ;; Local variables
+  (setq safe-local-variable-values
+        '((flycheck-checker . python-flake8-py2)))
+
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))

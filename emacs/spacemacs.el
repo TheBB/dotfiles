@@ -24,7 +24,7 @@
      git
      haskell
      html
-     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     (ibuffer :variables ibuffer-group-buffers-by nil)
      javascript
      latex
      markdown
@@ -253,8 +253,11 @@ before layers configuration."
                          "\\[Github\\].* forked"
                          "\\[Github\\].* synchronize a Pull Request"
                          "\\[Github\\].* labeled an issue in"
-                         "\\[Github\\].* unlabeled an issue in"))
-  )
+                         "\\[Github\\].* unlabeled an issue in")
+
+   ;; IBuffer
+   ibuffer-show-empty-filter-groups nil
+   ))
 
 (defun dotspacemacs/config ()
   "Configuration function.
@@ -263,6 +266,39 @@ layers configuration."
 
   (push '(undo discard-info) warning-suppress-types)
   (add-hook 'text-mode-hook 'auto-fill-mode)
+
+  ;; Auto modes
+  (setq auto-mode-alist
+        (append '(("\\.xml\\'" . web-mode)
+                  ("\\.xinp\\'" . web-mode))
+                auto-mode-alist))
+
+  ;; IBuffer
+  (with-eval-after-load 'projectile
+    (setq ibuffer-saved-filter-groups
+          (list (cons "Default"
+                      (append
+                       (mapcar (lambda (it)
+                                 (let ((name (file-name-nondirectory
+                                              (directory-file-name it))))
+                                   `(,name (filename . ,(expand-file-name it)))))
+                               projectile-known-projects)
+                       `(("Org" (mode . org-mode))
+                         ("Dired" (mode . dired-mode))
+                         ("IRC" (mode . erc-mode))
+                         ("Emacs"
+                          (or (name . "\\*Messages\\*")
+                              (name . "\\*Compile-Log\\*")
+                              (name . "\\*scratch\\*")
+                              (name . "\\*spacemacs\\*")
+                              (name . "\\*emacs\\*")))
+                         ("Help" (name . "\\*Help\\*"))
+                         ("Helm" (name . "\\*helm"))
+                         ))))))
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (ibuffer-switch-to-saved-filter-groups "Default")))
+  (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
   ;; Default evil state
   (setq evil-insert-state-modes (remove 'erc-mode evil-insert-state-modes))

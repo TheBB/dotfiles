@@ -301,7 +301,8 @@ layers configuration."
   (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
   ;; Default evil state
-  (setq evil-insert-state-modes (remove 'erc-mode evil-insert-state-modes))
+  (dolist (mode '(erc-mode comint-mode term-mode))
+    (setq evil-insert-state-modes (remove mode evil-insert-state-modes)))
 
   ;; Custom leader and evil normal state keybindings
   (defun bb/define-key (keymap &rest bindings)

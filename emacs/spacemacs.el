@@ -270,7 +270,9 @@ layers configuration."
   ;; Auto modes
   (setq auto-mode-alist
         (append '(("\\.xml\\'" . web-mode)
-                  ("\\.xinp\\'" . web-mode))
+                  ("\\.xinp\\'" . web-mode)
+                  ("\\.C\\'" . c++-mode)
+                  ("\\.h\\'" . c++-mode))
                 auto-mode-alist))
 
   ;; IBuffer

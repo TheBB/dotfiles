@@ -541,6 +541,9 @@ Requires Flake8 2.0 or newer. See URL
   (setq safe-local-variable-values
         '((flycheck-checker . python-flake8-py2)))
 
+  ;; Modeline separators
+  (setq powerline-default-separator 'alternate)
+
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))

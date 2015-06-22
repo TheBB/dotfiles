@@ -311,20 +311,6 @@ layers configuration."
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
 
-  ;; Escaping smartparens
-  (defvar-local smartparens-temp-disabled nil)
-  (defun smartparens-temp-disable ()
-    (interactive)
-    (when smartparens-mode
-      (smartparens-mode -1)
-      (setq smartparens-temp-disabled t)))
-  (defun smartparens-maybe-reenable ()
-    (when smartparens-temp-disabled
-      (smartparens-mode)
-      (setq smartparens-temp-disabled nil)))
-  (define-key evil-insert-state-map (kbd "M-p") 'smartparens-temp-disable)
-  (add-hook 'post-self-insert-hook 'smartparens-maybe-reenable t)
-
   ;; Keybindings
   (bb/define-key
    evil-normal-state-map

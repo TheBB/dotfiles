@@ -294,6 +294,7 @@ layers configuration."
                               (name . "\\*scratch\\*")
                               (name . "\\*spacemacs\\*")
                               (name . "\\*emacs\\*")))
+                         ("Magit" (name . "\\*magit"))
                          ("Help" (name . "\\*Help\\*"))
                          ("Helm" (name . "\\*helm"))
                          ))))))

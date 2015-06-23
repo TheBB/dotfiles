@@ -245,7 +245,9 @@ before layers configuration."
    erc-autojoin-channels-alist
    '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
      ("freenode\\.net" "#emacs"))
-   erc-timestamp-format "%H:%M"
+   erc-timestamp-format-left "\n%A %B %e, %Y\n\n"
+   erc-timestamp-format-right "%H:%M"
+   erc-timestamp-right-column 80
    erc-prompt-for-nickserv-password nil
    erc-image-inline-rescale 300
    erc-hide-list '("JOIN" "PART" "QUIT" "NICK")

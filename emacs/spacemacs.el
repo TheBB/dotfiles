@@ -524,7 +524,7 @@ Requires Flake8 2.0 or newer. See URL
       (when (re-search-forward " \\[Github\\]" (point-max) t)
        (replace-match ""))
       (goto-char (point-min))
-      (when (re-search-forward " in [^ /]+/[^ /:]+" (point-max) t)
+      (when (re-search-forward " \\(?:in\\|to\\) [^ /]+/[^ /:]+" (point-max) t)
        (replace-match ""))
       (goto-char (point-min))
       (when (re-search-forward "https?://github\\.com/[^/]+/[^/]+/[^/]+/" (point-max) t)

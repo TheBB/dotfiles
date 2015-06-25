@@ -271,6 +271,15 @@ before layers configuration."
 This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
+  ;; Utility functions
+  (defun bb/define-key (keymap &rest bindings)
+    (while bindings
+      (define-key keymap (pop bindings) (pop bindings))))
+
+  (defmacro bb/remove-from-list (list-var element)
+    `(setq ,list-var (remove ,element ,list-var)))
+
+  ;; Miscellaneous
   (push '(undo discard-info) warning-suppress-types)
   (add-hook 'text-mode-hook 'auto-fill-mode)
 
@@ -312,12 +321,7 @@ layers configuration."
 
   ;; Default evil state
   (dolist (mode '(erc-mode comint-mode term-mode))
-    (setq evil-insert-state-modes (remove mode evil-insert-state-modes)))
-
-  ;; Custom leader and evil normal state keybindings
-  (defun bb/define-key (keymap &rest bindings)
-    (while bindings
-      (define-key keymap (pop bindings) (pop bindings))))
+    (bb/remove-from-list evil-insert-state-modes mode))
 
   ;; Keybindings
   (bb/define-key

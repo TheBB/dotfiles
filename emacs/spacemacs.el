@@ -359,6 +359,8 @@ layers configuration."
                      (kbd "C-l") 'helm-execute-persistent-action
                      (kbd "C-h") 'helm-find-files-up-one-level)))
 
+  (setq helm-echo-input-in-header-line nil)
+
   ;; Fix up monokai a bit
   (let ((bwc-purple "#fc5fef")
         (bwc-black "#000000")

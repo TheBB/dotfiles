@@ -516,7 +516,7 @@ Requires Flake8 2.0 or newer. See URL
                 line-end))
       :modes python-mode)
     (push 'python-flake8-py2 flycheck-checkers))
-   (add-hook 'python-mode-hook (lambda () (setq flycheck-checker 'python-flake8)))
+   (add-hook 'python-mode-hook (lambda () (setq-local flycheck-checker 'python-flake8)))
 
    (add-hook 'python-mode-hook (lambda () (setq evil-shift-width python-indent-offset)) t)
 
@@ -570,6 +570,7 @@ Requires Flake8 2.0 or newer. See URL
 
   ;; Modeline separators
   (setq powerline-default-separator 'alternate)
+  (setq powerline-default-separator 'wave)
 
   ;; Load local
   (when (file-exists-p "~/local.el")

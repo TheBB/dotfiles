@@ -532,7 +532,7 @@ Requires Flake8 2.0 or newer. See URL
     (interactive)
     (when (and (< 18 (- (point-max) (point-min)))
                (string= (buffer-substring (point-min) (+ (point-min) 18)) "<gitter> [Github] "))
-      (dolist (regexp '("\\[Github\\]"
+      (dolist (regexp '(" \\[Github\\]"
                         " \\(?:in\\|to\\) [^ /]+/[^ /:]+"
                         "https?://github\\.com/[^/]+/[^/]+/[^/]+/"
                         "#issuecomment-[[:digit:]]+"))

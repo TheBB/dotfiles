@@ -327,10 +327,6 @@ layers configuration."
               (ibuffer-switch-to-saved-filter-groups "Default")))
   (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
-  ;; Default evil state
-  (dolist (mode '(erc-mode comint-mode term-mode))
-    (bb/remove-from-list evil-insert-state-modes mode))
-
   ;; Keybindings
   (bb/define-key
    evil-normal-state-map
@@ -442,11 +438,14 @@ layers configuration."
               (c-make-macro-with-semi-re)))
 
   ;; Some fixes for comint-style buffers
+  (dolist (mode '(erc-mode comint-mode term-mode))
+    (bb/remove-from-list evil-insert-state-modes mode))
+
   (dolist (hook '(eshell-mode-hook term-mode-hook erc-mode-hook))
     (add-hook hook
               (lambda ()
-                (set (make-local-variable 'global-hl-line-mode) nil)
-                (set (make-local-variable 'scroll-margin) 0)
+                (setq-local global-hl-line-mode nil)
+                (setq-local scroll-margin 0)
                 )))
 
   ;; Org

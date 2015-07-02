@@ -219,9 +219,6 @@ before layers configuration."
    kept-old-versions 2
    make-backup-files nil
 
-   ;; Git
-   git-gutter-use-fringe t
-
    ;; Whitespace mode
    whitespace-style '(face tabs tab-mark)
    whitespace-display-mappings '((newline-mark 10 [172 10])
@@ -449,7 +446,6 @@ layers configuration."
                 )))
 
   ;; Org
-  (remove-hook 'org-mode-hook 'git/load-git-gutter)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (evil-leader/set-key-for-mode 'org-mode
     "m*" 'org-ctrl-c-star

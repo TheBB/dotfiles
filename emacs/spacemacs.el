@@ -278,6 +278,7 @@ layers configuration."
 
   ;; Utility functions
   (defun bb/define-key (keymap &rest bindings)
+    (declare (indent 1))
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
 
@@ -325,16 +326,15 @@ layers configuration."
   (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
   ;; Keybindings
-  (bb/define-key
-   evil-normal-state-map
-   (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
-   (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
-   "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
-   "+" 'evil-numbers/inc-at-pt
-   "_" 'evil-numbers/dec-at-pt
-   "\\" 'evil-repeat-find-char-reverse
-   "gt" 'eyebrowse-next-window-config
-   "gT" 'eyebrowse-prev-window-config)
+  (bb/define-key evil-normal-state-map
+    (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
+    (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
+    "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
+    "+" 'evil-numbers/inc-at-pt
+    "_" 'evil-numbers/dec-at-pt
+    "\\" 'evil-repeat-find-char-reverse
+    "gt" 'eyebrowse-next-window-config
+    "gT" 'eyebrowse-prev-window-config)
   (evil-leader/set-key
     "FN" 'set-frame-name
     "Fn" 'select-frame-by-name
@@ -348,9 +348,9 @@ layers configuration."
   (with-eval-after-load "helm-files"
     (dolist (keymap (list helm-find-files-map helm-read-file-map))
       (bb/define-key keymap
-                     (kbd "C-h") nil
-                     (kbd "C-l") 'helm-execute-persistent-action
-                     (kbd "C-h") 'helm-find-files-up-one-level)))
+        (kbd "C-h") nil
+        (kbd "C-l") 'helm-execute-persistent-action
+        (kbd "C-h") 'helm-find-files-up-one-level)))
 
   (setq helm-echo-input-in-header-line nil)
 

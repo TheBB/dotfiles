@@ -565,7 +565,6 @@ Requires Flake8 2.0 or newer. See URL
 
   ;; Modeline separators
   (setq powerline-default-separator 'alternate)
-  (setq powerline-default-separator 'wave)
 
   ;; Load local
   (when (file-exists-p "~/local.el")

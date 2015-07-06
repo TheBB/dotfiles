@@ -361,6 +361,7 @@ layers configuration."
         (bwc-taffy "#ff2c4b")
         (bwc-dress "#ff9eb8"))
     (custom-set-faces
+     `(fixed-pitch ((t (:inherit default :family nil))))
      `(font-lock-builtin-face ((t (:foreground ,bwc-dress))))
      `(font-lock-keyword-face ((t (:weight bold))))
      `(font-lock-comment-face ((t (:slant italic))))

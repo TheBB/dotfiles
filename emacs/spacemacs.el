@@ -342,7 +342,8 @@ layers configuration."
     "Fo" 'other-frame
     "os" 'just-one-space
     "ot" 'helm-etags-select
-    "os" 'flycheck-select-checker)
+    "os" 'flycheck-select-checker
+    "ov" 'evilmi-select-items)
 
   ;; Helm mode keys
   (with-eval-after-load "helm-files"

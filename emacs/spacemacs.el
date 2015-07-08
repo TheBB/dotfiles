@@ -41,6 +41,7 @@
      ;; elpy
      encoding
      evil-little-word
+     evil-indent-textobject
      )
 
    ;; List of additional packages that will be installed wihout being

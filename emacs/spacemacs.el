@@ -196,8 +196,7 @@ before layers configuration."
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now.
-   dotspacemacs-default-package-repository nil
-   )
+   dotspacemacs-default-package-repository nil)
 
   ;; User initialization goes here
   (setq-default

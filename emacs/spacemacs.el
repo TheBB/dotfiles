@@ -240,6 +240,9 @@ before layers configuration."
    TeX-newline-function 'reindent-then-newline-and-indent
    shell-default-term-shell "/bin/zsh"
 
+   ;; Web
+   web-mode-markup-indent-offset 2
+
    ;; Org
    org-tags-column -80
    org-clock-into-drawer "LOGBOOK"

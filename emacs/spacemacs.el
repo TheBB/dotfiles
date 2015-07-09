@@ -349,7 +349,7 @@ layers configuration."
     "ov" 'evilmi-select-items)
 
   ;; Helm mode keys
-  (with-eval-after-load "helm-files"
+  (with-eval-after-load 'helm-files
     (dolist (keymap (list helm-find-files-map helm-read-file-map))
       (bb/define-key keymap
         (kbd "C-h") nil

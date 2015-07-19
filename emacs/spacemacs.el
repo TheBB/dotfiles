@@ -42,6 +42,7 @@
      encoding
      evil-little-word
      evil-indent-textobject
+     no-dots
      )
 
    ;; List of additional packages that will be installed wihout being

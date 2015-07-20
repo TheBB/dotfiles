@@ -24,7 +24,8 @@
      git
      haskell
      html
-     (ibuffer :variables ibuffer-group-buffers-by nil)
+     (ibuffer :variables
+              ibuffer-group-buffers-by nil)
      javascript
      latex
      markdown
@@ -38,10 +39,13 @@
      themes-megapack
      version-control
 
-     ;; elpy
      encoding
      evil-little-word
      evil-indent-textobject
+     (modify-theme :variables
+                   modify-theme-headings-inherit-from-default 'all
+                   modify-theme-headings-same-size 'all
+                   modify-theme-headings-bold 'all)
      no-dots
      )
 
@@ -273,7 +277,33 @@ before layers configuration."
 
    ;; IBuffer
    ibuffer-show-empty-filter-groups nil
-   ))
+
+   ;; Theme modifications
+   modify-theme-modifications
+   '((monokai . ((font-lock-comment-face ((t (:slant italic))))
+                 (font-lock-string-face ((t (:slant italic))))
+                 (font-lock-doc-face ((t (:slant italic))))
+                 (font-lock-keyword-face ((t (:weight bold))))
+                 (font-lock-builtin-face ((t (:foreground "#ff9eb8"))))
+                 (font-lock-warning-face ((t (:underline nil))))
+                 (evil-search-highlight-persist-highlight-face
+                  ((t (:background "#fc5fef" :foreground "#000000"))))
+                 (region ((t (:background "#998f84"))))
+                 (erc-timestamp-face
+                  ((t (:inherit font-lock-comment-face :foreground nil))))
+                 (web-mode-html-attr-value-face
+                  ((t (:inherit font-lock-string-face :foreground nil))))
+                 (web-mode-html-attr-name-face
+                  ((t (:inherit font-lock-variable-name-face :foreground nil))))
+                 (web-mode-html-tag-face
+                  ((t (:inherit font-lock-builtin-face :foreground nil :weight bold))))
+                 (web-mode-html-tag-bracket-face
+                  ((t (:inherit web-mode-html-tag-face :foreground nil))))
+                 (web-mode-comment-face
+                  ((t (:inherit font-lock-comment-face :foreground nil))))))
+     (t . ((font-latex-slide-title-face
+            ((t (:inherit font-lock-type-face :height 1.0 :weight bold))))))
+     )))
 
 (defun dotspacemacs/config ()
   "Configuration function.
@@ -358,52 +388,6 @@ layers configuration."
         (kbd "C-h") 'helm-find-files-up-one-level)))
 
   (setq helm-echo-input-in-header-line nil)
-
-  ;; Fix up monokai a bit
-  (let ((bwc-purple "#fc5fef")
-        (bwc-black "#000000")
-        (bwc-lightgravel "#998f84")
-        (bwc-taffy "#ff2c4b")
-        (bwc-dress "#ff9eb8"))
-    (custom-set-faces
-     `(fixed-pitch ((t (:inherit default :family nil))))
-     `(font-lock-builtin-face ((t (:foreground ,bwc-dress))))
-     `(font-lock-keyword-face ((t (:weight bold))))
-     `(font-lock-comment-face ((t (:slant italic))))
-     `(font-lock-string-face ((t (:slant italic))))
-     `(font-lock-doc-face ((t (:slant italic))))
-     `(font-lock-warning-face ((t (:underline nil))))
-     `(evil-search-highlight-persist-highlight-face
-       ((t (:background ,bwc-purple :foreground ,bwc-black))))
-     `(region ((t (:background ,bwc-lightgravel))))
-     `(erc-timestamp-face ((t (:inherit font-lock-comment-face :foreground nil))))
-     `(web-mode-html-attr-value-face ((t (:inherit font-lock-string-face :foreground nil))))
-     `(web-mode-html-attr-name-face ((t (:inherit font-lock-variable-name-face :foreground nil))))
-     `(web-mode-html-tag-face ((t (:inherit font-lock-builtin-face :foreground nil :weight bold))))
-     `(web-mode-html-tag-bracket-face ((t (:inherit web-mode-html-tag-face :foreground nil))))
-     `(web-mode-comment-face ((t (:inherit font-lock-comment-face :foreground nil))))
-     `(font-latex-slide-title-face ((t (:inherit font-lock-type-face :height 1.0))))
-     `(font-latex-sectioning-1-face ((t (:height 1.0))))
-     `(font-latex-sectioning-2-face ((t (:height 1.0))))
-     `(font-latex-sectioning-3-face ((t (:height 1.0))))
-     `(font-latex-sectioning-4-face ((t (:height 1.0))))
-     `(font-latex-sectioning-5-face ((t (:inherit default :height 1.0))))
-     `(org-level-1 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-2 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-3 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-4 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-5 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-6 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-7 ((t (:inherit default :height 1.0 :weight bold))))
-     `(org-level-8 ((t (:inherit default :height 1.0 :weight bold))))
-     `(markdown-header-face ((t (:weight bold))))
-     `(markdown-header-face-1 ((t (:height 1.0))))
-     `(markdown-header-face-2 ((t (:height 1.0))))
-     `(markdown-header-face-3 ((t (:height 1.0))))
-     `(markdown-header-face-4 ((t (:height 1.0))))
-     `(markdown-header-face-5 ((t (:height 1.0))))
-     `(markdown-header-face-6 ((t (:height 1.0))))
-     ))
 
   ;; C/C++ styles
   (c-add-style "bb-style"

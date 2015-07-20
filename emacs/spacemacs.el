@@ -331,6 +331,10 @@ layers configuration."
                   ("\\.h\\'" . c++-mode))
                 auto-mode-alist))
 
+  ;; Semantic fucks up scrolling
+  (with-eval-after-load 'semantic
+    (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
+
   ;; IBuffer
   (with-eval-after-load 'projectile
     (setq ibuffer-saved-filter-groups

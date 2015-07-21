@@ -280,29 +280,29 @@ before layers configuration."
 
    ;; Theme modifications
    modify-theme-modifications
-   '((monokai . ((font-lock-comment-face ((t (:slant italic))))
-                 (font-lock-string-face ((t (:slant italic))))
-                 (font-lock-doc-face ((t (:slant italic))))
-                 (font-lock-keyword-face ((t (:weight bold))))
-                 (font-lock-builtin-face ((t (:foreground "#ff9eb8"))))
-                 (font-lock-warning-face ((t (:underline nil))))
-                 (evil-search-highlight-persist-highlight-face
-                  ((t (:background "#fc5fef" :foreground "#000000"))))
-                 (region ((t (:background "#998f84"))))
-                 (erc-timestamp-face
-                  ((t (:inherit font-lock-comment-face :foreground nil))))
-                 (web-mode-html-attr-value-face
-                  ((t (:inherit font-lock-string-face :foreground nil))))
-                 (web-mode-html-attr-name-face
-                  ((t (:inherit font-lock-variable-name-face :foreground nil))))
-                 (web-mode-html-tag-face
-                  ((t (:inherit font-lock-builtin-face :foreground nil :weight bold))))
-                 (web-mode-html-tag-bracket-face
-                  ((t (:inherit web-mode-html-tag-face :foreground nil))))
-                 (web-mode-comment-face
-                  ((t (:inherit font-lock-comment-face :foreground nil))))))
-     (t . ((font-latex-slide-title-face
-            ((t (:inherit font-lock-type-face :height 1.0 :weight bold))))))
+   '((monokai (font-lock-comment-face ((t (:slant italic))))
+              (font-lock-string-face ((t (:slant italic))))
+              (font-lock-doc-face ((t (:slant italic))))
+              (font-lock-keyword-face ((t (:weight bold))))
+              (font-lock-builtin-face ((t (:foreground "#ff9eb8"))))
+              (font-lock-warning-face ((t (:underline nil))))
+              (evil-search-highlight-persist-highlight-face
+               ((t (:background "#fc5fef" :foreground "#000000"))))
+              (region ((t (:background "#998f84"))))
+              (erc-timestamp-face
+               ((t (:inherit font-lock-comment-face :foreground nil))))
+              (web-mode-html-attr-value-face
+               ((t (:inherit font-lock-string-face :foreground nil))))
+              (web-mode-html-attr-name-face
+               ((t (:inherit font-lock-variable-name-face :foreground nil))))
+              (web-mode-html-tag-face
+               ((t (:inherit font-lock-builtin-face :foreground nil :weight bold))))
+              (web-mode-html-tag-bracket-face
+               ((t (:inherit web-mode-html-tag-face :foreground nil))))
+              (web-mode-comment-face
+               ((t (:inherit font-lock-comment-face :foreground nil)))))
+     (t (font-latex-slide-title-face
+         ((t (:inherit font-lock-type-face :height 1.0 :weight bold)))))
      )))
 
 (defun dotspacemacs/config ()

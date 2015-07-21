@@ -55,7 +55,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(helm-unicode)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(julia-mode)
@@ -380,6 +380,7 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
+    "xiu" 'helm-unicode
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

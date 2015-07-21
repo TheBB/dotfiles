@@ -43,6 +43,7 @@
      encoding
      evil-little-word
      evil-indent-textobject
+     latexify
      (modify-theme :variables
                    modify-theme-headings-inherit-from-default 'all
                    modify-theme-headings-same-size 'all

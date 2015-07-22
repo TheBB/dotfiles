@@ -361,7 +361,7 @@ layers configuration."
                          ("Helm" (name . "\\*helm"))
                          ))))))
   (add-hook 'ibuffer-mode-hook
-            (lambda ()
+            (defun bb/switch-ibuffer-group ()
               (ibuffer-switch-to-saved-filter-groups "Default")))
   (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
 
@@ -421,7 +421,7 @@ layers configuration."
   (defun sintef-style () (interactive) (c-set-style "sintef-style"))
 
   (add-hook 'c-mode-common-hook
-            (lambda ()
+            (defun bb/c-style ()
               (c-set-style "bb-style")
               (setq c-macro-names-with-semicolon
                     '("Q_OBJECT"
@@ -435,12 +435,13 @@ layers configuration."
   (dolist (mode '(erc-mode comint-mode term-mode))
     (bb/remove-from-list evil-insert-state-modes mode))
 
-  (dolist (hook '(eshell-mode-hook term-mode-hook erc-mode-hook))
-    (add-hook hook
-              (lambda ()
-                (setq-local global-hl-line-mode nil)
-                (setq-local scroll-margin 0)
-                )))
+  (add-to-hooks (defun bb/no-hl-line-mode ()
+                  (setq-local global-hl-line-mode nil))
+                '(eshell-mode-hook term-mode-hook erc-mode-hook))
+
+  (add-to-hooks (defun bb/no-scroll-margin ()
+                  (setq-local scroll-margin 0))
+                '(eshell-mode-hook term-mode-hook erc-mode-hook))
 
   ;; Org
   (add-hook 'org-mode-hook 'auto-fill-mode)
@@ -451,8 +452,8 @@ layers configuration."
 
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
-            (lambda ()
-              (set (make-local-variable 'evil-shift-width) 2)))
+            (defun bb/shift-width-2 ()
+              (setq-local evil-shift-width 2)))
   (setq font-latex-match-slide-title-keywords
         '(("frametitle" "{"))
         font-latex-match-function-keywords
@@ -483,7 +484,10 @@ layers configuration."
         )
 
   ;; Python
-  (add-hook 'python-mode-hook (lambda () (setq evil-shift-width python-indent-offset)) t)
+  (add-hook 'python-mode-hook
+            (defun bb/python-shift-width ()
+              (setq evil-shift-width python-indent-offset))
+            t)
 
   ;; IRC
   (defun bb/erc-foolish-filter (msg)

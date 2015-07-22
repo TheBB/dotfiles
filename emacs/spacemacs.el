@@ -43,22 +43,24 @@
      encoding
      evil-little-word
      evil-indent-textobject
+     evil-shift-width
      (modify-theme :variables
                    modify-theme-headings-inherit-from-default 'all
                    modify-theme-headings-same-size 'all
                    modify-theme-headings-bold 'all)
-     no-dots
-     )
+     no-dots)
 
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(helm-unicode
-                                      ag)
+   dotspacemacs-additional-packages
+   '(helm-unicode
+     ag)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(julia-mode)
+   dotspacemacs-excluded-packages
+   '(julia-mode)
 
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -482,12 +484,6 @@ layers configuration."
         '(("autoref" "{")
           ("inst" "{"))
         )
-
-  ;; Python
-  (add-hook 'python-mode-hook
-            (defun bb/python-shift-width ()
-              (setq evil-shift-width python-indent-offset))
-            t)
 
   ;; IRC
   (defun bb/erc-foolish-filter (msg)

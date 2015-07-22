@@ -379,7 +379,7 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "xiu" 'helm-unicode
+    "iu" 'helm-unicode
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

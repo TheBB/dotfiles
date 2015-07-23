@@ -439,13 +439,16 @@ layers configuration."
   (dolist (mode '(erc-mode comint-mode term-mode))
     (bb/remove-from-list evil-insert-state-modes mode))
 
-  (add-to-hooks (defun bb/no-hl-line-mode ()
-                  (setq-local global-hl-line-mode nil))
-                '(eshell-mode-hook term-mode-hook erc-mode-hook))
-
-  (add-to-hooks (defun bb/no-scroll-margin ()
-                  (setq-local scroll-margin 0))
-                '(eshell-mode-hook term-mode-hook erc-mode-hook))
+  (let ((comint-hooks '(eshell-mode-hook
+                        term-mode-hook
+                        erc-mode-hook
+                        messages-buffer-mode-hook)))
+    (add-to-hooks (defun bb/no-hl-line-mode ()
+                    (setq-local global-hl-line-mode nil))
+                  comint-hooks)
+    (add-to-hooks (defun bb/no-scroll-margin ()
+                    (setq-local scroll-margin 0))
+                  comint-hooks))
 
   ;; Org
   (add-hook 'org-mode-hook 'auto-fill-mode)

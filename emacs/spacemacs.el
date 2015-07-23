@@ -399,7 +399,7 @@ layers configuration."
   (setq helm-echo-input-in-header-line nil)
 
   ;; C/C++ styles
-  (c-add-style "bb-style"
+  (c-add-style "bb"
                '((indent-tabs-mode . nil)
                  (c-basic-offset . 4)
                  (c-offsets-alist
@@ -409,7 +409,7 @@ layers configuration."
                   (inextern-lang . 0)
                   (innamespace . 0))))
 
-  (c-add-style "sintef-style"
+  (c-add-style "sintef"
                '((indent-tabs-mode . nil)
                  (c-basic-offset . 2)
                  (c-offsets-alist
@@ -419,8 +419,10 @@ layers configuration."
                   (inextern-lang . 0)
                   (innamespace . 0))))
 
-  (defun bb-style () (interactive) (c-set-style "bb-style"))
-  (defun sintef-style () (interactive) (c-set-style "sintef-style"))
+  (dolist (style c-style-alist)
+    (let* ((style-name (car style))
+           (style-fcn (intern (format "bb/set-style-%s" style-name))))
+      (eval `(defun ,style-fcn () (interactive) (c-set-style ,style-name)))))
 
   (add-hook 'c-mode-common-hook
             (defun bb/c-style ()

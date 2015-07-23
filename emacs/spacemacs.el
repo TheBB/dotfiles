@@ -486,28 +486,30 @@ layers configuration."
         )
 
   ;; IRC
-  (defun bb/erc-foolish-filter (msg)
-    "Ignores messages matching `erc-foolish-content'."
-    (when (erc-list-match erc-foolish-content msg)
-      (setq erc-insert-this nil)))
-  (add-hook 'erc-insert-pre-hook 'bb/erc-foolish-filter)
+  (add-hook 'erc-insert-pre-hook
+            (defun bb/erc-foolish-filter (msg)
+              "Ignores messages matching `erc-foolish-content'."
+              (when (erc-list-match erc-foolish-content msg)
+                (setq erc-insert-this nil))))
 
-  (defun bb/erc-github-filter ()
-    "Shortens messages from gitter."
-    (interactive)
-    (when (and (< 18 (- (point-max) (point-min)))
-               (string= (buffer-substring (point-min) (+ (point-min) 18)) "<gitter> [Github] "))
-      (dolist (regexp '(" \\[Github\\]"
-                        " \\(?:in\\|to\\) [^ /]+/[^ /:]+"
-                        "https?://github\\.com/[^/]+/[^/]+/[^/]+/"
-                        "#issuecomment-[[:digit:]]+"))
-        (goto-char (point-min))
-        (when (re-search-forward regexp (point-max) t)
-          (replace-match "")))
-      (goto-char (point-min))
-      (when (re-search-forward "[[:digit:]]+$" (point-max) t)
-        (replace-match (format "(#%s)" (match-string 0))))))
-  (add-hook 'erc-insert-modify-hook 'bb/erc-github-filter)
+  (add-hook 'erc-insert-modify-hook
+            (defun bb/erc-github-filter ()
+              "Shortens messages from gitter."
+              (interactive)
+              (when (and (< 18 (- (point-max) (point-min)))
+                         (string= (buffer-substring (point-min)
+                                                    (+ (point-min) 18))
+                                  "<gitter> [Github] "))
+                (dolist (regexp '(" \\[Github\\]"
+                                  " \\(?:in\\|to\\) [^ /]+/[^ /:]+"
+                                  "https?://github\\.com/[^/]+/[^/]+/[^/]+/"
+                                  "#issuecomment-[[:digit:]]+"))
+                  (goto-char (point-min))
+                  (when (re-search-forward regexp (point-max) t)
+                    (replace-match "")))
+                (goto-char (point-min))
+                (when (re-search-forward "[[:digit:]]+$" (point-max) t)
+                  (replace-match (format "(#%s)" (match-string 0)))))))
 
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
   (setq erc-modules (remove 'track erc-modules))

@@ -55,8 +55,9 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages
-   '(helm-unicode
-     ag)
+   '(ag
+     avy
+     helm-unicode)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
@@ -279,6 +280,9 @@ before layers configuration."
                          "\\[Github\\].* labeled an issue in"
                          "\\[Github\\].* unlabeled an issue in")
 
+   ;; Avy
+   avy-all-windows 'all-frames
+
    ;; IBuffer
    ibuffer-show-empty-filter-groups nil
 
@@ -338,6 +342,14 @@ layers configuration."
   ;; Semantic fucks up scrolling
   (with-eval-after-load 'semantic
     (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
+
+  ;; Avy
+  (evil-leader/set-key
+    "SPC" 'avy-goto-subword-1
+    "l" 'avy-goto-line)
+  (which-key-add-key-based-replacements
+   "SPC SPC" "avy word"
+   "SPC l" "avy line")
 
   ;; IBuffer
   (with-eval-after-load 'projectile

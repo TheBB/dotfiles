@@ -438,7 +438,7 @@ layers configuration."
 
   (add-hook 'c-mode-common-hook
             (defun bb/c-style ()
-              (c-set-style "bb-style")
+              (c-set-style "bb")
               (setq c-macro-names-with-semicolon
                     '("Q_OBJECT"
                       "Q_PROPERTY"

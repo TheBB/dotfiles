@@ -38,6 +38,7 @@
      smex
      syntax-checking
      themes-megapack
+     unimpaired
      version-control
 
      encoding

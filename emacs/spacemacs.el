@@ -23,6 +23,7 @@
      fasd
      games
      git
+     github
      haskell
      html
      (ibuffer :variables
@@ -102,6 +103,8 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(monokai
                          material
+                         spacemacs-dark
+                         spacemacs-light
                          solarized-dark
                          leuven
                          zenburn)

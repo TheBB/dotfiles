@@ -185,9 +185,9 @@ set nocompatible
     nnoremap <leader>ev :edit $MYVIMRC<CR>
     nnoremap <leader>sv :source $MYVIMRC<CR>
 
-    " jk to enter normal mode
-    inoremap jk <Esc>
-    vnoremap jk <Esc>
+    " fd to enter normal mode
+    inoremap fd <Esc>
+    vnoremap fd <Esc>
 
     " Enter and backspace to add empty lines
     nnoremap <CR> o<Esc>k

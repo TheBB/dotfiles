@@ -473,6 +473,9 @@ layers configuration."
     "m RET" 'org-ctrl-c-ret
     "m-" 'org-ctrl-c-minus)
 
+  ;; Makefiles
+  (add-hook 'makefile-mode-hook 'whitespace-mode)
+
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
             (defun bb/shift-width-2 ()

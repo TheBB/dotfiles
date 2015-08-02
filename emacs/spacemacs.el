@@ -331,7 +331,10 @@ layers configuration."
     `(setq ,list-var (remove ,element ,list-var)))
 
   ;; Miscellaneous
-  (push '(undo discard-info) warning-suppress-types)
+  (use-package warnings
+    :defer t
+    :config
+    (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
 
   ;; Auto modes

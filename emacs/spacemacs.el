@@ -10,10 +10,7 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '((auto-completion
-      :variables
-      auto-completion-return-key-behavior nil
-      auto-completion-tab-key-behavior 'cycle)
+   '(auto-completion
      c-c++
      clojure
      csharp
@@ -29,9 +26,7 @@
      github
      haskell
      html
-     (ibuffer
-      :variables
-      ibuffer-group-buffers-by nil)
+     ibuffer
      javascript
      latex
      markdown
@@ -50,11 +45,7 @@
      evil-little-word
      evil-indent-textobject
      evil-shift-width
-     (modify-theme
-      :variables
-      modify-theme-headings-inherit-from-default 'all
-      modify-theme-headings-same-size 'all
-      modify-theme-headings-bold 'all)
+     modify-theme
      no-dots)
 
    ;; List of additional packages that will be installed wihout being
@@ -220,6 +211,14 @@ before layers configuration."
 
   ;; User initialization goes here
   (setq-default
+
+   ;; Layers
+   auto-completion-return-key-behavior nil
+   auto-completion-tab-key-behavior 'cycle
+   ibuffer-group-buffers-by nil
+   modify-theme-headings-inherit-from-default 'all
+   modify-theme-headings-same-size 'all
+   modify-theme-headings-bold 'all
 
    ;; Miscellaneous
    sentence-end-double-space nil

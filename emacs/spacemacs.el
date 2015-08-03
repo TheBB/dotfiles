@@ -64,6 +64,7 @@
    dotspacemacs-additional-packages
    '(ag
      avy
+     helm-flycheck
      helm-unicode)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -423,6 +424,11 @@ layers configuration."
         (kbd "C-h") 'helm-find-files-up-one-level)))
 
   (setq helm-echo-input-in-header-line nil)
+
+  (use-package helm-flycheck
+    :defer t
+    :init
+    (evil-leader/set-key "eh" 'helm-flycheck))
 
   ;; C/C++ styles
   (c-add-style "bb"

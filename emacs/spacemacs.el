@@ -546,24 +546,33 @@ lines downward first."
               (when (erc-list-match erc-foolish-content msg)
                 (setq erc-insert-this nil))))
 
-  (add-hook 'erc-insert-modify-hook
-            (defun bb/erc-github-filter ()
-              "Shortens messages from gitter."
-              (interactive)
-              (when (and (< 18 (- (point-max) (point-min)))
-                         (string= (buffer-substring (point-min)
-                                                    (+ (point-min) 18))
-                                  "<gitter> [Github] "))
-                (dolist (regexp '(" \\[Github\\]"
-                                  " \\(?:in\\|to\\) [^ /]+/[^ /:]+"
-                                  "https?://github\\.com/[^/]+/[^/]+/[^/]+/"
-                                  "#issuecomment-[[:digit:]]+"))
-                  (goto-char (point-min))
-                  (when (re-search-forward regexp (point-max) t)
-                    (replace-match "")))
-                (goto-char (point-min))
-                (when (re-search-forward "[[:digit:]]+$" (point-max) t)
-                  (replace-match (format "(#%s)" (match-string 0)))))))
+  (defun bb/erc-github-filter ()
+    "Shortens messages from gitter."
+    (interactive)
+    (when (and (< 18 (- (point-max) (point-min)))
+               (string= (buffer-substring (point-min)
+                                          (+ (point-min) 18))
+                        "<gitter> [Github] "))
+      (dolist (regexp '(" \\[Github\\]"
+                        " \\(?:in\\|to\\) [^ /]+/[^ /:]+"))
+        (goto-char (point-min))
+        (when (re-search-forward regexp (point-max) t)
+          (replace-match "")))
+      (goto-char (point-min))
+      (when (re-search-forward
+             "https?://github\\.com/[^/]+/[^/]+/[^/]+/\\([[:digit:]]+\\)\\([^[:space:]]*\\)?"
+             (point-max) t)
+        (let* ((url (match-string 0))
+               (number (match-string 1))
+               (start (+ 1 (match-beginning 0)))
+               (end (+ 1 (length number) start)))
+          (replace-match (format "(#%s)" (match-string 1)))
+          (erc-button-add-button start end 'browse-url nil (list url)))
+        )))
+
+  (with-eval-after-load 'erc
+    (let ((hook (memq 'erc-button-add-buttons erc-insert-modify-hook)))
+      (setcdr hook (cons 'bb/erc-github-filter (cdr hook)))))
 
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
   (setq erc-modules (remove 'track erc-modules))

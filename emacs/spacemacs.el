@@ -251,6 +251,9 @@ before layers configuration."
    ;; Magit
    magit-push-always-verify nil
 
+   ;; Flycheck
+   flycheck-check-syntax-automatically '(save mode-enabled)
+
    ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil

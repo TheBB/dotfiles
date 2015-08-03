@@ -244,6 +244,9 @@ before layers configuration."
    sp-highlight-wrap-overlay nil
    sp-highlight-wrap-tag-overlay nil
 
+   ;; Magit
+   magit-push-always-verify nil
+
    ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil

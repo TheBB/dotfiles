@@ -571,8 +571,15 @@ lines downward first."
         )))
 
   (with-eval-after-load 'erc
-    (let ((hook (memq 'erc-button-add-buttons erc-insert-modify-hook)))
-      (setcdr hook (cons 'bb/erc-github-filter (cdr hook)))))
+    (setq erc-insert-modify-hook
+          '(erc-controls-highlight
+            erc-button-add-buttons
+            bb/erc-github-filter
+            erc-fill
+            erc-image-show-url
+            erc-match-message
+            erc-add-timestamp
+            erc-hl-nicks)))
 
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
   (setq erc-modules (remove 'track erc-modules))

@@ -427,10 +427,17 @@ layers configuration."
 
   (setq helm-echo-input-in-header-line nil)
 
+  ;; Flyheck
   (use-package helm-flycheck
     :defer t
     :init
     (evil-leader/set-key "eh" 'helm-flycheck))
+
+  (evil-leader/set-key
+    "ec" 'flycheck-clear
+    "el" 'flycheck-list-errors
+    "en" 'flycheck-next-error
+    "ep" 'flycheck-previous-error)
 
   ;; C/C++ styles
   (c-add-style "bb"

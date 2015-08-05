@@ -368,6 +368,14 @@ layers configuration."
    "SPC SPC" "avy word"
    "SPC l" "avy line")
 
+  ;; Switching buffer
+  (evil-leader/set-key
+    "TAB" (defun bb/alternate-buffer ()
+            (interactive)
+            (if (evil-alternate-buffer)
+                (switch-to-buffer (car (evil-alternate-buffer)))
+              (call-interactively 'spacemacs/alternate-buffer))))
+
   ;; IBuffer
   (with-eval-after-load 'projectile
     (setq ibuffer-saved-filter-groups

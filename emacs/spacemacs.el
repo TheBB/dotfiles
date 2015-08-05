@@ -435,9 +435,7 @@ layers configuration."
 
   (evil-leader/set-key
     "ec" 'flycheck-clear
-    "el" 'flycheck-list-errors
-    "en" 'flycheck-next-error
-    "ep" 'flycheck-previous-error)
+    "el" 'flycheck-list-errors)
 
   ;; C/C++ styles
   (c-add-style "bb"

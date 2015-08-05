@@ -349,6 +349,8 @@ layers configuration."
     (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
 
+  (setq evil-move-beyond-eol nil)
+
   ;; Auto modes
   (setq auto-mode-alist
         (append '(("\\.xml\\'" . web-mode)
@@ -482,18 +484,6 @@ layers configuration."
                       "Q_ENUMS"
                       "Q_INTERFACES"))
               (c-make-macro-with-semi-re)))
-
-  ;; Evil $ and g$
-  (evil-define-motion evil-last-non-blank (count)
-    "Move the cursor to the last non-blank character
-on the current line. If COUNT is given, move COUNT - 1
-lines downward first."
-    :type inclusive
-    (evil-end-of-line count)
-    (re-search-backward "^\\|[^[:space:]]")
-    (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
-  (define-key evil-motion-state-map "g$" 'evil-end-of-line)
-  (define-key evil-motion-state-map "$" 'evil-last-non-blank)
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode))

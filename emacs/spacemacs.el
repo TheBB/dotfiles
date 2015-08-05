@@ -56,7 +56,8 @@
    '(ag
      avy
      helm-flycheck
-     helm-unicode)
+     helm-unicode
+     nginx-mode)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
@@ -611,6 +612,11 @@ layers configuration."
 
   ;; Modeline separators
   (setq powerline-default-separator 'alternate)
+
+  ;; Additional packages
+  (use-package nginx-mode
+    :defer t
+    :mode ("nginx\\.conf\\'" "/etc/nginx/.*\\'"))
 
   ;; Load local
   (when (file-exists-p "~/local.el")

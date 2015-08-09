@@ -56,7 +56,6 @@
    '(ag
      avy
      helm-flycheck
-     helm-unicode
      help-fns+
      nginx-mode)
 
@@ -424,7 +423,6 @@ layers configuration."
     "Fn" 'select-frame-by-name
     "FF" 'select-frame-by-name
     "Fo" 'other-frame
-    "iu" 'helm-unicode
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

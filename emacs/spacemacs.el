@@ -57,6 +57,7 @@
      avy
      helm-flycheck
      helm-unicode
+     help-fns+
      nginx-mode)
 
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -617,6 +618,7 @@ layers configuration."
   (use-package nginx-mode
     :defer t
     :mode ("nginx\\.conf\\'" "/etc/nginx/.*\\'"))
+  (require 'help-fns+)
 
   ;; Load local
   (when (file-exists-p "~/local.el")

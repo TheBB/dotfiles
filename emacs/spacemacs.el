@@ -14,6 +14,7 @@
      c-c++
      clojure
      csharp
+     django
      emacs-lisp
      emoji
      erc

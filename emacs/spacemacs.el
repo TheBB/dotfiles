@@ -587,8 +587,8 @@ layers configuration."
             erc-hl-nicks)))
 
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
-  (setq erc-modules (remove 'track erc-modules))
-  (setq erc-modules (remove 'youtube erc-modules))
+  (dolist (module '(track youtube image))
+    (bb/remove-from-list erc-modules module))
   (erc-track-mode -1)
 
   (defun bb/irc ()

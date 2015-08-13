@@ -361,6 +361,11 @@ layers configuration."
                   ("\\.h\\'" . c++-mode))
                 auto-mode-alist))
 
+  ;; Disable smartparens highlighting
+  (with-eval-after-load 'smartparens
+    (when show-smartparens-global-mode
+      (show-smartparens-global-mode -1)))
+
   ;; Semantic fucks up scrolling
   (with-eval-after-load 'semantic
     (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))

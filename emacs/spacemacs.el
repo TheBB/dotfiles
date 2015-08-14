@@ -44,7 +44,6 @@
 
      encoding
      evil-little-word
-     evil-indent-textobject
      evil-shift-width
      modify-theme
      no-dots)

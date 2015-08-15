@@ -578,7 +578,6 @@ layers configuration."
             erc-button-add-buttons
             bb/erc-github-filter
             erc-fill
-            erc-image-show-url
             erc-match-message
             erc-add-timestamp
             erc-hl-nicks)))

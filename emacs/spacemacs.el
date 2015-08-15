@@ -55,7 +55,6 @@
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages
    '(ag
-     avy
      helm-flycheck
      help-fns+
      nginx-mode)
@@ -369,14 +368,6 @@ layers configuration."
   ;; Semantic fucks up scrolling
   (with-eval-after-load 'semantic
     (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
-
-  ;; Avy
-  (evil-leader/set-key
-    "SPC" 'avy-goto-subword-1
-    "l" 'avy-goto-line)
-  (which-key-add-key-based-replacements
-   "SPC SPC" "avy word"
-   "SPC l" "avy line")
 
   ;; Switching buffer
   (evil-leader/set-key

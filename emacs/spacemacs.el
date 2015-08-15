@@ -37,6 +37,7 @@
      shell
      shell-scripts
      smex
+     spell-checking
      syntax-checking
      themes-megapack
      unimpaired

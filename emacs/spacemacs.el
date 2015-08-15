@@ -409,6 +409,7 @@ layers configuration."
   (bb/define-key evil-normal-state-map
     (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
     (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
+    (kbd "RET") 'smex
     "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "+" 'evil-numbers/inc-at-pt
     "_" 'evil-numbers/dec-at-pt

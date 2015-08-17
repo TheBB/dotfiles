@@ -222,6 +222,7 @@ before layers configuration."
    modify-theme-headings-inherit-from-default 'all
    modify-theme-headings-same-size 'all
    modify-theme-headings-bold 'all
+   shell-default-shell 'eshell
 
    ;; Miscellaneous
    sentence-end-double-space nil
@@ -487,7 +488,7 @@ layers configuration."
               (c-make-macro-with-semi-re)))
 
   ;; Some fixes for comint-style buffers
-  (dolist (mode '(erc-mode comint-mode term-mode))
+  (dolist (mode '(erc-mode comint-mode term-mode eshell-mode))
     (bb/remove-from-list evil-insert-state-modes mode))
 
   (let ((comint-hooks '(eshell-mode-hook

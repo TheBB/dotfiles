@@ -410,13 +410,15 @@ layers configuration."
   (bb/define-key evil-normal-state-map
     (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
     (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
-    (kbd "RET") 'smex
+    (kbd "RET") nil
     "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "+" 'evil-numbers/inc-at-pt
     "_" 'evil-numbers/dec-at-pt
     "\\" 'evil-repeat-find-char-reverse
     "gt" 'eyebrowse-next-window-config
     "gT" 'eyebrowse-prev-window-config)
+  (bb/define-key evil-motion-state-map
+    (kbd "RET") 'smex)
   (evil-leader/set-key
     "FN" 'set-frame-name
     "Fn" 'select-frame-by-name

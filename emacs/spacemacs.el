@@ -33,6 +33,7 @@
      markdown
      org
      python
+     ranger
      semantic
      shell
      shell-scripts

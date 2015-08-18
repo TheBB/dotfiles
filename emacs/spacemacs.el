@@ -409,8 +409,6 @@ layers configuration."
 
   ;; Keybindings
   (bb/define-key evil-normal-state-map
-    (kbd "<S-backspace>") 'spacemacs/insert-line-above-no-indent
-    (kbd "<backspace>") 'spacemacs/insert-line-below-no-indent
     (kbd "RET") nil
     "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "+" 'evil-numbers/inc-at-pt

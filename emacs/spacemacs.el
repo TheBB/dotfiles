@@ -428,6 +428,10 @@ layers configuration."
     "os" 'flycheck-select-checker
     "ov" 'evilmi-select-items)
 
+  ;; Don't quit because of old habits
+  (evil-ex-define-cmd "q[uit]" (message "quit disabled"))
+  (evil-ex-define-cmd "wq" (message "quit disabled"))
+
   ;; Helm mode keys
   (with-eval-after-load 'helm-files
     (dolist (keymap (list helm-find-files-map helm-read-file-map))

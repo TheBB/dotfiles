@@ -426,7 +426,15 @@ layers configuration."
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker
-    "ov" 'evilmi-select-items)
+    "ov" 'evilmi-select-items
+    "oh" (defun bb/highlight ()
+           (interactive)
+           (hlt-highlight-region)
+           (keyboard-quit))
+    "oH" (defun bb/unhighlight ()
+           (interactive)
+           (hlt-unhighlight-region)
+           (keyboard-quit)))
 
   ;; Don't quit because of old habits
   (evil-ex-define-cmd "q[uit]" (message "quit disabled"))

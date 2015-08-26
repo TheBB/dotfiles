@@ -419,10 +419,6 @@ layers configuration."
   (bb/define-key evil-motion-state-map
     (kbd "RET") 'smex)
   (evil-leader/set-key
-    "FN" 'set-frame-name
-    "Fn" 'select-frame-by-name
-    "FF" 'select-frame-by-name
-    "Fo" 'other-frame
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

@@ -231,7 +231,6 @@ before layers configuration."
    ring-bell-function 'ignore
    require-final-newline t
    indent-tabs-mode nil
-   tab-width 8
 
    ;; Backups
    backup-directory-alist `((".*" . ,temporary-file-directory))
@@ -352,8 +351,10 @@ layers configuration."
     :config
     (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
-  (setq evil-move-beyond-eol nil)
   (diminish 'emoji-cheat-sheet-plus-display-mode)
+
+  (setq evil-move-beyond-eol nil
+        tab-width 8)
 
   ;; Auto modes
   (setq auto-mode-alist

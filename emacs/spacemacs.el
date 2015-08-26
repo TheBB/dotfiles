@@ -25,6 +25,7 @@
      games
      git
      github
+     gtags
      haskell
      html
      ibuffer
@@ -431,6 +432,11 @@ layers configuration."
            (interactive)
            (hlt-unhighlight-region)
            (keyboard-quit)))
+
+  ;; Gtags bindings in extra modes
+  (dolist (mode '(python-mode emacs-lisp-mode))
+    (spacemacs/helm-gtags-define-keys-for-mode mode))
+  (diminish 'helm-gtags-mode)
 
   ;; Don't quit because of old habits
   (evil-ex-define-cmd "q[uit]" (message "quit disabled"))

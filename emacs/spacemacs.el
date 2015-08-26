@@ -352,8 +352,8 @@ layers configuration."
     :config
     (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
-
   (setq evil-move-beyond-eol nil)
+  (diminish 'emoji-cheat-sheet-plus-display-mode)
 
   ;; Auto modes
   (setq auto-mode-alist

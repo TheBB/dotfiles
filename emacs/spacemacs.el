@@ -64,7 +64,8 @@
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(julia-mode
-     hl-anything)
+     hl-anything
+     toxi-theme)
 
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of

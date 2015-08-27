@@ -511,12 +511,12 @@ layers configuration."
                         term-mode-hook
                         erc-mode-hook
                         messages-buffer-mode-hook)))
-    (add-to-hooks (defun bb/no-hl-line-mode ()
-                    (setq-local global-hl-line-mode nil))
-                  comint-hooks)
-    (add-to-hooks (defun bb/no-scroll-margin ()
-                    (setq-local scroll-margin 0))
-                  comint-hooks))
+    (spacemacs/add-to-hooks (defun bb/no-hl-line-mode ()
+                              (setq-local global-hl-line-mode nil))
+                            comint-hooks)
+    (spacemacs/add-to-hooks (defun bb/no-scroll-margin ()
+                              (setq-local scroll-margin 0))
+                            comint-hooks))
 
   ;; Org
   (add-hook 'org-mode-hook 'auto-fill-mode)

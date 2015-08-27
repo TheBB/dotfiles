@@ -138,7 +138,7 @@ before layers configuration."
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
+   dotspacemacs-command-key ";"
 
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
@@ -351,7 +351,8 @@ layers configuration."
     :config
     (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
-  (diminish 'emoji-cheat-sheet-plus-display-mode)
+  (with-eval-after-load 'emoji-cheat-sheet-plus
+    (diminish 'emoji-cheat-sheet-plus-display-mode))
 
   (setq evil-move-beyond-eol nil
         tab-width 8)
@@ -437,7 +438,8 @@ layers configuration."
   ;; Gtags bindings in extra modes
   (dolist (mode '(python-mode emacs-lisp-mode))
     (spacemacs/helm-gtags-define-keys-for-mode mode))
-  (diminish 'helm-gtags-mode)
+  (with-eval-after-load 'helm-gtags
+    (diminish 'helm-gtags-mode))
 
   ;; Don't quit because of old habits
   (evil-ex-define-cmd "q[uit]" (message "quit disabled"))

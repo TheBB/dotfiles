@@ -494,11 +494,6 @@ layers configuration."
                   (inextern-lang . 0)
                   (innamespace . 0))))
 
-  (dolist (style c-style-alist)
-    (let* ((style-name (car style))
-           (style-fcn (intern (format "bb/set-style-%s" style-name))))
-      (eval `(defun ,style-fcn () (interactive) (c-set-style ,style-name)))))
-
   (add-hook 'c-mode-common-hook
             (defun bb/c-style ()
               (c-set-style "bb")
@@ -509,6 +504,10 @@ layers configuration."
                       "Q_ENUMS"
                       "Q_INTERFACES"))
               (c-make-macro-with-semi-re)))
+
+  (dolist (mode '(c-mode c++-mode))
+    (evil-leader/set-key-for-mode mode
+      "mos" 'c-set-style))
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode eshell-mode))

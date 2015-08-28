@@ -466,6 +466,13 @@ layers configuration."
     "ec" 'flycheck-clear
     "el" 'flycheck-list-errors)
 
+  (mapatoms (lambda (atom)
+              (when (and (string-suffix-p "-hook" (symbol-name atom))
+                         (boundp atom)
+                         (listp (eval atom)))
+                (remove-hook atom 'flycheck-mode)
+                (remove-hook atom 'flyspell-mode))))
+
   ;; C/C++ styles
   (c-add-style "bb"
                '((indent-tabs-mode . nil)

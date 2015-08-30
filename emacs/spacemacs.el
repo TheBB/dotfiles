@@ -282,6 +282,15 @@ before layers configuration."
    org-M-RET-may-split-line '((headline . nil)
                               (item . nil)
                               (table . nil))
+   org-default-notes-file "~/org/capture.org"
+   org-capture-templates
+   '(("t" "Tasks")
+     ("tg" "General" entry (file+headline "" "Tasks")
+      "* TODO %?\n%i\n%T"
+      :empty-lines 1)
+     ("tl" "Location" entry (file+headline "" "Tasks")
+      "* TODO %?\n%i\n%T\n%a"
+      :empty-lines 1))
 
    ;; IRC
    erc-autojoin-channels-alist
@@ -423,6 +432,7 @@ layers configuration."
   (bb/define-key evil-motion-state-map
     (kbd "RET") 'smex)
   (evil-leader/set-key
+    "oo" 'org-capture
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

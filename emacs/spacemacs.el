@@ -239,8 +239,8 @@
   (with-eval-after-load 'emoji-cheat-sheet-plus
     (diminish 'emoji-cheat-sheet-plus-display-mode))
 
-  (setq evil-move-beyond-eol nil
-        tab-width 8)
+  (setq-default tab-width 8
+                evil-move-beyond-eol nil)
 
   ;; Auto modes
   (setq auto-mode-alist

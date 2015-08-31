@@ -55,7 +55,8 @@
 
    dotspacemacs-excluded-packages
    '(julia-mode
-     hl-anything)))
+     hl-anything
+     evil-terminal-cursor-changer)))
 
 (defun dotspacemacs/init ()
   (setq-default

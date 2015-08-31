@@ -50,7 +50,8 @@
    '(ag
      helm-flycheck
      help-fns+
-     nginx-mode)
+     nginx-mode
+     lorem-ipsum)
 
    dotspacemacs-excluded-packages
    '(julia-mode
@@ -530,6 +531,8 @@
   (use-package nginx-mode
     :defer t
     :mode ("nginx\\.conf\\'" "/etc/nginx/.*\\'"))
+  (use-package lorem-ipsum
+    :defer t)
   (require 'help-fns+)
 
   ;; Load local

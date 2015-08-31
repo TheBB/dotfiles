@@ -5,7 +5,10 @@
    dotspacemacs-delete-orphan-packages t
 
    dotspacemacs-configuration-layers
-   '(auto-completion
+   '(
+
+     ;; Contrib layers
+     auto-completion
      c-c++
      clojure
      csharp
@@ -40,11 +43,15 @@
      unimpaired
      version-control
 
+     ;; Non-contrib layers
      encoding
      evil-little-word
      evil-shift-width
      modify-theme
-     no-dots)
+     no-dots
+
+     ;; Personal config layers
+     bb-ibuffer)
 
    dotspacemacs-additional-packages
    '(ag
@@ -160,6 +167,7 @@
    org-footnote-auto-label 'confirm
    org-M-RET-may-split-line
    '((headline . nil) (item . nil) (table . nil))
+   org-directory "~/org"
    org-default-notes-file "~/org/capture.org"
    org-capture-templates
    '(("t" "Tasks")
@@ -168,6 +176,13 @@
       :empty-lines 1)
      ("tl" "Location" entry (file+headline "" "Tasks")
       "* TODO %?\n%i\n%T\n%a"
+      :empty-lines 1)
+     ("n" "Notes")
+     ("ng" "General" entry (file+headline "" "Notes")
+      "* %?\n%i\n%T"
+      :empty-lines 1)
+     ("nl" "Location" entry (file+headline "" "Notes")
+      "* %?\n%i\n%T\n%a"
       :empty-lines 1))
 
    ;; IRC
@@ -189,9 +204,6 @@
 
    ;; Avy
    avy-all-windows 'all-frames
-
-   ;; IBuffer
-   ibuffer-show-empty-filter-groups nil
 
    ;; Theme modifications
    modify-theme-modifications
@@ -270,34 +282,6 @@
                 (switch-to-buffer (car (evil-alternate-buffer)))
               (call-interactively 'spacemacs/alternate-buffer))))
 
-  ;; IBuffer
-  (with-eval-after-load 'projectile
-    (setq ibuffer-saved-filter-groups
-          (list (cons "Default"
-                      (append
-                       (mapcar (lambda (it)
-                                 (let ((name (file-name-nondirectory
-                                              (directory-file-name it))))
-                                   `(,name (filename . ,(expand-file-name it)))))
-                               projectile-known-projects)
-                       `(("Org" (mode . org-mode))
-                         ("Dired" (mode . dired-mode))
-                         ("IRC" (mode . erc-mode))
-                         ("Emacs"
-                          (or (name . "\\*Messages\\*")
-                              (name . "\\*Compile-Log\\*")
-                              (name . "\\*scratch\\*")
-                              (name . "\\*spacemacs\\*")
-                              (name . "\\*emacs\\*")))
-                         ("Magit" (name . "\\*magit"))
-                         ("Help" (name . "\\*Help\\*"))
-                         ("Helm" (name . "\\*helm"))
-                         ))))))
-  (add-hook 'ibuffer-mode-hook
-            (defun bb/switch-ibuffer-group ()
-              (ibuffer-switch-to-saved-filter-groups "Default")))
-  (add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
-
   ;; Keybindings
   (bb/define-key evil-normal-state-map
     (kbd "RET") nil
@@ -351,8 +335,7 @@
     (evil-leader/set-key "eh" 'helm-flycheck))
 
   (evil-leader/set-key
-    "ec" 'flycheck-clear
-    "el" 'flycheck-list-errors)
+    "ec" 'flycheck-clear)
 
   (mapatoms (lambda (atom)
               (when (and (string-suffix-p "-hook" (symbol-name atom))

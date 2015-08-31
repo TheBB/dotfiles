@@ -75,6 +75,7 @@
    dotspacemacs-command-key ":"
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-use-ido nil
+   dotspacemacs-helm-resize t
    dotspacemacs-enable-paste-micro-state nil
    dotspacemacs-guide-key-delay 0.4
    dotspacemacs-loading-progress-bar t

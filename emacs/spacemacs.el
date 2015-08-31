@@ -6,7 +6,6 @@
 
    dotspacemacs-configuration-layers
    '(
-
      ;; Contrib layers
      auto-completion
      c-c++
@@ -381,7 +380,7 @@
       "mos" 'c-set-style))
 
   ;; Some fixes for comint-style buffers
-  (dolist (mode '(erc-mode comint-mode term-mode eshell-mode))
+  (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))
     (bb/remove-from-list evil-insert-state-modes mode))
 
   (let ((comint-hooks '(eshell-mode-hook

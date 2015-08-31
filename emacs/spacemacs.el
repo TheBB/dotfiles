@@ -61,6 +61,16 @@
 (defun dotspacemacs/init ()
   (setq-default
 
+   ;; Layers
+   auto-completion-return-key-behavior nil
+   auto-completion-tab-key-behavior 'cycle
+   ibuffer-group-buffers-by nil
+   modify-theme-headings-inherit-from-default 'all
+   modify-theme-headings-same-size 'all
+   modify-theme-headings-bold 'all
+   shell-default-shell 'eshell
+
+   ;; Dotfile variables
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading t
    dotspacemacs-startup-banner nil
@@ -93,15 +103,6 @@
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
-
-   ;; Layers
-   auto-completion-return-key-behavior nil
-   auto-completion-tab-key-behavior 'cycle
-   ibuffer-group-buffers-by nil
-   modify-theme-headings-inherit-from-default 'all
-   modify-theme-headings-same-size 'all
-   modify-theme-headings-bold 'all
-   shell-default-shell 'eshell
 
    ;; Miscellaneous
    sentence-end-double-space nil

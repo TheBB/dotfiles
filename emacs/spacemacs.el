@@ -5,9 +5,7 @@
    dotspacemacs-delete-orphan-packages t
 
    dotspacemacs-configuration-layers
-   '(
-     ;; Contrib layers
-     auto-completion
+   '(auto-completion
      c-c++
      clojure
      csharp
@@ -49,6 +47,7 @@
      no-dots
 
      ;; Personal config layers
+     bb-c-styles
      bb-ibuffer)
 
    dotspacemacs-additional-packages
@@ -341,42 +340,6 @@
                          (listp (eval atom)))
                 (remove-hook atom 'flycheck-mode)
                 (remove-hook atom 'flyspell-mode))))
-
-  ;; C/C++ styles
-  (c-add-style "bb"
-               '((indent-tabs-mode . nil)
-                 (c-basic-offset . 4)
-                 (c-offsets-alist
-                  (substatement-open . 0)
-                  (inline-open . 0)
-                  (statement-cont . c-lineup-assignments)
-                  (inextern-lang . 0)
-                  (innamespace . 0))))
-
-  (c-add-style "sintef"
-               '((indent-tabs-mode . nil)
-                 (c-basic-offset . 2)
-                 (c-offsets-alist
-                  (substatement-open . 0)
-                  (inline-open . 0)
-                  (statement-cont . c-lineup-assignments)
-                  (inextern-lang . 0)
-                  (innamespace . 0))))
-
-  (add-hook 'c-mode-common-hook
-            (defun bb/c-style ()
-              (c-set-style "bb")
-              (setq c-macro-names-with-semicolon
-                    '("Q_OBJECT"
-                      "Q_PROPERTY"
-                      "Q_DECLARE"
-                      "Q_ENUMS"
-                      "Q_INTERFACES"))
-              (c-make-macro-with-semi-re)))
-
-  (dolist (mode '(c-mode c++-mode))
-    (evil-leader/set-key-for-mode mode
-      "mos" 'c-set-style))
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))

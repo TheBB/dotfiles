@@ -38,7 +38,6 @@
      smex
      spell-checking
      syntax-checking
-     themes-megapack
      unimpaired
      version-control
 

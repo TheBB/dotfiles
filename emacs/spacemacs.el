@@ -248,6 +248,8 @@
     :config
     (push '(undo discard-info) warning-suppress-types))
   (add-hook 'text-mode-hook 'auto-fill-mode)
+  (when (eq 'hybrid dotspacemacs-editing-style)
+    (diminish 'hybrid-mode))
   (with-eval-after-load 'emoji-cheat-sheet-plus
     (diminish 'emoji-cheat-sheet-plus-display-mode))
 

@@ -233,7 +233,7 @@
        ((t (:inherit font-lock-type-face :height 1.0 :weight bold)))))
      )))
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
 
   ;; Utility functions
   (defun bb/define-key (keymap &rest bindings)

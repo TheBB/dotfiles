@@ -37,7 +37,7 @@
      unimpaired
      version-control
 
-     ,@(unless (spacemacs/system-is-mswindows)
+     ,@(unless (string= system-type "windows-nt")
          '(fasd
            gtags))
 
@@ -86,7 +86,7 @@
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font
    `("Source Code Pro"
-     :size ,(if (spacemacs/system-is-mswindows) 16 13)
+     :size ,(if (string= system-type "windows-nt") 16 13)
      :weight normal :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"

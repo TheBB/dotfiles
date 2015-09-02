@@ -83,7 +83,7 @@
    '(monokai material spacemacs-dark spacemacs-light solarized-dark leuven zenburn)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font
-   '("Source Code Pro" :size 13 :weight normal :width normal :powerline-scale 1.1)
+   '("Source Code Pro" :size 16 :weight normal :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","

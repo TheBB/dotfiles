@@ -5,7 +5,7 @@
    dotspacemacs-delete-orphan-packages t
 
    dotspacemacs-configuration-layers
-   '(auto-completion
+   `(auto-completion
      c-c++
      clojure
      csharp
@@ -16,11 +16,9 @@
      ess
      extra-langs
      eyebrowse
-     fasd
      games
      git
      github
-     gtags
      haskell
      html
      ibuffer
@@ -38,6 +36,10 @@
      syntax-checking
      unimpaired
      version-control
+
+     ,@(unless (spacemacs/system-is-mswindows)
+         '(fasd
+           gtags))
 
      ;; Non-contrib layers
      encoding
@@ -83,7 +85,9 @@
    '(monokai material spacemacs-dark spacemacs-light solarized-dark leuven zenburn)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font
-   '("Source Code Pro" :size 13 :weight normal :width normal :powerline-scale 1.1)
+   `("Source Code Pro"
+     :size ,(if (spacemacs/system-is-mswindows) 16 13)
+     :weight normal :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","

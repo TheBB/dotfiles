@@ -5,7 +5,8 @@
    dotspacemacs-delete-orphan-packages t
 
    dotspacemacs-configuration-layers
-   `(auto-completion
+   `((auto-completion
+      :disabled-for org erc)
      c-c++
      clojure
      csharp
@@ -370,8 +371,6 @@
     "m*" 'org-ctrl-c-star
     "m RET" 'org-ctrl-c-ret
     "m-" 'org-ctrl-c-minus)
-  (with-eval-after-load 'org
-    (remove-hook 'org-mode-hook 'company-mode))
 
   ;; Makefiles
   (add-hook 'makefile-mode-hook 'whitespace-mode)
@@ -451,8 +450,6 @@
             erc-hl-nicks)))
 
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
-  (with-eval-after-load 'erc
-    (remove-hook 'erc-mode-hook 'company-mode))
   (dolist (module '(track youtube image))
     (bb/remove-from-list erc-modules module))
   (erc-track-mode -1)

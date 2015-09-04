@@ -33,14 +33,14 @@
      shell
      shell-scripts
      smex
-     spell-checking
      syntax-checking
      unimpaired
      version-control
 
      ,@(unless (string= system-type "windows-nt")
          '(fasd
-           gtags))
+           gtags
+           spell-checking))
 
      ;; Non-contrib layers
      encoding

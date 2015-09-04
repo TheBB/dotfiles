@@ -311,6 +311,8 @@
            (interactive)
            (hlt-unhighlight-region)
            (keyboard-quit)))
+  (bb/define-key company-active-map
+    (kbd "C-w") 'evil-delete-backward-word)
 
   ;; Gtags bindings in extra modes
   (unless (spacemacs/system-is-mswindows)

@@ -455,7 +455,8 @@
   (add-hook 'erc-mode-hook 'emoji-cheat-sheet-plus-display-mode)
   (dolist (module '(track youtube image))
     (bb/remove-from-list erc-modules module))
-  (erc-track-mode -1)
+  (with-eval-after-load 'erc
+    (erc-track-mode -1))
 
   (defun bb/irc ()
     (interactive)

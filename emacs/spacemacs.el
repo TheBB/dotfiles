@@ -313,10 +313,11 @@
            (keyboard-quit)))
 
   ;; Gtags bindings in extra modes
-  (dolist (mode '(python-mode emacs-lisp-mode))
-    (spacemacs/helm-gtags-define-keys-for-mode mode))
-  (with-eval-after-load 'helm-gtags
-    (diminish 'helm-gtags-mode))
+  (unless (spacemacs/system-is-mswindows)
+    (dolist (mode '(python-mode emacs-lisp-mode))
+      (spacemacs/helm-gtags-define-keys-for-mode mode))
+    (with-eval-after-load 'helm-gtags
+      (diminish 'helm-gtags-mode)))
 
   ;; Don't quit because of old habits
   (evil-ex-define-cmd "q[uit]" (message "quit disabled"))

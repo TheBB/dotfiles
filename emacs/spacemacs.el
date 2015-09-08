@@ -3,6 +3,7 @@
 
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-delete-orphan-packages t
+   dotspacemacs-distribution 'spacemacs
 
    dotspacemacs-configuration-layers
    `((auto-completion
@@ -97,8 +98,10 @@
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize t
+   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-position 'bottom
    dotspacemacs-enable-paste-micro-state nil
-   dotspacemacs-guide-key-delay 0.4
+   dotspacemacs-which-key-delay 0.4
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil

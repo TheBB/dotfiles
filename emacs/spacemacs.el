@@ -6,8 +6,10 @@
    dotspacemacs-distribution 'spacemacs
 
    dotspacemacs-configuration-layers
-   `((auto-completion
-      :disabled-for org erc)
+   `((auto-completion :variables
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'cycle
+                      :disabled-for org erc)
      c-c++
      clojure
      csharp
@@ -23,7 +25,7 @@
      github
      haskell
      html
-     ibuffer
+     (ibuffer :variables ibuffer-group-buffers-by nil)
      javascript
      latex
      markdown
@@ -31,7 +33,7 @@
      python
      ranger
      semantic
-     shell
+     (shell :variables shell-default-shell 'eshell)
      shell-scripts
      smex
      syntax-checking
@@ -47,7 +49,10 @@
      encoding
      evil-little-word
      evil-shift-width
-     modify-theme
+     (modify-theme :variables
+                   modify-theme-headings-inherit-from-default 'all
+                   modify-theme-headings-same-size 'all
+                   modify-theme-headings-bold 'all)
      no-dots
 
      ;; Personal config layers
@@ -68,17 +73,6 @@
 
 (defun dotspacemacs/init ()
   (setq-default
-
-   ;; Layers
-   auto-completion-return-key-behavior nil
-   auto-completion-tab-key-behavior 'cycle
-   ibuffer-group-buffers-by nil
-   modify-theme-headings-inherit-from-default 'all
-   modify-theme-headings-same-size 'all
-   modify-theme-headings-bold 'all
-   shell-default-shell 'eshell
-
-   ;; Dotfile variables
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading t
    dotspacemacs-startup-banner nil
@@ -114,7 +108,10 @@
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   dotspacemacs-default-package-repository nil
+   dotspacemacs-default-package-repository nil))
+
+(defun dotspacemacs/user-init ()
+  (setq-default
 
    ;; Miscellaneous
    sentence-end-double-space nil

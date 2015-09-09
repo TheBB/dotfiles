@@ -122,6 +122,7 @@
    ring-bell-function 'ignore
    require-final-newline t
    indent-tabs-mode nil
+   system-time-locale "C"
 
    ;; Backups
    backup-directory-alist `((".*" . ,temporary-file-directory))

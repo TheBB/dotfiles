@@ -488,6 +488,9 @@
     :defer t)
   (require 'help-fns+)
 
+  ;; Workarounds
+  (defalias 'yas--template-file 'yas--template-get-file)
+
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))

@@ -460,20 +460,21 @@
   (with-eval-after-load 'erc
     (erc-track-mode -1))
 
-  (defun bb/irc ()
-    (interactive)
-    (erc-tls :server "irc.gitter.im"
-             :port "6667"
-             :nick "TheBB"
-             :password bb/gitter-pwd
-             :full-name bb/full-name)
-    (erc :server "irc.freenode.net"
-         :port "6667"
-         :nick "TheBB"
-         :full-name bb/full-name))
   (evil-leader/set-key
-    "aii" 'bb/irc
-    "aiq" 'erc-quit-server)
+    "aiq" 'erc-quit-server
+    "aig" (defun bb/gitter ()
+            (interactive)
+            (erc-tls :server "irc.gitter.im"
+                     :port "6667"
+                     :nick "TheBB"
+                     :password bb/gitter-pwd
+                     :full-name bb/full-name))
+    "aif" (defun bb/freenode ()
+            (interactive)
+            (erc :server "irc.freenode.net"
+                 :port "6667"
+                 :nick "TheBB"
+                 :full-name bb/full-name)))
 
   ;; Local variables
   (setq safe-local-variable-values

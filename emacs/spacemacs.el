@@ -219,6 +219,8 @@
       (evil-search-highlight-persist-highlight-face
        ((t (:background "#fc5fef" :foreground "#000000"))))
       (region ((t (:background "#998f84"))))
+      (company-tooltip-annotation
+       ((t (:foreground "#ff9eb8" :background "#49483e"))))
       (erc-timestamp-face
        ((t (:inherit font-lock-comment-face :foreground nil))))
       (web-mode-html-attr-value-face

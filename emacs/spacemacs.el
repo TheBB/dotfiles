@@ -292,9 +292,7 @@
     "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "+" 'evil-numbers/inc-at-pt
     "_" 'evil-numbers/dec-at-pt
-    "\\" 'evil-repeat-find-char-reverse
-    "gt" 'eyebrowse-next-window-config
-    "gT" 'eyebrowse-prev-window-config)
+    "\\" 'evil-repeat-find-char-reverse)
   (bb/define-key evil-motion-state-map
     (kbd "RET") 'smex)
   (evil-leader/set-key

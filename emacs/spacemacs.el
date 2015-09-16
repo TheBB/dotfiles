@@ -289,10 +289,14 @@
   ;; Keybindings
   (bb/define-key evil-normal-state-map
     (kbd "RET") nil
-    "gr" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "+" 'evil-numbers/inc-at-pt
     "_" 'evil-numbers/dec-at-pt
-    "\\" 'evil-repeat-find-char-reverse)
+    "\\" 'evil-repeat-find-char-reverse
+    "gt" 'eyebrowse-next-window-config
+    "gT" 'eyebrowse-prev-window-config
+    "[s" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
+    "]s" (lambda (n) (interactive "p")
+           (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
     (kbd "RET") 'smex)
   (evil-leader/set-key
@@ -485,6 +489,9 @@
   (use-package lorem-ipsum
     :defer t)
   (require 'help-fns+)
+
+  ;; Workarounds
+  (defalias 'yas--template-file 'yas--template-get-file)
 
   ;; Load local
   (when (file-exists-p "~/local.el")

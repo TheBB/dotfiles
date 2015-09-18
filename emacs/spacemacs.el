@@ -129,6 +129,9 @@
    kept-old-versions 2
    make-backup-files nil
 
+   ;; Evil
+   evil-shift-round nil
+
    ;; Whitespace mode
    whitespace-style '(face tabs tab-mark)
    whitespace-display-mappings

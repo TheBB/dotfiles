@@ -303,7 +303,6 @@
   (bb/define-key evil-motion-state-map
     (kbd "RET") 'smex)
   (evil-leader/set-key
-    "oo" 'org-capture
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "os" 'flycheck-select-checker

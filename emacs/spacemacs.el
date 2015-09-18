@@ -323,8 +323,8 @@
 
   ;; Gtags bindings in extra modes
   (unless (spacemacs/system-is-mswindows)
-    (dolist (mode '(python-mode emacs-lisp-mode))
-      (spacemacs/helm-gtags-define-keys-for-mode mode))
+    ;; (dolist (mode '(python-mode))
+    ;;   (spacemacs/helm-gtags-define-keys-for-mode mode))
     (with-eval-after-load 'helm-gtags
       (diminish 'helm-gtags-mode)))
 

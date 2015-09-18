@@ -339,6 +339,8 @@
         (kbd "C-h") nil
         (kbd "C-l") 'helm-execute-persistent-action
         (kbd "C-h") 'helm-find-files-up-one-level)))
+  (with-eval-after-load 'helm
+    (define-key helm-map (kbd "C-l") (kbd "RET")))
 
   (setq helm-echo-input-in-header-line nil)
 

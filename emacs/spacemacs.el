@@ -162,6 +162,7 @@
 
    ;; Web
    web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
 
    ;; Org
    org-tags-column -80

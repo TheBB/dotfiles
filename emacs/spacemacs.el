@@ -39,6 +39,7 @@
      syntax-checking
      unimpaired
      version-control
+     yaml
 
      ,@(unless (string= system-type "windows-nt")
          '(fasd

@@ -62,6 +62,7 @@
 
    dotspacemacs-additional-packages
    '(ag
+     flycheck-package
      helm-flycheck
      help-fns+
      nginx-mode
@@ -499,6 +500,11 @@
   (use-package lorem-ipsum
     :defer t)
   (require 'help-fns+)
+  (use-package flycheck-package
+    :defer t
+    :init
+    (with-eval-after-load 'flycheck
+      (flycheck-package-setup)))
 
   ;; Workarounds
   (defalias 'yas--template-file 'yas--template-get-file)

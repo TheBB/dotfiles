@@ -335,16 +335,7 @@
   (evil-ex-define-cmd "q[uit]" (message "quit disabled"))
   (evil-ex-define-cmd "wq" (message "quit disabled"))
 
-  ;; Helm mode keys
-  (with-eval-after-load 'helm-files
-    (dolist (keymap (list helm-find-files-map helm-read-file-map))
-      (bb/define-key keymap
-        (kbd "C-h") nil
-        (kbd "C-l") 'helm-execute-persistent-action
-        (kbd "C-h") 'helm-find-files-up-one-level)))
-  (with-eval-after-load 'helm
-    (define-key helm-map (kbd "C-l") (kbd "RET")))
-
+  ;; Helm
   (setq helm-echo-input-in-header-line nil)
 
   ;; Flyheck

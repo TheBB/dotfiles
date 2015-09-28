@@ -297,7 +297,6 @@
 
   ;; Keybindings
   (bb/define-key evil-normal-state-map
-    (kbd "RET") nil
     "+" 'evil-numbers/inc-at-pt
     "_" 'evil-numbers/dec-at-pt
     "\\" 'evil-repeat-find-char-reverse
@@ -307,7 +306,7 @@
     "]s" (lambda (n) (interactive "p")
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
-    (kbd "RET") 'smex)
+    (kbd "<backspace>") 'smex)
   (evil-leader/set-key
     "os" 'just-one-space
     "ot" 'helm-etags-select

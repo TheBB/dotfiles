@@ -483,6 +483,10 @@
   ;; Modeline separators
   (setq powerline-default-separator 'alternate)
 
+  ;; Evilification
+  (spacemacs|evilify-map package-menu-mode-map
+    :mode package-menu-mode)
+
   ;; Additional packages
   (use-package nginx-mode
     :defer t

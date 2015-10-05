@@ -32,6 +32,7 @@
      org
      python
      ranger
+     ruby
      semantic
      (shell :variables shell-default-shell 'eshell)
      shell-scripts

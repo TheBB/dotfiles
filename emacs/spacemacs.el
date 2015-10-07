@@ -299,8 +299,8 @@
 
   ;; Keybindings
   (bb/define-key evil-normal-state-map
-    "+" 'evil-numbers/inc-at-pt
-    "_" 'evil-numbers/dec-at-pt
+    "+" 'spacemacs/evil-numbers-increase
+    "_" 'spacemacs/evil-numbers-decrease
     "\\" 'evil-repeat-find-char-reverse
     "gt" 'eyebrowse-next-window-config
     "gT" 'eyebrowse-prev-window-config

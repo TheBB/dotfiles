@@ -489,6 +489,8 @@
   ;; Evilification
   (spacemacs|evilify-map package-menu-mode-map
     :mode package-menu-mode)
+  (spacemacs|evilify-map haskell-error-mode-map
+    :mode haskell-error-mode)
 
   ;; Additional packages
   (use-package nginx-mode

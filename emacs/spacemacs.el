@@ -332,9 +332,8 @@
     (with-eval-after-load 'helm-gtags
       (diminish 'helm-gtags-mode)))
 
-  ;; Don't quit because of old habits
-  (evil-ex-define-cmd "q[uit]" (message "quit disabled"))
-  (evil-ex-define-cmd "wq" (message "quit disabled"))
+  ;; Deer in dired
+  (add-hook 'dired-mode-hook 'deer)
 
   ;; Helm
   (setq helm-echo-input-in-header-line nil)

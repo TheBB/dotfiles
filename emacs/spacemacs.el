@@ -66,6 +66,7 @@
      flycheck-package
      helm-flycheck
      help-fns+
+     nameless
      nginx-mode
      lorem-ipsum)
 
@@ -167,6 +168,11 @@
    ;; Web
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
+
+   ;; Emacs Lisp
+   nameless-global-aliases
+   '(("sm" . "spacemacs")
+     ("sl" . "spaceline"))
 
    ;; Org
    org-tags-column -80
@@ -504,6 +510,13 @@
     :init
     (with-eval-after-load 'flycheck
       (flycheck-package-setup)))
+  (use-package nameless
+    :defer t
+    :init
+    (add-hook 'emacs-lisp-mode-hook 'nameless-mode-from-hook)
+    :config
+    (defun nameless--name-regexp (name)
+      (concat "\\_<@?\\(" (regexp-quote name) "\\)\\(\\s_\\|\\sw\\)")))
 
   ;; Workarounds
   (defalias 'yas--template-file 'yas--template-get-file)

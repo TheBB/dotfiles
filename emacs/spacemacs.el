@@ -172,6 +172,7 @@
    ;; Emacs Lisp
    nameless-global-aliases
    '(("sm" . "spacemacs")
+     ("dsm" . "dotspacemacs")
      ("sl" . "spaceline"))
 
    ;; Org

@@ -358,7 +358,8 @@
                          (boundp atom)
                          (listp (eval atom)))
                 (remove-hook atom 'flycheck-mode)
-                (remove-hook atom 'flyspell-mode))))
+                (remove-hook atom 'flyspell-mode)
+                (remove-hook atom 'flyspell-prog-mode))))
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))

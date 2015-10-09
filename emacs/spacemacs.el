@@ -515,6 +515,11 @@
     :defer t
     :init
     (add-hook 'emacs-lisp-mode-hook 'nameless-mode-from-hook)
+    (spacemacs|add-toggle nameless
+      :status nameless-mode
+      :on (nameless-mode)
+      :off (nameless-mode -1)
+      :evil-leader-for-mode (emacs-lisp-mode . "mo:"))
     :config
     (defun nameless--name-regexp (name)
       (concat "\\_<@?\\(" (regexp-quote name) "\\)\\(\\s_\\|\\sw\\)")))

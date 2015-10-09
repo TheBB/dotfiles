@@ -78,7 +78,6 @@
 (defun dotspacemacs/init ()
   (setq-default
    dotspacemacs-editing-style 'vim
-   dotspacemacs-verbose-loading t
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '(recents bookmarks projects)
    dotspacemacs-themes
@@ -251,8 +250,8 @@
        ((t (:inherit font-lock-comment-face :foreground nil)))))
      (t
       (font-latex-slide-title-face
-       ((t (:inherit font-lock-type-face :height 1.0 :weight bold)))))
-     )))
+       ((t (:inherit font-lock-type-face :height 1.0 :weight bold)))))))
+  )
 
 (defun dotspacemacs/user-config ()
 

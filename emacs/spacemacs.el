@@ -173,6 +173,8 @@
    '(("sm" . "spacemacs")
      ("dsm" . "dotspacemacs")
      ("sl" . "spaceline"))
+   nameless-discover-current-name nil
+   nameless-prefix ""
 
    ;; Org
    org-tags-column -80
@@ -514,12 +516,13 @@
   (use-package nameless
     :defer t
     :init
-    (add-hook 'emacs-lisp-mode-hook 'nameless-mode-from-hook)
-    (spacemacs|add-toggle nameless
-      :status nameless-mode
-      :on (nameless-mode)
-      :off (nameless-mode -1)
-      :evil-leader-for-mode (emacs-lisp-mode . "mo:"))
+    (progn
+      (add-hook 'emacs-lisp-mode-hook 'nameless-mode-from-hook)
+      (spacemacs|add-toggle nameless
+        :status nameless-mode
+        :on (nameless-mode)
+        :off (nameless-mode -1)
+        :evil-leader-for-mode (emacs-lisp-mode . "mo:")))
     :config
     (defun nameless--name-regexp (name)
       (concat "\\_<@?\\(" (regexp-quote name) "\\)\\(\\s_\\|\\sw\\)")))

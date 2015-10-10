@@ -173,9 +173,11 @@
    nameless-global-aliases
    '(("sm" . "spacemacs")
      ("dsm" . "dotspacemacs")
+     ("cfl" . "configuration-layer")
      ("sl" . "spaceline"))
    nameless-discover-current-name nil
    nameless-prefix ""
+   nameless-separator nil
 
    ;; Org
    org-tags-column -80
@@ -529,10 +531,7 @@
         :status nameless-mode
         :on (nameless-mode)
         :off (nameless-mode -1)
-        :evil-leader-for-mode (emacs-lisp-mode . "mo:")))
-    :config
-    (defun nameless--name-regexp (name)
-      (concat "\\_<@?\\(" (regexp-quote name) "\\)\\(\\s_\\|\\sw\\)")))
+        :evil-leader-for-mode (emacs-lisp-mode . "mo:"))))
 
   ;; Workarounds
   (defalias 'yas--template-file 'yas--template-get-file)

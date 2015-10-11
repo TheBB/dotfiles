@@ -65,7 +65,6 @@
    dotspacemacs-additional-packages
    '(ag
      flycheck-package
-     helm-company
      helm-flycheck
      help-fns+
      nameless
@@ -498,12 +497,6 @@
     :init
     (with-eval-after-load 'flycheck
       (flycheck-package-setup)))
-  (use-package helm-company
-    :defer t
-    :init
-    (with-eval-after-load 'company
-      (define-key company-mode-map (kbd "C-SPC") 'helm-company)
-      (define-key company-active-map (kbd "C-SPC") 'helm-company)))
   (use-package helm-flycheck
     :defer t
     :init

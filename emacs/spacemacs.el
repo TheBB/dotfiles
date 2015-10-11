@@ -351,11 +351,6 @@
   (setq helm-echo-input-in-header-line nil)
 
   ;; Flyheck
-  (use-package helm-flycheck
-    :defer t
-    :init
-    (evil-leader/set-key "eh" 'helm-flycheck))
-
   (evil-leader/set-key
     "ec" 'flycheck-clear)
 
@@ -509,6 +504,10 @@
     (with-eval-after-load 'company
       (define-key company-mode-map (kbd "C-SPC") 'helm-company)
       (define-key company-active-map (kbd "C-SPC") 'helm-company)))
+  (use-package helm-flycheck
+    :defer t
+    :init
+    (evil-leader/set-key "eh" 'helm-flycheck))
   (require 'help-fns+)
   (use-package lorem-ipsum
     :defer t)

@@ -63,8 +63,7 @@
      bb-ibuffer)
 
    dotspacemacs-additional-packages
-   '(ag
-     flycheck-package
+   '(flycheck-package
      helm-flycheck
      help-fns+
      nameless
@@ -72,9 +71,7 @@
      lorem-ipsum)
 
    dotspacemacs-excluded-packages
-   '(julia-mode
-     hl-anything
-     evil-terminal-cursor-changer)))
+   '(julia-mode)))
 
 (defun dotspacemacs/init ()
   (setq-default
@@ -154,6 +151,9 @@
    ;; Flycheck
    flycheck-check-syntax-automatically '(save mode-enabled)
 
+   ;; Avy
+   avy-all-windows 'all-frames
+
    ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil
@@ -223,9 +223,6 @@
      "\\[Github\\].* labeled an issue in"
      "\\[Github\\].* unlabeled an issue in")
 
-   ;; Avy
-   avy-all-windows 'all-frames
-
    ;; Theme modifications
    modify-theme-modifications
    '((monokai
@@ -269,61 +266,33 @@
   (defmacro bb/remove-from-list (list-var element)
     `(setq ,list-var (remove ,element ,list-var)))
 
-  ;; Miscellaneous
-  (use-package warnings
-    :defer t
-    :config
-    (push '(undo discard-info) warning-suppress-types))
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-  (when (eq 'hybrid dotspacemacs-editing-style)
-    (diminish 'hybrid-mode))
-  (with-eval-after-load 'emoji-cheat-sheet-plus
-    (diminish 'emoji-cheat-sheet-plus-display-mode))
+  ;; Settings
+  (setq-default
+   tab-width 8
+   evil-move-beyond-eol nil
+   helm-echo-input-in-header-line nil
 
-  (setq-default tab-width 8
-                evil-move-beyond-eol nil)
-
-  ;; Auto modes
-  (setq auto-mode-alist
-        (append '(("\\.xml\\'" . web-mode)
-                  ("\\.xinp\\'" . web-mode)
-                  ("\\.C\\'" . c++-mode)
-                  ("\\.h\\'" . c++-mode))
-                auto-mode-alist))
-
-  ;; Disable smartparens highlighting
-  (with-eval-after-load 'smartparens
-    (when show-smartparens-global-mode
-      (show-smartparens-global-mode -1)))
-
-  ;; Semantic fucks up scrolling
-  (with-eval-after-load 'semantic
-    (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
-
-  ;; Switching buffer
-  (evil-leader/set-key
-    "TAB" (defun bb/alternate-buffer ()
-            (interactive)
-            (if (evil-alternate-buffer)
-                (switch-to-buffer (car (evil-alternate-buffer)))
-              (call-interactively 'spacemacs/alternate-buffer))))
+   auto-mode-alist
+   (append '(("\\.xml\\'" . web-mode)
+             ("\\.xinp\\'" . web-mode)
+             ("\\.C\\'" . c++-mode)
+             ("\\.h\\'" . c++-mode))
+           auto-mode-alist))
 
   ;; Keybindings
   (bb/define-key evil-normal-state-map
     "+" 'spacemacs/evil-numbers-increase
     "_" 'spacemacs/evil-numbers-decrease
     "\\" 'evil-repeat-find-char-reverse
-    "gt" 'eyebrowse-next-window-config
-    "gT" 'eyebrowse-prev-window-config
     "[s" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "]s" (lambda (n) (interactive "p")
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
     (kbd "<backspace>") 'smex)
   (evil-leader/set-key
+    "ec" 'flycheck-clear
     "os" 'just-one-space
     "ot" 'helm-etags-select
-    "os" 'flycheck-select-checker
     "ov" 'evilmi-select-items
     "oh" (defun bb/highlight ()
            (interactive)
@@ -336,22 +305,27 @@
   (bb/define-key company-active-map
     (kbd "C-w") 'evil-delete-backward-word)
 
-  ;; Gtags bindings in extra modes
+  ;; Miscellaneous
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'dired-mode-hook 'deer)
+  (add-hook 'makefile-mode-hook 'whitespace-mode)
+
+  ;; Diminish
+  (when (eq 'hybrid dotspacemacs-editing-style)
+    (diminish 'hybrid-mode))
+  (with-eval-after-load 'emoji-cheat-sheet-plus
+    (diminish 'emoji-cheat-sheet-plus-display-mode))
   (unless (spacemacs/system-is-mswindows)
-    ;; (dolist (mode '(python-mode))
-    ;;   (spacemacs/helm-gtags-define-keys-for-mode mode))
     (with-eval-after-load 'helm-gtags
       (diminish 'helm-gtags-mode)))
 
-  ;; Deer in dired
-  (add-hook 'dired-mode-hook 'deer)
+  ;; Disable smartparens highlighting
+  (with-eval-after-load 'smartparens
+    (show-smartparens-global-mode -1))
 
-  ;; Helm
-  (setq helm-echo-input-in-header-line nil)
-
-  ;; Flyheck
-  (evil-leader/set-key
-    "ec" 'flycheck-clear)
+  ;; Semantic fucks up scrolling
+  (with-eval-after-load 'semantic
+    (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))
@@ -377,9 +351,6 @@
     "m*" 'org-ctrl-c-star
     "m RET" 'org-ctrl-c-ret
     "m-" 'org-ctrl-c-minus)
-
-  ;; Makefiles
-  (add-hook 'makefile-mode-hook 'whitespace-mode)
 
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
@@ -477,10 +448,6 @@
                  :nick "TheBB"
                  :full-name bb/full-name)))
 
-  ;; Local variables
-  (setq safe-local-variable-values
-        '((flycheck-checker . python-flake8-py2)))
-
   ;; Modeline separators
   (setq powerline-default-separator 'alternate)
 
@@ -517,9 +484,10 @@
         :on (nameless-mode)
         :off (nameless-mode -1)
         :evil-leader-for-mode (emacs-lisp-mode . "mo:"))))
-
-  ;; Workarounds
-  (defalias 'yas--template-file 'yas--template-get-file)
+  (use-package warnings
+    :defer t
+    :config
+    (push '(undo discard-info) warning-suppress-types))
 
   ;; Load local
   (when (file-exists-p "~/local.el")

@@ -37,7 +37,7 @@
      (shell :variables shell-default-shell 'eshell)
      shell-scripts
      smex
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
      unimpaired
      version-control
      yaml
@@ -45,7 +45,8 @@
      ,@(unless (string= system-type "windows-nt")
          '(fasd
            gtags
-           spell-checking))
+           (spell-checking :variables
+                           spell-checking-enable-by-default nil)))
 
      ;; Non-contrib layers
      encoding
@@ -357,14 +358,6 @@
 
   (evil-leader/set-key
     "ec" 'flycheck-clear)
-
-  (mapatoms (lambda (atom)
-              (when (and (string-suffix-p "-hook" (symbol-name atom))
-                         (boundp atom)
-                         (listp (eval atom)))
-                (remove-hook atom 'flycheck-mode)
-                (remove-hook atom 'flyspell-mode)
-                (remove-hook atom 'flyspell-prog-mode))))
 
   ;; Some fixes for comint-style buffers
   (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))

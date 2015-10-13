@@ -37,6 +37,7 @@
      (shell :variables shell-default-shell 'eshell)
      shell-scripts
      smex
+     spotify
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      unimpaired
      version-control

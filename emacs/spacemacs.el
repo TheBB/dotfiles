@@ -37,7 +37,6 @@
      (shell :variables shell-default-shell 'eshell)
      shell-scripts
      smex
-     spotify
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      unimpaired
      version-control
@@ -47,7 +46,8 @@
          '(fasd
            gtags
            (spell-checking :variables
-                           spell-checking-enable-by-default nil)))
+                           spell-checking-enable-by-default nil)
+           spotify))
 
      ;; Non-contrib layers
      encoding
@@ -72,7 +72,9 @@
      lorem-ipsum)
 
    dotspacemacs-excluded-packages
-   '(julia-mode)))
+   `(julia-mode
+     ,@(when (string= system-type "windows-nt")
+         '(evil-mc)))))
 
 (defun dotspacemacs/init ()
   (setq-default

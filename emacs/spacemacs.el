@@ -36,7 +36,6 @@
      semantic
      (shell :variables shell-default-shell 'eshell)
      shell-scripts
-     smex
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      unimpaired
      version-control
@@ -65,6 +64,7 @@
 
    dotspacemacs-additional-packages
    '(flycheck-package
+     helm-flx
      helm-flycheck
      help-fns+
      nameless
@@ -292,7 +292,7 @@
     "]s" (lambda (n) (interactive "p")
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
-    (kbd "<backspace>") 'smex)
+    (kbd "<backspace>") 'helm-M-x)
   (evil-leader/set-key
     "ec" 'flycheck-clear
     "os" 'just-one-space
@@ -468,6 +468,9 @@
     :init
     (with-eval-after-load 'flycheck
       (flycheck-package-setup)))
+  (use-package helm-flx
+    :config
+    (helm-flx-mode))
   (use-package helm-flycheck
     :defer t
     :init

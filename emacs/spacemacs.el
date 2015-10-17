@@ -119,7 +119,6 @@
   (setq-default
 
    ;; Miscellaneous
-   sentence-end-double-space nil
    vc-follow-symlinks t
    ring-bell-function 'ignore
    require-final-newline t

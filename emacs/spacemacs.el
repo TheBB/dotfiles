@@ -64,7 +64,6 @@
 
    dotspacemacs-additional-packages
    '(flycheck-package
-     helm-flx
      helm-flycheck
      help-fns+
      nameless
@@ -467,9 +466,6 @@
     :init
     (with-eval-after-load 'flycheck
       (flycheck-package-setup)))
-  (use-package helm-flx
-    :config
-    (helm-flx-mode))
   (use-package helm-flycheck
     :defer t
     :init

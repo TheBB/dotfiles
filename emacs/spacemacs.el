@@ -246,6 +246,14 @@
       (web-mode-comment-face
        :inherit font-lock-comment-face :foreground nil)
 
+      ;; Modeline
+      (mode-line :box "#999999")
+      (powerline-active1 :box "#999999")
+      (powerline-active2 :box "#999999")
+      (mode-line-inactive :box "#666666")
+      (powerline-inactive1 :box "#666666")
+      (powerline-inactive2 :box "#666666")
+
       ;; Other
       (company-tooltip-annotation
        :foreground "#ff9eb8" :background "#49483e")

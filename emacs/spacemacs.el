@@ -228,34 +228,33 @@
    ;; Theme modifications
    modify-theme-modifications
    '((monokai
-      (company-tooltip-annotation
-       ((t (:foreground "#ff9eb8" :background "#49483e"))))
-      (erc-timestamp-face
-       ((t (:inherit font-lock-comment-face :foreground nil))))
-      (evil-search-highlight-persist-highlight-face
-       ((t (:background "#fc5fef" :foreground "#000000"))))
-      (font-lock-comment-face ((t (:slant italic))))
-      (font-lock-string-face ((t (:slant italic))))
-      (font-lock-doc-face ((t (:slant italic))))
-      (font-lock-keyword-face ((t (:weight bold))))
-      (font-lock-builtin-face ((t (:foreground "#ff9eb8"))))
-      (font-lock-warning-face ((t (:underline nil))))
-      (region ((t (:background "#998f84"))))
-      (term ((t (:foreground nil :background nil))))
+      ;; Font locking
+      (font-lock-comment-face :slant italic)
+      (font-lock-string-face :slant italic)
+      (font-lock-doc-face :slant italic)
+      (font-lock-keyword-face :weight bold)
+      (font-lock-builtin-face :foreground "#ff9eb8")
+      (font-lock-warning-face :underline nil)
       (web-mode-html-attr-value-face
-       ((t (:inherit font-lock-string-face :foreground nil))))
+       :inherit font-lock-string-face :foreground nil)
       (web-mode-html-attr-name-face
-       ((t (:inherit font-lock-variable-name-face :foreground nil))))
+       :inherit font-lock-variable-name-face :foreground nil)
       (web-mode-html-tag-face
-       ((t (:inherit font-lock-builtin-face :foreground nil :weight bold))))
+       :inherit font-lock-builtin-face :foreground nil :weight bold)
       (web-mode-html-tag-bracket-face
-       ((t (:inherit web-mode-html-tag-face :foreground nil))))
+       :inherit web-mode-html-tag-face :foreground nil)
       (web-mode-comment-face
-       ((t (:inherit font-lock-comment-face :foreground nil)))))
-     (t
-      (font-latex-slide-title-face
-       ((t (:inherit font-lock-type-face :height 1.0 :weight bold)))))))
-  )
+       :inherit font-lock-comment-face :foreground nil)
+
+      ;; Other
+      (company-tooltip-annotation
+       :foreground "#ff9eb8" :background "#49483e")
+      (erc-timestamp-face
+       :inherit font-lock-comment-face :foreground nil)
+      (evil-search-highlight-persist-highlight-face
+       :background "#fc5fef" :foreground "#000000")
+      (region :background "#998f84")
+      (term :foreground nil :background nil)))))
 
 (defun dotspacemacs/user-config ()
 

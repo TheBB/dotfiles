@@ -310,7 +310,12 @@
     "oH" (defun bb/unhighlight ()
            (interactive)
            (hlt-unhighlight-region)
-           (keyboard-quit)))
+           (keyboard-quit))
+    "qw" (defun bb/maybe-quit ()
+           (interactive)
+           (if (cdr (visible-frame-list))
+               (call-interactively 'spacemacs/frame-killer)
+             (call-interactively 'spacemacs/prompt-kill-emacs))))
   (bb/define-key company-active-map
     (kbd "C-w") 'evil-delete-backward-word)
 

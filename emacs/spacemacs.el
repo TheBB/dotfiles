@@ -247,12 +247,12 @@
        :inherit font-lock-comment-face :foreground nil)
 
       ;; Modeline
-      (mode-line :box "#999999")
-      (powerline-active1 :box "#999999")
-      (powerline-active2 :box "#999999")
-      (mode-line-inactive :box "#666666")
-      (powerline-inactive1 :box "#666666")
-      (powerline-inactive2 :box "#666666")
+      (mode-line :box (:color "#999999" :line-width 1))
+      (powerline-active1 :box (:color "#999999" :line-width 1))
+      (powerline-active2 :box (:color "#999999" :line-width 1))
+      (mode-line-inactive :box (:color "#666666" :line-width 1))
+      (powerline-inactive1 :box (:color "#666666" :line-width 1))
+      (powerline-inactive2 :box (:color "#666666" :line-width 1))
 
       ;; Other
       (company-tooltip-annotation

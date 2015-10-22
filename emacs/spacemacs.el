@@ -253,6 +253,7 @@
       (mode-line-inactive :box (:color "#666666" :line-width 1))
       (powerline-inactive1 :box (:color "#666666" :line-width 1))
       (powerline-inactive2 :box (:color "#666666" :line-width 1))
+      (helm-prefarg :foreground "PaleGreen")
 
       ;; Other
       (company-tooltip-annotation

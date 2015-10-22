@@ -248,7 +248,7 @@
 
       ;; Modeline
       (mode-line :box (:color "#999999" :line-width 1))
-      (powerline-active1 :box (:color "#999999" :line-width 1))
+      (powerline-active1 :box (:color "#999999" :line-width 1) :background "#5a5a5a")
       (powerline-active2 :box (:color "#999999" :line-width 1))
       (mode-line-inactive :box (:color "#666666" :line-width 1))
       (powerline-inactive1 :box (:color "#666666" :line-width 1))

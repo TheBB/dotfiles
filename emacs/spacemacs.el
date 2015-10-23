@@ -357,8 +357,7 @@
                         term-mode-hook
                         erc-mode-hook
                         messages-buffer-mode-hook
-                        inferior-emacs-lisp-mode-hook
-                        inferior-python-mode-hook)))
+                        comint-mode-hook)))
     (spacemacs/add-to-hooks (defun bb/no-hl-line-mode ()
                               (setq-local global-hl-line-mode nil))
                             comint-hooks)

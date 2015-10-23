@@ -100,7 +100,7 @@
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize t
-   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-no-header t
    dotspacemacs-helm-position 'bottom
    dotspacemacs-enable-paste-micro-state nil
    dotspacemacs-which-key-delay 0.4

@@ -89,7 +89,7 @@
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font
    `("Source Code Pro"
-     :size ,(if (string= system-type "windows-nt") 16 13)
+     :size ,(if (string= system-type "windows-nt") 16 18)
      :weight normal :width normal :powerline-scale 1.1)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
@@ -350,7 +350,11 @@
     (bb/remove-from-list semantic-submode-list 'global-semantic-stickyfunc-mode))
 
   ;; Some fixes for comint-style buffers
-  (dolist (mode '(erc-mode comint-mode term-mode eshell-mode inferior-emacs-lisp-mode))
+  (dolist (mode '(erc-mode
+                  comint-mode
+                  term-mode
+                  eshell-mode
+                  inferior-emacs-lisp-mode))
     (bb/remove-from-list evil-insert-state-modes mode))
 
   (let ((comint-hooks '(eshell-mode-hook

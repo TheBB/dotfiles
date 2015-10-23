@@ -63,12 +63,16 @@
      bb-ibuffer)
 
    dotspacemacs-additional-packages
-   '(flycheck-package
+   `(flycheck-package
      helm-flycheck
      help-fns+
      nameless
      nginx-mode
-     lorem-ipsum)
+     lorem-ipsum
+
+     ,@(unless (string= system-type "windows-nt")
+         '(powerline
+           (spaceline :location "~/repos/spaceline/"))))
 
    dotspacemacs-excluded-packages
    `(julia-mode

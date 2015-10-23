@@ -156,6 +156,9 @@
    ;; Avy
    avy-all-windows 'all-frames
 
+   ;; Ranger
+   ranger-override-dired t
+
    ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil
@@ -322,7 +325,6 @@
 
   ;; Miscellaneous
   (add-hook 'text-mode-hook 'auto-fill-mode)
-  (add-hook 'dired-mode-hook 'deer)
   (add-hook 'makefile-mode-hook 'whitespace-mode)
 
   ;; Diminish

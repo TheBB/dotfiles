@@ -288,6 +288,7 @@
    tab-width 8
    evil-move-beyond-eol nil
    helm-echo-input-in-header-line nil
+   powerline-default-separator 'alternate
 
    auto-mode-alist
    (append '(("\\.xml\\'" . web-mode)
@@ -468,9 +469,6 @@
                  :port "6667"
                  :nick "TheBB"
                  :full-name bb/full-name)))
-
-  ;; Modeline separators
-  (setq powerline-default-separator 'alternate)
 
   ;; Evilification
   (spacemacs|evilify-map package-menu-mode-map

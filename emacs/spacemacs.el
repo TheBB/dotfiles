@@ -478,6 +478,9 @@
   (with-eval-after-load 'haskell-mode
     (spacemacs|evilify-map haskell-error-mode-map
       :mode haskell-error-mode))
+  (with-eval-after-load 'proced
+    (spacemacs|evilify-map proced-mode-map
+      :mode proced-mode))
 
   ;; Additional packages
   (use-package flycheck-package

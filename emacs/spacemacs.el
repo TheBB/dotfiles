@@ -515,9 +515,6 @@
     :config
     (push '(undo discard-info) warning-suppress-types))
 
-  ;; Workarounds
-  (advice-remove 'helm-ff-sort-candidates 'helm-flx-helm-ff-sort-candidates)
-
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))

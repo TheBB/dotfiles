@@ -488,6 +488,9 @@
     (spacemacs|evilify-map proced-mode-map
       :mode proced-mode))
 
+  ;; Safe local variables
+  (put 'helm-make-build-dir 'safe-local-variable 'stringp)
+
   ;; Additional packages
   (use-package flycheck-package
     :defer t

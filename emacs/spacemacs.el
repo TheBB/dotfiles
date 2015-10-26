@@ -477,9 +477,9 @@
   ;; Evilification
   (spacemacs|evilify-map package-menu-mode-map
     :mode package-menu-mode)
-  (with-eval-after-load 'haskell-mode
-    (spacemacs|evilify-map haskell-error-mode-map
-      :mode haskell-error-mode))
+  ;; (with-eval-after-load 'haskell-mode
+  ;;   (spacemacs|evilify-map haskell-error-mode-map
+  ;;     :mode haskell-error-mode))
   (with-eval-after-load 'proced
     (spacemacs|evilify-map proced-mode-map
       :mode proced-mode))

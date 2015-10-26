@@ -65,6 +65,8 @@
    dotspacemacs-additional-packages
    `(flycheck-package
      helm-flycheck
+     (helm-fuzzier :location (recipe :fetcher github
+                                     :repo "EphramPerdition/helm-fuzzier"))
      help-fns+
      nameless
      nginx-mode
@@ -503,6 +505,12 @@
     :init
     (evil-leader/set-key "eh" 'helm-flycheck))
   (require 'help-fns+)
+  (use-package helm-fuzzier
+    :defer t
+    :commands helm-fuzzier-mode
+    :init
+    (with-eval-after-load 'helm
+      (helm-fuzzier-mode 1)))
   (use-package lorem-ipsum
     :defer t)
   (use-package nginx-mode

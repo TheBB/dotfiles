@@ -153,6 +153,7 @@
 
    ;; Magit
    magit-push-always-verify nil
+   magit-popup-show-common-commands nil
 
    ;; Flycheck
    flycheck-check-syntax-automatically '(save mode-enabled)

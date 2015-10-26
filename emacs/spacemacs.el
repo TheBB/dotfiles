@@ -163,6 +163,10 @@
    ;; Ranger
    ranger-override-dired t
 
+   ;; Spaceline
+   spaceline-buffer-encoding-abbrev-p nil
+   spaceline-version-control-p nil
+
    ;; Matlab
    matlab-auto-fill nil
    matlab-fill-code nil

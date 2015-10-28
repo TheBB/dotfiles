@@ -318,7 +318,7 @@
     "]s" (lambda (n) (interactive "p")
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
-    (kbd "<menu>") 'helm-M-x)
+    (kbd "<backspace>") 'helm-M-x)
   (evil-leader/set-key
     "ec" 'flycheck-clear
     "os" 'just-one-space

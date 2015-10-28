@@ -269,6 +269,11 @@
       (powerline-inactive2 :box (:color "#666666" :line-width 1))
       (helm-prefarg :foreground "PaleGreen")
 
+      ;; Flycheck
+      (flycheck-fringe-error :background nil)
+      (flycheck-fringe-warning :background nil)
+      (flycheck-fringe-info :background nil)
+
       ;; Other
       (company-tooltip-annotation
        :foreground "#ff9eb8" :background "#49483e")

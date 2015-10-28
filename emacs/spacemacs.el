@@ -63,8 +63,7 @@
      bb-ibuffer)
 
    dotspacemacs-additional-packages
-   `(flycheck-package
-     helm-flycheck
+   `(helm-flycheck
      (helm-fuzzier :location (recipe :fetcher github
                                      :repo "EphramPerdition/helm-fuzzier"))
      help-fns+
@@ -495,11 +494,6 @@
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
 
   ;; Additional packages
-  (use-package flycheck-package
-    :defer t
-    :init
-    (with-eval-after-load 'flycheck
-      (flycheck-package-setup)))
   (use-package helm-flycheck
     :defer t
     :init

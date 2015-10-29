@@ -37,6 +37,10 @@
      (shell :variables shell-default-shell 'eshell)
      shell-scripts
      (syntax-checking :variables syntax-checking-enable-by-default nil)
+     (theming :variables
+              theming-headings-inherit-from-default 'all
+              theming-headings-same-size 'all
+              theming-headings-bold 'all)
      unimpaired
      version-control
      yaml
@@ -52,10 +56,6 @@
      encoding
      evil-little-word
      evil-shift-width
-     (modify-theme :variables
-                   modify-theme-headings-inherit-from-default 'all
-                   modify-theme-headings-same-size 'all
-                   modify-theme-headings-bold 'all)
      no-dots
 
      ;; Personal config layers
@@ -241,7 +241,7 @@
      "\\[Github\\].* unlabeled an issue in")
 
    ;; Theme modifications
-   modify-theme-modifications
+   theming-modifications
    '((monokai
       ;; Font locking
       (font-lock-comment-face :slant italic)

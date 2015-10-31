@@ -118,7 +118,8 @@
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   dotspacemacs-default-package-repository nil))
+   dotspacemacs-default-package-repository nil
+   dotspacemacs-whitespace-cleanup 'changed))
 
 (defun dotspacemacs/user-init ()
   (setq-default
@@ -143,7 +144,7 @@
    evil-shift-round nil
 
    ;; Whitespace mode
-   whitespace-style '(face tabs tab-mark)
+   whitespace-style '(face tabs tab-mark newline-mark)
    whitespace-display-mappings
    '((newline-mark 10 [172 10])
      (tab-mark 9 [9655 9]))
@@ -344,6 +345,7 @@
   ;; Miscellaneous
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'makefile-mode-hook 'whitespace-mode)
+  (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
 
   ;; Diminish
   (when (eq 'hybrid dotspacemacs-editing-style)

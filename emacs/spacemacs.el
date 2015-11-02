@@ -342,6 +342,7 @@
              (call-interactively 'spacemacs/prompt-kill-emacs)))
     "hdF" (defun bb/helm-faces ()
             (interactive)
+            (require 'helm-elisp)
             (let ((default (thing-at-point 'symbol)))
               (helm :sources (list (helm-def-source--emacs-faces default))
                     :buffer "*helm faces*"

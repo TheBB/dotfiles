@@ -348,6 +348,7 @@
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'makefile-mode-hook 'whitespace-mode)
   (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
+  (add-hook 'prog-mode-hook 'spacemacs/highlight-TODO-words)
 
   ;; Diminish
   (when (eq 'hybrid dotspacemacs-editing-style)

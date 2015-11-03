@@ -339,14 +339,7 @@
            (interactive)
            (if (cdr (visible-frame-list))
                (call-interactively 'spacemacs/frame-killer)
-             (call-interactively 'spacemacs/prompt-kill-emacs)))
-    "hdF" (defun bb/helm-faces ()
-            (interactive)
-            (require 'helm-elisp)
-            (let ((default (thing-at-point 'symbol)))
-              (helm :sources (list (helm-def-source--emacs-faces default))
-                    :buffer "*helm faces*"
-                    :preselect (and default (concat "\\_<" (regexp-quote default) "\\_>"))))))
+             (call-interactively 'spacemacs/prompt-kill-emacs))))
   (bb/define-key company-active-map
     (kbd "C-w") 'evil-delete-backward-word)
 

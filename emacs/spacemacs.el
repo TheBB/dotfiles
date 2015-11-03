@@ -353,6 +353,8 @@
   ;; Text objects
   (spacemacs|define-text-object "/" "slash" "/" "/")
   (spacemacs|define-text-object "_" "underscore" "_" "_")
+  (spacemacs|define-text-object "~" "tilde" "~" "~")
+  (spacemacs|define-text-object "=" "equal" "=" "=")
 
   ;; Diminish
   (when (eq 'hybrid dotspacemacs-editing-style)

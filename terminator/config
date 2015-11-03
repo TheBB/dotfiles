@@ -1,33 +1,33 @@
 [global_config]
-  title_transmit_bg_color = "#404040"
-  tab_position = hidden
   inactive_color_offset = 0.97
+  tab_position = hidden
   title_inactive_bg_color = "#afafaf"
+  title_transmit_bg_color = "#404040"
 [keybindings]
-  go_up = <Primary><Shift>k
-  switch_to_tab_10 = <Primary><Shift>at
   go_down = <Primary><Shift>j
-  switch_to_tab_2 = <Primary><Shift>numbersign
-  go_right = <Primary><Shift>l
-  switch_to_tab_1 = <Primary><Shift>exclam
   go_left = <Primary><Shift>h
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    use_system_font = False
-    background_darkness = 0.75
-    background_image = None
-    foreground_color = "#ffffff"
-    show_titlebar = False
-    font = Source Code Pro for Powerline Medium 10
-    background_color = "#0c0c0c"
-    scrollback_infinite = True
+  go_right = <Primary><Shift>l
+  go_up = <Primary><Shift>k
+  switch_to_tab_1 = <Primary><Shift>exclam
+  switch_to_tab_10 = <Primary><Shift>at
+  switch_to_tab_2 = <Primary><Shift>numbersign
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#0c0c0c"
+    background_darkness = 0.75
+    background_image = None
+    font = Source Code Pro for Powerline Medium 10
+    foreground_color = "#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

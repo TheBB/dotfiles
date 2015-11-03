@@ -350,6 +350,10 @@
   (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
   (add-hook 'prog-mode-hook 'spacemacs/highlight-TODO-words)
 
+  ;; Text objects
+  (spacemacs|define-text-object "/" "slash" "/" "/")
+  (spacemacs|define-text-object "_" "underscore" "_" "_")
+
   ;; Diminish
   (when (eq 'hybrid dotspacemacs-editing-style)
     (diminish 'hybrid-mode))

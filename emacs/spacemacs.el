@@ -69,7 +69,6 @@
      help-fns+
      nameless
      nginx-mode
-     lorem-ipsum
 
      ,@(unless (string= system-type "windows-nt")
          '(powerline
@@ -516,8 +515,6 @@
     :init
     (with-eval-after-load 'helm
       (helm-fuzzier-mode 1)))
-  (use-package lorem-ipsum
-    :defer t)
   (use-package nginx-mode
     :defer t
     :mode ("nginx\\.conf\\'" "/etc/nginx/.*\\'"))

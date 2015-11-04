@@ -321,8 +321,9 @@
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (bb/define-key evil-motion-state-map
     (kbd "<backspace>") 'helm-M-x)
-  (bb/define-key helm-map
-    (kbd "C-S-q") 'ace-jump-helm-line-execute-action)
+  (with-eval-after-load 'helm
+    (bb/define-key helm-map
+      (kbd "C-S-q") 'ace-jump-helm-line-execute-action))
   (evil-leader/set-key
     "ec" 'flycheck-clear
     "os" 'just-one-space

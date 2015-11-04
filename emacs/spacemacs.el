@@ -350,6 +350,7 @@
   (add-hook 'makefile-mode-hook 'whitespace-mode)
   (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
   (add-hook 'prog-mode-hook 'spacemacs/highlight-TODO-words)
+  (spaceline-info-mode)
 
   ;; Text objects
   (spacemacs|define-text-object "/" "slash" "/" "/")

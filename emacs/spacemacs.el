@@ -319,6 +319,9 @@
     "[s" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
     "]s" (lambda (n) (interactive "p")
            (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
+  (bb/define-key evil-insert-state-map
+    (kbd "C-e") 'move-end-of-line
+    (kbd "C-a") 'move-beginning-of-line)
   (bb/define-key evil-motion-state-map
     (kbd "<backspace>") 'helm-M-x)
   (with-eval-after-load 'helm

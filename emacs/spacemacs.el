@@ -206,6 +206,11 @@
    '((headline . nil) (item . nil) (table . nil))
    org-directory "~/org"
    org-default-notes-file "~/org/capture.org"
+   org-catch-invisible-edits 'show-and-error
+   org-list-demote-modify-bullet '(("-" . "*")
+                                   ("*" . "+")
+                                   ("+" . "-"))
+   org-list-allow-alphabetical t
    org-capture-templates
    '(("t" "Tasks")
      ("tg" "General" entry (file+headline "" "Tasks")
@@ -401,10 +406,19 @@
 
   ;; Org
   (add-hook 'org-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook
+            (defun bb/org-surrounds ()
+              (push '(?: . bb/surround-drawer)
+                    evil-surround-pairs-alist)))
+  (defun bb/surround-drawer ()
+    (let ((dname (read-from-minibuffer "" "")))
+      (cons (format ":%s:" (or dname "")) ":END:")))
   (evil-leader/set-key-for-mode 'org-mode
     "m*" 'org-ctrl-c-star
     "m RET" 'org-ctrl-c-ret
-    "m-" 'org-ctrl-c-minus)
+    "m-" 'org-ctrl-c-minus
+    "m^" 'org-sort
+    "m/" 'org-sparse-tree)
 
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook

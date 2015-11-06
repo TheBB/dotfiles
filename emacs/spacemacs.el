@@ -44,6 +44,7 @@
      unimpaired
      version-control
      yaml
+     (typography :variables typography-enable-typographic-editing t)
 
      ,@(unless (string= system-type "windows-nt")
          '(fasd

@@ -404,22 +404,6 @@
                             comint-hooks))
   (add-hook 'inferior-emacs-lisp-mode-hook 'smartparens-mode)
 
-  ;; Org
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook
-            (defun bb/org-surrounds ()
-              (push '(?: . bb/surround-drawer)
-                    evil-surround-pairs-alist)))
-  (defun bb/surround-drawer ()
-    (let ((dname (read-from-minibuffer "" "")))
-      (cons (format ":%s:" (or dname "")) ":END:")))
-  (evil-leader/set-key-for-mode 'org-mode
-    "m*" 'org-ctrl-c-star
-    "m RET" 'org-ctrl-c-ret
-    "m-" 'org-ctrl-c-minus
-    "m^" 'org-sort
-    "m/" 'org-sparse-tree)
-
   ;; LaTeX
   (add-hook 'LaTeX-mode-hook
             (defun bb/shift-width-2 ()

@@ -98,6 +98,7 @@
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-command-key ":"
    dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-display-default-layout nil
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize t

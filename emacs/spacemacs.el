@@ -192,7 +192,8 @@
    '(("sm" . "spacemacs")
      ("dsm" . "dotspacemacs")
      ("cfl" . "configuration-layer")
-     ("sl" . "spaceline"))
+     ("sl" . "spaceline")
+     ("eip" . "evil-indent-plus"))
    nameless-discover-current-name nil
    nameless-prefix ""
    nameless-separator nil

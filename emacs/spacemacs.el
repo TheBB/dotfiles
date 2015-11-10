@@ -546,6 +546,17 @@
     :config
     (push '(undo discard-info) warning-suppress-types))
 
+  ;; Workarounds
+
+  ;; https://github.com/EphramPerdition/helm-fuzzier/issues/9
+  (defun bb/helm-locate-library (orig-fn &rest args)
+    (let ((fuzzy helm-fuzzier-mode))
+      (prog2
+          (when fuzzy (helm-fuzzier-mode -1))
+          (apply orig-fn args)
+        (when fuzzy (helm-fuzzier-mode 1)))))
+  (advice-add 'helm-locate-library :around 'bb/helm-locate-library)
+
   ;; Load local
   (when (file-exists-p "~/local.el")
     (load "~/local.el"))

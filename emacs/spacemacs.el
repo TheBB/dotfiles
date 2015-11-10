@@ -311,14 +311,13 @@
    tab-width 8
    evil-move-beyond-eol nil
    helm-echo-input-in-header-line nil
-   powerline-default-separator 'alternate
+   powerline-default-separator 'alternate)
 
-   auto-mode-alist
-   (append '(("\\.xml\\'" . web-mode)
-             ("\\.xinp\\'" . web-mode)
-             ("\\.C\\'" . c++-mode)
-             ("\\.h\\'" . c++-mode))
-           auto-mode-alist))
+  (dolist (e '(("xml" . web-mode)
+               ("xinp" . web-mode)
+               ("C" . c++-mode)
+               ("h" . c++-mode)))
+    (push (cons (concat "\\." (car e) "\\'") (cdr e)) auto-mode-alist))
 
   ;; Keybindings
   (bb/define-key evil-normal-state-map

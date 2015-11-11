@@ -236,8 +236,8 @@
 
    ;; IRC
    erc-autojoin-channels-alist
-   '(("1\\.0\\.0" "#syl20bnr/spacemacs") ; Gitter
-     ("irc.gitter.im" "#syl20bnr/spacemacs")
+   '(("1\\.0\\.0" "#syl20bnr/spacemacs" "#syl20bnr/spacemacs-devel") ; Gitter
+     ("irc.gitter.im" "#syl20bnr/spacemacs" "#syl20bnr/spacemacs-devel")
      ("freenode\\.net" "#emacs" "#emacs-beginners" "#spacemacs"))
    erc-timestamp-format-left "\n%A %B %e, %Y\n\n"
    erc-timestamp-format-right "%H:%M"

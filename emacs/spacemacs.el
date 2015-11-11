@@ -103,7 +103,7 @@
    dotspacemacs-display-default-layout nil
    dotspacemacs-auto-resume-layouts nil
    dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-max-rollback-slots 10
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize t
    dotspacemacs-helm-no-header t

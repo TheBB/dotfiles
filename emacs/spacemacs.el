@@ -76,8 +76,7 @@
            (spaceline :location "~/repos/spaceline/"))))
 
    dotspacemacs-excluded-packages
-   `(flycheck-pos-tip
-     julia-mode
+   `(julia-mode
      ,@(when (string= system-type "windows-nt")
          '(evil-mc)))))
 

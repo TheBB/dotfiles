@@ -99,7 +99,7 @@
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-command-key ":"
    dotspacemacs-remap-Y-to-y$ t
-   dotspacemacs-default-layout-name nil
+   dotspacemacs-default-layout-name "Home"
    dotspacemacs-display-default-layout nil
    dotspacemacs-auto-resume-layouts nil
    dotspacemacs-auto-save-file-location 'cache

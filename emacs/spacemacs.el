@@ -134,6 +134,7 @@
    require-final-newline t
    indent-tabs-mode nil
    system-time-locale "C"
+   paradox-github-token t
 
    ;; Backups
    backup-directory-alist `((".*" . ,temporary-file-directory))

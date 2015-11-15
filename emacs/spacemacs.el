@@ -85,6 +85,7 @@
    dotspacemacs-editing-style 'vim
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '(recents bookmarks projects)
+   dotspacemacs-startup-recent-list-size 5
    dotspacemacs-themes
    '(monokai material spacemacs-dark spacemacs-light solarized-dark leuven zenburn)
    dotspacemacs-colorize-cursor-according-to-state t

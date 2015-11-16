@@ -109,7 +109,7 @@
    dotspacemacs-helm-no-header t
    dotspacemacs-helm-position 'bottom
    dotspacemacs-enable-paste-micro-state t
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 1.0
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil

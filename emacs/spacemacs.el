@@ -212,6 +212,8 @@
    org-footnote-auto-label 'confirm
    org-M-RET-may-split-line
    '((headline . nil) (item . nil) (table . nil))
+   org-agenda-restore-windows-after-quit t
+   org-agenda-window-setup 'other-window
    org-directory "~/org"
    org-default-notes-file "~/org/capture.org"
    org-agenda-files '("~/org/" "~/org/projects/" "~/org/misc/")

@@ -342,7 +342,6 @@
       (kbd "C-S-q") 'ace-jump-helm-line-execute-action))
   (evil-leader/set-key
     "ec" 'flycheck-clear
-    "op" 'avy-goto-line
     "os" 'just-one-space
     "ot" 'helm-etags-select
     "ov" 'evilmi-select-items

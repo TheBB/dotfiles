@@ -512,6 +512,18 @@
   ;; Evilification
   (spacemacs|evilify-map package-menu-mode-map
     :mode package-menu-mode)
+  (with-eval-after-load 'org-agenda
+    (spacemacs|evilify-map org-agenda-mode-map
+      :mode org-agenda-mode
+      :bindings
+      "j" 'org-agenda-next-line
+      "k" 'org-agenda-previous-line
+      (kbd "M-j") 'org-agenda-next-item
+      (kbd "M-k") 'org-agenda-previous-item
+      (kbd "M-h") 'org-agenda-earlier
+      (kbd "M-l") 'org-agenda-later
+      (kbd "gd") 'org-agenda-toggle-time-grid
+      (kbd "gr") 'org-agenda-redo))
   ;; (with-eval-after-load 'haskell-mode
   ;;   (spacemacs|evilify-map haskell-error-mode-map
   ;;     :mode haskell-error-mode))

@@ -214,6 +214,7 @@
    '((headline . nil) (item . nil) (table . nil))
    org-directory "~/org"
    org-default-notes-file "~/org/capture.org"
+   org-agenda-files '("~/org/" "~/org/projects/" "~/org/misc/")
    org-catch-invisible-edits 'show-and-error
    org-list-demote-modify-bullet '(("-" . "*")
                                    ("*" . "+")
@@ -222,17 +223,17 @@
    org-capture-templates
    '(("t" "Tasks")
      ("tg" "General" entry (file+headline "" "Tasks")
-      "* TODO %?\n%i\n%T"
+      "* TODO %?\n%i\n%U"
       :empty-lines 1)
      ("tl" "Location" entry (file+headline "" "Tasks")
-      "* TODO %?\n%i\n%T\n%a"
+      "* TODO %?\n%i\n%U\n%a"
       :empty-lines 1)
      ("n" "Notes")
      ("ng" "General" entry (file+headline "" "Notes")
-      "* %?\n%i\n%T"
+      "* %?\n%i\n%U"
       :empty-lines 1)
      ("nl" "Location" entry (file+headline "" "Notes")
-      "* %?\n%i\n%T\n%a"
+      "* %?\n%i\n%U\n%a"
       :empty-lines 1))
 
    ;; IRC

@@ -510,8 +510,6 @@
                  :full-name bb/full-name)))
 
   ;; Evilification
-  (spacemacs|evilify-map package-menu-mode-map
-    :mode package-menu-mode)
   (with-eval-after-load 'org-agenda
     (spacemacs|evilify-map org-agenda-mode-map
       :mode org-agenda-mode

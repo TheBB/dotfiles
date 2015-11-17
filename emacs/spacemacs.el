@@ -524,6 +524,9 @@
       (kbd "M-l") 'org-agenda-later
       (kbd "gd") 'org-agenda-toggle-time-grid
       (kbd "gr") 'org-agenda-redo))
+  (with-eval-after-load 'magit
+    (evil-define-key 'motion magit-mode-map (kbd "M-j") 'magit-section-forward-sibling)
+    (evil-define-key 'motion magit-mode-map (kbd "M-k") 'magit-section-backward-sibling))
   (with-eval-after-load 'haskell-interactive-mode
     (spacemacs|evilify-map haskell-error-mode-map
       :mode haskell-error-mode))

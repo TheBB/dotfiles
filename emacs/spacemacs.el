@@ -360,6 +360,11 @@
            (if (cdr (visible-frame-list))
                (call-interactively 'spacemacs/frame-killer)
              (call-interactively 'spacemacs/prompt-kill-emacs))))
+  (evil-leader/set-key-for-mode 'text-mode
+    "m." (defun bb/empty-commit ()
+           (interactive)
+           (insert ".")
+           (call-interactively 'with-editor-finish)))
   (bb/define-key company-active-map
     (kbd "C-w") 'evil-delete-backward-word)
 

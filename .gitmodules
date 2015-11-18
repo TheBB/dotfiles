@@ -1,9 +1,0 @@
-[submodule "emacs/sources/evil-indent-textobject"]
-	path = emacs/sources/evil-indent-textobject
-	url = git@github.com:TheBB/evil-indent-textobject
-[submodule "emacs/sources/evil"]
-	path = emacs/sources/evil
-	url = git://gitorious.org/evil/evil.git
-[submodule "emacs/sources/helm"]
-	path = emacs/sources/helm
-	url = git@github.com:emacs-helm/helm

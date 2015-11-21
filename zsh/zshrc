@@ -46,8 +46,6 @@ EDITOR="vim"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
-export PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
-export LD_PRELOAD=/usr/lib/nvidia/libGL.so
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -61,7 +59,6 @@ local rvm_ruby=''
 
 function virtualenv_info { [ $VIRTUAL_ENV ] && echo '‹'`basename $VIRTUAL_ENV`'› ' } 
 local venv_py='%{$fg_bold[cyan]%}$(virtualenv_info)%{$reset_color%}'
-export WORKON_HOME=~/.virtualenvs
 VIRTUAL_ENV_DISABLE_PROMPT='1'
 source $(which virtualenvwrapper.sh)
 
@@ -98,13 +95,13 @@ alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages
 alias ghci-sandbox="ghci -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
 alias runhaskell-sandbox="runhaskell -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
 
-for dir in \
-    ~/.cabal/bin
-; do
-    if [[ -d $dir ]]; then path+=$dir; fi
-done
-
 source $HOME/.localzshrc
 source $HOME/repos/dotfiles/zsh/mancolor.sh
 
 eval "$(fasd --init auto)"
+
+# for dir in \
+#     ~/.cabal/bin
+# ; do
+#     if [[ -d $dir ]]; then path+=$dir; fi
+# done

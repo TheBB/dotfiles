@@ -1,0 +1,9 @@
+export PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
+export LD_PRELOAD=/usr/lib/nvidia/libGL.so
+export WORKON_HOME=~/.virtualenvs
+
+for dir in \
+    ~/.cabal/bin
+; do
+    if [[ -d $dir ]]; then path+=$dir; fi
+done

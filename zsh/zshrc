@@ -101,6 +101,7 @@ source $HOME/repos/dotfiles/zsh/mancolor.sh
 eval "$(fasd --init auto)"
 
 export PETSC_DIR=/home/eivindf/source/petsc/current
+export PETSC_ARCH=parallel
 
 # for dir in \
 #     ~/.cabal/bin

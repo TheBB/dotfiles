@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+emacsclient -c -e "(select-frame-set-input-focus (selected-frame))" "(find-file \"$1\")"

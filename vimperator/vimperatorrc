@@ -1,4 +1,5 @@
 set gui=nonavigation
 set gui=nomenu
+set editor=ecli
 inoremap <C-d> <C-i>
 map ge gT

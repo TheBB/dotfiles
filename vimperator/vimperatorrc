@@ -1,3 +1,4 @@
 set gui=nonavigation
 set gui=nomenu
+inoremap <C-d> <C-i>
 map ge gT

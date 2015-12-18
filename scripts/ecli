@@ -1,3 +1,7 @@
 #!/usr/bin/bash
 
-emacsclient -c -e "(select-frame-set-input-focus (selected-frame))" "(find-file \"$1\")"
+if [ "$#" -le 1 ]; then
+    emacsclient -c -e "(select-frame-set-input-focus (selected-frame))" "(spacemacs/home)"
+else
+    emacsclient -c -e "(select-frame-set-input-focus (selected-frame))" "(find-file \"$1\")"
+fi

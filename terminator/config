@@ -8,6 +8,8 @@
   go_left = <Primary><Shift>h
   go_right = <Primary><Shift>l
   go_up = <Primary><Shift>k
+  split_horiz = <Primary><Shift>o
+  split_vert = <Primary><Shift>e
   switch_to_tab_1 = <Primary><Shift>exclam
   switch_to_tab_10 = <Primary><Shift>at
   switch_to_tab_2 = <Primary><Shift>numbersign

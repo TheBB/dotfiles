@@ -48,6 +48,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export EDITOR=ecli
+
 # Customize to your needs...
 
 # ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png

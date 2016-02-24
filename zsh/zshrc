@@ -1,112 +1,22 @@
 #!/usr/bin/zsh
 
-# Path to your oh-my-zsh configuration.
-ZSH=/usr/share/oh-my-zsh/
+if [[ ! -d ~/.antigen ]]
+then
+   git clone https://github.com/zsh-users/antigen.git ~/.antigen
+fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+source ~/.antigen/antigen.zsh
+antigen use oh-my-zsh
+antigen theme candy
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-EDITOR="vim"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
+antigen bundle archlinux
+antigen bundle colored-man-pages
+antigen bundle fasd
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 export EDITOR=ecli
 
-# Customize to your needs...
-
-# ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-
-local user_host='%{%(#~$fg_bold[red]~$fg_bold[green])%}%n@%m%{$reset_color%}'
-local current_dir='%{$fg_bold[blue]%} %~%{$reset_color%}'
-local rvm_ruby=''
-
-function virtualenv_info { [ $VIRTUAL_ENV ] && echo '‹'`basename $VIRTUAL_ENV`'› ' } 
-local venv_py='%{$fg_bold[cyan]%}$(virtualenv_info)%{$reset_color%}'
-VIRTUAL_ENV_DISABLE_PROMPT='1'
-source $(which virtualenvwrapper.sh)
-
-if which rvm-prompt &> /dev/null; then
-  rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
-else
-  if which rbenv &> /dev/null; then
-    rvm_ruby='%{$fg[red]%}‹$(rbenv version | sed -e "s/ (set.*$//")›%{$reset_color%}'
-  fi
-fi
-local git_branch='$(git_prompt_info)%{$reset_color%}'
-
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${venv_py} ${git_branch}
-╰─%B$%b "
-RPS1="${return_code}"
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]$terminfo[bold]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="  %{$fg[red]%}✘%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="  %{$fg[green]%}✔%{$reset_color%}"
-
-alias pacman="pacman --color auto"
 alias sume="sudo -E su -m"
-alias sudo="sudo -E"
-alias gst="git status"
-alias gcm="git commit"
-alias gps="git push"
-alias gpl="git pull"
-alias gad="git add"
-alias gdf="git diff"
-alias oscid="/home/efonn/sources/Scid-4.5.2/scid /home/efonn/chess/scid.si4"
-alias ocabal="/home/efonn/.cabal/bin/cabal"
-alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
-alias ghci-sandbox="ghci -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
-alias runhaskell-sandbox="runhaskell -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias sudd="sudo -E"
 
 source $HOME/.localzshrc
-source $HOME/repos/dotfiles/zsh/mancolor.sh
-
-eval "$(fasd --init auto)"
-
-export PETSC_DIR=/home/eivindf/source/petsc/current
-export PETSC_ARCH=serial
-
-# for dir in \
-#     ~/.cabal/bin
-# ; do
-#     if [[ -d $dir ]]; then path+=$dir; fi
-# done

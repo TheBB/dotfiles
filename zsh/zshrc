@@ -16,6 +16,8 @@ antigen bundle colored-man-pages
 antigen bundle fasd
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+antigen apply
+
 export EDITOR=ecli
 
 alias sume="sudo -E su -m"

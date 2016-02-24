@@ -14,6 +14,11 @@ antigen theme candy
 antigen bundle archlinux
 antigen bundle colored-man-pages
 antigen bundle fasd
+antigen bundle git
+antigen bundle virtualenvwrapper
+
+antigen bundle djui/alias-tips
+antigen bundle Vifon/deer
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply

@@ -22,7 +22,9 @@ antigen bundle virtualenvwrapper
 
 antigen bundle djui/alias-tips
 antigen bundle Vifon/deer
+antigen bundle tarruda/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 
 antigen apply
 
@@ -57,6 +59,14 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 # ------------------------------------------------------------------------------------------
 # Miscellaneous
 
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^k" autosuggest-clear
+bindkey "^l" autosuggest-accept
+
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+
+export TERM=xterm-256color
 export EDITOR=ecli
 
 alias sume="sudo -E su -m"

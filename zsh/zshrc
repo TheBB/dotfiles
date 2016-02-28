@@ -2,6 +2,9 @@
 
 unset GREP_OPTIONS
 
+# ------------------------------------------------------------------------------------------
+# Antigen bundles
+
 if [[ ! -d ~/.antigen ]]
 then
    git clone https://github.com/zsh-users/antigen.git ~/.antigen
@@ -23,8 +26,24 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
+# ------------------------------------------------------------------------------------------
 # This is an adapted version of the candy theme from oh-my-zsh
-PROMPT=$'%{$fg_bold[green]%}%n@%m  %{$fg[blue]%}%~%{$reset_color%}  $(git_prompt_info)  $(virtualenv_prompt_info)\
+
+function bb_git_prompt() {
+    local ref=$(git_prompt_info)
+    if [[ -n $ref ]]; then
+       echo "  $ref"
+    fi
+}
+
+function bb_venv_prompt() {
+    local ref=$(virtualenv_prompt_info)
+    if [[ -n $ref ]]; then
+        echo "  $ref"
+    fi
+}
+
+PROMPT=$'%{$fg_bold[green]%}%n@%m  %{$fg[blue]%}%~%{$reset_color%}$(bb_git_prompt)$(virtualenv_prompt_info)\
 %{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
 RPROMPT="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
@@ -34,6 +53,9 @@ ZSH_THEME_GIT_PROMPT_DIRTY="(%{$fg[red]%}✘%{$fg[yellow]%})"
 ZSH_THEME_GIT_PROMPT_CLEAN="(%{$fg[green]%}✔%{$fg[yellow]%})"
 ZSH_THEME_VIRTUALENV_PREFIX="%{$fg_bold[cyan]%}"
 ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
+
+# ------------------------------------------------------------------------------------------
+# Miscellaneous
 
 export EDITOR=ecli
 

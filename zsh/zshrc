@@ -43,7 +43,7 @@ function bb_venv_prompt() {
     fi
 }
 
-PROMPT=$'%{$fg_bold[green]%}%n@%m  %{$fg[blue]%}%~%{$reset_color%}$(bb_git_prompt)$(virtualenv_prompt_info)\
+PROMPT=$'%{$fg_bold[green]%}%n@%m  %{$fg[blue]%}%~%{$reset_color%}$(bb_git_prompt)$(bb_venv_prompt)\
 %{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
 RPROMPT="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 

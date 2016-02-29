@@ -65,6 +65,10 @@ bindkey "^[k" autosuggest-clear
 bindkey "^l" autosuggest-accept
 
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+ZSH_HIGHLIGHT_STYLES[command]='fg=41,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=41,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=41,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=41,bold'
 
 export TERM=xterm-256color
 export EDITOR=ecli

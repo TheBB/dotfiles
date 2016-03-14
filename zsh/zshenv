@@ -1,7 +1,7 @@
 export PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
 export LD_PRELOAD=/usr/lib/nvidia/libGL.so
 export WORKON_HOME=~/.virtualenvs
-export RUST_SRC_PATH=~/repos/rust/src
+export RUST_SRC_PATH=/usr/src/rust/src
 
 for dir in \
     ~/.cabal/bin

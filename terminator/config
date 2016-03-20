@@ -27,7 +27,7 @@
     background_color = "#0c0c0c"
     background_darkness = 0.75
     background_image = None
-    font = Source Code Pro for Powerline Medium 10
+    font = Source Code Pro Semi-Bold 10
     foreground_color = "#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden

@@ -76,4 +76,5 @@ export EDITOR=ecli
 alias sume="sudo -E su -m"
 alias sudd="sudo -E"
 
+eval "$(fasd --init auto)"
 source $HOME/.localzshrc

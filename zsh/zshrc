@@ -59,6 +59,8 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 # ------------------------------------------------------------------------------------------
 # Miscellaneous
 
+autoload -U zmv
+
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "^[k" autosuggest-clear

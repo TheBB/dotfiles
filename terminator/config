@@ -24,7 +24,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#0c0c0c"
+    background_color = "#272822"
     background_darkness = 0.75
     background_image = None
     font = Source Code Pro Semi-Bold 10

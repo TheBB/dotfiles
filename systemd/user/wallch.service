@@ -1,0 +1,9 @@
+[Unit]
+Description=Wallch: A powerful cross-desktop wallpaper changer
+
+[Service]
+ExecStart=/usr/bin/wallch --earth
+Restart=always
+
+[Install]
+WantedBy=default.target

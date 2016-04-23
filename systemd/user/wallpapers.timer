@@ -1,0 +1,10 @@
+[Description]
+Description = Change wallpaper every hour
+
+[Timer]
+Persistent = true
+OnCalendar = hourly
+Unit = wallpapers.service
+
+[Install]
+WantedBy = wallpapers.service

@@ -3,6 +3,7 @@
 ABS_PATH=`pwd`
 
 sudo ln -Tsi "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
+sudo ln -Tsi "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 
 ln -Tsi "$ABS_PATH/flake8/flake8" ~/.config/flake8
 ln -Tsi "$ABS_PATH/ghci/ghci.conf" ~/.ghc/ghci.conf

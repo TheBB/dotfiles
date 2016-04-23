@@ -25,7 +25,7 @@
 [profiles]
   [[default]]
     background_color = "#272822"
-    background_darkness = 0.85
+    background_darkness = 0.94
     background_image = None
     background_type = transparent
     font = Source Code Pro Semi-Bold 10

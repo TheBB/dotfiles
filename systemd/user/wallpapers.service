@@ -4,6 +4,3 @@ Description = Random wallpapers
 [Service]
 Type = oneshot
 ExecStart = /usr/local/bin/wallpapers
-
-[Install]
-WantedBy = basic.target

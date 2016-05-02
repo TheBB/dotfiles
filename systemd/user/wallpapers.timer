@@ -1,4 +1,4 @@
-[Description]
+[Unit]
 Description = Change wallpaper every hour
 
 [Timer]
@@ -7,4 +7,4 @@ OnCalendar = hourly
 Unit = wallpapers.service
 
 [Install]
-WantedBy = wallpapers.service
+WantedBy = default.target

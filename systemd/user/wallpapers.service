@@ -3,4 +3,4 @@ Description = Random wallpapers
 
 [Service]
 Type = oneshot
-ExecStart = /usr/local/bin/wallpapers
+ExecStart = /usr/local/bin/wallpapers change

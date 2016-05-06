@@ -2,18 +2,18 @@
 
 ABS_PATH=`pwd`
 
-sudo ln -Tsi "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
-sudo ln -Tsi "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
+sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
+sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 
-ln -Tsi "$ABS_PATH/scripts/conky.desktop" ~/.config/autostart/conky.desktop
+ln -Tsf "$ABS_PATH/scripts/conky.desktop" ~/.config/autostart/conky.desktop
 
-ln -Tsi "$ABS_PATH/conky" ~/.config/conky
-ln -Tsi "$ABS_PATH/flake8/flake8" ~/.config/flake8
-ln -Tsi "$ABS_PATH/ghci/ghci.conf" ~/.ghc/ghci.conf
-ln -Tsi "$ABS_PATH/git/gitconfig" ~/.gitconfig
-ln -Tsi "$ABS_PATH/systemd/user" ~/.config/systemd/user
-ln -Tsi "$ABS_PATH/terminator/config" ~/.config/terminator/config
-ln -Tsi "$ABS_PATH/vim" ~/.vim
-ln -Tsi "$ABS_PATH/vimperator/vimperatorrc" ~/.vimperatorrc
-ln -Tsi "$ABS_PATH/zsh/zshenv" ~/.zshenv
-ln -Tsi "$ABS_PATH/zsh/zshrc" ~/.zshrc
+ln -Tsf "$ABS_PATH/conky" ~/.config/conky
+ln -Tsf "$ABS_PATH/flake8/flake8" ~/.config/flake8
+ln -Tsf "$ABS_PATH/ghci/ghci.conf" ~/.ghc/ghci.conf
+ln -Tsf "$ABS_PATH/git/gitconfig" ~/.gitconfig
+ln -Tsf "$ABS_PATH/systemd/user" ~/.config/systemd/user
+ln -Tsf "$ABS_PATH/terminator/config" ~/.config/terminator/config
+ln -Tsf "$ABS_PATH/vim" ~/.vim
+ln -Tsf "$ABS_PATH/vimperator/vimperatorrc" ~/.vimperatorrc
+ln -Tsf "$ABS_PATH/zsh/zshenv" ~/.zshenv
+ln -Tsf "$ABS_PATH/zsh/zshrc" ~/.zshrc

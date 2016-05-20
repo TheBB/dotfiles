@@ -7,6 +7,11 @@ if [ $1 = "--sudo" ]; then
     echo sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 fi
 
+mkdir -p ~/.config/autostart
+mkdir -p ~/.config/systemd
+mkdir -p ~/.config/terminator
+mkdir -p ~/.ghc
+
 ln -Tsf "$ABS_PATH/scripts/conky.desktop" ~/.config/autostart/conky.desktop
 
 ln -Tsf "$ABS_PATH/conky" ~/.config/conky

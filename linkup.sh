@@ -2,7 +2,7 @@
 
 ABS_PATH=`pwd`
 
-if [ $1 = "--sudo" ]; then
+if [[ "$1" = "--sudo" ]]; then
     echo sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
     echo sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 fi

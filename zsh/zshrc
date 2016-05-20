@@ -79,5 +79,8 @@ alias sume="sudo -E su -m"
 alias sudd="sudo -E"
 alias -g findp="ps aux | ag"
 
-eval "$(fasd --init auto)"
+if type fasd > /dev/null; then
+    eval "$(fasd --init auto)"
+fi
+
 source $HOME/.localzshrc

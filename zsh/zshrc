@@ -18,7 +18,10 @@ antigen bundle colored-man-pages
 antigen bundle fasd
 antigen bundle git
 antigen bundle virtualenv
-antigen bundle virtualenvwrapper
+
+if type virtualenvwrapper.sh > /dev/null; then
+    antigen bundle virtualenvwrapper
+fi
 
 antigen bundle djui/alias-tips
 antigen bundle Vifon/deer

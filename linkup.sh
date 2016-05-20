@@ -2,8 +2,10 @@
 
 ABS_PATH=`pwd`
 
-sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
-sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
+if [ $1 = "--sudo" ]; then
+    echo sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
+    echo sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
+fi
 
 ln -Tsf "$ABS_PATH/scripts/conky.desktop" ~/.config/autostart/conky.desktop
 

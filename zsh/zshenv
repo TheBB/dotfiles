@@ -1,7 +1,10 @@
 export PATH=$HOME/bin:$PATH
-export LD_PRELOAD=/usr/lib/nvidia/libGL.so
 export WORKON_HOME=~/.virtualenvs
 export RUST_SRC_PATH=/usr/src/rust/src
+
+if [ -f /usr/lib/nvidia/libGL.so ]; then
+   export LD_PRELOAD=/usr/lib/nvidia/libGL.so
+fi
 
 for dir in \
     ~/.cabal/bin

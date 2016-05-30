@@ -106,7 +106,7 @@ set t_ZR=[23m
 let mapleader = ' '
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>qq :qa
+nnoremap <leader>qq :qa<CR>
 nnoremap <leader>bb :ls<CR>
 
 

@@ -1,6 +1,6 @@
 [Unit]
-Description = Random wallpapers
+Description=Random wallpapers
 
 [Service]
-Type = oneshot
-ExecStart = /usr/local/bin/wallpapers change
+Type=oneshot
+ExecStart=/usr/local/bin/wallpapers change

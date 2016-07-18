@@ -19,3 +19,5 @@
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [pull]
 	rebase = true
+[status]
+	showUntrackedFiles = all

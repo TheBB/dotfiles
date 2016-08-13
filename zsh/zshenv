@@ -6,8 +6,8 @@ if [ -f /usr/lib/nvidia/libGL.so ]; then
    export LD_PRELOAD=/usr/lib/nvidia/libGL.so
 fi
 
-for dir in \
-    ~/.cabal/bin
-; do
-    if [[ -d $dir ]]; then path+=$dir; fi
-done
+# for dir in \
+#     ~/.cabal/bin
+# ; do
+#     if [[ -d $dir ]]; then path+=$dir; fi
+# done

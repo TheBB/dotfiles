@@ -86,6 +86,10 @@ alias sume="sudo -E su -m"
 alias sudd="sudo -E"
 alias -g findp="ps aux | ag"
 
+if type ofoam-3.0 > /dev/null; then
+    alias ofoam-3.0="source $(which ofoam-3.0)"
+fi
+
 if type fasd > /dev/null; then
     eval "$(fasd --init auto)"
 fi

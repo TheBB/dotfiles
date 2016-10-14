@@ -1,4 +1,4 @@
-export PATH=$HOME/prefix/bin:$PATH
+export PATH=$HOME/prefix/bin:$HOME/.local/bin/:$PATH
 export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
 export WORKON_HOME=~/.virtualenvs
 export RUST_SRC_PATH=/usr/src/rust/src

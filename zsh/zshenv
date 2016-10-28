@@ -4,9 +4,9 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export WORKON_HOME=~/.virtualenvs
 export RUST_SRC_PATH=/usr/src/rust/src
 
-if [ -f /usr/lib/nvidia/libGL.so ]; then
-   export LD_PRELOAD=/usr/lib/nvidia/libGL.so
-fi
+# if [ -f /usr/lib/nvidia/libGL.so ]; then
+#    export LD_PRELOAD=/usr/lib/nvidia/libGL.so
+# fi
 
 # for dir in \
 #     ~/.cabal/bin

@@ -22,6 +22,7 @@ ln -Tsf "$ABS_PATH/git/gitignore_global" ~/.gitignore_global
 ln -Tsf "$ABS_PATH/gtags/gtags.conf" ~/.globalrc
 ln -Tsf "$ABS_PATH/systemd/user" ~/.config/systemd/user
 ln -Tsf "$ABS_PATH/terminator/config" ~/.config/terminator/config
+ln -Tsf "$ABS_PATH/terminology" ~/.config/terminology
 ln -Tsf "$ABS_PATH/vim" ~/.vim
 ln -Tsf "$ABS_PATH/vimperator/vimperatorrc" ~/.vimperatorrc
 ln -Tsf "$ABS_PATH/zsh/zshenv" ~/.zshenv

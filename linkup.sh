@@ -3,8 +3,9 @@
 ABS_PATH=`pwd`
 
 if [[ "$1" = "--sudo" ]]; then
-    echo sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
-    echo sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
+    sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
+    sudo ln -Tsf "$ABS_PATH/scripts/prisma-puzzle-timer-synced" /usr/local/bin/prisma-puzzle-timer-synced
+    sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 fi
 
 mkdir -p ~/.config/autostart

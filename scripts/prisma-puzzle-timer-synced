@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+rsync -a root@efonn.no:cube/puzzletimer.h2.db ~/puzzletimer.h2.db
+prisma-puzzle-timer
+rsync -a ~/puzzletimer.h2.db root@efonn.no:cube/puzzletimer.h2.db

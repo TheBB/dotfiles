@@ -5,6 +5,7 @@ ABS_PATH=`pwd`
 if [[ "$1" = "--sudo" ]]; then
     sudo ln -Tsf "$ABS_PATH/scripts/ecli" /usr/local/bin/ecli
     sudo ln -Tsf "$ABS_PATH/scripts/prisma-puzzle-timer-synced" /usr/local/bin/prisma-puzzle-timer-synced
+    sudo ln -Tsf "$ABS_PATH/scripts/ct-synced" /usr/local/bin/ct-synced
     sudo ln -Tsf "$ABS_PATH/scripts/wallpapers.py" /usr/local/bin/wallpapers
 fi
 

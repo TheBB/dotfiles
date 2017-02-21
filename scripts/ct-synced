@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+rsync -a root@efonn.no:cube/db.sqlite3 ~/.local/share/ct/db.sqlite3
+ct
+rsync -a ~/.local/share/ct/db.sqlite3 root@efonn.no:cube/db.sqlite3

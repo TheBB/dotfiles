@@ -94,4 +94,8 @@ if type fasd > /dev/null; then
     eval "$(fasd --init auto)"
 fi
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
 source $HOME/.localzshrc

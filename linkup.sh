@@ -30,3 +30,5 @@ ln -Tsf "$ABS_PATH/vimperator/vimperatorrc" ~/.vimperatorrc
 ln -Tsf "$ABS_PATH/zsh/zshenv" ~/.zshenv
 ln -Tsf "$ABS_PATH/zsh/zshrc" ~/.zshrc
 ln -Tsf "$ABS_PATH/zsh/zprofile" ~/.zprofile
+
+dconf load /com/gexperts/Tilix/ < $ABS_PATH/dconf/tilix.dconf

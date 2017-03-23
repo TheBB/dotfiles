@@ -29,4 +29,4 @@ terminal-bell='none'
 scrollback-unlimited=true
 background-color='#272822'
 background-transparency-percent=12
-dim-transparency-percent=11
+dim-transparency-percent=25

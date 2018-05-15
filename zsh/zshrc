@@ -45,6 +45,8 @@ function bb_venv_prompt() {
     local ref=$(virtualenv_prompt_info)
     if [[ -n $ref ]]; then
         echo "  $ref"
+    elif [[ -n $CONDA_DEFAULT_ENV ]]; then
+        echo "  %{$fg_bold[cyan]%}$CONDA_DEFAULT_ENV (conda)%{$reset_color%}"
     fi
 }
 

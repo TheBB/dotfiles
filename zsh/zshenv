@@ -1,15 +1,4 @@
-export PATH=$HOME/prefix/bin:$HOME/.local/bin:$PATH
-# export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export WORKON_HOME=~/.virtualenvs
 export RUST_SRC_PATH=/usr/src/rust/src
-
-# if [ -f /usr/lib/nvidia/libGL.so ]; then
-#    export LD_PRELOAD=/usr/lib/nvidia/libGL.so
-# fi
-
-# for dir in \
-#     ~/.cabal/bin
-# ; do
-#     if [[ -d $dir ]]; then path+=$dir; fi
-# done

@@ -7,6 +7,9 @@ set -g __fish_git_prompt_showdirtystate true
 set -g __fish_git_prompt_showupstream auto
 set -g fish_prompt_pwd_dir_length 3
 
+# Key bindings
+bind \cl forward-char
+
 # Use vim as EDITOR
 set -xg EDITOR vim
 
@@ -17,4 +20,3 @@ set PATH $HOME/.local/bin $PATH
 # !! Contents within this block are managed by 'conda init' !!
 eval /home/eivind/source/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
-

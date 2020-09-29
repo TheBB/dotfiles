@@ -14,7 +14,7 @@ bind \cl forward-char
 set -xg EDITOR vim
 
 # Path manipulation
-set PATH $HOME/.local/bin $PATH
+set PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

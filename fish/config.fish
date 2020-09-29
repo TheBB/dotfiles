@@ -20,3 +20,28 @@ set PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
 # !! Contents within this block are managed by 'conda init' !!
 eval /home/eivind/source/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+
+
+function mv_todo_oldbarred
+    if test (basename $PWD) != "staging"
+        echo "Wrong directory"
+        return 1
+    end
+    for x in *
+        if test -f todo/$x
+            echo $x
+            mv todo/$x oldbarred/$x
+        end
+    end
+end
+
+function mv_marked_todo
+    if test (basename $PWD) != "staging"
+        echo "Wrong directory"
+        return 1
+    end
+    for x in (cat ~/marked.txt | sort | uniq)
+        echo $x
+        mv $x todo/
+    end
+end

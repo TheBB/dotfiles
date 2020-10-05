@@ -44,4 +44,5 @@ function mv_marked_todo
         echo $x
         mv $x todo/
     end
+    echo '' > ~/marked.txt
 end

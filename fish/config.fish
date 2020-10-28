@@ -9,6 +9,7 @@ set -g fish_prompt_pwd_dir_length 3
 
 # Key bindings
 bind \cl forward-char
+bind \cr expand_glob
 
 # Use vim as EDITOR
 set -xg EDITOR vim

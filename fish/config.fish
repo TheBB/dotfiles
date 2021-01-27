@@ -50,3 +50,21 @@ function mv_marked_todo
     end
     echo '' > ~/marked.txt
 end
+
+function cleardir
+    if test (basename $PWD) != "build"
+        echo "Wrong directory"
+        return 1
+    end
+    rm -rf *
+end
+
+function petsc
+    set -xg PETSC_ARCH $argv[1]
+    set -xg PETSC_DIR ~/source/petsc
+    set -xga LD_LIBRARY_PATH $PETSC_DIR/$PETSC_ARCH/lib
+end
+
+function backup
+    rsync -avxx -e "ssh -F $HOME/.ssh/config" . rsync@mnenosyne::NetBackup/home-(date '+%Y-%m-%d')
+end

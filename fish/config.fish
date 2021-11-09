@@ -26,6 +26,9 @@ eval /home/eivind/source/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 
+alias pic="feh -Z."
+
+
 function mv_todo_oldbarred
     if test (basename $PWD) != "staging"
         echo "Wrong directory"
@@ -66,5 +69,68 @@ function petsc
 end
 
 function backup
-    rsync -avxx -e "ssh -F $HOME/.ssh/config" . rsync@mnenosyne::NetBackup/home-(date '+%Y-%m-%d')
+    rsync -avxx -e "ssh -F $HOME/.ssh/config" $HOME rsync@mnemosyne::NetBackup/home-(date '+%Y-%m-%d') 2>&1 | tee $HOME/backup.log
+end
+
+function wacom
+    xsetwacom --set "Wacom Bamboo Connect Pen stylus" MapToOutput HEAD-1
+    xsetwacom --set "Wacom Bamboo Connect Pen stylus" Rotate half
+end
+
+function blue
+    switch $argv[1]
+        case spinup
+            set -l name $argv[2]
+            set -l size $argv[3]
+            az group create \
+                --name AutoGrp-$name \
+                --location westeurope
+            az vm create \
+                --resource-group AutoGrp-$name \
+                --name AutoVm-$name \
+                --image UbuntuLTS \
+                --ssh-key-values ~/.ssh/id_rsa.pub \
+                --size $size
+
+            set -l ip ( \
+                az vm list-ip-addresses --name AutoVm-$name | \
+                jq -r '.[0].virtualMachine.network.publicIpAddresses[0].ipAddress' \
+            )
+            ssh-keyscan -H $ip >> ./.ssh/known_hosts
+            if grep "Host $name" ~/.ssh/config
+                cat ~/.ssh/config | \
+                    tr '\n' '#' | \
+                    sed -e "s/\(Host $name#\s*HostName\) [^#]*\(#\s*User\) [^#]*/\1 $ip\2 $USER/" | \
+                    tr '#' '\n' > ~/.ssh/temp
+                mv ~/.ssh/temp ~/.ssh/config
+            else
+                echo "Host $name" >> ~/.ssh/config
+                echo "    HostName $ip" >> ~/.ssh/config
+                echo "    User $USER" >> ~/.ssh/config
+            end
+
+        case ifem
+            set -l name $argv[2]
+
+            ssh $name '\
+                curl -fsSL https://get.docker.com -o get-docker.sh
+                sudo sh get-docker.sh
+                rm get-docker.sh
+                sudo usermod -aG docker $USER
+                echo "localhost slots=$(nproc)" > hostfile
+                echo >> .bashrc \'ifem () { docker run --cap-add SYS_PTRACE -v$(pwd):/workdir --workdir /workdir thebb/ifem bash -c "$*"; }\'
+            '
+
+            ssh $name 'docker pull thebb/ifem'
+
+        case spindown
+            set -l name $argv[2]
+            set -l ip ( \
+                az vm list-ip-addresses --name AutoVm-$name | \
+                jq -r '.[0].virtualMachine.network.publicIpAddresses[0].ipAddress' \
+            )
+
+            yes | ssh-keygen -R $ip
+            az group delete --yes --name AutoGrp-$name
+    end
 end

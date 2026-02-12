@@ -1,4 +1,0 @@
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export WORKON_HOME=~/.virtualenvs
-export RUST_SRC_PATH=/usr/src/rust/src

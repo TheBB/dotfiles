@@ -1,9 +1,0 @@
-bundle
-.ssh-agent
-*~
-*.elc
-/emacs/bookmarks
-/emacs/eshell
-/emacs/auto-save-list
-/emacs/projectile.cache
-/emacs/projectile-bookmarks.eld

@@ -1,0 +1,30 @@
+[include]
+        path = ~/.gitconfig-local
+[user]
+        email = evfonn@gmail.com
+        name = Eivind Fonn
+[push]
+        default = simple
+[credential]
+        helper = cache --timeout=3600
+[core]
+	editor = code --wait
+        excludesfile = ~/.gitignore_global
+[merge]
+        tool = vimdiff
+[diff]
+        tool = vimdiff
+[difftool]
+        prompt = false
+[alias]
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+[pull]
+        rebase = true
+[status]
+        showUntrackedFiles = all
+[github]
+	user = TheBB
+[commit]
+        gpgsign = true
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/
